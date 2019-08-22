@@ -13,11 +13,11 @@ functionality, use Debugger.jl or Juno's debugger.
 Usage:
 ```julia
 julia> function f(x)
-     x *= 2
-     y = rand(3)
-     VarExplosions.@varexplode
-     x += 2
-   end
+         x *= 2
+         y = rand(3)
+         @varexplode
+         x += 2
+       end
 f (generic function with 1 method)
 
 julia> f(3)
