@@ -1,0 +1,16 @@
+name = "VarExplosions"
+uuid = "31a5f54b-26ea-5ae9-a837-f05ce5417438"
+version = "0.1.0"
+
+[deps]
+REPL = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
+
+[compat]
+julia = "1"
+
+[extras]
+TerminalRegressionTests = "98bfdc55-cc95-5876-a49a-74609291cbe0"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test", "TerminalRegressionTests"]
