@@ -1,4 +1,4 @@
-# VarExplosions.jl
+# VarExplosions.jl [![Build Status](https://travis-ci.org/JuliaDebug/VarExplosions.jl.svg?branch=master)](https://travis-ci.org/JuliaDebug/VarExplosions.jl)
 
 This packages provides a macro called `@varexplode`, which sets a "breakpoint" in a local context
 (similar to Matlab's `keyboard` function). The advantage of this macro over e.g. Debugger.jl is that
