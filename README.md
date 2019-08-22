@@ -11,7 +11,7 @@ Note that you cannot access other functions in the callstack, or step into funct
 functionality, use Debugger.jl or Juno's debugger.
 
 Usage:
-```
+```julia
 julia> function f(x)
      x *= 2
      y = rand(3)
