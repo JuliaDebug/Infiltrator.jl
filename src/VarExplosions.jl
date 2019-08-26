@@ -167,15 +167,22 @@ function debugprompt(mod, locals, trace, terminal, repl)
       end
       ok = true
       result = nothing
-      try
-        result = interpret(line, mod, locals)
-      catch err
-        ok = false
-        result = [err, catch_backtrace()]
-      end
+
       @static if VERSION >= v"1.2.0-DEV.253"
-        REPL.print_response(repl, response, true, true)
+        try
+          result = interpret(line, mod, locals)
+        catch err
+          ok = false
+          result = Base.catch_stack()
+        end
+        REPL.print_response(repl, (result, !ok), true, true)
       else
+        try
+          result = interpret(line, mod, locals)
+        catch err
+          ok = false
+          result = [err, catch_backtrace()]
+        end
         REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
       end
       println(io)
