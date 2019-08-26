@@ -1,0 +1,336 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #4 at runtests.jl:29 [inlined]
+|[3] (::var"##3#5"{var"##4#6"})(::TerminalRegressionTests.EmulatedTerminal) at ru
+|ntests.jl:23
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #4 at runtests.jl:29 [inlined]
+|[3] (::var"##3#5"{var"##4#6"})(::TerminalRegressionTests.EmulatedTerminal) at ru
+|ntests.jl:23
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #4 at runtests.jl:29 [inlined]
+|[3] (::var"##3#5"{var"##4#6"})(::TerminalRegressionTests.EmulatedTerminal) at ru
+|ntests.jl:23
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #4 at runtests.jl:29 [inlined]
+|[3] (::var"##3#5"{var"##4#6"})(::TerminalRegressionTests.EmulatedTerminal) at ru
+|ntests.jl:23
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|debug> foo
+|3
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #4 at runtests.jl:29 [inlined]
+|[3] (::var"##3#5"{var"##4#6"})(::TerminalRegressionTests.EmulatedTerminal) at ru
+|ntests.jl:23
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|debug> foo
+|3
+|
+|debug> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror(::Type) at ./rational.jl:19
+| [2] Rational at ./rational.jl:14 [inlined]
+| [3] Rational at ./rational.jl:21 [inlined]
+| [4] //(::Int64, ::Int64) at ./rational.jl:44
+| [5] top-level scope at /home/pfitzseb/.julia/dev/VarExplosions/test/runtests.jl
+|:11
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCC
+|
+|BBBBBBB

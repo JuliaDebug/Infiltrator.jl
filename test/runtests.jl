@@ -28,7 +28,7 @@ if Sys.isunix() && VERSION >= v"1.1.0"
 
     run_terminal_test(() -> f(3),
                       ["?\n", "@trace\n", "@locals\n", "x.*y\n", "foo\n", "0//0\n", "\x4"],
-                      "explode.multiout")
+                      "Julia_$(VERSION.major).$(VERSION.minor).multiout")
 else
     @warn "Skipping UI tests on non unix systems"
 end
