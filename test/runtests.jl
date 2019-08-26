@@ -24,6 +24,10 @@ if Sys.isunix() && VERSION >= v"1.1.0"
             VarExplosions.TEST_TERMINAL_REF[] = nothing
             VarExplosions.TEST_REPL_REF[] = nothing
         end
+        if isfile(joinpath(@__DIR__, "expected.out"))
+            @show read(joinpath(@__DIR__, "expected.out"), String)
+            @show read(joinpath(@__DIR__, "failed.out"), String)
+        end
     end
 
     run_terminal_test(() -> f(3),
