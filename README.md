@@ -6,6 +6,7 @@ all code is completly compiled, so the performance overhead should be neglible.
 
 `@varexplode` will drop you into an interactive REPL session that let's you inspect local variables
 and the call stack as well as execute aribtrary statements in the context of the current function's module.
+To make it conditional, just put `@varexplode` inside an `if` statement.
 
 Note that you cannot access other functions in the callstack, or step into functions. If you need that
 functionality, use Debugger.jl or Juno's debugger.
