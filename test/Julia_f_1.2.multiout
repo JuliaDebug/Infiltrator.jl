@@ -1,5 +1,5 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> 
 --------------------------------------------------
@@ -7,7 +7,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -35,7 +35,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -49,9 +49,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:29 [inlined]
-|[3] (::getfield(Main, Symbol("##3#5")){getfield(Main, Symbol("##4#6"))})(::Termi
-|nalRegressionTests.EmulatedTerminal) at runtests.jl:23
+|[2] #4 at runtests.jl:35 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
 |
 |debug> 
 --------------------------------------------------
@@ -71,11 +71,11 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -89,9 +89,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:29 [inlined]
-|[3] (::getfield(Main, Symbol("##3#5")){getfield(Main, Symbol("##4#6"))})(::Termi
-|nalRegressionTests.EmulatedTerminal) at runtests.jl:23
+|[2] #4 at runtests.jl:35 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -115,7 +115,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -123,7 +123,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -137,9 +137,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:29 [inlined]
-|[3] (::getfield(Main, Symbol("##3#5")){getfield(Main, Symbol("##4#6"))})(::Termi
-|nalRegressionTests.EmulatedTerminal) at runtests.jl:23
+|[2] #4 at runtests.jl:35 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -169,7 +169,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -183,7 +183,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -197,9 +197,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:29 [inlined]
-|[3] (::getfield(Main, Symbol("##3#5")){getfield(Main, Symbol("##4#6"))})(::Termi
-|nalRegressionTests.EmulatedTerminal) at runtests.jl:23
+|[2] #4 at runtests.jl:35 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -232,7 +232,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -249,7 +249,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@varexplode` in f(::Int64) at runtests.jl:7:
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -263,9 +263,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:29 [inlined]
-|[3] (::getfield(Main, Symbol("##3#5")){getfield(Main, Symbol("##4#6"))})(::Termi
-|nalRegressionTests.EmulatedTerminal) at runtests.jl:23
+|[2] #4 at runtests.jl:35 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -287,8 +287,8 @@
 | [2] Type at ./rational.jl:13 [inlined]
 | [3] Type at ./rational.jl:20 [inlined]
 | [4] //(::Int64, ::Int64) at ./rational.jl:43
-| [5] top-level scope at /home/pfitzseb/.julia/dev/VarExplosions/test/runtests.jl
-|:11
+| [5] top-level scope at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:1
+|7
 |
 |debug> 
 --------------------------------------------------
@@ -308,7 +308,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -331,6 +331,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCC
+|C
 |
 |BBBBBBB

@@ -1,12 +1,13 @@
-# VarExplosions.jl [![Build Status](https://travis-ci.org/JuliaDebug/VarExplosions.jl.svg?branch=master)](https://travis-ci.org/JuliaDebug/VarExplosions.jl)
+# Infiltrator.jl [![Build Status](https://travis-ci.org/JuliaDebug/Infiltrator.jl.svg?branch=master)](https://travis-ci.org/JuliaDebug/Infiltrator.jl)
 
-This packages provides a macro called `@varexplode`, which sets a "breakpoint" in a local context
+This packages provides a macro called `@infiltrate`, which sets a "breakpoint" in a local context
 (similar to Matlab's `keyboard` function). The advantage of this macro over e.g. Debugger.jl is that
 all code is completly compiled, so the performance overhead should be neglible.
 
-`@varexplode` will drop you into an interactive REPL session that let's you inspect local variables
+`@infiltrate` will drop you into an interactive REPL session that let's you inspect local variables
 and the call stack as well as execute aribtrary statements in the context of the current function's module.
-To make it conditional, just put `@varexplode` inside an `if` statement.
+You can optionally supply an argument to `@infiltrate` (that must evaluate to a boolean) to make it
+conditional.
 
 Note that you cannot access other functions in the callstack, or step into functions. If you need that
 functionality, use Debugger.jl or Juno's debugger.
@@ -16,13 +17,13 @@ Usage:
 julia> function f(x)
          x *= 2
          y = rand(3)
-         @varexplode
+         @infiltrate
          x += 2
        end
 f (generic function with 1 method)
 
 julia> f(3)
-Hit `@varexplode` in f(::Int64) at none:4:
+Hit `@infiltrate` in f(::Int64) at none:4:
 
 debug> ?
 Code entered is evaluated in the current function's module. Note that you cannot change local

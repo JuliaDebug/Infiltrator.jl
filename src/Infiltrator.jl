@@ -1,29 +1,29 @@
-module VarExplosions
+module Infiltrator
 
 using REPL
 using REPL.LineEdit
 
-export @varexplode
+export @infiltrate
 
 """
-    @varexplode
+    @infiltrate ex = true
 
-Sets a "breakpoint" in a local context. Will drop you into an interactive REPL session that let's
-you inspect local variables and the call stack as well as execute aribtrary statements in the context
-of the current function's module.
+Sets a "breakpoint" in a local context. Accepts an optional argument that must evaluate to a boolean,
+and will drop you into an interactive REPL session that lets you inspect local variables and the call
+stack as well as execute aribtrary statements in the context of the current function's module.
 
 Usage:
 ```
 julia> function f(x)
          x *= 2
          y = rand(3)
-         VarExplosions.@varexplode
+         @infiltrate
          x += 2
        end
 f (generic function with 1 method)
 
 julia> f(3)
-Hit `@varexplode` in f(::Int64) at none:4:
+Hit `@infiltrate` in f(::Int64) at none:4:
 
 debug> ?
   Code entered is evaluated in the current function's module. Note that you cannot change local
@@ -55,9 +55,11 @@ debug>
 julia>
 ```
 """
-macro varexplode()
+macro infiltrate(ex = true)
   quote
-    start_prompt(@__MODULE__, Base.@locals)
+    if $(esc(ex))
+      start_prompt(@__MODULE__, Base.@locals, $(QuoteNode(ex)))
+    end
   end
 end
 
@@ -70,13 +72,13 @@ end
 const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 
-function start_prompt(mod, locals, terminal = TEST_TERMINAL_REF[], repl = TEST_REPL_REF[])
+function start_prompt(mod, locals, ex; terminal = TEST_TERMINAL_REF[], repl = TEST_REPL_REF[])
   if terminal === nothing || repl === nothing
     if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
       repl = Base.active_repl
       terminal = Base.active_repl.t
     else
-      println("VarExplosions needs a proper Julia REPL.")
+      println("Infiltrator.jl needs a proper Julia REPL.")
       return
     end
   end
@@ -87,8 +89,7 @@ function start_prompt(mod, locals, terminal = TEST_TERMINAL_REF[], repl = TEST_R
   last = something(findlast(x -> x.func === Symbol("eval"), trace), length(trace)) - 2
   trace = trace[start:last]
   current = trace[1]
-
-  println(io, "Hit `@varexplode` in ", current, ":")
+  println(io, "Hit `@infiltrate", ex == true ? "" : " $(ex)", "` in ", current, ":")
   println(io)
   debugprompt(mod, locals, trace, terminal, repl)
   println(io)

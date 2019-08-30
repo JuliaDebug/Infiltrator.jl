@@ -1,0 +1,174 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] g at runtests.jl:13 [inlined]
+|[2] #5 at runtests.jl:41 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
+|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] g at runtests.jl:13 [inlined]
+|[2] #5 at runtests.jl:41 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
+|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|
+|  Exit this REPL mode with `Ctrl-D`.
+|
+|debug> @trace
+|[1] g at runtests.jl:13 [inlined]
+|[2] #5 at runtests.jl:41 [inlined]
+|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
+|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> x
+|24
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCC
+|CCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CC
+|
+|BBBBBBB
