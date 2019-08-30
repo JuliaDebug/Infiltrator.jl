@@ -49,9 +49,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:35 [inlined]
+|[2] #4 at runtests.jl:37 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> 
 --------------------------------------------------
@@ -89,9 +89,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:35 [inlined]
+|[2] #4 at runtests.jl:37 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -137,9 +137,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:35 [inlined]
+|[2] #4 at runtests.jl:37 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -197,9 +197,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:35 [inlined]
+|[2] #4 at runtests.jl:37 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -263,9 +263,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:35 [inlined]
+|[2] #4 at runtests.jl:37 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##4#7")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -282,13 +282,6 @@
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
-|Stacktrace:
-| [1] __throw_rational_argerror(::Type) at ./rational.jl:18
-| [2] Type at ./rational.jl:13 [inlined]
-| [3] Type at ./rational.jl:20 [inlined]
-| [4] //(::Int64, ::Int64) at ./rational.jl:43
-| [5] top-level scope at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:1
-|7
 |
 |debug> 
 --------------------------------------------------
@@ -325,12 +318,5 @@
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|C
 |
 |BBBBBBB

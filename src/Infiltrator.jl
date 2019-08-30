@@ -71,8 +71,13 @@ end
 
 const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
+const TEST_NOSTACK = Ref{Any}(false)
 
-function start_prompt(mod, locals, ex; terminal = TEST_TERMINAL_REF[], repl = TEST_REPL_REF[])
+function start_prompt(mod, locals, ex;
+                        terminal = TEST_TERMINAL_REF[],
+                        repl = TEST_REPL_REF[],
+                        nostack = TEST_NOSTACK[]
+                      )
   if terminal === nothing || repl === nothing
     if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
       repl = Base.active_repl
@@ -86,12 +91,13 @@ function start_prompt(mod, locals, ex; terminal = TEST_TERMINAL_REF[], repl = TE
 
   trace = stacktrace()
   start = something(findlast(x -> x.func === Symbol("start_prompt"), trace), 0) + 2
-  last = something(findlast(x -> x.func === Symbol("eval"), trace), length(trace)) - 2
+  last = something(findlast(x -> x.func === Symbol("eval"), trace),
+                   length(trace)) - 2
   trace = trace[start:last]
   current = trace[1]
   println(io, "Hit `@infiltrate", ex == true ? "" : " $(ex)", "` in ", current, ":")
   println(io)
-  debugprompt(mod, locals, trace, terminal, repl)
+  debugprompt(mod, locals, trace, terminal, repl, nostack)
   println(io)
 end
 
@@ -121,7 +127,7 @@ function show_locals(io, locals)
   println(io)
 end
 
-function debugprompt(mod, locals, trace, terminal, repl)
+function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
   io = Base.pipe_writer(terminal)
 
   try
@@ -175,6 +181,7 @@ function debugprompt(mod, locals, trace, terminal, repl)
         catch err
           ok = false
           result = Base.catch_stack()
+          nostack && (result = map(r -> Any[first(r), []], result))
         end
         REPL.print_response(repl, (result, !ok), true, true)
       else
@@ -182,7 +189,7 @@ function debugprompt(mod, locals, trace, terminal, repl)
           result = interpret(line, mod, locals)
         catch err
           ok = false
-          result = [err, catch_backtrace()]
+          result = (err, nostack ? Any[] : catch_backtrace())
         end
         REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
       end

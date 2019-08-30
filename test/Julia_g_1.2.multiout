@@ -49,9 +49,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:41 [inlined]
+|[2] #5 at runtests.jl:43 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
-|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> 
 --------------------------------------------------
@@ -89,9 +89,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:41 [inlined]
+|[2] #5 at runtests.jl:43 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
-|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -135,9 +135,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:41 [inlined]
+|[2] #5 at runtests.jl:43 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
-|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:29
+|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- x::Int64 = 24

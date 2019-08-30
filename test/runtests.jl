@@ -25,9 +25,11 @@ if Sys.isunix() && VERSION >= v"1.1.0"
             repl.specialdisplay = REPL.REPLDisplay(repl)
 
             Infiltrator.TEST_TERMINAL_REF[] = repl.t
+            Infiltrator.TEST_NOSTACK[] = true
             Infiltrator.TEST_REPL_REF[] = repl
             @test func() == result
             Infiltrator.TEST_TERMINAL_REF[] = nothing
+            Infiltrator.TEST_NOSTACK[] = false
             Infiltrator.TEST_REPL_REF[] = nothing
         end
     end
