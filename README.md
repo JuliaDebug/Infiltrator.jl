@@ -4,7 +4,7 @@ This packages provides a macro called `@infiltrate`, which sets a "breakpoint" i
 (similar to Matlab's `keyboard` function). The advantage of this macro over e.g. Debugger.jl is that
 all code is completly compiled, so the performance overhead should be neglible.
 
-`@infiltrate` will drop you into an interactive REPL session that let's you inspect local variables
+`@infiltrate` will drop you into an interactive REPL session that lets you inspect local variables
 and the call stack as well as execute aribtrary statements in the context of the current function's module.
 You can optionally supply an argument to `@infiltrate` (that must evaluate to a boolean) to make it
 conditional.
