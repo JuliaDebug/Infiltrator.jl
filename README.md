@@ -12,7 +12,7 @@ conditional.
 Note that you cannot access other functions in the callstack, or step into functions. If you need that
 functionality, use Debugger.jl or Juno's debugger.
 
-Usage:
+### Usage
 ```julia
 julia> function f(x)
          x *= 2
