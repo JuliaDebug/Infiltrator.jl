@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|Hit `@infiltrate x > 12` in g(::Int64) at runtests.jl:13:
 |
-|debug> 
+|debug>
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|Hit `@infiltrate x > 12` in g(::Int64) at runtests.jl:13:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -19,9 +19,9 @@
 |
 |  Exit this REPL mode with `Ctrl-D`.
 |
-|debug> 
+|debug>
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -35,7 +35,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|Hit `@infiltrate x > 12` in g(::Int64) at runtests.jl:13:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -48,14 +48,14 @@
 |  Exit this REPL mode with `Ctrl-D`.
 |
 |debug> @trace
-|[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:43 [inlined]
+|[1] g(::Int64) at runtests.jl:13
+|[2] #5 at runtests.jl:44 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
 |:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
-|debug> 
+|debug>
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -68,14 +68,14 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|Hit `@infiltrate x > 12` in g(::Int64) at runtests.jl:13:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -88,17 +88,17 @@
 |  Exit this REPL mode with `Ctrl-D`.
 |
 |debug> @trace
-|[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:43 [inlined]
+|[1] g(::Int64) at runtests.jl:13
+|[2] #5 at runtests.jl:44 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
 |:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- x::Int64 = 24
 |
-|debug> 
+|debug>
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -111,7 +111,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -121,7 +121,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate x > 12` in g at runtests.jl:13 [inlined]:
+|Hit `@infiltrate x > 12` in g(::Int64) at runtests.jl:13:
 |
 |debug> ?
 |  Code entered is evaluated in the current function's module. Note that you cann
@@ -134,8 +134,8 @@
 |  Exit this REPL mode with `Ctrl-D`.
 |
 |debug> @trace
-|[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:43 [inlined]
+|[1] g(::Int64) at runtests.jl:13
+|[2] #5 at runtests.jl:44 [inlined]
 |[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
 |:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
@@ -145,9 +145,9 @@
 |debug> x
 |24
 |
-|debug> 
+|debug>
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -160,7 +160,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

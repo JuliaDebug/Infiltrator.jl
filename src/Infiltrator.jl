@@ -5,6 +5,41 @@ using REPL.LineEdit
 
 export @infiltrate
 
+struct InfiltratorState
+  locals::Dict{Symbol, Any}
+  trace::Vector
+  mod::Module
+  file::String
+  line::Int
+  condition
+end
+
+function create_infiltrator_state(locals, backtrace, mod, file, line, condition)
+  # TODO: Use backtrace() so that we can use Base.show_backtrace()
+  trace = stacktrace()
+  start = something(findlast(x -> x.func === Symbol("create_infiltrator_state"), trace), 0) + 2
+  last = something(findlast(x -> x.func === Symbol("eval"), trace),
+                  length(trace)) - 2
+  trace = trace[start:last]
+  return InfiltratorState(locals, trace, mod, file, line, condition)
+end
+
+maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
+
+function interpret(state::InfiltratorState, command::AbstractString)
+    expr = Base.parse_input_line(command)
+    Base.Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
+    res = gensym()
+    eval_expr = Expr(:let,
+        Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in state.locals])...),
+        Expr(:block,
+            Expr(:(=), res, expr),
+            Expr(:tuple, res, Expr(:tuple, [k for (k, v) in state.locals]...))
+        ))
+    eval_res, res = Core.eval(state.mod, eval_expr)
+    eval_res
+end
+
 """
     @infiltrate ex = true
 
@@ -55,10 +90,10 @@ debug>
 julia>
 ```
 """
-macro infiltrate(ex = true)
+macro infiltrate(condition = true)
   quote
-    if $(esc(ex))
-      start_prompt(@__MODULE__, Base.@locals, $(QuoteNode(ex)))
+    if $(esc(condition))
+      start_prompt(create_infiltrator_state(Base.@locals, stacktrace(), @__MODULE__, @__FILE__, @__LINE__, $(QuoteNode(condition))))
     end
   end
 end
@@ -73,7 +108,7 @@ const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
-function start_prompt(mod, locals, ex;
+function start_prompt(state::InfiltratorState,
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
@@ -89,15 +124,10 @@ function start_prompt(mod, locals, ex;
   end
   io = Base.pipe_writer(terminal)
 
-  trace = stacktrace()
-  start = something(findlast(x -> x.func === Symbol("start_prompt"), trace), 0) + 2
-  last = something(findlast(x -> x.func === Symbol("eval"), trace),
-                   length(trace)) - 2
-  trace = trace[start:last]
-  current = trace[1]
-  println(io, "Hit `@infiltrate", ex == true ? "" : " $(ex)", "` in ", current, ":")
+  current = state.trace[1]
+  println(io, "Hit `@infiltrate", state.condition == true ? "" : " $(state.condition)", "` in ", current, ":")
   println(io)
-  debugprompt(mod, locals, trace, terminal, repl, nostack)
+  debugprompt(state, terminal, repl, nostack)
   println(io)
 end
 
@@ -127,7 +157,7 @@ function show_locals(io, locals)
   println(io)
 end
 
-function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
+function debugprompt(state, terminal, repl, nostack = false)
   io = Base.pipe_writer(terminal)
 
   try
@@ -164,11 +194,11 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
         LineEdit.reset_state(s)
         return true
       elseif sline == "@trace"
-        show_trace(io, trace)
+        show_trace(io, state.trace)
         LineEdit.reset_state(s)
         return true
       elseif sline == "@locals"
-        show_locals(io, locals)
+        show_locals(io, state.locals)
         LineEdit.reset_state(s)
         return true
       end
@@ -177,7 +207,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
 
       @static if VERSION >= v"1.2.0-DEV.253"
         try
-          result = interpret(line, mod, locals)
+          result = interpret(state, line)
         catch err
           ok = false
           result = Base.catch_stack()
@@ -186,7 +216,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
         REPL.print_response(repl, (result, !ok), true, true)
       else
         try
-          result = interpret(line, mod, locals)
+          result = interpret(state, line)
         catch err
           ok = false
           result = (err, nostack ? Any[] : catch_backtrace())
@@ -205,22 +235,6 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
   catch e
     e isa InterruptException || rethrow(e)
   end
-end
-
-maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
-
-function interpret(command::AbstractString, mod, locals)
-    expr = Base.parse_input_line(command)
-    Base.Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
-    res = gensym()
-    eval_expr = Expr(:let,
-        Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...),
-        Expr(:block,
-            Expr(:(=), res, expr),
-            Expr(:tuple, res, Expr(:tuple, [k for (k, v) in locals]...))
-        ))
-    eval_res, res = Core.eval(mod, eval_expr)
-    eval_res
 end
 
 end # module
