@@ -31,8 +31,9 @@ debug> ?
   The following commands are special cased:
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
+    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
 
-  Exit this REPL mode with `Ctrl-D`.
+  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infiltrator.clear_stop()`.
 
 debug> @trace
 [1] f(::Int64) at none:4
@@ -58,7 +59,8 @@ julia>
 macro infiltrate(ex = true)
   quote
     if $(esc(ex))
-      start_prompt(@__MODULE__, Base.@locals, $(QuoteNode(ex)))
+      start_prompt(@__MODULE__, Base.@locals, $(QuoteNode(ex)),
+                   $(String(__source__.file)), $(__source__.line))
     end
   end
 end
@@ -73,11 +75,15 @@ const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
-function start_prompt(mod, locals, ex;
+const STOP_SPOTS = Set()
+clear_stop() = (empty!(STOP_SPOTS); nothing)
+
+function start_prompt(mod, locals, ex, file, fileline;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
                       )
+  (file, fileline) in STOP_SPOTS && return
   if terminal === nothing || repl === nothing
     if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
       repl = Base.active_repl
@@ -97,7 +103,7 @@ function start_prompt(mod, locals, ex;
   current = trace[1]
   println(io, "Hit `@infiltrate", ex == true ? "" : " $(ex)", "` in ", current, ":")
   println(io)
-  debugprompt(mod, locals, trace, terminal, repl, nostack)
+  debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
   println(io)
 end
 
@@ -108,8 +114,9 @@ function show_help(io)
     The following commands are special cased:
       - `@trace`: Print the current stack trace.
       - `@locals`: Print local variables.
+      - `@stop`: Stop infiltrating at this `@infiltrate` spot.
 
-    Exit this REPL mode with `Ctrl-D`.
+    Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infiltrator.clear_stop()`.
   """)
 end
 
@@ -127,7 +134,7 @@ function show_locals(io, locals)
   println(io)
 end
 
-function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
+function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, fileline)
   io = Base.pipe_writer(terminal)
 
   try
@@ -169,6 +176,11 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false)
         return true
       elseif sline == "@locals"
         show_locals(io, locals)
+        LineEdit.reset_state(s)
+        return true
+      elseif sline == "@stop"
+        push!(STOP_SPOTS, (file, fileline))
+        println(io)
         LineEdit.reset_state(s)
         return true
       end

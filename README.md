@@ -31,8 +31,9 @@ variables.
 The following commands are special cased:
 - `@trace`: Print the current stack trace.
 - `@locals`: Print local variables.
+- `@stop`: Stop infiltrating at this `@infiltrate` spot.
 
-Exit this REPL mode with `Ctrl-D`.
+Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infiltrator.clear_stop()`.
 
 debug> @trace
 [1] f(::Int64) at none:4

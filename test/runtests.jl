@@ -18,8 +18,8 @@ if Sys.isunix() && VERSION >= v"1.1.0"
     using TerminalRegressionTests
 
     function run_terminal_test(func, result, commands, validation)
-        TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-        # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+        # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+        TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
             repl = REPL.LineEditREPL(emuterm, true)
             repl.interface = REPL.setup_interface(repl)
             repl.specialdisplay = REPL.REPLDisplay(repl)
@@ -35,8 +35,16 @@ if Sys.isunix() && VERSION >= v"1.1.0"
     end
 
     run_terminal_test(() -> f(3), [3, 4, 5],
-                      ["?\n", "@trace\n", "@locals\n", "x.*y\n", "foo\n", "0//0\n", "\x4"],
+                      ["?\n", "@trace\n", "@locals\n", "x.*y\n", "foo\n", "0//0\n", "@stop\n", "\x4"],
                       "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
+
+    @test f(3) == [3, 4, 5] # `@stop`ped `@infiltrate` should not open a prompt
+
+    Infiltrator.clear_stop()
+
+    run_terminal_test(() -> f(3), [3, 4, 5],
+                      ["@locals\n", "\x4"],
+                      "Julia_f2_$(VERSION.major).$(VERSION.minor).multiout")
 
     @test g(1) == 12 # conditional @infiltrate should not open a prompt
 

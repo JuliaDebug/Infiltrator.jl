@@ -16,8 +16,10 @@
 |  The following commands are special cased:
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
 |
-|  Exit this REPL mode with `Ctrl-D`.
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
 |
 |debug> 
 --------------------------------------------------
@@ -30,8 +32,10 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -44,14 +48,16 @@
 |  The following commands are special cased:
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
 |
-|  Exit this REPL mode with `Ctrl-D`.
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:43 [inlined]
-|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
-|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
+|[2] #28 at runtests.jl:51 [inlined]
+|[3] (::getfield(Main, Symbol("##25#29")){getfield(Main, Symbol("##28#32")),Int64
+|})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> 
 --------------------------------------------------
@@ -64,14 +70,16 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -84,14 +92,16 @@
 |  The following commands are special cased:
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
 |
-|  Exit this REPL mode with `Ctrl-D`.
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:43 [inlined]
-|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
-|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
+|[2] #28 at runtests.jl:51 [inlined]
+|[3] (::getfield(Main, Symbol("##25#29")){getfield(Main, Symbol("##28#32")),Int64
+|})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -107,14 +117,16 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -130,14 +142,16 @@
 |  The following commands are special cased:
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
 |
-|  Exit this REPL mode with `Ctrl-D`.
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #5 at runtests.jl:43 [inlined]
-|[3] (::getfield(Main, Symbol("##3#6")){getfield(Main, Symbol("##5#8")),Int64})(:
-|:TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
+|[2] #28 at runtests.jl:51 [inlined]
+|[3] (::getfield(Main, Symbol("##25#29")){getfield(Main, Symbol("##28#32")),Int64
+|})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:30
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -156,14 +170,16 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
