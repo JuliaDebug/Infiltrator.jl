@@ -141,10 +141,10 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
     panel = REPL.LineEdit.Prompt("debug> ";
               prompt_prefix = prompt_color,
               prompt_suffix = Base.text_colors[:normal],
+              complete = InfiltratorCompletionProvider(mod, locals),
               on_enter = s -> true)
 
-    panel.hist = REPL.REPLHistoryProvider(Dict{Symbol,Any}(:VarExplosions => panel))
-    panel.complete = REPL.LatexCompletions()
+    panel.hist = REPL.REPLHistoryProvider(Dict{Symbol,Any}(:Infiltrator => panel))
     REPL.history_reset_state(panel.hist)
 
     search_prompt, skeymap = LineEdit.setup_search_keymap(panel.hist)
@@ -233,6 +233,36 @@ function interpret(command::AbstractString, mod, locals)
         ))
     eval_res, res = Core.eval(mod, eval_expr)
     eval_res
+end
+
+# completions
+
+mutable struct InfiltratorCompletionProvider <: REPL.CompletionProvider
+  mod::Module
+  locals::Dict{Symbol, Any}
+end
+
+function LineEdit.complete_line(c::InfiltratorCompletionProvider, s)
+  partial = REPL.beforecursor(s.input_buffer)
+  full = LineEdit.input_string(s)
+
+  ret, range, should_complete = completions(c, full, partial)
+  return ret, partial[range], should_complete
+end
+
+function completions(c::InfiltratorCompletionProvider, full, partial)
+  # repl backend completions
+  comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.mod)
+  ret = map(REPL.REPLCompletions.completion_text, comps)
+
+  # local completions
+  prepend!(ret, filter!(v -> startswith(v, partial), string.(keys(c.locals))))
+
+  # Infiltrator commands completions
+  commands = ["?", "@trace", "@locals", "@stop"]
+  prepend!(ret, filter!(c -> startswith(c, partial), commands))
+
+  unique!(ret), range, should_complete
 end
 
 end # module
