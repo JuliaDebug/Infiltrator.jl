@@ -1,6 +1,6 @@
 name = "Infiltrator"
 uuid = "5903a43b-9cc3-4c30-8d17-598619ec4e9b"
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 REPL = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
