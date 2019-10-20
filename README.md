@@ -12,6 +12,8 @@ conditional.
 Note that you cannot access other functions in the callstack, or step into functions. If you need that
 functionality, use Debugger.jl or Juno's debugger.
 
+Use `Ctrl-C` (or `Ctrl-D`) in the REPL to exit from debugging mode.
+
 ### Usage
 ```julia
 julia> function f(x)
