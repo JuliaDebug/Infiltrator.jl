@@ -1,7 +1,7 @@
 # Infiltrator.jl [![Build Status](https://travis-ci.org/JuliaDebug/Infiltrator.jl.svg?branch=master)](https://travis-ci.org/JuliaDebug/Infiltrator.jl)
 
 This packages provides a macro called `@infiltrate`, which sets a "breakpoint" in a local context
-(similar to Matlab's `keyboard` function). The advantage of this macro over e.g. Debugger.jl is that
+(similar to Matlab's `keyboard` function and IPython's `embed`). The advantage of this macro over e.g. Debugger.jl is that
 all code is completely compiled, so the performance overhead should be neglible.
 
 `@infiltrate` will drop you into an interactive REPL session that lets you inspect local variables
