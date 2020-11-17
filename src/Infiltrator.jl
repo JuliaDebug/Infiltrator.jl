@@ -6,13 +6,19 @@ using REPL.LineEdit
 export @infiltrate
 
 """
-    @infiltrate ex = true
+    @infiltrate cond = true
 
-Sets a "breakpoint" in a local context. Accepts an optional argument that must evaluate to a boolean,
-and will drop you into an interactive REPL session that lets you inspect local variables and the call
-stack as well as execute aribtrary statements in the context of the current function's module.
+`@infiltrate` sets a "breakpoint" in a local context.
+When the breakpoint is hit, it will drop you into an interactive REPL session that lets you
+inspect local variables and the call stack as well as execute aribtrary statements in the
+context of the current function's module.
 
-Usage:
+This macro also accepts an optional argument `cond` that must evaluate to a boolean,
+and then this macro will serve as a "conditinal breakpoint",
+which starts inspections only when its condition is `true`.
+
+### Usage:
+
 ```
 julia> function f(x)
          x *= 2
@@ -49,18 +55,17 @@ debug> x.+y
  6.145958004935359
  6.1836766675450034
 
-debug>
+debug> # press Ctrl-D and exit
 
 8
 
 julia>
 ```
 """
-macro infiltrate(ex = true)
+macro infiltrate(cond = true)
   quote
-    if $(esc(ex))
-      start_prompt(@__MODULE__, Base.@locals, $(QuoteNode(ex)),
-                   $(String(__source__.file)), $(__source__.line))
+    if $(esc(cond))
+      $(start_prompt)(@__MODULE__, Base.@locals, $(String(__source__.file)), $(__source__.line))
     end
   end
 end
@@ -78,7 +83,7 @@ const TEST_NOSTACK = Ref{Any}(false)
 const STOP_SPOTS = Set()
 clear_stop() = (empty!(STOP_SPOTS); nothing)
 
-function start_prompt(mod, locals, ex, file, fileline;
+function start_prompt(mod, locals, file, fileline;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
@@ -101,7 +106,7 @@ function start_prompt(mod, locals, ex, file, fileline;
                    length(trace)) - 2
   trace = trace[start:last]
   current = trace[1]
-  println(io, "Hit `@infiltrate", ex == true ? "" : " $(ex)", "` in ", current, ":")
+  println(io, "Hit `@infiltrate` in ", current, ":")
   println(io)
   debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
   println(io)
