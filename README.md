@@ -5,7 +5,10 @@ This packages provides a macro called `@infiltrate`, which sets a "breakpoint" i
 all code is completely compiled, so the performance overhead should be negligible.
 
 Note that you cannot access other functions in the callstack, or step into functions. If you need that
-functionality, use Debugger.jl or Juno's debugger.
+functionality, use Debugger.jl, VSCode's or Juno's debugger.
+
+Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode or Juno can cause issues,
+so it's recommended to always use the REPL directly.
 
 ## `@infiltrate` macro
 
