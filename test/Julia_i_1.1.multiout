@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating i at runtests.jl:21 [inlined]:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,10 +9,10 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating i at runtests.jl:21 [inlined]:
 |
-|debug> 2+2
+|infil> 2+2
 |4
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -23,14 +23,14 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating i at runtests.jl:21 [inlined]:
 |
-|debug> 2+2
+|infil> 2+2
 |4
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Float64,1} = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,…
 |- x::Int64 = 1000
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |

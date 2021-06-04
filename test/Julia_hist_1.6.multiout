@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,47 +9,15 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Vector{Int64}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
-|
-|debug> y
-|3-element Vector{Int64}:
-| 1
-| 2
-| 3
-|
-|debug> y
-|3-element Vector{Int64}:
-| 1
-| 2
-| 3
-|
-|debug> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -61,23 +29,55 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Vector{Int64}:
 | 1
 | 2
 | 3
 |
-|debug> y
+|infil> y
 |3-element Vector{Int64}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(x::Int64) at runtests.jl:7:
+|
+|infil> y
+|3-element Vector{Int64}:
+| 1
+| 2
+| 3
+|
+|infil> y
+|3-element Vector{Int64}:
+| 1
+| 2
+| 3
+|
+|infil> 
 |
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -101,29 +101,29 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Vector{Int64}:
 | 1
 | 2
 | 3
 |
-|debug> y
+|infil> y
 |3-element Vector{Int64}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
 |
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Vector{Int64}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |

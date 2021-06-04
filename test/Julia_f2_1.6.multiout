@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,11 +9,11 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(x::Int64) at runtests.jl:7:
 |
-|debug> @locals
+|infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |

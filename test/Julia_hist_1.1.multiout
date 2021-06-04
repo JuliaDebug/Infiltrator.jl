@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,47 +9,15 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Array{Int64,1}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
-|
-|debug> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
-|
-|debug> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
-|
-|debug> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -61,23 +29,55 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Array{Int64,1}:
 | 1
 | 2
 | 3
 |
-|debug> y
+|infil> y
 |3-element Array{Int64,1}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> 
 |
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -101,29 +101,29 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Array{Int64,1}:
 | 1
 | 2
 | 3
 |
-|debug> y
+|infil> y
 |3-element Array{Int64,1}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
 |
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> y
+|infil> y
 |3-element Array{Int64,1}:
 | 1
 | 2
 | 3
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |

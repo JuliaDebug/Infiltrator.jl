@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,7 +9,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -24,9 +24,9 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -45,13 +45,13 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -66,15 +66,15 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -93,7 +93,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -105,7 +105,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -120,19 +120,19 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -151,7 +151,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -167,7 +167,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -182,25 +182,25 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -219,7 +219,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -241,7 +241,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -256,29 +256,29 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 3+
+|infil> 3+
 |       4
 |7
 |
-|debug> 
+|infil> 
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -298,7 +298,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -325,7 +325,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -340,32 +340,32 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 3+
+|infil> 3+
 |       4
 |7
 |
-|debug> foo
+|infil> foo
 |3
 |
-|debug> 
+|infil> 
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -385,7 +385,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -415,7 +415,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -430,35 +430,35 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 3+
+|infil> 3+
 |       4
 |7
 |
-|debug> foo
+|infil> foo
 |3
 |
-|debug> 0//0
+|infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|debug> 
+|infil> 
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -478,7 +478,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -511,7 +511,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -526,38 +526,38 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 3+
+|infil> 3+
 |       4
 |7
 |
-|debug> foo
+|infil> foo
 |3
 |
-|debug> 0//0
+|infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|debug> @disable
+|infil> @disable
 |Disabled infiltration at this infiltration point.
 |
-|debug> 
+|infil> 
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -577,7 +577,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -613,7 +613,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -628,41 +628,41 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 3+
+|infil> 3+
 |       4
 |7
 |
-|debug> foo
+|infil> foo
 |3
 |
-|debug> 0//0
+|infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|debug> @disable
+|infil> @disable
 |Disabled infiltration at this infiltration point.
 |
-|debug> @disable
+|infil> @disable
 |Enabled infiltration at this infiltration point.
 |
-|debug> 
+|infil> 
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -682,7 +682,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -721,7 +721,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating f(::Int64) at runtests.jl:7:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -736,44 +736,44 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] f(::Int64) at runtests.jl:7
 |[2] #6 at runtests.jl:46 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
 |nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
 |- x::Int64 = 2
 |
-|debug> x.*y
+|infil> x.*y
 |3-element Array{Int64,1}:
 | 2
 | 4
 | 6
 |
-|debug> 3+
+|infil> 3+
 |       4
 |7
 |
-|debug> foo
+|infil> foo
 |3
 |
-|debug> 0//0
+|infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|debug> @disable
+|infil> @disable
 |Disabled infiltration at this infiltration point.
 |
-|debug> @disable
+|infil> @disable
 |Enabled infiltration at this infiltration point.
 |
-|debug> @disable
+|infil> @disable
 |Disabled infiltration at this infiltration point.
 |
-|debug> 
+|infil> 
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -793,7 +793,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

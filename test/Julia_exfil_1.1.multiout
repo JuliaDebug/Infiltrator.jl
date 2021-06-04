@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,10 +9,10 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -23,13 +23,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> xxxxx = 12
+|infil> xxxxx = 12
 |12
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -43,16 +43,16 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> xxxxx = 12
+|infil> xxxxx = 12
 |12
 |
-|debug> foo(x) = x
+|infil> foo(x) = x
 |(::getfield(Main, Symbol("#foo#21"))) (generic function with 1 method)
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -69,19 +69,19 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> xxxxx = 12
+|infil> xxxxx = 12
 |12
 |
-|debug> foo(x) = x
+|infil> foo(x) = x
 |(::getfield(Main, Symbol("#foo#21"))) (generic function with 1 method)
 |
-|debug> function bar(x); 2x; end
+|infil> function bar(x); 2x; end
 |(::getfield(Main, Symbol("#bar#22"))) (generic function with 1 method)
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -101,23 +101,23 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> xxxxx = 12
+|infil> xxxxx = 12
 |12
 |
-|debug> foo(x) = x
+|infil> foo(x) = x
 |(::getfield(Main, Symbol("#foo#21"))) (generic function with 1 method)
 |
-|debug> function bar(x); 2x; end
+|infil> function bar(x); 2x; end
 |(::getfield(Main, Symbol("#bar#22"))) (generic function with 1 method)
 |
-|debug> x = 2
+|infil> x = 2
 |Cannot assign a new value to local variable `x`.
 |2
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |

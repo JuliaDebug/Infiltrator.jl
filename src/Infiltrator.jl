@@ -32,8 +32,6 @@ and then this macro will serve as a "conditinal breakpoint", which starts inspec
 when its condition is `true`.
 
 ### Usage:
-`?` in the `debug>` prompt lists all options.
-
 ```julia
 julia> function f(x)
          out = []
@@ -46,14 +44,27 @@ julia> function f(x)
 f (generic function with 1 method)
 
 julia> f([1,2,3])
-Infiltrating f(x::Vector{Int64}) at REPL[2]:5:
+Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
 
-debug> @locals
+infil> ?
+  Code entered is evaluated in the current functions module. Note that you cannot change local
+  variables, but can assign to globals in a permanent scratch pad module.
+
+  The following commands are special cased:
+    - `?`: Print this help text.
+    - `@trace`: Print the current stack trace.
+    - `@locals`: Print local variables.
+    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
+    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+    - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
+      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+
+infil> @locals
 - out::Vector{Any} = Any[2]
 - i::Int64 = 1
 - x::Vector{Int64} = [1, 2, 3]
 
-debug> 0//0
+infil> 0//0
 ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 Stacktrace:
  [1] __throw_rational_argerror_zero(T::Type)
@@ -67,26 +78,26 @@ Stacktrace:
  [5] top-level scope
    @ none:1
 
-debug> intermediate = copy(out)
+infil> intermediate = copy(out)
 1-element Vector{Any}:
  2
 
-debug> @disable
+infil> @disable
 Disabled infiltration at this infiltration point.
 
-debug> @disable
+infil> @disable
 Enabled infiltration at this infiltration point.
 
-debug> @continue
+infil> @continue
 
-Infiltrating f(x::Vector{Int64}) at REPL[2]:5:
+Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
 
-debug> @locals
+infil> @locals
 - out::Vector{Any} = Any[2, 4]
 - i::Int64 = 2
 - x::Vector{Int64} = [1, 2, 3]
 
-debug> @exit
+infil> @exit
 
 3-element Vector{Any}:
  2
@@ -124,7 +135,7 @@ const SCRATCH_PAD = Ref{Module}()
 """
     clear_disabled()
 
-Clear disabled infiltration point.
+Clear all disabled infiltration points.
 """
 function clear_disabled()
   empty!(DISABLED)
@@ -132,11 +143,13 @@ function clear_disabled()
 end
 
 """
-    clear_exiting()
+    end_session()
 
-Reset "exiting" status.
+End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
+
+Only needs to be manually called on Julia versions prior to 1.5.
 """
-function clear_exiting()
+function end_session()
   EXITING[] = false
   return nothing
 end
@@ -201,7 +214,7 @@ function show_help(io)
       - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
       - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-        1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+        1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
   """)
 end
 
@@ -245,7 +258,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
       panel = PROMPT[]
       panel.complete = InfiltratorCompletionProvider(mod, locals)
     else
-      panel = PROMPT[] = REPL.LineEdit.Prompt("debug> ";
+      panel = PROMPT[] = REPL.LineEdit.Prompt("infil> ";
                 prompt_prefix = prompt_color,
                 prompt_suffix = Base.text_colors[:normal],
                 complete = InfiltratorCompletionProvider(mod, locals),
@@ -297,6 +310,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif sline == "@exit"
         EXITING[] = true
+        if VERSION < v"1.5.0-DEV.282"
+          println(io, "Revert the effect of this with `Infiltrator.end_session()` or you will not be able to enter a new session!")
+        end
         LineEdit.transition(s, :abort)
         LineEdit.reset_state(s)
         return true
@@ -420,7 +436,7 @@ end
 function exit_transform(ex)
   return quote
     out = $(ex)
-    $(@__MODULE__).clear_exiting()
+    $(@__MODULE__).end_session()
     out
   end
 end

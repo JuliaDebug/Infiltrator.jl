@@ -28,7 +28,7 @@ if Sys.isunix() && VERSION >= v"1.1.0"
     function run_terminal_test(func, result, commands, validation)
         TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
         # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-            Infiltrator.clear_exiting()
+            Infiltrator.end_session()
             repl = REPL.LineEditREPL(emuterm, true)
             repl.interface = REPL.setup_interface(repl)
             repl.specialdisplay = REPL.REPLDisplay(repl)

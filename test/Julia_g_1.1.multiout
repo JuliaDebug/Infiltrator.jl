@@ -1,7 +1,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -9,7 +9,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -24,9 +24,9 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -45,13 +45,13 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -66,15 +66,15 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] g at runtests.jl:13 [inlined]
 |[2] #8 at runtests.jl:60 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##8#16")),Int64})
 |(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -93,7 +93,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -105,7 +105,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -120,18 +120,18 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] g at runtests.jl:13 [inlined]
 |[2] #8 at runtests.jl:60 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##8#16")),Int64})
 |(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -150,7 +150,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -165,7 +165,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating g at runtests.jl:13 [inlined]:
 |
-|debug> ?
+|infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
 |  variables, but can assign to globals in a permanent scratch pad module.
@@ -180,21 +180,21 @@
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
 |
-|debug> @trace
+|infil> @trace
 |[1] g at runtests.jl:13 [inlined]
 |[2] #8 at runtests.jl:60 [inlined]
 |[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##8#16")),Int64})
 |(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
-|debug> @locals
+|infil> @locals
 |- x::Int64 = 24
 |
-|debug> x
+|infil> x
 |24
 |
-|debug> 
+|infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
@@ -213,7 +213,7 @@
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
