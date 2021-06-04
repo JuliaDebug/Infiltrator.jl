@@ -64,9 +64,9 @@
 |
 |debug> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #2 at runtests.jl:39 [inlined]
-|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
-|latedTerminal) at runtests.jl:32
+|[2] #4 at runtests.jl:45 [inlined]
+|[3] (::var"#3#9"{var"#4#10", Vector{Int64}})(emuterm::TerminalRegressionTests.Em
+|ulatedTerminal) at runtests.jl:38
 |
 |debug> 
 --------------------------------------------------
@@ -91,7 +91,7 @@
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |
 |CCCCCCC
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -114,9 +114,9 @@
 |
 |debug> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #2 at runtests.jl:39 [inlined]
-|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
-|latedTerminal) at runtests.jl:32
+|[2] #4 at runtests.jl:45 [inlined]
+|[3] (::var"#3#9"{var"#4#10", Vector{Int64}})(emuterm::TerminalRegressionTests.Em
+|ulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -145,7 +145,7 @@
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |
 |CCCCCCCBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
@@ -172,9 +172,9 @@
 |
 |debug> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #2 at runtests.jl:39 [inlined]
-|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
-|latedTerminal) at runtests.jl:32
+|[2] #4 at runtests.jl:45 [inlined]
+|[3] (::var"#3#9"{var"#4#10", Vector{Int64}})(emuterm::TerminalRegressionTests.Em
+|ulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -209,7 +209,7 @@
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |
 |CCCCCCCBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
@@ -242,9 +242,9 @@
 |
 |debug> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #2 at runtests.jl:39 [inlined]
-|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
-|latedTerminal) at runtests.jl:32
+|[2] #4 at runtests.jl:45 [inlined]
+|[3] (::var"#3#9"{var"#4#10", Vector{Int64}})(emuterm::TerminalRegressionTests.Em
+|ulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -282,7 +282,7 @@
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |
 |CCCCCCCBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
@@ -318,9 +318,9 @@
 |
 |debug> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #2 at runtests.jl:39 [inlined]
-|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
-|latedTerminal) at runtests.jl:32
+|[2] #4 at runtests.jl:45 [inlined]
+|[3] (::var"#3#9"{var"#4#10", Vector{Int64}})(emuterm::TerminalRegressionTests.Em
+|ulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -361,7 +361,7 @@
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |
 |CCCCCCCBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
@@ -400,9 +400,9 @@
 |
 |debug> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #2 at runtests.jl:39 [inlined]
-|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
-|latedTerminal) at runtests.jl:32
+|[2] #4 at runtests.jl:45 [inlined]
+|[3] (::var"#3#9"{var"#4#10", Vector{Int64}})(emuterm::TerminalRegressionTests.Em
+|ulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -445,7 +445,7 @@
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 |
 |CCCCCCCBBBBBBB
 |BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB

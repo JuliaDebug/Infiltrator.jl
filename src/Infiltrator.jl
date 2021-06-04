@@ -141,7 +141,7 @@ function start_prompt(mod, locals, file, fileline;
                    length(trace)) - 2
   trace = trace[start:last]
   current = trace[1]
-  println(io, "Hit `@infiltrate` in ", current, ":")
+  println(io, string("Hit `@infiltrate` in ", current, ":"))
   println(io)
   debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
   println(io)
@@ -169,9 +169,20 @@ function show_trace(io, trace)
   println(io)
 end
 
+function strlimit(str, limit = 30)
+  strwidth = 0
+  for (i, c) in enumerate(str)
+    strwidth += textwidth(c)
+    strwidth >= limit && return string(first(str, i - 1), "…")
+  end
+  return str
+end
+
 function show_locals(io, locals)
+  width = max(displaysize(io)[2], 20)
   for (var, val) in locals
-    println(io, "- ", var, "::", typeof(val), " = ", repr(val))
+    prefix = string("- ", strlimit(string(var), width ÷ 3), "::", strlimit(string(typeof(val)), width ÷ 3), " = ")
+    println(io, prefix, strlimit(repr(val), max(width - textwidth(prefix), 10)))
   end
   println(io)
 end

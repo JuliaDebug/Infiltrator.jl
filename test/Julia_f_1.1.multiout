@@ -64,9 +64,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:39 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##4#9")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #6 at runtests.jl:45 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> 
 --------------------------------------------------
@@ -91,7 +91,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -114,9 +114,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:39 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##4#9")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #6 at runtests.jl:45 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -145,7 +145,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -172,9 +172,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:39 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##4#9")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #6 at runtests.jl:45 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -209,7 +209,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -242,9 +242,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:39 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##4#9")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #6 at runtests.jl:45 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -282,7 +282,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -318,9 +318,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:39 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##4#9")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #6 at runtests.jl:45 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -361,7 +361,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -400,9 +400,9 @@
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:39 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##4#9")),Array{Int
-|64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #6 at runtests.jl:45 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -445,7 +445,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

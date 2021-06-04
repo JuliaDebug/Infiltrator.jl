@@ -16,6 +16,12 @@ end
 
 h(x) = [f(x) for x in x]
 
+function i(x)
+    y = [1.0 for _ in 1:x]
+    @infiltrate
+    return y
+end
+
 if Sys.isunix() && VERSION >= v"1.1.0"
     using TerminalRegressionTests
 
@@ -57,6 +63,12 @@ if Sys.isunix() && VERSION >= v"1.1.0"
     run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                       ["\x4", "@locals\n", "@exit\n"],
                       "Julia_h_$(VERSION.major).$(VERSION.minor).multiout")
+
+    Infiltrator.clear_exiting()
+
+    run_terminal_test(() -> i(1000), i(1000),
+                      ["@locals\n", "\x4"],
+                      "Julia_i_$(VERSION.major).$(VERSION.minor).multiout")
 else
     @warn "Skipping UI tests on non unix systems"
 end

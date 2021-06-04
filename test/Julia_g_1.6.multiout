@@ -64,9 +64,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#1#6"{var"#4#9", Int64})(emuterm::TerminalRegressionTests.EmulatedTer
-|minal) at runtests.jl:32
+|[2] #6 at runtests.jl:59 [inlined]
+|[3] (::var"#3#9"{var"#6#12", Int64})(emuterm::TerminalRegressionTests.EmulatedTe
+|rminal) at runtests.jl:38
 |
 |debug> 
 --------------------------------------------------
@@ -91,7 +91,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -114,9 +114,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#1#6"{var"#4#9", Int64})(emuterm::TerminalRegressionTests.EmulatedTer
-|minal) at runtests.jl:32
+|[2] #6 at runtests.jl:59 [inlined]
+|[3] (::var"#3#9"{var"#6#12", Int64})(emuterm::TerminalRegressionTests.EmulatedTe
+|rminal) at runtests.jl:38
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -144,7 +144,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -170,9 +170,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#1#6"{var"#4#9", Int64})(emuterm::TerminalRegressionTests.EmulatedTer
-|minal) at runtests.jl:32
+|[2] #6 at runtests.jl:59 [inlined]
+|[3] (::var"#3#9"{var"#6#12", Int64})(emuterm::TerminalRegressionTests.EmulatedTe
+|rminal) at runtests.jl:38
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -203,7 +203,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC

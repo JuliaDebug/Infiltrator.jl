@@ -64,9 +64,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #6 at runtests.jl:53 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##6#11")),Int64})(
-|::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #8 at runtests.jl:59 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##8#14")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> 
 --------------------------------------------------
@@ -91,7 +91,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -114,9 +114,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #6 at runtests.jl:53 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##6#11")),Int64})(
-|::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #8 at runtests.jl:59 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##8#14")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -144,7 +144,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -170,9 +170,9 @@
 |
 |debug> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #6 at runtests.jl:53 [inlined]
-|[3] (::getfield(Main, Symbol("##3#8")){getfield(Main, Symbol("##6#11")),Int64})(
-|::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:32
+|[2] #8 at runtests.jl:59 [inlined]
+|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##8#14")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
 |
 |debug> @locals
 |- x::Int64 = 24
@@ -203,7 +203,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
