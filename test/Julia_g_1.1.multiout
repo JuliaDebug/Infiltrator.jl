@@ -70,9 +70,9 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #8 at runtests.jl:60 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##8#16")),Int64})
-|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #8 at runtests.jl:66 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##8#17")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> 
 --------------------------------------------------
@@ -124,9 +124,9 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #8 at runtests.jl:60 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##8#16")),Int64})
-|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #8 at runtests.jl:66 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##8#17")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -184,9 +184,9 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #8 at runtests.jl:60 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##8#16")),Int64})
-|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #8 at runtests.jl:66 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##8#17")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- x::Int64 = 24

@@ -70,9 +70,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> 
 --------------------------------------------------
@@ -124,9 +124,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -186,9 +186,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -260,9 +260,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -344,9 +344,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -434,9 +434,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -530,9 +530,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -632,9 +632,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -740,9 +740,9 @@
 |
 |infil> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:46 [inlined]
-|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|[2] #6 at runtests.jl:52 [inlined]
+|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##6#15")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]

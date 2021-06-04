@@ -403,7 +403,7 @@ end
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
 function interpret(io, expr, mod, locals)
-  symbols = merge(locals, get_scratch_pad_names())
+  symbols = merge(get_scratch_pad_names(), locals)
   Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
   res = gensym()
   eval_expr = Expr(:let,

@@ -22,12 +22,18 @@ function i(x)
     return y
 end
 
+function j(x)
+    xxxxx = 4
+    @infiltrate
+    return x*xxxxx
+end
+
 if Sys.isunix() && VERSION >= v"1.1.0"
     using TerminalRegressionTests
 
     function run_terminal_test(func, result, commands, validation)
-        TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-        # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+        # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+        TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
             Infiltrator.end_session()
             repl = REPL.LineEditREPL(emuterm, true)
             repl.interface = REPL.setup_interface(repl)
@@ -80,6 +86,14 @@ if Sys.isunix() && VERSION >= v"1.1.0"
     @test m.foo(3) == 3
     @test m.bar(3) == 6
     @test !isdefined(m, :x)
+
+    # proper scoping of scratch pad
+    run_terminal_test(() -> j(2), 8,
+                      ["@locals\n", "\x4"],
+                      "Julia_scoping_$(VERSION.major).$(VERSION.minor).multiout")
+
+    m = Infiltrator.get_scratch_pad()
+    @test m.xxxxx == 12
 
     # persistent history
     run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
