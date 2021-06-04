@@ -10,8 +10,12 @@ functionality, use Debugger.jl, VSCode's or Juno's debugger.
 Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode or Juno can cause issues,
 so it's recommended to always use the REPL directly.
 
-## `@infiltrate` macro
-<!-- extracted from the @infiltrate doc -->
+## `@exfiltrate`
+    @exfiltrate
+
+Assigns all local variables into the scratch pad.
+
+## `@infiltrate`
     @infiltrate cond = true
 
 `@infiltrate` sets an infiltration point (or breakpoint).
@@ -24,7 +28,12 @@ This macro also accepts an optional argument `cond` that must evaluate to a bool
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
 when its condition is `true`.
 
-### Usage:
+## The scratch pad
+The scratch pad is an anonymous module into which you can assign variables/functions while
+`@infiltrate`ing or via `@exfiltrate`. You can get a reference to it via `get_scratch_pad`
+and reset it with `clear_scratch_pad`.
+
+## Example usage:
 ```julia
 julia> function f(x)
          out = []
@@ -98,7 +107,7 @@ infil> @exit
  4
  6
 
-julia> Infiltrator.get_scratch_pad().intermediate
+julia> get_scratch_pad().intermediate
 1-element Vector{Any}:
  2
 ```

@@ -3,7 +3,7 @@ module Infiltrator
 using REPL
 using REPL.LineEdit
 
-export @infiltrate, @exfiltrate, get_scratch_pad
+export @infiltrate, @exfiltrate, get_scratch_pad, clear_scratch_pad
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
