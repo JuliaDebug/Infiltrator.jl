@@ -1,13 +1,30 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in i at runtests.jl:21 [inlined]:
+|Infiltrating i at runtests.jl:21 [inlined]:
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in i at runtests.jl:21 [inlined]:
+|Infiltrating i at runtests.jl:21 [inlined]:
+|
+|debug> 2+2
+|4
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating i at runtests.jl:21 [inlined]:
+|
+|debug> 2+2
+|4
 |
 |debug> @locals
 |- y::Array{Float64,1} = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,…
@@ -15,7 +32,10 @@
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCC
+|C
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

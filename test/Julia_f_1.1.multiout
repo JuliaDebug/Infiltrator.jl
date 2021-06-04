@@ -1,91 +1,99 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 |
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
-|
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
-|
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
-|
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
 |
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:45 [inlined]
-|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -95,28 +103,30 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 |
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
-|
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:45 [inlined]
-|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -124,22 +134,24 @@
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -153,28 +165,30 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 |
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
-|
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:45 [inlined]
-|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -188,22 +202,24 @@
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -223,28 +239,30 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 |
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
-|
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:45 [inlined]
-|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -256,27 +274,31 @@
 | 4
 | 6
 |
-|debug> foo
-|3
+|debug> 3+
+|       4
+|7
 |
 |debug> 
+|
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -294,33 +316,37 @@
 |CC
 |CC
 |
-|BBBBBBBCCC
+|BBBBBBBCC
+|AAAAAAAC
 |C
 |
 |BBBBBBB
+|
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 |
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
-|
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:45 [inlined]
-|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -332,30 +358,139 @@
 | 4
 | 6
 |
+|debug> 3+
+|       4
+|7
+|
 |debug> foo
-|3
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|debug> 3+
+|       4
+|7
+|
+|debug> foo
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> 
+|
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -373,36 +508,47 @@
 |CC
 |CC
 |
-|BBBBBBBCCC
+|BBBBBBBCC
+|AAAAAAAC
 |C
+|
+|BBBBBBBCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
+|
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> ?
-|  Code entered is evaluated in the current function's module. Note that you cann
-|ot change local
-|  variables.
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
 |  The following commands are special cased:
+|    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 |
-|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
-|trator.clear_stop()`.
-|
 |debug> @trace
 |[1] f(::Int64) at runtests.jl:7
-|[2] #6 at runtests.jl:45 [inlined]
-|[3] (::getfield(Main, Symbol("##5#11")){getfield(Main, Symbol("##6#12")),Array{I
-|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:38
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -414,32 +560,45 @@
 | 4
 | 6
 |
+|debug> 3+
+|       4
+|7
+|
 |debug> foo
-|3
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|debug> @stop
+|debug> @disable
+|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
+|7.
 |
 |debug> 
+|
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCC
-|CCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -457,12 +616,271 @@
 |CC
 |CC
 |
-|BBBBBBBCCC
+|BBBBBBBCC
+|AAAAAAAC
 |C
+|
+|BBBBBBBCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCC
+|BBBBBBBCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
 |
 |BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|debug> 3+
+|       4
+|7
+|
+|debug> foo
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|debug> @disable
+|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
+|7.
+|
+|debug> @disable
+|Re-enabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.j
+|l:7.
+|
+|debug> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCC
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> @trace
+|[1] f(::Int64) at runtests.jl:7
+|[2] #6 at runtests.jl:46 [inlined]
+|[3] (::getfield(Main, Symbol("##5#13")){getfield(Main, Symbol("##6#14")),Array{I
+|nt64,1}})(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:39
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|debug> 3+
+|       4
+|7
+|
+|debug> foo
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|debug> @disable
+|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
+|7.
+|
+|debug> @disable
+|Re-enabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.j
+|l:7.
+|
+|debug> @disable
+|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
+|7.
+|
+|debug> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCC
+|
+|BBBBBBBCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|
+|BBBBBBB
+|

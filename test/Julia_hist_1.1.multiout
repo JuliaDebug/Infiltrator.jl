@@ -1,0 +1,168 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 
+|
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 
+|
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
+| ::Dict{Symbol,Any})
+|Closest candidates are:
+|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
+|filtrator/src/Infiltrator.jl:371
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB

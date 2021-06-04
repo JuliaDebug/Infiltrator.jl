@@ -2,5 +2,4 @@
 *.jl.cov
 *.jl.*.cov
 *.jl.mem
-expected.out
-failed.out
+*.out

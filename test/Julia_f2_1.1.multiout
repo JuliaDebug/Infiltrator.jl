@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |debug> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -15,7 +15,7 @@
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

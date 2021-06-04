@@ -1,33 +1,33 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|Infiltrating f(x::Int64) at runtests.jl:7:
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
-|CCCCCCC
+|BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|Infiltrating f(x::Int64) at runtests.jl:7:
 |
 |debug> 
 |
-|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|Infiltrating f(x::Int64) at runtests.jl:7:
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
-|CCCCCCC
+|BBBBBBB
 |
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCC
+|DDDDDDD
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|Infiltrating f(x::Int64) at runtests.jl:7:
 |
 |debug> 
 |
-|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|Infiltrating f(x::Int64) at runtests.jl:7:
 |
 |debug> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -35,14 +35,14 @@
 |
 |debug> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
-|CCCCCCC
+|BBBBBBB
 |
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCBBBBBBB
-|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-|BBBBBBBBBBBBBB
+|DDDDDDDCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
 |
-|CCCCCCC
+|DDDDDDD
