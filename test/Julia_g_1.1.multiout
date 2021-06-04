@@ -18,6 +18,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -39,6 +40,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -60,6 +62,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -70,9 +73,9 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #8 at runtests.jl:66 [inlined]
-|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##8#17")),Int64})
-|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
+|[2] #8 at runtests.jl:67 [inlined]
+|[3] (::getfield(Main, Symbol("##5#15")){getfield(Main, Symbol("##8#18")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:46
 |
 |infil> 
 --------------------------------------------------
@@ -87,6 +90,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -114,6 +118,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -124,9 +129,9 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #8 at runtests.jl:66 [inlined]
-|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##8#17")),Int64})
-|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
+|[2] #8 at runtests.jl:67 [inlined]
+|[3] (::getfield(Main, Symbol("##5#15")){getfield(Main, Symbol("##8#18")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -144,6 +149,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -174,6 +180,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -184,9 +191,9 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #8 at runtests.jl:66 [inlined]
-|[3] (::getfield(Main, Symbol("##5#14")){getfield(Main, Symbol("##8#17")),Int64})
-|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:45
+|[2] #8 at runtests.jl:67 [inlined]
+|[3] (::getfield(Main, Symbol("##5#15")){getfield(Main, Symbol("##8#18")),Int64})
+|(::TerminalRegressionTests.EmulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -207,6 +214,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
