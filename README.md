@@ -65,10 +65,10 @@ debug> intermediate = copy(out)
  2
 
 debug> @disable
-Disabled infiltration at REPL[2]:5.
+Disabled infiltration at this infiltration point.
 
 debug> @disable
-Re-enabled infiltration at REPL[2]:5.
+Enabled infiltration at this infiltration point.
 
 debug> @continue
 

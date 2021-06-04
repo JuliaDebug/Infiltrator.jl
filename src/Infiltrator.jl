@@ -72,10 +72,10 @@ debug> intermediate = copy(out)
  2
 
 debug> @disable
-Disabled infiltration at REPL[2]:5.
+Disabled infiltration at this infiltration point.
 
 debug> @disable
-Re-enabled infiltration at REPL[2]:5.
+Enabled infiltration at this infiltration point.
 
 debug> @continue
 
@@ -327,7 +327,13 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         catch err
           ok = false
           result = Base.catch_stack()
-          nostack && (result = map(r -> Any[first(r), []], result))
+          if nostack
+            result = map(r -> Any[first(r), []], result)
+          else
+            result = map(result) do (err, bt)
+              return err, crop_backtrace(bt)
+            end
+          end
         end
         REPL.print_response(repl, (result, !ok), true, true)
       else
