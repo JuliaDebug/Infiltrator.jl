@@ -10,11 +10,6 @@ functionality, use Debugger.jl, VSCode's or Juno's debugger.
 Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode or Juno can cause issues,
 so it's recommended to always use the REPL directly.
 
-## `@exfiltrate`
-    @exfiltrate
-
-Assigns all local variables into the scratch pad.
-
 ## `@infiltrate`
     @infiltrate cond = true
 
@@ -27,6 +22,13 @@ in the context of the current functions module.
 This macro also accepts an optional argument `cond` that must evaluate to a boolean,
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
 when its condition is `true`.
+
+## `@exfiltrate`
+    @exfiltrate
+
+Assigns all local variables into the scratch pad.
+
+Originally implemented and named by Antoine Levitt in [Exfiltrator.jl](https://github.com/antoine-levitt/Exfiltrator.jl).
 
 ## The scratch pad
 The scratch pad is an anonymous module into which you can assign variables/functions while
