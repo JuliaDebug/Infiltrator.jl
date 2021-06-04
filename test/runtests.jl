@@ -82,19 +82,17 @@ end
                         ["@locals\n", "xxxxx = 12\n", "foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "\x4"],
                         "Julia_exfil_$(VERSION.major).$(VERSION.minor).multiout")
 
-        m = get_scratch_pad()
-        @test m.xxxxx == 12
-        @test m.foo(3) == 3
-        @test m.bar(3) == 6
-        @test !isdefined(m, :x)
+        @test Infiltrator.store.xxxxx == 12
+        @test Infiltrator.store.foo(3) == 3
+        @test Infiltrator.store.bar(3) == 6
+        @test !isdefined(Infiltrator.store.store, :x)
 
         # proper scoping of scratch pad
         run_terminal_test(() -> j(2), 8,
                         ["@locals\n", "@exfiltrate\n", "\x4"],
                         "Julia_scoping_$(VERSION.major).$(VERSION.minor).multiout")
 
-        m = get_scratch_pad()
-        @test m.xxxxx == 4
+        @test Infiltrator.store.xxxxx == 4
 
         # persistent history
         run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
@@ -106,7 +104,7 @@ end
 end
 
 @testset "exfiltration tests" begin
-    Infiltrator.clear_scratch_pad()
+    Infiltrator.clear_store()
     function foo_ex(x)
         y = 3
         foo = :asd
@@ -115,8 +113,12 @@ end
     end
     foo_ex(55)
 
-    m = get_scratch_pad()
-    @test m.y == 3
-    @test m.foo == :asd
-    @test m.bar(3) == 3
+    @test Infiltrator.store.y == 3
+    @test Infiltrator.store.foo == :asd
+    @test Infiltrator.store.bar(3) == 3
+    @test_throws UndefVarError Infiltrator.store.asd
+
+    # `@with` is basically for dynamic usage only
+    @test 6 == Core.eval(@__MODULE__, :(Infiltrator.@with(2y)))
+    @test "asd" == Core.eval(@__MODULE__, :(Infiltrator.@with(string(foo))))
 end

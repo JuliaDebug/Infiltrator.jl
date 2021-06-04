@@ -1,13 +1,14 @@
 module Infiltrator
 
+using REPL.LineEdit: getproperty
 using REPL
 using REPL.LineEdit
 
-export @infiltrate, @exfiltrate, get_scratch_pad, clear_scratch_pad
+export @infiltrate, @exfiltrate
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
-  SCRATCH_PAD[] = Module()
+  store.store = Module()
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
         pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
@@ -43,84 +44,6 @@ in the context of the current functions module.
 This macro also accepts an optional argument `cond` that must evaluate to a boolean,
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
 when its condition is `true`.
-
-### Usage:
-```julia
-julia> function f(x)
-         out = []
-         for i in x
-           push!(out, 2i)
-           @infiltrate
-         end
-         out
-       end
-f (generic function with 1 method)
-
-julia> f([1,2,3])
-Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
-
-infil> ?
-  Code entered is evaluated in the current functions module. Note that you cannot change local
-  variables, but can assign to globals in a permanent scratch pad module.
-
-  The following commands are special cased:
-    - `?`: Print this help text.
-    - `@trace`: Print the current stack trace.
-    - `@locals`: Print local variables.
-    - `@exfiltrate`: Save all local variables into the scratch pad.
-    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
-    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
-    - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
-
-infil> @locals
-- out::Vector{Any} = Any[2]
-- i::Int64 = 1
-- x::Vector{Int64} = [1, 2, 3]
-
-infil> 0//0
-ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
-Stacktrace:
- [1] __throw_rational_argerror_zero(T::Type)
-   @ Base ./rational.jl:31
- [2] Rational{Int64}(num::Int64, den::Int64)
-   @ Base ./rational.jl:33
- [3] Rational
-   @ ./rational.jl:38 [inlined]
- [4] //(n::Int64, d::Int64)
-   @ Base ./rational.jl:61
- [5] top-level scope
-   @ none:1
-
-infil> intermediate = copy(out)
-1-element Vector{Any}:
- 2
-
-infil> @toggle
-Disabled infiltration at this infiltration point.
-
-infil> @toggle
-Enabled infiltration at this infiltration point.
-
-infil> @continue
-
-Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
-
-infil> @locals
-- out::Vector{Any} = Any[2, 4]
-- i::Int64 = 2
-- x::Vector{Int64} = [1, 2, 3]
-
-infil> @exit
-
-3-element Vector{Any}:
- 2
- 4
- 6
-
-julia> get_scratch_pad().intermediate
-1-element Vector{Any}:
- 2
 ```
 """
 macro infiltrate(cond = true)
@@ -140,7 +63,7 @@ macro exfiltrate()
   quote
     for (k, v) in Base.@locals
       try
-        Core.eval(SCRATCH_PAD[], Expr(:(=), k, QuoteNode(v)))
+        Core.eval($(store).store, Expr(:(=), k, QuoteNode(v)))
       catch err
         println(stderr, "Assignment to scratchpad variable failed.")
         Base.display_error(stderr, err, catch_backtrace())
@@ -159,57 +82,102 @@ const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
-const EXITING = Ref{Bool}(false)
-const DISABLED = Set()
+mutable struct ScratchPad
+  store::Module
+  exiting::Bool
+  disabled::Set
+end
+function Base.show(io::IO, s::ScratchPad)
+  n = length(get_scratch_pad_names(s))
+  print(io, "Infiltrator scratch pad with $(n) name$(n == 1 ? "" : "s")")
+end
+function Base.getproperty(sp::ScratchPad, s::Symbol)
+  s === :store && return getfield(sp, :store)
+  s === :exiting && return getfield(sp, :exiting)
+  s === :disabled && return getfield(sp, :disabled)
 
-const SCRATCH_PAD = Ref{Module}()
+  if isdefined(sp.store, s)
+    getproperty(sp.store, s)
+  else
+    throw(UndefVarError(s))
+  end
+end
+Base.propertynames(s::ScratchPad) = keys(get_scratch_pad_names(s))
 
 """
-    clear_disabled()
+    store
+
+Global scratch pad for storing values while `@infiltrate`ing or `@exfiltrate`ing.
+"""
+const store = ScratchPad(Module(), false, Set())
+
+"""
+    @with ex
+
+Evaluates the expression `ex` in the context of the global scratch pad.
+
+Mainly intended for interactive use, as changes to the scratch pads state will not
+propagate into the returned expression.
+"""
+macro with(ex)
+  with_scratch_pad(ex)
+end
+
+function with_scratch_pad(ex)
+  ns = get_scratch_pad_names(store)
+  return Expr(:let,
+    Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in ns])...),
+    Expr(:block, ex)
+  )
+end
+
+"""
+    clear_disabled(s = store)
 
 Clear all disabled infiltration points.
 """
-function clear_disabled()
-  empty!(DISABLED)
+function clear_disabled(s = store)
+  empty!(s.disabled)
   return nothing
 end
 
 """
-    end_session()
+    end_session(s = store)
 
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
 
 Only needs to be manually called on Julia versions prior to 1.5.
 """
-function end_session()
-  EXITING[] = false
+function end_session(s::ScratchPad = store)
+  s.exiting = false
   return nothing
 end
 
 """
-    clear_scratch_pad()
+    clear_store(s::ScratchPad = Infiltrator.store)
 
-Reset the scratch pad module used for global symbols.
+Reset the scratch pad used for global symbols.
 """
-function clear_scratch_pad()
-  SCRATCH_PAD[] = Module()
+clear_store(s::ScratchPad = store) = set_store(s, Module())
+
+"""
+    set_store(s::ScratchPad = Infiltrator.store, m::Module)
+
+Set the module backing the scratch pad `s`.
+"""
+set_store(m::Module) = set_store(store, m)
+function set_store(s::ScratchPad, m::Module)
+  s.store = m
   nothing
 end
-
-"""
-    get_scratch_pad()
-
-Scratch pad module containing global symbols created while infiltrating.
-"""
-get_scratch_pad() = isassigned(SCRATCH_PAD) ? SCRATCH_PAD[] : Module()
 
 function start_prompt(mod, locals, file, fileline;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
                       )
-  EXITING[] && return
-  (file, fileline) in DISABLED && return
+  store.exiting && return
+  (file, fileline) in store.disabled && return
 
   if terminal === nothing || repl === nothing
     if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
@@ -332,11 +300,12 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         LineEdit.reset_state(s)
         return true
       elseif sline == "@exfiltrate"
-        println(io, "Exfiltrating $(length(locals)) local variables into the scratch pad.\n")
+        n = length(locals)
+        println(io, "Exfiltrating $(n) local variable$(n == 1 ? "" : "s") into the scratch pad.\n")
 
         for (k, v) in locals
           try
-            Core.eval(SCRATCH_PAD[], Expr(:(=), k, QuoteNode(v)))
+            Core.eval(store.store, Expr(:(=), k, QuoteNode(v)))
           catch err
             println(io, "Assignment to scratchpad variable failed.")
             Base.display_error(io, err, catch_backtrace())
@@ -346,17 +315,17 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif sline == "@toggle"
         spot = (file, fileline)
-        if spot in DISABLED
-          delete!(DISABLED, spot)
+        if spot in store.disabled
+          delete!(store.disabled, spot)
           println(io, "Enabled infiltration at this infiltration point.\n")
         else
-          push!(DISABLED, spot)
+          push!(store.disabled, spot)
           println(io, "Disabled infiltration at this infiltration point.\n")
         end
         LineEdit.reset_state(s)
         return true
       elseif sline == "@exit"
-        EXITING[] = true
+        store.exiting = true
         if !REPL_HOOKED[]
           println(io, "Revert the effect of this with `Infiltrator.end_session()` or you will not be able to enter a new session!")
         end
@@ -422,13 +391,12 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
   end
 end
 
-function get_scratch_pad_names()
-  global SCRATCH_PAD
-  ns = names(SCRATCH_PAD[], all = true)
+function get_scratch_pad_names(s = store)
+  ns = names(s.store, all = true)
   out = Dict()
   for n in ns
-    if isdefined(SCRATCH_PAD[], n) && n !== :eval
-      out[n] = getfield(SCRATCH_PAD[], n)
+    if isdefined(s.store, n) && n !== :eval && n !== :include && n !== :anonymous
+      out[n] = getfield(s.store, n)
     end
   end
   out
@@ -469,7 +437,7 @@ function interpret(io, expr, mod, locals)
       end
     else
       try
-        Core.eval(SCRATCH_PAD[], Expr(:(=), assignment, QuoteNode(eval_res)))
+        Core.eval(store.store, Expr(:(=), assignment, QuoteNode(eval_res)))
       catch err
         println(io, "Assignment to scratchpad variable failed.")
         Base.display_error(io, err, catch_backtrace())

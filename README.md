@@ -31,9 +31,23 @@ Assigns all local variables into the scratch pad.
 Originally implemented and named by Antoine Levitt in [Exfiltrator.jl](https://github.com/antoine-levitt/Exfiltrator.jl).
 
 ## The scratch pad
-The scratch pad is an anonymous module into which you can assign variables/functions while
-`@infiltrate`ing or via `@exfiltrate`. You can get a reference to it via `get_scratch_pad`
-and reset it with `clear_scratch_pad`.
+Exfiltrating variables (with `@exfiltrate` or by assignment in a `@infiltrate` session) happens by
+assigning the variable to a global scratch pad (backed by a module). You can access this store with
+`Infiltrator.store`; any exfiltrated objects can be directly accessed, e.g. via `Infilatrator.store.mysymbol`.
+
+You can reset the module with `Infiltrator.clear_store` or assign a specific module with `Infiltrator.set_store`.
+This allows you to e.g. set the backing module to `Main` (although I wouldn't recommend doing so):
+```
+julia> foo(x) = @exfiltrate
+foo (generic function with 1 method)
+
+julia> Infiltrator.set_store(Main)
+
+julia> foo(3)
+
+julia> x
+3
+```
 
 ## Example usage:
 ```julia
@@ -109,7 +123,7 @@ infil> @exit
  4
  6
 
-julia> get_scratch_pad().intermediate
+julia> Infiltrator.store.intermediate
 1-element Vector{Any}:
  2
 ```
