@@ -5,14 +5,27 @@ using REPL.LineEdit
 
 export @infiltrate
 
+REPL_HOOKED = Ref{Bool}(false)
 function __init__()
   SCRATCH_PAD[] = Module()
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
         pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
+        REPL_HOOKED[] = true
     else
       atreplinit() do repl
-        pushfirst!(repl.ast_transforms, exit_transform)
+        @async begin
+          iter = 0
+          # wait for active_repl_backend to exist
+          while !isdefined(Base, :active_repl_backend) && iter < 20
+            sleep(0.05)
+            iter += 1
+          end
+          if isdefined(Base, :active_repl_backend)
+            pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
+            REPL_HOOKED[] = true
+          end
+        end
       end
     end
   end
@@ -310,7 +323,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif sline == "@exit"
         EXITING[] = true
-        if VERSION < v"1.5.0-DEV.282"
+        if !REPL_HOOKED[]
           println(io, "Revert the effect of this with `Infiltrator.end_session()` or you will not be able to enter a new session!")
         end
         LineEdit.transition(s, :abort)
