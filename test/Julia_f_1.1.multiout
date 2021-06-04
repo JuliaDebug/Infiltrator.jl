@@ -363,11 +363,7 @@
 |7
 |
 |debug> foo
-|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
-| ::Dict{Symbol,Any})
-|Closest candidates are:
-|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
-|filtrator/src/Infiltrator.jl:371
+|3
 |
 |debug> 
 |
@@ -412,11 +408,7 @@
 |C
 |
 |BBBBBBBCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBB
 |
@@ -461,11 +453,7 @@
 |7
 |
 |debug> foo
-|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
-| ::Dict{Symbol,Any})
-|Closest candidates are:
-|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
-|filtrator/src/Infiltrator.jl:371
+|3
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
@@ -513,11 +501,7 @@
 |C
 |
 |BBBBBBBCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -565,18 +549,13 @@
 |7
 |
 |debug> foo
-|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
-| ::Dict{Symbol,Any})
-|Closest candidates are:
-|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
-|filtrator/src/Infiltrator.jl:371
+|3
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> 
 |
@@ -621,18 +600,13 @@
 |C
 |
 |BBBBBBBCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -677,22 +651,16 @@
 |7
 |
 |debug> foo
-|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
-| ::Dict{Symbol,Any})
-|Closest candidates are:
-|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
-|filtrator/src/Infiltrator.jl:371
+|3
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> @disable
-|Re-enabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.j
-|l:7.
+|Enabled infiltration at this infiltration point.
 |
 |debug> 
 |
@@ -737,22 +705,16 @@
 |C
 |
 |BBBBBBBCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -797,26 +759,19 @@
 |7
 |
 |debug> foo
-|ERROR: MethodError: no method matching interpret(::Base.TTY, ::Symbol, ::Module,
-| ::Dict{Symbol,Any})
-|Closest candidates are:
-|  interpret(::Any, !Matched::Expr, ::Any, ::Any) at /home/pfitzseb/.julia/dev/In
-|filtrator/src/Infiltrator.jl:371
+|3
 |
 |debug> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> @disable
-|Re-enabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.j
-|l:7.
+|Enabled infiltration at this infiltration point.
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> 
 |
@@ -861,26 +816,19 @@
 |C
 |
 |BBBBBBBCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |

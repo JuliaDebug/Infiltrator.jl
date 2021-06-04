@@ -555,8 +555,7 @@
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> 
 |
@@ -607,8 +606,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -659,12 +657,10 @@
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> @disable
-|Re-enabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.j
-|l:7.
+|Enabled infiltration at this infiltration point.
 |
 |debug> 
 |
@@ -715,12 +711,10 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -771,16 +765,13 @@
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> @disable
-|Re-enabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.j
-|l:7.
+|Enabled infiltration at this infiltration point.
 |
 |debug> @disable
-|Disabled infiltration at /home/pfitzseb/.julia/dev/Infiltrator/test/runtests.jl:
-|7.
+|Disabled infiltration at this infiltration point.
 |
 |debug> 
 |
@@ -831,16 +822,13 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |

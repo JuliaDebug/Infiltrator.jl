@@ -288,10 +288,10 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         spot = (file, fileline)
         if spot in DISABLED
           delete!(DISABLED, spot)
-          println(io, "Re-enabled infiltration at $file:$fileline.\n")
+          println(io, "Enabled infiltration at this infiltration point.\n")
         else
           push!(DISABLED, spot)
-          println(io, "Disabled infiltration at $file:$fileline.\n")
+          println(io, "Disabled infiltration at this infiltration point.\n")
         end
         LineEdit.reset_state(s)
         return true
@@ -367,7 +367,7 @@ end
 
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
-function interpret(io, expr::Expr, mod, locals)
+function interpret(io, expr, mod, locals)
   symbols = merge(locals, get_scratch_pad_names())
   Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
   res = gensym()
