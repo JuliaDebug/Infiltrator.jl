@@ -47,7 +47,7 @@ infil> ?
     - `?`: Print this help text.
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
-    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
+    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
     - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
     - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
       1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
@@ -75,10 +75,10 @@ infil> intermediate = copy(out)
 1-element Vector{Any}:
  2
 
-infil> @disable
+infil> @toggle
 Disabled infiltration at this infiltration point.
 
-infil> @disable
+infil> @toggle
 Enabled infiltration at this infiltration point.
 
 infil> @continue

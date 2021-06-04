@@ -18,8 +18,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -40,7 +40,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -60,8 +60,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -88,7 +88,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -114,8 +114,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -146,7 +146,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -176,8 +176,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -214,7 +214,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -250,8 +250,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -293,7 +293,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -334,8 +334,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -380,7 +380,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -424,8 +424,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -473,7 +473,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -520,8 +520,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -554,7 +554,7 @@
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|infil> @disable
+|infil> @toggle
 |Disabled infiltration at this infiltration point.
 |
 |infil> 
@@ -572,7 +572,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -605,7 +605,7 @@
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCCCCC
+|BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
@@ -622,8 +622,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -656,10 +656,10 @@
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|infil> @disable
+|infil> @toggle
 |Disabled infiltration at this infiltration point.
 |
-|infil> @disable
+|infil> @toggle
 |Enabled infiltration at this infiltration point.
 |
 |infil> 
@@ -677,7 +677,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -710,10 +710,10 @@
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCCCCC
+|BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCCCCC
+|BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
@@ -730,8 +730,8 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
-| `Infiltrator.clear_disabled()`).
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
@@ -764,13 +764,13 @@
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 |
-|infil> @disable
+|infil> @toggle
 |Disabled infiltration at this infiltration point.
 |
-|infil> @disable
+|infil> @toggle
 |Enabled infiltration at this infiltration point.
 |
-|infil> @disable
+|infil> @toggle
 |Disabled infiltration at this infiltration point.
 |
 |infil> 
@@ -788,7 +788,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -821,13 +821,13 @@
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCCCCC
+|BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCCCCC
+|BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|BBBBBBBCCCCCCCC
+|BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB

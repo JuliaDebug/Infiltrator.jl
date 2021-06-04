@@ -67,7 +67,7 @@ infil> ?
     - `?`: Print this help text.
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
-    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
+    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
     - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
     - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
       1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
@@ -95,10 +95,10 @@ infil> intermediate = copy(out)
 1-element Vector{Any}:
  2
 
-infil> @disable
+infil> @toggle
 Disabled infiltration at this infiltration point.
 
-infil> @disable
+infil> @toggle
 Enabled infiltration at this infiltration point.
 
 infil> @continue
@@ -224,7 +224,7 @@ function show_help(io)
       - `?`: Print this help text.
       - `@trace`: Print the current stack trace.
       - `@locals`: Print local variables.
-      - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
+      - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
       - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
         1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
@@ -310,7 +310,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         show_locals(io, locals)
         LineEdit.reset_state(s)
         return true
-      elseif sline == "@disable"
+      elseif sline == "@toggle"
         spot = (file, fileline)
         if spot in DISABLED
           delete!(DISABLED, spot)
@@ -507,7 +507,7 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   prepend!(ret, filter!(v -> startswith(v, partial), vcat(string.(keys(c.locals)), string.(keys(get_scratch_pad_names())))))
 
   # Infiltrator commands completions
-  commands = ["?", "@trace", "@locals", "@disable", "@exit", "@continue"]
+  commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue"]
   prepend!(ret, filter!(c -> startswith(c, partial), commands))
 
   unique!(ret), range, should_complete
