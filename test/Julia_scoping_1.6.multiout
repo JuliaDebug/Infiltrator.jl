@@ -30,7 +30,7 @@
 |- xxxxx::Int64 = 4
 |
 |infil> @exfiltrate
-|Exfiltrating 2 local variables into the scratch pad.
+|Exfiltrating 2 local variables into the store.
 |
 |infil> 
 --------------------------------------------------
@@ -41,6 +41,6 @@
 |CCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB

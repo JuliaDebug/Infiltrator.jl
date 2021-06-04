@@ -8,7 +8,7 @@ export @infiltrate, @exfiltrate
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
-  store.store = Module()
+  clear_store!(store)
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
         pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
@@ -57,15 +57,15 @@ end
 """
     @exfiltrate
 
-Assigns all local variables into the scratch pad.
+Assigns all local variables into the store.
 """
 macro exfiltrate()
   quote
     for (k, v) in Base.@locals
       try
-        Core.eval($(store).store, Expr(:(=), k, QuoteNode(v)))
+        Core.eval(getfield($(store), :store), Expr(:(=), k, QuoteNode(v)))
       catch err
-        println(stderr, "Assignment to scratchpad variable failed.")
+        println(stderr, "Assignment to store variable failed.")
         Base.display_error(stderr, err, catch_backtrace())
       end
     end
@@ -82,48 +82,45 @@ const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
-mutable struct ScratchPad
+mutable struct Store
   store::Module
   exiting::Bool
   disabled::Set
 end
-function Base.show(io::IO, s::ScratchPad)
+function Base.show(io::IO, s::Store)
   n = length(get_scratch_pad_names(s))
-  print(io, "Infiltrator scratch pad with $(n) name$(n == 1 ? "" : "s")")
+  print(io, "Infiltrator store with $(n) name$(n == 1 ? "" : "s")")
 end
-function Base.getproperty(sp::ScratchPad, s::Symbol)
-  s === :store && return getfield(sp, :store)
-  s === :exiting && return getfield(sp, :exiting)
-  s === :disabled && return getfield(sp, :disabled)
-
-  if isdefined(sp.store, s)
-    getproperty(sp.store, s)
+function Base.getproperty(sp::Store, s::Symbol)
+  m = getfield(sp, :store)
+  if isdefined(m, s)
+    getproperty(m, s)
   else
     throw(UndefVarError(s))
   end
 end
-Base.propertynames(s::ScratchPad) = keys(get_scratch_pad_names(s))
+Base.propertynames(s::Store) = keys(get_scratch_pad_names(s))
 
 """
     store
 
-Global scratch pad for storing values while `@infiltrate`ing or `@exfiltrate`ing.
+Global store for storing values while `@infiltrate`ing or `@exfiltrate`ing.
 """
-const store = ScratchPad(Module(), false, Set())
+const store = Store(Module(), false, Set())
 
 """
-    @with ex
+    @withstore ex
 
-Evaluates the expression `ex` in the context of the global scratch pad.
+Evaluates the expression `ex` in the context of the global store.
 
-Mainly intended for interactive use, as changes to the scratch pads state will not
+Mainly intended for interactive use, as changes to the stores state will not
 propagate into the returned expression.
 """
-macro with(ex)
-  with_scratch_pad(ex)
+macro withstore(ex)
+  withstore(ex)
 end
 
-function with_scratch_pad(ex)
+function withstore(ex)
   ns = get_scratch_pad_names(store)
   return Expr(:let,
     Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in ns])...),
@@ -132,42 +129,42 @@ function with_scratch_pad(ex)
 end
 
 """
-    clear_disabled(s = store)
+    clear_disabled!(s = store)
 
 Clear all disabled infiltration points.
 """
-function clear_disabled(s = store)
-  empty!(s.disabled)
+function clear_disabled!(s = store)
+  empty!(getfield(s, :disabled))
   return nothing
 end
 
 """
-    end_session(s = store)
+    end_session!(s = store)
 
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
 
 Only needs to be manually called on Julia versions prior to 1.5.
 """
-function end_session(s::ScratchPad = store)
-  s.exiting = false
+function end_session!(s::Store = store)
+  setfield!(s, :exiting, false)
   return nothing
 end
 
 """
-    clear_store(s::ScratchPad = Infiltrator.store)
+    clear_store!(s::Store = Infiltrator.store)
 
-Reset the scratch pad used for global symbols.
+Reset the store used for global symbols.
 """
-clear_store(s::ScratchPad = store) = set_store(s, Module())
+clear_store!(s::Store = store) = set_store!(s, Module())
 
 """
-    set_store(s::ScratchPad = Infiltrator.store, m::Module)
+    set_store!(s::Store = Infiltrator.store, m::Module)
 
-Set the module backing the scratch pad `s`.
+Set the module backing the store `s`.
 """
-set_store(m::Module) = set_store(store, m)
-function set_store(s::ScratchPad, m::Module)
-  s.store = m
+set_store!(m::Module) = set_store!(store, m)
+function set_store!(s::Store, m::Module)
+  setfield!(s, :store, m)
   nothing
 end
 
@@ -176,8 +173,8 @@ function start_prompt(mod, locals, file, fileline;
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
                       )
-  store.exiting && return
-  (file, fileline) in store.disabled && return
+  getfield(store, :exiting) && return
+  (file, fileline) in getfield(store, :disabled) && return
 
   if terminal === nothing || repl === nothing
     if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
@@ -206,17 +203,17 @@ end
 function show_help(io)
   println(io, """
     Code entered is evaluated in the current functions module. Note that you cannot change local
-    variables, but can assign to globals in a permanent scratch pad module.
+    variables, but can assign to globals in a permanent store module.
 
     The following commands are special cased:
       - `?`: Print this help text.
       - `@trace`: Print the current stack trace.
       - `@locals`: Print local variables.
-      - `@exfiltrate`: Save all local variables into the scratch pad.
-      - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
+      - `@exfiltrate`: Save all local variables into the store.
+      - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
       - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-        1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+        1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
   """)
 end
 
@@ -301,13 +298,13 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif sline == "@exfiltrate"
         n = length(locals)
-        println(io, "Exfiltrating $(n) local variable$(n == 1 ? "" : "s") into the scratch pad.\n")
+        println(io, "Exfiltrating $(n) local variable$(n == 1 ? "" : "s") into the store.\n")
 
         for (k, v) in locals
           try
-            Core.eval(store.store, Expr(:(=), k, QuoteNode(v)))
+            Core.eval(getfield(store, :store), Expr(:(=), k, QuoteNode(v)))
           catch err
-            println(io, "Assignment to scratchpad variable failed.")
+            println(io, "Assignment to store variable failed.")
             Base.display_error(io, err, catch_backtrace())
           end
         end
@@ -315,17 +312,18 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif sline == "@toggle"
         spot = (file, fileline)
-        if spot in store.disabled
-          delete!(store.disabled, spot)
+        ds = getfield(store, :disabled)
+        if spot in ds
+          delete!(ds, spot)
           println(io, "Enabled infiltration at this infiltration point.\n")
         else
-          push!(store.disabled, spot)
+          push!(ds, spot)
           println(io, "Disabled infiltration at this infiltration point.\n")
         end
         LineEdit.reset_state(s)
         return true
       elseif sline == "@exit"
-        store.exiting = true
+        setfield!(store, :exiting, true)
         if !REPL_HOOKED[]
           println(io, "Revert the effect of this with `Infiltrator.end_session()` or you will not be able to enter a new session!")
         end
@@ -392,11 +390,12 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
 end
 
 function get_scratch_pad_names(s = store)
-  ns = names(s.store, all = true)
+  m = getfield(s, :store)
+  ns = names(m, all = true)
   out = Dict()
   for n in ns
-    if isdefined(s.store, n) && n !== :eval && n !== :include && n !== :anonymous
-      out[n] = getfield(s.store, n)
+    if isdefined(m, n) && n !== :eval && n !== :include && n !== :anonymous
+      out[n] = getfield(m, n)
     end
   end
   out
@@ -437,9 +436,9 @@ function interpret(io, expr, mod, locals)
       end
     else
       try
-        Core.eval(store.store, Expr(:(=), assignment, QuoteNode(eval_res)))
+        Core.eval(getfield(store, :store), Expr(:(=), assignment, QuoteNode(eval_res)))
       catch err
-        println(io, "Assignment to scratchpad variable failed.")
+        println(io, "Assignment to store variable failed.")
         Base.display_error(io, err, catch_backtrace())
       end
     end

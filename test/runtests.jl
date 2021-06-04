@@ -35,7 +35,7 @@ end
         function run_terminal_test(func, result, commands, validation)
             TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
             # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-                Infiltrator.end_session()
+                Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
                 repl.specialdisplay = REPL.REPLDisplay(repl)
@@ -56,7 +56,7 @@ end
 
         @test f(3) == [3, 4, 5] # `@toggle`d `@infiltrate` should not open a prompt
 
-        Infiltrator.clear_disabled()
+        Infiltrator.clear_disabled!()
 
         run_terminal_test(() -> f(3), [3, 4, 5],
                         ["@locals\n", "\x4"],
@@ -85,7 +85,7 @@ end
         @test Infiltrator.store.xxxxx == 12
         @test Infiltrator.store.foo(3) == 3
         @test Infiltrator.store.bar(3) == 6
-        @test !isdefined(Infiltrator.store.store, :x)
+        @test !isdefined(getfield(Infiltrator.store, :store), :x)
 
         # proper scoping of scratch pad
         run_terminal_test(() -> j(2), 8,
@@ -104,10 +104,11 @@ end
 end
 
 @testset "exfiltration tests" begin
-    Infiltrator.clear_store()
+    Infiltrator.clear_store!()
     function foo_ex(x)
         y = 3
         foo = :asd
+        store = 33
         bar = function (yy) yy end
         @exfiltrate
     end
@@ -115,10 +116,11 @@ end
 
     @test Infiltrator.store.y == 3
     @test Infiltrator.store.foo == :asd
+    @test Infiltrator.store.store == 33
     @test Infiltrator.store.bar(3) == 3
     @test_throws UndefVarError Infiltrator.store.asd
 
     # `@with` is basically for dynamic usage only
-    @test 6 == Core.eval(@__MODULE__, :(Infiltrator.@with(2y)))
-    @test "asd" == Core.eval(@__MODULE__, :(Infiltrator.@with(string(foo))))
+    @test 6 == Core.eval(@__MODULE__, :(Infiltrator.@withstore(2y)))
+    @test "asd" == Core.eval(@__MODULE__, :(Infiltrator.@withstore(string(foo))))
 end
