@@ -1,0 +1,140 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> xxxxx = 12
+|12
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> xxxxx = 12
+|12
+|
+|debug> foo(x) = x
+|(::getfield(Main, Symbol("#foo#21"))) (generic function with 1 method)
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> xxxxx = 12
+|12
+|
+|debug> foo(x) = x
+|(::getfield(Main, Symbol("#foo#21"))) (generic function with 1 method)
+|
+|debug> function bar(x); 2x; end
+|(::getfield(Main, Symbol("#bar#22"))) (generic function with 1 method)
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> xxxxx = 12
+|12
+|
+|debug> foo(x) = x
+|(::getfield(Main, Symbol("#foo#21"))) (generic function with 1 method)
+|
+|debug> function bar(x); 2x; end
+|(::getfield(Main, Symbol("#bar#22"))) (generic function with 1 method)
+|
+|debug> x = 2
+|Cannot assign a new value to local variable `x`.
+|2
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
+|
+|BBBBBBB

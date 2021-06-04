@@ -1,0 +1,152 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> 
+|
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> 
+|
+|Infiltrating f(::Int64) at runtests.jl:7:
+|
+|debug> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB

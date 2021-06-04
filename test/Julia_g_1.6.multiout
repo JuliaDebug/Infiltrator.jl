@@ -1,0 +1,230 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> @trace
+|[1] g at runtests.jl:13 [inlined]
+|[2] #6 at runtests.jl:60 [inlined]
+|[3] (::var"#3#11"{var"#6#14", Int64})(emuterm::TerminalRegressionTests.EmulatedT
+|erminal) at runtests.jl:39
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> @trace
+|[1] g at runtests.jl:13 [inlined]
+|[2] #6 at runtests.jl:60 [inlined]
+|[3] (::var"#3#11"{var"#6#14", Int64})(emuterm::TerminalRegressionTests.EmulatedT
+|erminal) at runtests.jl:39
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|debug> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent scratch pad module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@disable`: Toggle infiltrating at this `@infiltrate` spot (clear all with
+| `Infiltrator.clear_disabled()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|debug> @trace
+|[1] g at runtests.jl:13 [inlined]
+|[2] #6 at runtests.jl:60 [inlined]
+|[3] (::var"#3#11"{var"#6#14", Int64})(emuterm::TerminalRegressionTests.EmulatedT
+|erminal) at runtests.jl:39
+|
+|debug> @locals
+|- x::Int64 = 24
+|
+|debug> x
+|24
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CC
+|
+|BBBBBBB

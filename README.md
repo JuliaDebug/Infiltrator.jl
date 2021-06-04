@@ -1,4 +1,4 @@
-# Infiltrator.jl [![Build Status](https://travis-ci.org/JuliaDebug/Infiltrator.jl.svg?branch=master)](https://travis-ci.org/JuliaDebug/Infiltrator.jl)
+# Infiltrator.jl [![CI](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml)
 
 This packages provides a macro called `@infiltrate`, which sets a "breakpoint" in a local context
 (similar to Matlab's `keyboard` function and IPython's `embed`). The advantage of this macro over e.g. Debugger.jl is that
@@ -11,62 +11,82 @@ Running code that ends up triggering the `@infiltrate` REPL mode via inline eval
 so it's recommended to always use the REPL directly.
 
 ## `@infiltrate` macro
-
-The `@infiltrate` macro is the entry point of infiltration.
-
 <!-- extracted from the @infiltrate doc -->
-
     @infiltrate cond = true
 
-`@infiltrate` sets "breakpoint" in a local context.
-When the breakpoint is hit, it will drop you into an interactive REPL session that lets you
-inspect local variables and the call stack as well as execute aribtrary statements in the
-context of the current function's module.
+`@infiltrate` sets an infiltration point (or breakpoint).
+
+When the infiltration point is hit, it will drop you into an interactive REPL session that
+lets you inspect local variables and the call stack as well as execute aribtrary statements
+in the context of the current functions module.
 
 This macro also accepts an optional argument `cond` that must evaluate to a boolean,
-and then this macro will serve as a "conditinal breakpoint",
-which starts inspections only when its condition is `true`.
+and then this macro will serve as a "conditinal breakpoint", which starts inspections only
+when its condition is `true`.
 
 ### Usage:
+`?` in the `debug>` prompt lists all options.
+
 ```julia
 julia> function f(x)
-         x *= 2
-         y = rand(3)
-         @infiltrate
-         x += 2
+         out = []
+         for i in x
+           push!(out, 2i)
+           @infiltrate
+         end
+         out
        end
 f (generic function with 1 method)
 
-julia> f(3)
-Hit `@infiltrate` in f(::Int64) at none:4:
-
-debug> ?
-  Code entered is evaluated in the current function's module. Note that you cannot change local
-  variables.
-  The following commands are special cased:
-    - `@trace`: Print the current stack trace.
-    - `@locals`: Print local variables.
-    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
-
-  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infiltrator.clear_stop()`.
-
-debug> @trace
-[1] f(::Int64) at none:4
-[2] top-level scope at none:0
+julia> f([1,2,3])
+Infiltrating f(x::Vector{Int64}) at REPL[2]:5:
 
 debug> @locals
-- y::Array{Float64,1} = [0.187253, 0.145958, 0.183677]
-- x::Int64 = 6
+- out::Vector{Any} = Any[2]
+- i::Int64 = 1
+- x::Vector{Int64} = [1, 2, 3]
 
-debug> x.+y
-3-element Array{Float64,1}:
- 6.187252565686353
- 6.145958004935359
- 6.1836766675450034
+debug> 0//0
+ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+Stacktrace:
+ [1] __throw_rational_argerror_zero(T::Type)
+   @ Base ./rational.jl:31
+ [2] Rational{Int64}(num::Int64, den::Int64)
+   @ Base ./rational.jl:33
+ [3] Rational
+   @ ./rational.jl:38 [inlined]
+ [4] //(n::Int64, d::Int64)
+   @ Base ./rational.jl:61
+ [5] top-level scope
+   @ none:1
 
-debug> # press Ctrl-D and exit
+debug> intermediate = copy(out)
+1-element Vector{Any}:
+ 2
 
-8
+debug> @disable
+Disabled infiltration at REPL[2]:5.
 
-julia>
+debug> @disable
+Re-enabled infiltration at REPL[2]:5.
+
+debug> @continue
+
+Infiltrating f(x::Vector{Int64}) at REPL[2]:5:
+
+debug> @locals
+- out::Vector{Any} = Any[2, 4]
+- i::Int64 = 2
+- x::Vector{Int64} = [1, 2, 3]
+
+debug> @exit
+
+3-element Vector{Any}:
+ 2
+ 4
+ 6
+
+julia> Infiltrator.get_scratch_pad().intermediate
+1-element Vector{Any}:
+ 2
 ```
