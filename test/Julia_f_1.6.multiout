@@ -1,0 +1,468 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|[2] #2 at runtests.jl:39 [inlined]
+|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
+|latedTerminal) at runtests.jl:32
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|[2] #2 at runtests.jl:39 [inlined]
+|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
+|latedTerminal) at runtests.jl:32
+|
+|debug> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|[2] #2 at runtests.jl:39 [inlined]
+|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
+|latedTerminal) at runtests.jl:32
+|
+|debug> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBB
+|
+|CCCCCCCBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBB
+|BB
+|BB
+|BB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|[2] #2 at runtests.jl:39 [inlined]
+|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
+|latedTerminal) at runtests.jl:32
+|
+|debug> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|debug> foo
+|3
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBB
+|
+|CCCCCCCBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBB
+|BB
+|BB
+|BB
+|
+|CCCCCCCBBB
+|B
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|[2] #2 at runtests.jl:39 [inlined]
+|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
+|latedTerminal) at runtests.jl:32
+|
+|debug> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|debug> foo
+|3
+|
+|debug> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBB
+|
+|CCCCCCCBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBB
+|BB
+|BB
+|BB
+|
+|CCCCCCCBBB
+|B
+|
+|CCCCCCCBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(x::Int64) at runtests.jl:7:
+|
+|debug> ?
+|  Code entered is evaluated in the current function's module. Note that you cann
+|ot change local
+|  variables.
+|  The following commands are special cased:
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
+|
+|  Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infil
+|trator.clear_stop()`.
+|
+|debug> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|[2] #2 at runtests.jl:39 [inlined]
+|[3] (::var"#1#6"{var"#2#7", Vector{Int64}})(emuterm::TerminalRegressionTests.Emu
+|latedTerminal) at runtests.jl:32
+|
+|debug> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|debug> foo
+|3
+|
+|debug> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|debug> @stop
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBB
+|BBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|BBBBBBBBBBBBBB
+|
+|CCCCCCCBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBB
+|BB
+|BB
+|BB
+|
+|CCCCCCCBBB
+|B
+|
+|CCCCCCCBBBB
+|BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCBBBBB
+|
+|CCCCCCC

@@ -1,0 +1,48 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|
+|debug> 
+|
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|DDDDDDD
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|
+|debug> 
+|
+|Hit `@infiltrate` in f(::Int64) at runtests.jl:7:
+|
+|debug> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|DDDDDDDCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|DDDDDDD

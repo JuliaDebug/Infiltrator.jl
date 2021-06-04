@@ -4,4 +4,3 @@
 *.jl.mem
 expected.out
 failed.out
-test/*.multiout

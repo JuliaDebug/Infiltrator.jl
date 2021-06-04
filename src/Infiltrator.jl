@@ -5,6 +5,18 @@ using REPL.LineEdit
 
 export @infiltrate
 
+function __init__()
+  if VERSION >= v"1.5.0-DEV.282"
+    if isdefined(Base, :active_repl_backend)
+        pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
+    else
+      atreplinit() do repl
+        pushfirst!(repl.ast_transforms, exit_transform)
+      end
+    end
+  end
+end
+
 """
     @infiltrate cond = true
 
@@ -14,8 +26,8 @@ inspect local variables and the call stack as well as execute aribtrary statemen
 context of the current function's module.
 
 This macro also accepts an optional argument `cond` that must evaluate to a boolean,
-and then this macro will serve as a "conditinal breakpoint",
-which starts inspections only when its condition is `true`.
+and then this macro will serve as a "conditinal breakpoint", which starts inspections only
+when its condition is `true`.
 
 ### Usage:
 
@@ -38,6 +50,8 @@ debug> ?
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
     - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+    - `@exit`: Stop infiltrating for the remainder of this session (on Julia versions prior to
+      1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 
   Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infiltrator.clear_stop()`.
 
@@ -80,14 +94,35 @@ const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
+const EXITING = Ref{Bool}(false)
 const STOP_SPOTS = Set()
-clear_stop() = (empty!(STOP_SPOTS); nothing)
+
+"""
+    clear_stop()
+
+Clear stop spots.
+"""
+function clear_stop()
+  empty!(STOP_SPOTS)
+  return nothing
+end
+
+"""
+    clear_exiting()
+
+Reset "exiting" status.
+"""
+function clear_exiting()
+  EXITING[] = false
+  return nothing
+end
 
 function start_prompt(mod, locals, file, fileline;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
                       )
+  EXITING[] && return
   (file, fileline) in STOP_SPOTS && return
   if terminal === nothing || repl === nothing
     if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
@@ -120,6 +155,8 @@ function show_help(io)
       - `@trace`: Print the current stack trace.
       - `@locals`: Print local variables.
       - `@stop`: Stop infiltrating at this `@infiltrate` spot.
+      - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
+        1.5 this needs to be manually cleared with `Infiltrator.clear_exiting()`).
 
     Exit this REPL mode with `Ctrl-D`, and clear the effect of `@stop` with `Infiltrator.clear_stop()`.
   """)
@@ -188,6 +225,11 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         println(io)
         LineEdit.reset_state(s)
         return true
+      elseif sline == "@exit"
+        EXITING[] = true
+        LineEdit.transition(s, :abort)
+        REPL.LineEdit.reset_state(s)
+        return false
       end
       ok = true
       result = nothing
@@ -239,6 +281,14 @@ function interpret(command::AbstractString, mod, locals)
     eval_res, res = Core.eval(mod, eval_expr)
     eval_res
 end
+
+function exit_transform(ex)
+  return quote
+    $(@__MODULE__).clear_exiting()
+    $(ex)
+  end
+end
+
 
 # completions
 

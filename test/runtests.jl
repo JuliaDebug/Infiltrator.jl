@@ -14,12 +14,14 @@ function g(x)
     return x
 end
 
+h(x) = [f(x) for x in x]
+
 if Sys.isunix() && VERSION >= v"1.1.0"
     using TerminalRegressionTests
 
     function run_terminal_test(func, result, commands, validation)
-        # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-        TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+        TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+        # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
             repl = REPL.LineEditREPL(emuterm, true)
             repl.interface = REPL.setup_interface(repl)
             repl.specialdisplay = REPL.REPLDisplay(repl)
@@ -51,6 +53,10 @@ if Sys.isunix() && VERSION >= v"1.1.0"
     run_terminal_test(() -> g(2), 24,
                       ["?\n", "@trace\n", "@locals\n", "x\n", "\x4"],
                       "Julia_g_$(VERSION.major).$(VERSION.minor).multiout")
+
+    run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
+                      ["\x4", "@locals\n", "@exit\n"],
+                      "Julia_h_$(VERSION.major).$(VERSION.minor).multiout")
 else
     @warn "Skipping UI tests on non unix systems"
 end
