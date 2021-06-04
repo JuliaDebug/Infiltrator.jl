@@ -18,6 +18,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -39,6 +40,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -60,6 +62,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -70,9 +73,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> 
 --------------------------------------------------
@@ -87,6 +90,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -114,6 +118,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -124,9 +129,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -145,6 +150,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -176,6 +182,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -186,9 +193,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -213,6 +220,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -250,6 +258,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -260,9 +269,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -292,6 +301,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -334,6 +344,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -344,9 +355,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -379,6 +390,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -424,6 +436,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -434,9 +447,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -472,6 +485,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -520,6 +534,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -530,9 +545,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -571,6 +586,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -622,6 +638,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -632,9 +649,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -676,6 +693,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -730,6 +748,7 @@
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the scratch pad.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
@@ -740,9 +759,9 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:52 [inlined]
-|[3] (::var"#3#12"{var"#4#13", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:45
+|[2] #4 at runtests.jl:53 [inlined]
+|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
+|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -787,6 +806,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

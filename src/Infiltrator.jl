@@ -3,7 +3,7 @@ module Infiltrator
 using REPL
 using REPL.LineEdit
 
-export @infiltrate
+export @infiltrate, @exfiltrate, get_scratch_pad, clear_scratch_pad
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
@@ -67,6 +67,7 @@ infil> ?
     - `?`: Print this help text.
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
+    - `@exfiltrate`: Save all local variables into the scratch pad.
     - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
     - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
     - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
@@ -117,7 +118,7 @@ infil> @exit
  4
  6
 
-julia> Infiltrator.get_scratch_pad().intermediate
+julia> get_scratch_pad().intermediate
 1-element Vector{Any}:
  2
 ```
@@ -126,6 +127,24 @@ macro infiltrate(cond = true)
   quote
     if $(esc(cond))
       $(start_prompt)(@__MODULE__, Base.@locals, $(String(__source__.file)), $(__source__.line))
+    end
+  end
+end
+
+"""
+    @exfiltrate
+
+Assigns all local variables into the scratch pad.
+"""
+macro exfiltrate()
+  quote
+    for (k, v) in Base.@locals
+      try
+        Core.eval(SCRATCH_PAD[], Expr(:(=), k, QuoteNode(v)))
+      catch err
+        println(stderr, "Assignment to scratchpad variable failed.")
+        Base.display_error(stderr, err, catch_backtrace())
+      end
     end
   end
 end
@@ -209,6 +228,7 @@ function start_prompt(mod, locals, file, fileline;
                    length(trace)) - 2
   trace = trace[start:last]
   current = trace[1]
+
   println(io, "Infiltrating $current:")
   println(io)
   debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
@@ -224,6 +244,7 @@ function show_help(io)
       - `?`: Print this help text.
       - `@trace`: Print the current stack trace.
       - `@locals`: Print local variables.
+      - `@exfiltrate`: Save all local variables into the scratch pad.
       - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
       - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
@@ -308,6 +329,19 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif sline == "@locals"
         show_locals(io, locals)
+        LineEdit.reset_state(s)
+        return true
+      elseif sline == "@exfiltrate"
+        println(io, "Exfiltrating $(length(locals)) local variables into the scratch pad.\n")
+
+        for (k, v) in locals
+          try
+            Core.eval(SCRATCH_PAD[], Expr(:(=), k, QuoteNode(v)))
+          catch err
+            println(io, "Assignment to scratchpad variable failed.")
+            Base.display_error(io, err, catch_backtrace())
+          end
+        end
         LineEdit.reset_state(s)
         return true
       elseif sline == "@toggle"
@@ -435,7 +469,7 @@ function interpret(io, expr, mod, locals)
       end
     else
       try
-        Base.eval(SCRATCH_PAD[], Expr(:(=), assignment, eval_res))
+        Core.eval(SCRATCH_PAD[], Expr(:(=), assignment, QuoteNode(eval_res)))
       catch err
         println(io, "Assignment to scratchpad variable failed.")
         Base.display_error(io, err, catch_backtrace())
@@ -507,7 +541,7 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   prepend!(ret, filter!(v -> startswith(v, partial), vcat(string.(keys(c.locals)), string.(keys(get_scratch_pad_names())))))
 
   # Infiltrator commands completions
-  commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue"]
+  commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate"]
   prepend!(ret, filter!(c -> startswith(c, partial), commands))
 
   unique!(ret), range, should_complete

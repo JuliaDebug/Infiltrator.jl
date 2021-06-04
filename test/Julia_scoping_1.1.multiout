@@ -22,3 +22,25 @@
 |CCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating j at runtests.jl:27 [inlined]:
+|
+|infil> @locals
+|- x::Int64 = 2
+|- xxxxx::Int64 = 4
+|
+|infil> @exfiltrate
+|Exfiltrating 2 local variables into the scratch pad.
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB

@@ -10,8 +10,7 @@ functionality, use Debugger.jl, VSCode's or Juno's debugger.
 Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode or Juno can cause issues,
 so it's recommended to always use the REPL directly.
 
-## `@infiltrate` macro
-<!-- extracted from the @infiltrate doc -->
+## `@infiltrate`
     @infiltrate cond = true
 
 `@infiltrate` sets an infiltration point (or breakpoint).
@@ -24,7 +23,19 @@ This macro also accepts an optional argument `cond` that must evaluate to a bool
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
 when its condition is `true`.
 
-### Usage:
+## `@exfiltrate`
+    @exfiltrate
+
+Assigns all local variables into the scratch pad.
+
+Originally implemented and named by Antoine Levitt in [Exfiltrator.jl](https://github.com/antoine-levitt/Exfiltrator.jl).
+
+## The scratch pad
+The scratch pad is an anonymous module into which you can assign variables/functions while
+`@infiltrate`ing or via `@exfiltrate`. You can get a reference to it via `get_scratch_pad`
+and reset it with `clear_scratch_pad`.
+
+## Example usage:
 ```julia
 julia> function f(x)
          out = []
@@ -47,6 +58,7 @@ infil> ?
     - `?`: Print this help text.
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
+    - `@exfiltrate`: Save all local variables into the scratch pad.
     - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
     - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
     - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
@@ -97,7 +109,7 @@ infil> @exit
  4
  6
 
-julia> Infiltrator.get_scratch_pad().intermediate
+julia> get_scratch_pad().intermediate
 1-element Vector{Any}:
  2
 ```
