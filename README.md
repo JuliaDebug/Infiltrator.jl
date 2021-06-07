@@ -26,26 +26,25 @@ when its condition is `true`.
 ## `@exfiltrate`
     @exfiltrate
 
-Assigns all local variables into the global storage.
+Assigns all local variables into global storage.
 
 ## The safehouse
 Exfiltrating variables (with `@exfiltrate` or by assignment in a `@infiltrate` session) happens by
 assigning the variable to a global storage space (backed by a module); any exfiltrated objects
-can be directly accessed, either via the exported `safehouse` or `Infilatrator.store`.
-
-You can reset the module with `Infiltrator.clear_store!()` or assign a specific module with `Infiltrator.set_store!(mod)`.
-This allows you to e.g. set the backing module to `Main` (although I wouldn't recommend doing so):
+can be directly accessed, via `Infiltrator.store` or its exported aliases `safehouse` or `exfiltrated`:
 ```
 julia> foo(x) = @exfiltrate
 foo (generic function with 1 method)
 
-julia> Infiltrator.set_store!(Main)
-
 julia> foo(3)
 
-julia> x
+julia> safehouse.x # or exfiltrated.x
 3
 ```
+
+You can reset the safehouse with `Infiltrator.clear_store!()`.
+
+You can also assign a specific module with `Infiltrator.set_store!(mod)`. This allows you to e.g. set the backing module to `Main` and therefore export the contents of the safehouse to the global namespace (although doing so is not recommended).
 
 ## Example usage:
 ```julia
