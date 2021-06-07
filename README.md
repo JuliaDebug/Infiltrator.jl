@@ -39,6 +39,7 @@ foo (generic function with 1 method)
 julia> foo(3)
 
 julia> safehouse.x # or exfiltrated.x
+3
 ```
 
 You can reset the safehouse with `Infiltrator.clear_store!()`.
