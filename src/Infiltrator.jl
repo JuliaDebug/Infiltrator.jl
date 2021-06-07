@@ -4,7 +4,7 @@ using REPL.LineEdit: getproperty
 using REPL
 using REPL.LineEdit
 
-export @infiltrate, @exfiltrate
+export @infiltrate, @exfiltrate, @withstore, safehouse
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
@@ -57,7 +57,7 @@ end
 """
     @exfiltrate
 
-Assigns all local variables into the store.
+Assigns all local variables into the global storage.
 """
 macro exfiltrate()
   quote
@@ -78,20 +78,21 @@ else
   "\e[38;5;166m"
 end
 
+# these are used for easier testing
 const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
-mutable struct Store
+mutable struct Session
   store::Module
   exiting::Bool
   disabled::Set
 end
-function Base.show(io::IO, s::Store)
-  n = length(get_scratch_pad_names(s))
-  print(io, "Infiltrator store with $(n) name$(n == 1 ? "" : "s")")
+function Base.show(io::IO, s::Session)
+  n = length(get_store_names(s))
+  print(io, "Safehouse with $(n) stored variable$(n == 1 ? "" : "s")")
 end
-function Base.getproperty(sp::Store, s::Symbol)
+function Base.getproperty(sp::Session, s::Symbol)
   m = getfield(sp, :store)
   if isdefined(m, s)
     getproperty(m, s)
@@ -99,14 +100,16 @@ function Base.getproperty(sp::Store, s::Symbol)
     throw(UndefVarError(s))
   end
 end
-Base.propertynames(s::Store) = keys(get_scratch_pad_names(s))
+Base.propertynames(s::Session) = keys(get_store_names(s))
 
 """
     store
+    safehouse
 
-Global store for storing values while `@infiltrate`ing or `@exfiltrate`ing.
+Global storage for storing values while `@infiltrate`ing or `@exfiltrate`ing.
 """
-const store = Store(Module(), false, Set())
+const store = Session(Module(), false, Set())
+const safehouse = store
 
 """
     @withstore ex
@@ -121,7 +124,7 @@ macro withstore(ex)
 end
 
 function withstore(ex)
-  ns = get_scratch_pad_names(store)
+  ns = get_store_names(store)
   return Expr(:let,
     Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in ns])...),
     Expr(:block, ex)
@@ -129,7 +132,7 @@ function withstore(ex)
 end
 
 """
-    clear_disabled!(s = store)
+    clear_disabled!(s = safehouse)
 
 Clear all disabled infiltration points.
 """
@@ -139,31 +142,31 @@ function clear_disabled!(s = store)
 end
 
 """
-    end_session!(s = store)
+    end_session!(s = safehouse)
 
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
 
 Only needs to be manually called on Julia versions prior to 1.5.
 """
-function end_session!(s::Store = store)
+function end_session!(s::Session = store)
   setfield!(s, :exiting, false)
   return nothing
 end
 
 """
-    clear_store!(s::Store = Infiltrator.store)
+    clear_store!(s = safehouse)
 
 Reset the store used for global symbols.
 """
-clear_store!(s::Store = store) = set_store!(s, Module())
+clear_store!(s::Session = store) = set_store!(s, Module())
 
 """
-    set_store!(s::Store = Infiltrator.store, m::Module)
+    set_store!(s = safehouse, m::Module)
 
 Set the module backing the store `s`.
 """
 set_store!(m::Module) = set_store!(store, m)
-function set_store!(s::Store, m::Module)
+function set_store!(s::Session, m::Module)
   setfield!(s, :store, m)
   nothing
 end
@@ -325,7 +328,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
       elseif sline == "@exit"
         setfield!(store, :exiting, true)
         if !REPL_HOOKED[]
-          println(io, "Revert the effect of this with `Infiltrator.end_session()` or you will not be able to enter a new session!")
+          println(io, "Revert the effect of this with `Infiltrator.end_session!()` or you will not be able to enter a new session!")
         end
         LineEdit.transition(s, :abort)
         LineEdit.reset_state(s)
@@ -389,7 +392,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
   end
 end
 
-function get_scratch_pad_names(s = store)
+function get_store_names(s = store)
   m = getfield(s, :store)
   ns = names(m, all = true)
   out = Dict()
@@ -404,7 +407,7 @@ end
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
 function interpret(io, expr, mod, locals)
-  symbols = merge(get_scratch_pad_names(), locals)
+  symbols = merge(get_store_names(), locals)
   Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
   res = gensym()
   eval_expr = Expr(:let,
@@ -450,7 +453,7 @@ end
 function exit_transform(ex)
   return quote
     out = $(ex)
-    $(@__MODULE__).end_session()
+    $(@__MODULE__).end_session!()
     out
   end
 end
@@ -505,7 +508,7 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   ret = map(REPL.REPLCompletions.completion_text, comps)
 
   # local completions
-  prepend!(ret, filter!(v -> startswith(v, partial), vcat(string.(keys(c.locals)), string.(keys(get_scratch_pad_names())))))
+  prepend!(ret, filter!(v -> startswith(v, partial), vcat(string.(keys(c.locals)), string.(keys(get_store_names())))))
 
   # Infiltrator commands completions
   commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate"]

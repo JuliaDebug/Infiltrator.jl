@@ -26,12 +26,12 @@ when its condition is `true`.
 ## `@exfiltrate`
     @exfiltrate
 
-Assigns all local variables into the global store.
+Assigns all local variables into the global storage.
 
-## The global store
+## The safehouse
 Exfiltrating variables (with `@exfiltrate` or by assignment in a `@infiltrate` session) happens by
-assigning the variable to a global store (backed by a module). You can access this store with
-`Infiltrator.store`; any exfiltrated objects can be directly accessed, e.g. via `Infilatrator.store.myvar`.
+assigning the variable to a global storage space (backed by a module); any exfiltrated objects
+can be directly accessed, either via the exported `safehouse` or `Infilatrator.store`.
 
 You can reset the module with `Infiltrator.clear_store!()` or assign a specific module with `Infiltrator.set_store!(mod)`.
 This allows you to e.g. set the backing module to `Main` (although I wouldn't recommend doing so):
@@ -95,7 +95,7 @@ Stacktrace:
  [5] top-level scope
    @ none:1
 
-infil> intermediate = copy(out)
+infil> intermediate = copy(out) # assigned (or `@exfiltrate`d) variables can be accessed from the safehouse
 1-element Vector{Any}:
  2
 
@@ -121,7 +121,7 @@ infil> @exit
  4
  6
 
-julia> Infiltrator.store.intermediate
+julia> safehouse.intermediate
 1-element Vector{Any}:
  2
 ```
