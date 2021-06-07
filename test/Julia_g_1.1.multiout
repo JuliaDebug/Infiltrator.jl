@@ -12,20 +12,20 @@
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
-|  variables, but can assign to globals in a permanent scratch pad module.
+|  variables, but can assign to globals in a permanent store module.
 |
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@exfiltrate`: Save all local variables into the scratch pad.
+|    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
-|`Infiltrator.clear_disabled()`).
+|`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> 
 --------------------------------------------------
@@ -34,20 +34,20 @@
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -56,20 +56,20 @@
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
-|  variables, but can assign to globals in a permanent scratch pad module.
+|  variables, but can assign to globals in a permanent store module.
 |
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@exfiltrate`: Save all local variables into the scratch pad.
+|    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
-|`Infiltrator.clear_disabled()`).
+|`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
@@ -84,20 +84,20 @@
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -112,20 +112,20 @@
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
-|  variables, but can assign to globals in a permanent scratch pad module.
+|  variables, but can assign to globals in a permanent store module.
 |
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@exfiltrate`: Save all local variables into the scratch pad.
+|    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
-|`Infiltrator.clear_disabled()`).
+|`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
@@ -143,20 +143,20 @@
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -174,20 +174,20 @@
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
 |t change local
-|  variables, but can assign to globals in a permanent scratch pad module.
+|  variables, but can assign to globals in a permanent store module.
 |
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
 |    - `@locals`: Print local variables.
-|    - `@exfiltrate`: Save all local variables into the scratch pad.
+|    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
-|`Infiltrator.clear_disabled()`).
+|`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
-|      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
@@ -208,20 +208,20 @@
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

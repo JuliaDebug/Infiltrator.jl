@@ -26,14 +26,26 @@ when its condition is `true`.
 ## `@exfiltrate`
     @exfiltrate
 
-Assigns all local variables into the scratch pad.
+Assigns all local variables into the global storage.
 
-Originally implemented and named by Antoine Levitt in [Exfiltrator.jl](https://github.com/antoine-levitt/Exfiltrator.jl).
+## The safehouse
+Exfiltrating variables (with `@exfiltrate` or by assignment in a `@infiltrate` session) happens by
+assigning the variable to a global storage space (backed by a module); any exfiltrated objects
+can be directly accessed, either via the exported `safehouse` or `Infilatrator.store`.
 
-## The scratch pad
-The scratch pad is an anonymous module into which you can assign variables/functions while
-`@infiltrate`ing or via `@exfiltrate`. You can get a reference to it via `get_scratch_pad`
-and reset it with `clear_scratch_pad`.
+You can reset the module with `Infiltrator.clear_store!()` or assign a specific module with `Infiltrator.set_store!(mod)`.
+This allows you to e.g. set the backing module to `Main` (although I wouldn't recommend doing so):
+```
+julia> foo(x) = @exfiltrate
+foo (generic function with 1 method)
+
+julia> Infiltrator.set_store!(Main)
+
+julia> foo(3)
+
+julia> x
+3
+```
 
 ## Example usage:
 ```julia
@@ -52,17 +64,17 @@ Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
 
 infil> ?
   Code entered is evaluated in the current functions module. Note that you cannot change local
-  variables, but can assign to globals in a permanent scratch pad module.
+  variables, but can assign to globals in a permanent store module.
 
   The following commands are special cased:
     - `?`: Print this help text.
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables.
-    - `@exfiltrate`: Save all local variables into the scratch pad.
-    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled()`).
+    - `@exfiltrate`: Save all local variables into the store.
+    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
     - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
     - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-      1.5 this needs to be manually cleared with `Infiltrator.end_session()`).
+      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 
 infil> @locals
 - out::Vector{Any} = Any[2]
@@ -83,7 +95,7 @@ Stacktrace:
  [5] top-level scope
    @ none:1
 
-infil> intermediate = copy(out)
+infil> intermediate = copy(out) # assigned (or `@exfiltrate`d) variables can be accessed from the safehouse
 1-element Vector{Any}:
  2
 
@@ -109,7 +121,7 @@ infil> @exit
  4
  6
 
-julia> get_scratch_pad().intermediate
+julia> safehouse.intermediate
 1-element Vector{Any}:
  2
 ```
