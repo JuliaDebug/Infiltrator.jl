@@ -4,7 +4,7 @@ using REPL.LineEdit: getproperty
 using REPL
 using REPL.LineEdit
 
-export @infiltrate, @exfiltrate, @withstore, safehouse
+export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
@@ -105,11 +105,13 @@ Base.propertynames(s::Session) = keys(get_store_names(s))
 """
     store
     safehouse
+    exfiltrated
 
 Global storage for storing values while `@infiltrate`ing or `@exfiltrate`ing.
 """
 const store = Session(Module(), false, Set())
 const safehouse = store
+const exfiltrated = store
 
 """
     @withstore ex
