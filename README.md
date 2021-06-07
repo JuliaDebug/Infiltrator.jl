@@ -124,4 +124,11 @@ infil> @exit
 julia> safehouse.intermediate
 1-element Vector{Any}:
  2
+
+julia> @withstore begin
+         x = 23
+         x .* intermediate
+       end
+1-element Vector{Int64}:
+ 46
 ```
