@@ -90,7 +90,19 @@ mutable struct Session
 end
 function Base.show(io::IO, s::Session)
   n = length(get_store_names(s))
-  print(io, "Safehouse with $(n) stored variable$(n == 1 ? "" : "s")")
+  print(io, "Safehouse ($(n) variable$(n == 1 ? "" : "s"))")
+end
+function Base.show(io::IO, ::MIME"text/plain", s::Session)
+  names = get_store_names(s)
+  n = length(names)
+  println(io, "Safehouse with $(n) stored variable$(n == 1 ? "" : "s"):")
+  for (i, (var, val)) in enumerate(names)
+    if i > 6
+      println(io, "...")
+      break
+    end
+    one_line_show(io, var, val)
+  end
 end
 function Base.getproperty(sp::Session, s::Symbol)
   m = getfield(sp, :store)
@@ -239,12 +251,16 @@ function strlimit(str, limit = 30)
 end
 
 function show_locals(io, locals)
-  width = max(displaysize(io)[2], 40)
   for (var, val) in locals
-    prefix = string("- ", strlimit(string(var), width ÷ 3), "::", strlimit(string(typeof(val)), width ÷ 3), " = ")
-    println(io, prefix, strlimit(repr(val), max(width - textwidth(prefix), 10)))
+    one_line_show(io, var, val)
   end
   println(io)
+end
+
+function one_line_show(io::IO, var, val)
+  width = max(displaysize(io)[2], 40)
+  prefix = string("- ", strlimit(string(var), width ÷ 3), "::", strlimit(string(typeof(val)), width ÷ 3), " = ")
+  println(io, prefix, strlimit(repr(val), max(width - textwidth(prefix), 10)))
 end
 
 function is_complete(s)
