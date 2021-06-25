@@ -63,7 +63,7 @@ macro exfiltrate()
   quote
     for (k, v) in Base.@locals
       try
-        Core.eval(getfield($(store), :store), Expr(:(=), k, QuoteNode(v)))
+        Core.eval(getfield(getfield($(@__MODULE__), :store), :store), Expr(:(=), k, QuoteNode(v)))
       catch err
         println(stderr, "Assignment to store variable failed.")
         Base.display_error(stderr, err, catch_backtrace())
