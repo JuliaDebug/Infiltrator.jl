@@ -131,3 +131,6 @@ julia> @withstore begin
 1-element Vector{Int64}:
  46
 ```
+
+# Related projects
+- [`@exfiltrate` for Python](https://github.com/NightMachinary/PyExfiltrator)
