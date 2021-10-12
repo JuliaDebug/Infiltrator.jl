@@ -229,6 +229,7 @@ function show_help(io)
       - `@exfiltrate`: Save all local variables into the store.
       - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+      - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
       - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
         1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
   """)
