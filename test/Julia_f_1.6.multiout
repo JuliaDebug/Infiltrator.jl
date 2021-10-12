@@ -23,6 +23,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -45,6 +46,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -67,6 +69,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -95,6 +98,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -123,6 +127,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -155,6 +160,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -187,6 +193,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -225,6 +232,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -263,6 +271,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -306,6 +315,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -349,6 +359,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -395,6 +406,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -441,6 +453,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -490,6 +503,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -539,6 +553,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -591,6 +606,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -643,6 +659,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -698,6 +715,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -753,6 +771,7 @@
 |`Infiltrator.clear_disabled!()`).
 |    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
 |rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
 |    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
 |Julia versions prior to
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
@@ -811,6 +830,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
