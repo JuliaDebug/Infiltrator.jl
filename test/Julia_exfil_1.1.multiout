@@ -50,7 +50,7 @@
 |12
 |
 |infil> foo(x) = x
-|(::getfield(Main, Symbol("#foo#28"))) (generic function with 1 method)
+|(::getfield(Main, Symbol("#foo#26"))) (generic function with 1 method)
 |
 |infil> 
 --------------------------------------------------
@@ -76,10 +76,10 @@
 |12
 |
 |infil> foo(x) = x
-|(::getfield(Main, Symbol("#foo#28"))) (generic function with 1 method)
+|(::getfield(Main, Symbol("#foo#26"))) (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::getfield(Main, Symbol("#bar#29"))) (generic function with 1 method)
+|(::getfield(Main, Symbol("#bar#27"))) (generic function with 1 method)
 |
 |infil> 
 --------------------------------------------------
@@ -108,10 +108,10 @@
 |12
 |
 |infil> foo(x) = x
-|(::getfield(Main, Symbol("#foo#28"))) (generic function with 1 method)
+|(::getfield(Main, Symbol("#foo#26"))) (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::getfield(Main, Symbol("#bar#29"))) (generic function with 1 method)
+|(::getfield(Main, Symbol("#bar#27"))) (generic function with 1 method)
 |
 |infil> x = 2
 |Cannot assign a new value to local variable `x`.

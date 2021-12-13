@@ -1,13 +1,16 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -22,7 +25,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -37,7 +41,8 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -55,7 +60,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -73,7 +79,8 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -95,7 +102,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -117,7 +125,8 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -142,7 +151,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -167,7 +177,8 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -194,7 +205,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -221,7 +233,8 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -250,7 +263,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -279,7 +293,8 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating #15 at runtests.jl:118 [inlined]:
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
 |
 |infil> struct Foo
 |         xxx
@@ -311,7 +326,8 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC

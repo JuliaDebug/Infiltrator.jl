@@ -50,7 +50,7 @@
 |12
 |
 |infil> foo(x) = x
-|(::var"#foo#28") (generic function with 1 method)
+|(::var"#foo#26") (generic function with 1 method)
 |
 |infil> 
 --------------------------------------------------
@@ -76,10 +76,10 @@
 |12
 |
 |infil> foo(x) = x
-|(::var"#foo#28") (generic function with 1 method)
+|(::var"#foo#26") (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::var"#bar#29") (generic function with 1 method)
+|(::var"#bar#27") (generic function with 1 method)
 |
 |infil> 
 --------------------------------------------------
@@ -108,10 +108,10 @@
 |12
 |
 |infil> foo(x) = x
-|(::var"#foo#28") (generic function with 1 method)
+|(::var"#foo#26") (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::var"#bar#29") (generic function with 1 method)
+|(::var"#bar#27") (generic function with 1 method)
 |
 |infil> x = 2
 |Cannot assign a new value to local variable `x`.
