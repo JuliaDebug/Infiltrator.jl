@@ -76,9 +76,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> 
 --------------------------------------------------
@@ -105,9 +102,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -134,9 +128,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -167,9 +158,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -200,9 +188,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -239,9 +224,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -278,9 +260,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -322,9 +301,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -366,9 +342,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -413,9 +386,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -460,9 +430,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -510,9 +477,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -560,9 +524,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -613,9 +574,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -666,9 +624,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -722,9 +677,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -778,9 +730,6 @@
 |
 |infil> @trace
 |[1] f(x::Int64) at runtests.jl:7
-|[2] #4 at runtests.jl:53 [inlined]
-|[3] (::var"#3#13"{var"#4#14", Vector{Int64}})(emuterm::TerminalRegressionTests.E
-|mulatedTerminal) at runtests.jl:46
 |
 |infil> @locals
 |- y::Vector{Int64} = [1, 2, 3]
@@ -837,9 +786,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

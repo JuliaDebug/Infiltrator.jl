@@ -387,11 +387,14 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
             Base.catch_stack()
           end
           if nostack
-            result = Base.ExceptionStack(map(r -> Any[first(r), []], result))
+            result = map(r -> Any[first(r), []], result)
           else
-            result = Base.ExceptionStack(map(result) do (err, bt)
+            result = map(result) do (err, bt)
               return err, crop_backtrace(bt)
-            end)
+            end
+          end
+          if isdefined(Base, :ExceptionStack)
+            result = Base.ExceptionStack(result)
           end
         end
         REPL.print_response(repl, (result, !ok), true, true)
