@@ -76,9 +76,6 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #6 at runtests.jl:67 [inlined]
-|[3] (::var"#3#13"{var"#6#16", Int64})(emuterm::TerminalRegressionTests.EmulatedT
-|erminal) at runtests.jl:46
 |
 |infil> 
 --------------------------------------------------
@@ -105,9 +102,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -134,9 +128,6 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #6 at runtests.jl:67 [inlined]
-|[3] (::var"#3#13"{var"#6#16", Int64})(emuterm::TerminalRegressionTests.EmulatedT
-|erminal) at runtests.jl:46
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -166,9 +157,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -198,9 +186,6 @@
 |
 |infil> @trace
 |[1] g at runtests.jl:13 [inlined]
-|[2] #6 at runtests.jl:67 [inlined]
-|[3] (::var"#3#13"{var"#6#16", Int64})(emuterm::TerminalRegressionTests.EmulatedT
-|erminal) at runtests.jl:46
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -233,9 +218,6 @@
 |
 |BBBBBBBCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
