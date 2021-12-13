@@ -98,6 +98,11 @@ end
         run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["y\n", "\e[A\n", "\x4", "\e[A\n", "@exit\n"],
                         "Julia_hist_$(VERSION.major).$(VERSION.minor).multiout")
+
+        # top-level test
+        run_terminal_test(() -> include(joinpath(@__DIR__, "toplevel-fixture.jl")), "success",
+                        ["@exit\n"],
+                        "Julia_toplevel_$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end

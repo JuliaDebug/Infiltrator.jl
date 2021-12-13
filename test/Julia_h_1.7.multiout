@@ -1,0 +1,48 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(x::Int64) at runtests.jl:7:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(x::Int64) at runtests.jl:7:
+|
+|infil> 
+|
+|Infiltrating f(x::Int64) at runtests.jl:7:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|DDDDDDD
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating f(x::Int64) at runtests.jl:7:
+|
+|infil> 
+|
+|Infiltrating f(x::Int64) at runtests.jl:7:
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|DDDDDDDCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|DDDDDDD

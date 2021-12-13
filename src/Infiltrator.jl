@@ -198,7 +198,7 @@ function start_prompt(mod, locals, file, fileline;
       repl = Base.active_repl
       terminal = Base.active_repl.t
     else
-      println("Infiltrator.jl needs a proper Julia REPL.")
+      println("Infiltrator.jl needs a fully-functional Julia REPL.")
       return
     end
   end
@@ -206,12 +206,14 @@ function start_prompt(mod, locals, file, fileline;
 
   trace = stacktrace()
   start = something(findlast(x -> x.func === Symbol("start_prompt"), trace), 0) + 2
-  last = something(findlast(x -> x.func === Symbol("eval"), trace),
-                   length(trace)) - 2
+  last = something(findfirst(x -> x.func === Symbol("top-level scope"), trace),
+                   length(trace))
   trace = trace[start:last]
-  current = trace[1]
-
-  println(io, "Infiltrating $current:")
+  if length(trace) > 0
+    println(io, "Infiltrating $(trace[1]):")
+  else
+    println(io, "Infiltrating top-level frame:")
+  end
   println(io)
   debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
   println(io)
@@ -235,8 +237,9 @@ function show_help(io)
   """)
 end
 
-function show_trace(io, trace)
+function show_trace(io, trace, nostack)
   for (i, frame) in enumerate(trace)
+    nostack && i > 1 && break
     println(io, "[", i, "] ", frame)
   end
   println(io)
@@ -311,7 +314,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         LineEdit.reset_state(s)
         return true
       elseif sline == "@trace"
-        show_trace(io, trace)
+        show_trace(io, trace, nostack)
         LineEdit.reset_state(s)
         return true
       elseif sline == "@locals"
@@ -378,13 +381,17 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
           result = interpret(io, expr, mod, locals)
         catch err
           ok = false
-          result = Base.catch_stack()
-          if nostack
-            result = map(r -> Any[first(r), []], result)
+          result = if VERSION >= v"1.7"
+            Base.current_exceptions(current_task(); backtrace = true)
           else
-            result = map(result) do (err, bt)
+            Base.catch_stack()
+          end
+          if nostack
+            result = Base.ExceptionStack(map(r -> Any[first(r), []], result))
+          else
+            result = Base.ExceptionStack(map(result) do (err, bt)
               return err, crop_backtrace(bt)
-            end
+            end)
           end
         end
         REPL.print_response(repl, (result, !ok), true, true)
