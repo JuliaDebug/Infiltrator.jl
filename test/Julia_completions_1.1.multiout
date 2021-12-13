@@ -1,0 +1,360 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Foo(1, 2)
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Foo(1, 2)
+|
+|infil> fo
+|foldl   foldr    foo      for      foreach
+|infil> fo^C
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Foo(1, 2)
+|
+|infil> fo
+|foldl   foldr    foo      for      foreach
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Foo(1, 2)
+|
+|infil> fo
+|foldl   foldr    foo      for      foreach
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Foo(1, 2)
+|
+|infil> fo
+|foldl   foldr    foo      for      foreach
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> aaaa^C
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
+|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Foo(1, 2)
+|
+|infil> fo
+|foldl   foldr    foo      for      foreach
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> aaaa^C
+|
+|infil> aaaa.xxx
+|333
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCC
+|CCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|

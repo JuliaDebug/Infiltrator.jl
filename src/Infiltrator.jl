@@ -520,7 +520,15 @@ end
 
 mutable struct InfiltratorCompletionProvider <: REPL.CompletionProvider
   mod::Module
-  locals::Dict{Symbol, Any}
+  localmod::Module
+end
+
+function InfiltratorCompletionProvider(mod, locals::Dict{Symbol, Any})
+  localmod = Module()
+  for (key, val) in locals
+    Core.eval(localmod, Expr(:(=), key, QuoteNode(val)))
+  end
+  InfiltratorCompletionProvider(mod, localmod)
 end
 
 function LineEdit.complete_line(c::InfiltratorCompletionProvider, s)
@@ -536,8 +544,13 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.mod)
   ret = map(REPL.REPLCompletions.completion_text, comps)
 
-  # local completions
-  prepend!(ret, filter!(v -> startswith(v, partial), vcat(string.(keys(c.locals)), string.(keys(get_store_names())))))
+  # completions for local variables
+  comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.localmod)
+  prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
+
+  # completions for safehouse variables
+  comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), getfield(store, :store))
+  prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
 
   # Infiltrator commands completions
   commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate"]

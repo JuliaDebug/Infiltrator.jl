@@ -28,6 +28,17 @@ function j(x)
     return x*xxxxx
 end
 
+struct Bar
+    xxx
+    yyy
+end
+function k()
+    zzzzz = 333
+    aaaa = Bar(zzzzz, zzzzz)
+    @infiltrate
+    aaaa
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -103,6 +114,12 @@ end
         run_terminal_test(() -> include(joinpath(@__DIR__, "toplevel-fixture.jl")), "success",
                         ["@exit\n"],
                         "Julia_toplevel_$(VERSION.major).$(VERSION.minor).multiout")
+
+        # completions test
+        run_terminal_test(k, Bar(333, 333),
+                        ["struct Foo\n  xxx\n  yyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exit\n"],
+                        "Julia_completions_$(VERSION.major).$(VERSION.minor).multiout")
+        @test Infiltrator.store.foo.xxx == 1
     else
         @warn "Skipping UI tests on non unix systems"
     end
