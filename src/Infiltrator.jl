@@ -11,7 +11,7 @@ function __init__()
   clear_store!(store)
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
+        pushfirst!(Base.active_repl_backend.ast_transforms, exit_transformer(gensym()))
         REPL_HOOKED[] = true
     else
       atreplinit() do repl
@@ -23,7 +23,7 @@ function __init__()
             iter += 1
           end
           if isdefined(Base, :active_repl_backend)
-            pushfirst!(Base.active_repl_backend.ast_transforms, exit_transform)
+            pushfirst!(Base.active_repl_backend.ast_transforms, exit_transformer(gensym()))
             REPL_HOOKED[] = true
           end
         end
@@ -479,11 +479,14 @@ function interpret(io, expr, mod, locals)
   eval_res
 end
 
-function exit_transform(ex)
-  return quote
-    out = $(ex)
-    $(@__MODULE__).end_session!()
-    out
+function exit_transformer(sym)
+  return function (ex)
+    return quote
+      let $(sym) = $(ex)
+        $(@__MODULE__).end_session!()
+        $(sym)
+      end
+    end
   end
 end
 
