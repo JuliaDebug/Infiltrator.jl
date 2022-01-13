@@ -206,12 +206,6 @@ function start_prompt(mod, locals, file, fileline;
     end
   end
 
-  if CHECK_TASK[] && current_task() != CURRENT_EVAL_TASK[]
-    println("Cannot infiltrate foreign tasks. Disabling this infiltration point.")
-    push!(getfield(store, :disabled), ((file, fileline)))
-    return
-  end
-
   io = Base.pipe_writer(terminal)
 
   trace = stacktrace()
@@ -219,6 +213,17 @@ function start_prompt(mod, locals, file, fileline;
   last = something(findfirst(x -> x.func === Symbol("top-level scope"), trace),
                    length(trace))
   trace = trace[start:last]
+
+  if CHECK_TASK[] && current_task() != CURRENT_EVAL_TASK[]
+    if length(trace) > 0
+      println(io, "Cannot infiltrate foreign tasks. Disabling infiltration point at $(trace[1]).")
+    else
+      println(io, "Cannot infiltrate foreign tasks. Disabling this infiltration point.")
+    end
+    push!(getfield(store, :disabled), ((file, fileline)))
+    return
+  end
+
   if length(trace) > 0
     println(io, "Infiltrating $(trace[1]):")
   else
