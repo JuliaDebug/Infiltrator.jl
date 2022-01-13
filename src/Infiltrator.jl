@@ -207,7 +207,7 @@ function start_prompt(mod, locals, file, fileline;
   end
 
   if CHECK_TASK[] && (!isdefined(Base, :active_repl_backend) || Base.active_repl_backend.backend_task != current_task())
-    println("Cannot infiltrate spawned tasks. Disabling this infiltration point.")
+    println("Cannot infiltrate foreign tasks. Disabling this infiltration point.")
     push!(getfield(store, :disabled), ((file, fileline)))
     return
   end
