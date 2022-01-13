@@ -11,7 +11,7 @@ function __init__()
   clear_store!(store)
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, exit_transformer(gensym()))
+        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
         REPL_HOOKED[] = true
     else
       atreplinit() do repl
@@ -23,7 +23,7 @@ function __init__()
             iter += 1
           end
           if isdefined(Base, :active_repl_backend)
-            pushfirst!(Base.active_repl_backend.ast_transforms, exit_transformer(gensym()))
+            pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
             REPL_HOOKED[] = true
           end
         end
@@ -82,6 +82,9 @@ end
 const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
+
+const CHECK_TASK = Ref{Bool}(true)
+const CURRENT_EVAL_TASK = Ref{Any}(nothing)
 
 mutable struct Session
   store::Module
@@ -202,6 +205,7 @@ function start_prompt(mod, locals, file, fileline;
       return
     end
   end
+
   io = Base.pipe_writer(terminal)
 
   trace = stacktrace()
@@ -209,6 +213,17 @@ function start_prompt(mod, locals, file, fileline;
   last = something(findfirst(x -> x.func === Symbol("top-level scope"), trace),
                    length(trace))
   trace = trace[start:last]
+
+  if CHECK_TASK[] && current_task() != CURRENT_EVAL_TASK[]
+    if length(trace) > 0
+      println(io, "Cannot infiltrate foreign tasks. Disabling infiltration point at $(trace[1]).")
+    else
+      println(io, "Cannot infiltrate foreign tasks. Disabling this infiltration point.")
+    end
+    push!(getfield(store, :disabled), ((file, fileline)))
+    return
+  end
+
   if length(trace) > 0
     println(io, "Infiltrating $(trace[1]):")
   else
@@ -479,10 +494,11 @@ function interpret(io, expr, mod, locals)
   eval_res
 end
 
-function exit_transformer(sym)
+function ast_transformer(sym)
   return function (ex)
     return quote
       let $(sym) = $(ex)
+        $(@__MODULE__).CURRENT_EVAL_TASK[] = current_task()
         $(@__MODULE__).end_session!()
         $(sym)
       end

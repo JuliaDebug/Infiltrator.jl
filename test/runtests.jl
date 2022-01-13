@@ -53,7 +53,7 @@ end
 
                 Infiltrator.TEST_TERMINAL_REF[] = repl.t
                 Infiltrator.TEST_NOSTACK[] = true
-                Infiltrator.TEST_REPL_REF[] = repl
+                Infiltrator.TEST_REPL_REF[] = repl; Infiltrator.CHECK_TASK[] = false
                 @test func() == result
                 Infiltrator.TEST_TERMINAL_REF[] = nothing
                 Infiltrator.TEST_NOSTACK[] = false
