@@ -11,7 +11,7 @@ function __init__()
   clear_store!(store)
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, exit_transformer(gensym()))
+        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
         REPL_HOOKED[] = true
     else
       atreplinit() do repl
@@ -23,7 +23,7 @@ function __init__()
             iter += 1
           end
           if isdefined(Base, :active_repl_backend)
-            pushfirst!(Base.active_repl_backend.ast_transforms, exit_transformer(gensym()))
+            pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
             REPL_HOOKED[] = true
           end
         end
@@ -82,6 +82,8 @@ end
 const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
+
+const CHECK_TASK = Ref{Bool}(true)
 
 mutable struct Session
   store::Module
@@ -188,7 +190,8 @@ end
 function start_prompt(mod, locals, file, fileline;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
-                        nostack = TEST_NOSTACK[]
+                        nostack = TEST_NOSTACK[],
+                        backend = nothing
                       )
   getfield(store, :exiting) && return
   (file, fileline) in getfield(store, :disabled) && return
@@ -202,6 +205,13 @@ function start_prompt(mod, locals, file, fileline;
       return
     end
   end
+
+  if CHECK_TASK[] && (!isdefined(Base, :active_repl_backend) || Base.active_repl_backend.backend_task != current_task())
+    println("Cannot infiltrate spawned tasks. Disabling this infiltration point.")
+    push!(getfield(store, :disabled), ((file, fileline)))
+    return
+  end
+
   io = Base.pipe_writer(terminal)
 
   trace = stacktrace()
@@ -479,7 +489,7 @@ function interpret(io, expr, mod, locals)
   eval_res
 end
 
-function exit_transformer(sym)
+function ast_transformer(sym)
   return function (ex)
     return quote
       let $(sym) = $(ex)
