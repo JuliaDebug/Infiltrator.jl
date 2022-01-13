@@ -84,6 +84,7 @@ const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
 const CHECK_TASK = Ref{Bool}(true)
+const CURRENT_EVAL_TASK = Ref{Any}(nothing)
 
 mutable struct Session
   store::Module
@@ -190,8 +191,7 @@ end
 function start_prompt(mod, locals, file, fileline;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
-                        nostack = TEST_NOSTACK[],
-                        backend = nothing
+                        nostack = TEST_NOSTACK[]
                       )
   getfield(store, :exiting) && return
   (file, fileline) in getfield(store, :disabled) && return
@@ -206,7 +206,7 @@ function start_prompt(mod, locals, file, fileline;
     end
   end
 
-  if CHECK_TASK[] && (!isdefined(Base, :active_repl_backend) || Base.active_repl_backend.backend_task != current_task())
+  if CHECK_TASK[] && current_task() != CURRENT_EVAL_TASK[]
     println("Cannot infiltrate foreign tasks. Disabling this infiltration point.")
     push!(getfield(store, :disabled), ((file, fileline)))
     return
@@ -493,6 +493,7 @@ function ast_transformer(sym)
   return function (ex)
     return quote
       let $(sym) = $(ex)
+        $(@__MODULE__).CURRENT_EVAL_TASK[] = current_task()
         $(@__MODULE__).end_session!()
         $(sym)
       end
