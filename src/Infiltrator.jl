@@ -214,7 +214,7 @@ function start_prompt(mod, locals, file, fileline;
                    length(trace))
   trace = trace[start:last]
 
-  if CHECK_TASK[] && current_task() != CURRENT_EVAL_TASK[]
+  if CHECK_TASK[] && CURRENT_EVAL_TASK[] !== nothing && current_task() != CURRENT_EVAL_TASK[]
     if length(trace) > 0
       println(io, "Cannot infiltrate foreign tasks. Disabling infiltration point at $(trace[1]).")
     else
@@ -497,8 +497,9 @@ end
 function ast_transformer(sym)
   return function (ex)
     return quote
+      $(@__MODULE__).CURRENT_EVAL_TASK[] = current_task()
       let $(sym) = $(ex)
-        $(@__MODULE__).CURRENT_EVAL_TASK[] = current_task()
+        $(@__MODULE__).CURRENT_EVAL_TASK[] = nothing
         $(@__MODULE__).end_session!()
         $(sym)
       end
