@@ -133,7 +133,7 @@ const exfiltrated = store
 
 Evaluates the expression `ex` in the context of the global store.
 
-Mainly intended for interactive use, as changes to the stores state will not
+Mainly intended for interactive use, as changes to the store's state will not
 propagate into the returned expression.
 """
 macro withstore(ex)
@@ -412,7 +412,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
             result = Base.ExceptionStack(result)
           end
         end
-        REPL.print_response(repl, (result, !ok), true, true)
+        if !ok || !REPL.ends_with_semicolon(line)
+          REPL.print_response(repl, (result, !ok), true, true)
+        end
       else
         try
           result = interpret(io, expr, mod, locals)
@@ -420,7 +422,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
           ok = false
           result = (err, nostack ? Any[] : crop_backtrace(catch_backtrace()))
         end
-        REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
+        if !ok || !REPL.ends_with_semicolon(line)
+          REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
+        end
       end
       println(io)
       LineEdit.reset_state(s)
@@ -451,47 +455,26 @@ end
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
 function interpret(io, expr, mod, locals)
-  symbols = merge(get_store_names(), locals)
-  Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
-  res = gensym()
-  eval_expr = Expr(:let,
-    Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in symbols])...),
-    Expr(:block,
-      Expr(:(=), res, expr),
-      Expr(:tuple, res, Expr(:tuple, [k for (k, v) in locals]...))
-    )
-  )
-  eval_res, res = Core.eval(mod, eval_expr)
-
-  assignment = nothing
-  if Meta.isexpr(expr, :(=))
-    if expr.args[1] isa Symbol
-      assignment = expr.args[1]
-    elseif Meta.isexpr(expr.args[1], :call) && expr.args[1].args[1] isa Symbol
-      assignment = expr.args[1].args[1]
-    end
-  elseif Meta.isexpr(expr, :function)
-    assignment = expr.args[1].args[1]
-  end
-  if assignment !== nothing
-    if haskey(locals, assignment)
-      str = "Cannot assign a new value to local variable `$(assignment)`."
-      if get(io, :color, false)
-        println(io, str)
-      else
-        printstyled(io, str, color = Base.error_color())
-      end
-    else
-      try
-        Core.eval(getfield(store, :store), Expr(:(=), assignment, QuoteNode(eval_res)))
-      catch err
-        println(io, "Assignment to store variable failed.")
-        Base.display_error(io, err, catch_backtrace())
-      end
+  newmod = Module()
+  Core.eval(newmod, Expr(:(=), Symbol(mod), mod))
+  Core.eval(newmod, Expr(:macro,
+    Expr(
+      :call, Symbol("__MODULE__")
+    ),
+    Expr(
+      :block,
+      mod
+    )))
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...))
+  ns = names(newmod, all=true)
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in get_store_names()])...))
+  out = Core.eval(newmod, :(ans = $(expr)))
+  for n in names(newmod, all = true)
+    if !(n in ns)
+      Core.eval(getfield(safehouse, :store), Expr(:(=), n, getfield(newmod, n)))
     end
   end
-
-  eval_res
+  out
 end
 
 function ast_transformer(sym)

@@ -45,7 +45,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> 
 |
@@ -63,7 +63,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -81,7 +81,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -103,7 +103,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -125,7 +125,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -150,7 +150,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -175,7 +175,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -202,7 +202,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -229,7 +229,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -240,7 +240,9 @@
 |
 |infil> zzzzz^C
 |
-|infil> aaaa^C
+|infil> aa
+|aa   aaaa
+|infil> aa^C
 |
 |infil> 
 |
@@ -258,7 +260,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -269,7 +271,9 @@
 |
 |BBBBBBBCCCCCCC
 |
-|BBBBBBBCCCCCC
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
 |
 |BBBBBBB
 |
@@ -287,7 +291,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -298,7 +302,9 @@
 |
 |infil> zzzzz^C
 |
-|infil> aaaa^C
+|infil> aa
+|aa   aaaa
+|infil> aa^C
 |
 |infil> aaaa.xxx
 |333
@@ -319,7 +325,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -330,7 +336,9 @@
 |
 |BBBBBBBCCCCCCC
 |
-|BBBBBBBCCCCCC
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
 |
 |BBBBBBBCCCCCCCC
 |CCC

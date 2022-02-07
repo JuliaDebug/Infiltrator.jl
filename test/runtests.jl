@@ -62,7 +62,7 @@ end
         end
 
         run_terminal_test(() -> f(3), [3, 4, 5],
-                        ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "foo\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
+                        ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "@__MODULE__().foo\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
                         "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test f(3) == [3, 4, 5] # `@toggle`d `@infiltrate` should not open a prompt
@@ -90,10 +90,12 @@ end
 
         # scratch pad test
         run_terminal_test(() -> g(2), 24,
-                        ["@locals\n", "xxxxx = 12\n", "foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "\x4"],
+                        ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n","foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "\x4"],
                         "Julia_exfil_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test Infiltrator.store.xxxxx == 12
+        @test Infiltrator.store.aa == 'a'
+        @test Infiltrator.store.bb == 'b'
         @test Infiltrator.store.foo(3) == 3
         @test Infiltrator.store.bar(3) == 6
         @test !isdefined(getfield(Infiltrator.store, :store), :x)

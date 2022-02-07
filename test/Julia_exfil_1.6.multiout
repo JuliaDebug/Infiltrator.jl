@@ -49,8 +49,8 @@
 |infil> xxxxx = 12
 |12
 |
-|infil> foo(x) = x
-|(::var"#foo#24") (generic function with 1 method)
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
 |
 |infil> 
 --------------------------------------------------
@@ -62,8 +62,8 @@
 |BBBBBBBCCCCCCCCCC
 |CC
 |
-|BBBBBBBCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -75,11 +75,11 @@
 |infil> xxxxx = 12
 |12
 |
-|infil> foo(x) = x
-|(::var"#foo#24") (generic function with 1 method)
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
 |
-|infil> function bar(x); 2x; end
-|(::var"#bar#25") (generic function with 1 method)
+|infil> foo(x) = x
+|foo (generic function with 1 method)
 |
 |infil> 
 --------------------------------------------------
@@ -91,11 +91,49 @@
 |BBBBBBBCCCCCCCCCC
 |CC
 |
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
 |BBBBBBBCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating g at runtests.jl:13 [inlined]:
+|
+|infil> @locals
+|- x::Int64 = 24
+|
+|infil> xxxxx = 12
+|12
+|
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
+|infil> foo(x) = x
+|foo (generic function with 1 method)
+|
+|infil> function bar(x); 2x; end
+|bar (generic function with 1 method)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -107,14 +145,16 @@
 |infil> xxxxx = 12
 |12
 |
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
 |infil> foo(x) = x
-|(::var"#foo#24") (generic function with 1 method)
+|foo (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::var"#bar#25") (generic function with 1 method)
+|bar (generic function with 1 method)
 |
 |infil> x = 2
-|Cannot assign a new value to local variable `x`.
 |2
 |
 |infil> 
@@ -127,14 +167,16 @@
 |BBBBBBBCCCCCCCCCC
 |CC
 |
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
 |BBBBBBBCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |C
 |
 |BBBBBBB
