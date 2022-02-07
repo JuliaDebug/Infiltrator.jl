@@ -357,6 +357,97 @@
 |       4
 |7
 |
+|infil> ans
+|7
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent store module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the store.
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled!()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
+|
+|infil> @trace
+|[1] f(::Int64) at runtests.jl:7
+|
+|infil> @locals
+|- y::Array{Int64,1} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Array{Int64,1}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
 |infil> @__MODULE__().foo
 |3
 |
@@ -401,6 +492,9 @@
 |AAAAAAAC
 |C
 |
+|BBBBBBBCCC
+|C
+|
 |BBBBBBBCCCCCCCCCCCCCCCCC
 |C
 |
@@ -443,6 +537,9 @@
 |
 |infil> 3+
 |       4
+|7
+|
+|infil> ans
 |7
 |
 |infil> @__MODULE__().foo
@@ -492,6 +589,9 @@
 |AAAAAAAC
 |C
 |
+|BBBBBBBCCC
+|C
+|
 |BBBBBBBCCCCCCCCCCCCCCCCC
 |C
 |
@@ -537,6 +637,9 @@
 |
 |infil> 3+
 |       4
+|7
+|
+|infil> ans
 |7
 |
 |infil> @__MODULE__().foo
@@ -589,6 +692,9 @@
 |AAAAAAAC
 |C
 |
+|BBBBBBBCCC
+|C
+|
 |BBBBBBBCCCCCCCCCCCCCCCCC
 |C
 |
@@ -637,6 +743,9 @@
 |
 |infil> 3+
 |       4
+|7
+|
+|infil> ans
 |7
 |
 |infil> @__MODULE__().foo
@@ -690,6 +799,9 @@
 |
 |BBBBBBBCC
 |AAAAAAAC
+|C
+|
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCCCCCCCCCCCCCCCC
@@ -745,6 +857,9 @@
 |       4
 |7
 |
+|infil> ans
+|7
+|
 |infil> @__MODULE__().foo
 |3
 |
@@ -799,6 +914,9 @@
 |
 |BBBBBBBCC
 |AAAAAAAC
+|C
+|
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCCCCCCCCCCCCCCCC
