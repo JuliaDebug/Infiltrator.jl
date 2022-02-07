@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -30,7 +30,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -53,7 +53,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -79,7 +79,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -105,7 +105,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -135,7 +135,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -165,7 +165,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -201,7 +201,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -237,7 +237,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -278,7 +278,7 @@
 |infil> 
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -319,7 +319,7 @@
 |BBBBBBB
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -357,13 +357,13 @@
 |       4
 |7
 |
-|infil> foo
-|3
+|infil> ans
+|7
 |
 |infil> 
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -407,7 +407,7 @@
 |BBBBBBB
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -445,16 +445,16 @@
 |       4
 |7
 |
-|infil> foo
-|3
+|infil> ans
+|7
 |
-|infil> 0//0
-|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|infil> baz
+|3
 |
 |infil> 
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -490,6 +490,106 @@
 |
 |BBBBBBBCC
 |AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> ?
+|  Code entered is evaluated in the current functions module. Note that you canno
+|t change local
+|  variables, but can assign to globals in a permanent store module.
+|
+|  The following commands are special cased:
+|    - `?`: Print this help text.
+|    - `@trace`: Print the current stack trace.
+|    - `@locals`: Print local variables.
+|    - `@exfiltrate`: Save all local variables into the store.
+|    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
+|`Infiltrator.clear_disabled!()`).
+|    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ct
+|rl-D).
+|    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
+|    - `@exit`: Stop infiltrating for the remainder of this session and exit (on 
+|Julia versions prior to
+|      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
+|
+|infil> @trace
+|[1] f(x::Int64) at runtests.jl:7
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> baz
+|3
+|
+|infil> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCC
@@ -501,7 +601,7 @@
 |BBBBBBB
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -539,7 +639,10 @@
 |       4
 |7
 |
-|infil> foo
+|infil> ans
+|7
+|
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -551,7 +654,7 @@
 |infil> 
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -587,6 +690,9 @@
 |
 |BBBBBBBCC
 |AAAAAAAC
+|C
+|
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCC
@@ -601,7 +707,7 @@
 |BBBBBBB
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -639,7 +745,10 @@
 |       4
 |7
 |
-|infil> foo
+|infil> ans
+|7
+|
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -654,7 +763,7 @@
 |infil> 
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -690,6 +799,9 @@
 |
 |BBBBBBBCC
 |AAAAAAAC
+|C
+|
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCC
@@ -707,7 +819,7 @@
 |BBBBBBB
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(x::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> ?
 |  Code entered is evaluated in the current functions module. Note that you canno
@@ -745,7 +857,10 @@
 |       4
 |7
 |
-|infil> foo
+|infil> ans
+|7
+|
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -763,7 +878,7 @@
 |infil> 
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -799,6 +914,9 @@
 |
 |BBBBBBBCC
 |AAAAAAAC
+|C
+|
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCC

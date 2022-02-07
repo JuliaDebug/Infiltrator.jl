@@ -1,16 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -25,8 +22,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -41,8 +37,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -50,7 +45,7 @@
 |           end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> 
 |
@@ -60,8 +55,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -69,7 +63,7 @@
 |AAAAAAACCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -79,8 +73,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -88,7 +81,7 @@
 |           end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -102,8 +95,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -111,7 +103,7 @@
 |AAAAAAACCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -125,8 +117,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -134,7 +125,7 @@
 |           end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -151,8 +142,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -160,7 +150,7 @@
 |AAAAAAACCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -177,8 +167,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -186,7 +175,7 @@
 |           end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -205,8 +194,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -214,7 +202,7 @@
 |AAAAAAACCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -233,8 +221,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -242,7 +229,7 @@
 |           end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -253,7 +240,9 @@
 |
 |infil> zzzzz^C
 |
-|infil> aaaa^C
+|infil> aa
+|aa   aaaa
+|infil> aa^C
 |
 |infil> 
 |
@@ -263,8 +252,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -272,7 +260,7 @@
 |AAAAAAACCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -283,7 +271,9 @@
 |
 |BBBBBBBCCCCCCC
 |
-|BBBBBBBCCCCCC
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
 |
 |BBBBBBB
 |
@@ -293,8 +283,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -302,7 +291,7 @@
 |           end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -313,7 +302,9 @@
 |
 |infil> zzzzz^C
 |
-|infil> aaaa^C
+|infil> aa
+|aa   aaaa
+|infil> aa^C
 |
 |infil> aaaa.xxx
 |333
@@ -326,8 +317,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -335,7 +325,7 @@
 |AAAAAAACCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -346,7 +336,9 @@
 |
 |BBBBBBBCCCCCCC
 |
-|BBBBBBBCCCCCC
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
 |
 |BBBBBBBCCCCCCCC
 |CCC

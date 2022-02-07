@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -22,7 +22,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -37,7 +37,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -45,7 +45,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> 
 |
@@ -55,7 +55,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -63,7 +63,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -73,7 +73,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -81,7 +81,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -95,7 +95,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -103,7 +103,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -117,7 +117,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -125,7 +125,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -142,7 +142,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -150,7 +150,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -167,7 +167,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -175,7 +175,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -194,7 +194,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -202,7 +202,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -221,7 +221,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -229,7 +229,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -240,7 +240,9 @@
 |
 |infil> zzzzz^C
 |
-|infil> aaaa^C
+|infil> aa
+|aa   aaaa
+|infil> aa^C
 |
 |infil> 
 |
@@ -250,7 +252,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -258,7 +260,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -269,7 +271,9 @@
 |
 |BBBBBBBCCCCCCC
 |
-|BBBBBBBCCCCCC
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
 |
 |BBBBBBB
 |
@@ -279,7 +283,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -287,7 +291,7 @@
 |       end
 |
 |infil> foo = Foo(1, 2)
-|Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
 |
 |infil> fo
 |foldl   foldr    foo      for      foreach
@@ -298,7 +302,9 @@
 |
 |infil> zzzzz^C
 |
-|infil> aaaa^C
+|infil> aa
+|aa   aaaa
+|infil> aa^C
 |
 |infil> aaaa.xxx
 |333
@@ -311,7 +317,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -319,7 +325,7 @@
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
-|CCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCC
 |CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
@@ -330,7 +336,9 @@
 |
 |BBBBBBBCCCCCCC
 |
-|BBBBBBBCCCCCC
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
 |
 |BBBBBBBCCCCCCCC
 |CCC

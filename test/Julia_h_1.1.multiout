@@ -1,33 +1,33 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> 
 |
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
 |
 |DDDDDDD
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> 
 |
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -35,11 +35,11 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
 |
 |DDDDDDDCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

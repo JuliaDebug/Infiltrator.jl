@@ -133,7 +133,7 @@ const exfiltrated = store
 
 Evaluates the expression `ex` in the context of the global store.
 
-Mainly intended for interactive use, as changes to the stores state will not
+Mainly intended for interactive use, as changes to the store's state will not
 propagate into the returned expression.
 """
 macro withstore(ex)
@@ -225,7 +225,11 @@ function start_prompt(mod, locals, file, fileline;
   end
 
   if length(trace) > 0
-    println(io, "Infiltrating $(trace[1]):")
+    if nostack
+      println(io, "Infiltrating <unknown>:")
+    else
+      println(io, "Infiltrating $(trace[1]):")
+    end
   else
     println(io, "Infiltrating top-level frame:")
   end
@@ -412,7 +416,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
             result = Base.ExceptionStack(result)
           end
         end
-        REPL.print_response(repl, (result, !ok), true, true)
+        if !ok || !REPL.ends_with_semicolon(line)
+          REPL.print_response(repl, (result, !ok), true, true)
+        end
       else
         try
           result = interpret(io, expr, mod, locals)
@@ -420,7 +426,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
           ok = false
           result = (err, nostack ? Any[] : crop_backtrace(catch_backtrace()))
         end
-        REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
+        if !ok || !REPL.ends_with_semicolon(line)
+          REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
+        end
       end
       println(io)
       LineEdit.reset_state(s)
@@ -436,8 +444,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
   end
 end
 
-function get_store_names(s = store)
-  m = getfield(s, :store)
+get_store_names(s = store) = get_module_names(getfield(s, :store))
+
+function get_module_names(m::Module)
   ns = names(m, all = true)
   out = Dict()
   for n in ns
@@ -451,47 +460,36 @@ end
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
 function interpret(io, expr, mod, locals)
-  symbols = merge(get_store_names(), locals)
-  Meta.isexpr(expr, :toplevel) && (expr = expr.args[end])
-  res = gensym()
-  eval_expr = Expr(:let,
-    Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in symbols])...),
-    Expr(:block,
-      Expr(:(=), res, expr),
-      Expr(:tuple, res, Expr(:tuple, [k for (k, v) in locals]...))
-    )
+  modns = get_module_names(mod)
+
+  newmod = Module()
+  # assign source code module name
+  Core.eval(newmod, Expr(:(=), Symbol(mod), mod))
+  # spoof @__MODULE__
+  Core.eval(newmod, Expr(:macro,
+    Expr(:call, Symbol("__MODULE__")),
+    Expr(:block, mod))
   )
-  eval_res, res = Core.eval(mod, eval_expr)
+  # insert local variables into current scope
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...))
+  # checkpoint defined bindings (all new bindings that aren't in mod's global scope will be exfiltrated later)
+  ns = names(newmod, all=true)
+  # insert variables in safehouse
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in get_store_names()])...))
+  # insert all bindings from the source module that aren't already defined in the eval module
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in modns if !isdefined(newmod, k)])...))
 
-  assignment = nothing
-  if Meta.isexpr(expr, :(=))
-    if expr.args[1] isa Symbol
-      assignment = expr.args[1]
-    elseif Meta.isexpr(expr.args[1], :call) && expr.args[1].args[1] isa Symbol
-      assignment = expr.args[1].args[1]
-    end
-  elseif Meta.isexpr(expr, :function)
-    assignment = expr.args[1].args[1]
-  end
-  if assignment !== nothing
-    if haskey(locals, assignment)
-      str = "Cannot assign a new value to local variable `$(assignment)`."
-      if get(io, :color, false)
-        println(io, str)
-      else
-        printstyled(io, str, color = Base.error_color())
-      end
-    else
-      try
-        Core.eval(getfield(store, :store), Expr(:(=), assignment, QuoteNode(eval_res)))
-      catch err
-        println(io, "Assignment to store variable failed.")
-        Base.display_error(io, err, catch_backtrace())
-      end
+  # eval user code into temporary module
+  out = Core.eval(newmod, :(ans = $(expr)))
+
+  # exfiltrate all new assignments into the safehouse
+  for n in names(newmod, all = true)
+    if !(n in ns || haskey(modns, n))
+      Core.eval(getfield(safehouse, :store), Expr(:(=), n, getfield(newmod, n)))
     end
   end
 
-  eval_res
+  return out
 end
 
 function ast_transformer(sym)

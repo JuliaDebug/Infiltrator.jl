@@ -1,27 +1,27 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating g at runtests.jl:13 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating g at runtests.jl:13 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> @locals
 |- x::Int64 = 24
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating g at runtests.jl:13 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -31,30 +31,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBCCCCCCC
-|CCCCCCCCCCCCCCC
-|
-|BBBBBBBCCCCCCCCCC
-|CC
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating g at runtests.jl:13 [inlined]:
-|
-|infil> @locals
-|- x::Int64 = 24
-|
-|infil> xxxxx = 12
-|12
-|
-|infil> foo(x) = x
-|(::getfield(Main, Symbol("#foo#26"))) (generic function with 1 method)
-|
-|infil> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -62,12 +39,9 @@
 |BBBBBBBCCCCCCCCCC
 |CC
 |
-|BBBBBBBCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating g at runtests.jl:13 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -75,15 +49,76 @@
 |infil> xxxxx = 12
 |12
 |
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> @locals
+|- x::Int64 = 24
+|
+|infil> xxxxx = 12
+|12
+|
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
 |infil> foo(x) = x
-|(::getfield(Main, Symbol("#foo#26"))) (generic function with 1 method)
+|foo (generic function with 1 method)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> @locals
+|- x::Int64 = 24
+|
+|infil> xxxxx = 12
+|12
+|
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
+|infil> foo(x) = x
+|foo (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::getfield(Main, Symbol("#bar#27"))) (generic function with 1 method)
+|bar (generic function with 1 method)
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -91,15 +126,18 @@
 |BBBBBBBCCCCCCCCCC
 |CC
 |
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
 |BBBBBBBCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating g at runtests.jl:13 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -107,19 +145,21 @@
 |infil> xxxxx = 12
 |12
 |
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
 |infil> foo(x) = x
-|(::getfield(Main, Symbol("#foo#26"))) (generic function with 1 method)
+|foo (generic function with 1 method)
 |
 |infil> function bar(x); 2x; end
-|(::getfield(Main, Symbol("#bar#27"))) (generic function with 1 method)
+|bar (generic function with 1 method)
 |
 |infil> x = 2
-|Cannot assign a new value to local variable `x`.
 |2
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -127,14 +167,16 @@
 |BBBBBBBCCCCCCCCCC
 |CC
 |
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
 |BBBBBBBCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |C
 |
 |BBBBBBB
