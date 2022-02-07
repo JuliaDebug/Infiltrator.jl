@@ -1,6 +1,6 @@
 using Test, Infiltrator, REPL
 
-foo = 3
+baz = 3
 function f(x)
     x = 2
     y = [1, 2, 3]
@@ -44,8 +44,8 @@ end
         using TerminalRegressionTests
 
         function run_terminal_test(func, result, commands, validation)
-            TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-            # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
                 Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
@@ -62,7 +62,7 @@ end
         end
 
         run_terminal_test(() -> f(3), [3, 4, 5],
-                        ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "@__MODULE__().foo\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
+                        ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
                         "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test f(3) == [3, 4, 5] # `@toggle`d `@infiltrate` should not open a prompt
@@ -82,7 +82,6 @@ end
         run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["\x4", "@locals\n", "@exit\n"],
                         "Julia_h_$(VERSION.major).$(VERSION.minor).multiout")
-
 
         run_terminal_test(() -> i(1000), i(1000),
                         ["2+2\n", "@locals\n", "\x4"],

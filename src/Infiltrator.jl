@@ -444,8 +444,9 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
   end
 end
 
-function get_store_names(s = store)
-  m = getfield(s, :store)
+get_store_names(s = store) = get_module_names(getfield(s, :store))
+
+function get_module_names(m::Module)
   ns = names(m, all = true)
   out = Dict()
   for n in ns
@@ -459,26 +460,36 @@ end
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
 function interpret(io, expr, mod, locals)
+  modns = get_module_names(mod)
+
   newmod = Module()
+  # assign source code module name
   Core.eval(newmod, Expr(:(=), Symbol(mod), mod))
+  # spoof @__MODULE__
   Core.eval(newmod, Expr(:macro,
-    Expr(
-      :call, Symbol("__MODULE__")
-    ),
-    Expr(
-      :block,
-      mod
-    )))
+    Expr(:call, Symbol("__MODULE__")),
+    Expr(:block, mod))
+  )
+  # insert local variables into current scope
   Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...))
+  # checkpoint defined bindings (all new bindings that aren't in mod's global scope will be exfiltrated later)
   ns = names(newmod, all=true)
+  # insert variables in safehouse
   Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in get_store_names()])...))
+  # insert all bindings from the source module that aren't already defined in the eval module
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in modns if !isdefined(newmod, k)])...))
+
+  # eval user code into temporary module
   out = Core.eval(newmod, :(ans = $(expr)))
+
+  # exfiltrate all new assignments into the safehouse
   for n in names(newmod, all = true)
-    if !(n in ns)
+    if !(n in ns || haskey(modns, n))
       Core.eval(getfield(safehouse, :store), Expr(:(=), n, getfield(newmod, n)))
     end
   end
-  out
+
+  return out
 end
 
 function ast_transformer(sym)

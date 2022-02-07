@@ -448,7 +448,7 @@
 |infil> ans
 |7
 |
-|infil> @__MODULE__().foo
+|infil> baz
 |3
 |
 |infil> 
@@ -495,7 +495,7 @@
 |BBBBBBBCCC
 |C
 |
-|BBBBBBBCCCCCCCCCCCCCCCCC
+|BBBBBBBCCC
 |C
 |
 |BBBBBBB
@@ -542,7 +542,7 @@
 |infil> ans
 |7
 |
-|infil> @__MODULE__().foo
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -592,7 +592,7 @@
 |BBBBBBBCCC
 |C
 |
-|BBBBBBBCCCCCCCCCCCCCCCCC
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCCC
@@ -642,7 +642,7 @@
 |infil> ans
 |7
 |
-|infil> @__MODULE__().foo
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -695,7 +695,7 @@
 |BBBBBBBCCC
 |C
 |
-|BBBBBBBCCCCCCCCCCCCCCCCC
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCCC
@@ -748,7 +748,7 @@
 |infil> ans
 |7
 |
-|infil> @__MODULE__().foo
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -804,7 +804,7 @@
 |BBBBBBBCCC
 |C
 |
-|BBBBBBBCCCCCCCCCCCCCCCCC
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCCC
@@ -860,7 +860,7 @@
 |infil> ans
 |7
 |
-|infil> @__MODULE__().foo
+|infil> baz
 |3
 |
 |infil> 0//0
@@ -919,7 +919,7 @@
 |BBBBBBBCCC
 |C
 |
-|BBBBBBBCCCCCCCCCCCCCCCCC
+|BBBBBBBCCC
 |C
 |
 |BBBBBBBCCCC
