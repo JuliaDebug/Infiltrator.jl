@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -22,7 +22,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -37,7 +37,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -55,7 +55,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -73,7 +73,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -95,7 +95,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -117,7 +117,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -142,7 +142,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -167,7 +167,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -194,7 +194,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -221,7 +221,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -252,7 +252,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -283,7 +283,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating k at runtests.jl:38 [inlined]:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -317,7 +317,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC

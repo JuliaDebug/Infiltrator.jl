@@ -225,7 +225,11 @@ function start_prompt(mod, locals, file, fileline;
   end
 
   if length(trace) > 0
-    println(io, "Infiltrating $(trace[1]):")
+    if nostack
+      println(io, "Infiltrating <unknown>:")
+    else
+      println(io, "Infiltrating $(trace[1]):")
+    end
   else
     println(io, "Infiltrating top-level frame:")
   end

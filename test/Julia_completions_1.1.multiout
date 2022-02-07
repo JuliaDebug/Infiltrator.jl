@@ -1,16 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -25,8 +22,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -41,8 +37,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -60,8 +55,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -79,8 +73,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -102,8 +95,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -125,8 +117,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -151,8 +142,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -177,8 +167,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -205,8 +194,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -233,8 +221,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -265,8 +252,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC
@@ -297,8 +283,7 @@
 |
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating (::getfield(Main, Symbol("##5#16")){typeof(k),Bar})(::TerminalRegre
-|ssionTests.EmulatedTerminal) at runtests.jl:57:
+|Infiltrating <unknown>:
 |
 |infil> struct Foo
 |         xxx
@@ -332,8 +317,7 @@
 |
 |
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
 |AAAAAAACCCCC

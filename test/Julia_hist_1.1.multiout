@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> y
 |3-element Array{Int64,1}:
@@ -17,39 +17,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
-|
-|infil> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
-|
-|infil> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
-|
-|infil> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -59,7 +27,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> y
 |3-element Array{Int64,1}:
@@ -72,14 +40,10 @@
 | 1
 | 2
 | 3
-|
-|infil> 
-|
-|Infiltrating f(::Int64) at runtests.jl:7:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -92,14 +56,10 @@
 |CC
 |CC
 |CC
-|
-|BBBBBBB
-|
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating f(::Int64) at runtests.jl:7:
+|Infiltrating <unknown>:
 |
 |infil> y
 |3-element Array{Int64,1}:
@@ -115,17 +75,11 @@
 |
 |infil> 
 |
-|Infiltrating f(::Int64) at runtests.jl:7:
-|
-|infil> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
+|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -141,7 +95,53 @@
 |
 |BBBBBBB
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> 
+|
+|Infiltrating <unknown>:
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
