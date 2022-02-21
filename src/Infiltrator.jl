@@ -483,11 +483,20 @@ function interpret(io, expr, mod, locals)
   out = Core.eval(newmod, :(ans = $(expr)))
 
   # exfiltrate all new assignments into the safehouse
+  @debug "exfiltration start"
   for n in names(newmod, all = true)
     if !(n in ns || haskey(modns, n))
+      @debug "exfiltrating $n"
       Core.eval(getfield(safehouse, :store), Expr(:(=), n, getfield(newmod, n)))
+    else
+      # need to take care not to nix references to the module itself
+      if !(string(n) in ("@__MODULE__", "#@__MODULE__", "anonymous",))
+        @debug "nixing $n"
+        Core.eval(newmod, Expr(:(=), n, nothing))
+      end
     end
   end
+  @debug "exfiltration end"
 
   return out
 end
