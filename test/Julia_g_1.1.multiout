@@ -17,7 +17,7 @@
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
-|    - `@locals`: Print local variables.
+|    - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
 |    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled!()`).
@@ -40,7 +40,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -63,7 +63,7 @@
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
-|    - `@locals`: Print local variables.
+|    - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
 |    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled!()`).
@@ -89,7 +89,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -115,7 +115,7 @@
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
-|    - `@locals`: Print local variables.
+|    - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
 |    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled!()`).
@@ -144,7 +144,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -173,7 +173,7 @@
 |  The following commands are special cased:
 |    - `?`: Print this help text.
 |    - `@trace`: Print the current stack trace.
-|    - `@locals`: Print local variables.
+|    - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
 |    - `@exfiltrate`: Save all local variables into the store.
 |    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with 
 |`Infiltrator.clear_disabled!()`).
@@ -205,7 +205,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

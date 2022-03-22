@@ -246,7 +246,7 @@ function show_help(io)
     The following commands are special cased:
       - `?`: Print this help text.
       - `@trace`: Print the current stack trace.
-      - `@locals`: Print local variables.
+      - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
       - `@exfiltrate`: Save all local variables into the store.
       - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
@@ -273,11 +273,18 @@ function strlimit(str, limit = 30)
   return str
 end
 
-function show_locals(io, locals)
+function show_locals(io, locals, selected::AbstractSet = Set())
   for (var, val) in locals
-    one_line_show(io, var, val)
+    if isempty(selected) || var in selected
+      one_line_show(io, var, val)
+    end
   end
   println(io)
+end
+
+function show_locals(io, locals, sline::AbstractString)
+  selected = Set(Symbol.(filter!(x -> x != "@locals", strip.(filter!(!isempty, split(sline, ' '))))))
+  show_locals(io, locals, selected)
 end
 
 function one_line_show(io::IO, var, val)
@@ -336,8 +343,8 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         show_trace(io, trace, nostack)
         LineEdit.reset_state(s)
         return true
-      elseif sline == "@locals"
-        show_locals(io, locals)
+      elseif startswith(sline, "@locals")
+        show_locals(io, locals, sline)
         LineEdit.reset_state(s)
         return true
       elseif sline == "@exfiltrate"
