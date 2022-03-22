@@ -44,8 +44,8 @@ end
         using TerminalRegressionTests
 
         function run_terminal_test(func, result, commands, validation)
-            # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-            TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
                 Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
@@ -72,6 +72,10 @@ end
         run_terminal_test(() -> f(3), [3, 4, 5],
                         ["@locals\n", "\x4"],
                         "Julia_f2_$(VERSION.major).$(VERSION.minor).multiout")
+
+        run_terminal_test(() -> f(3), [3, 4, 5],
+                        ["@locals x\n", "\x4"],
+                        "Julia_f2_filter_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test g(1) == 12 # conditional @infiltrate should not open a prompt
 
