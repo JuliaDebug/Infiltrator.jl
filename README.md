@@ -115,6 +115,9 @@ infil> @locals
 - i::Int64 = 2
 - x::Vector{Int64} = [1, 2, 3]
 
+infil> @exfiltrate intermediate x
+Exfiltrating 2 local variables into the safehouse.
+
 infil> @exit
 
 3-element Vector{Any}:
