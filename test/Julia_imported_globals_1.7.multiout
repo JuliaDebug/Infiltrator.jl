@@ -9,38 +9,34 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>:
 |
-|infil> @locals
-|- x::Int64 = 2
-|- xxxxx::Int64 = 4
+|infil> x
+|2
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAA
 |
-|BBBBBBBCCCCCCC
-|CCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCC
+|BBBBBBBC
+|C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>:
 |
-|infil> @locals
-|- x::Int64 = 2
-|- xxxxx::Int64 = 4
+|infil> x
+|2
 |
-|infil> @exfiltrate
-|Exfiltrating 2 local variables into the safehouse.
+|infil> randstring
+|randstring (generic function with 8 methods)
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAAA
 |
-|BBBBBBBCCCCCCC
-|CCCCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCC
+|BBBBBBBC
+|C
 |
-|BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB

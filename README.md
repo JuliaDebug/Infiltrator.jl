@@ -69,7 +69,8 @@ infil> ?
     - `?`: Print this help text.
     - `@trace`: Print the current stack trace.
     - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
-    - `@exfiltrate`: Save all local variables into the store.
+    - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
+      this variant can also exfiltrate variables defined in the `infil>` REPL.
     - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
     - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
     - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).

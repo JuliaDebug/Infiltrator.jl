@@ -247,7 +247,8 @@ function show_help(io)
       - `?`: Print this help text.
       - `@trace`: Print the current stack trace.
       - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
-      - `@exfiltrate`: Save all local variables into the store.
+      - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
+        this variant can also exfiltrate variables defined in the `infil>` REPL.
       - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
       - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
       - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
@@ -282,9 +283,44 @@ function show_locals(io, locals, selected::AbstractSet = Set())
   println(io)
 end
 
+get_pmacro_args(mname, line) =
+  Set(Symbol.(filter!(x -> x != mname, strip.(filter!(!isempty, split(line, ' '))))))
+
 function show_locals(io, locals, sline::AbstractString)
-  selected = Set(Symbol.(filter!(x -> x != "@locals", strip.(filter!(!isempty, split(sline, ' '))))))
+  selected = get_pmacro_args("@locals", sline)
   show_locals(io, locals, selected)
+end
+
+function exfiltrate_locals(io, evalmod, locals, sline::AbstractString)
+  selected = get_pmacro_args("@exfiltrate", sline)
+  locals_only = isempty(selected)
+
+  iter = locals_only ? keys(locals) : selected
+  n = length(iter)
+
+  println(io, "Exfiltrating $(n) local variable$(n == 1 ? "" : "s") into the safehouse.\n")
+
+  for k in iter
+    if locals_only
+      v = locals[k]
+    else
+      string(k) in ("@__MODULE__", "#@__MODULE__", "anonymous") && continue
+
+      if !isdefined(evalmod, k)
+        printstyled(io, "Warning: "; bold = true, color = :red)
+        println(io, "Binding `$k` not defined in this context. Refusing to exfiltrate.")
+        continue
+      end
+
+      v = getfield(evalmod, k)
+    end
+    try
+      Core.eval(getfield(store, :store), Expr(:(=), k, QuoteNode(v)))
+    catch err
+      println(io, "Assignment to store variable failed.")
+      Base.display_error(io, err, catch_backtrace())
+    end
+  end
 end
 
 function one_line_show(io::IO, var, val)
@@ -298,20 +334,43 @@ function is_complete(s)
   return !(isa(ast, Expr) && ast.head === :incomplete)
 end
 
+function init_transient_eval_module(mod, locals)
+  modns = get_module_names(mod)
+
+  newmod = Module()
+  # assign source code module name
+  Core.eval(newmod, Expr(:(=), Symbol(mod), mod))
+  # spoof @__MODULE__
+  Core.eval(newmod, Expr(:macro,
+    Expr(:call, Symbol("__MODULE__")),
+    Expr(:block, mod))
+  )
+  # insert local variables into current scope
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...))
+  # insert variables in safehouse
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in get_store_names()])...))
+  # insert all bindings from the source module that aren't already defined in the eval module
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in modns if !isdefined(newmod, k)])...))
+
+  return newmod
+end
+
 const PROMPT = Ref{Any}()
 
 function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, fileline)
   io = Base.pipe_writer(terminal)
 
+  evalmod = init_transient_eval_module(mod, locals)
+
   try
     if isassigned(PROMPT)
       panel = PROMPT[]
-      panel.complete = InfiltratorCompletionProvider(mod, locals)
+      panel.complete = InfiltratorCompletionProvider(mod, evalmod)
     else
       panel = PROMPT[] = REPL.LineEdit.Prompt("infil> ";
                 prompt_prefix = prompt_color,
                 prompt_suffix = Base.text_colors[:normal],
-                complete = InfiltratorCompletionProvider(mod, locals),
+                complete = InfiltratorCompletionProvider(mod, evalmod),
                 on_enter = is_complete)
       panel.hist = REPL.REPLHistoryProvider(Dict{Symbol,Any}(:Infiltrator => panel))
       REPL.history_reset_state(panel.hist)
@@ -347,18 +406,8 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         show_locals(io, locals, sline)
         LineEdit.reset_state(s)
         return true
-      elseif sline == "@exfiltrate"
-        n = length(locals)
-        println(io, "Exfiltrating $(n) local variable$(n == 1 ? "" : "s") into the store.\n")
-
-        for (k, v) in locals
-          try
-            Core.eval(getfield(store, :store), Expr(:(=), k, QuoteNode(v)))
-          catch err
-            println(io, "Assignment to store variable failed.")
-            Base.display_error(io, err, catch_backtrace())
-          end
-        end
+      elseif startswith(sline, "@exfiltrate")
+        exfiltrate_locals(io, evalmod, locals, sline)
         LineEdit.reset_state(s)
         return true
       elseif sline == "@toggle"
@@ -404,7 +453,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
 
       @static if VERSION >= v"1.2.0-DEV.253"
         try
-          result = interpret(io, expr, mod, locals)
+          result = interpret(expr, evalmod)
         catch err
           ok = false
           result = if VERSION >= v"1.7"
@@ -428,7 +477,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         end
       else
         try
-          result = interpret(io, expr, mod, locals)
+          result = interpret(expr, evalmod)
         catch err
           ok = false
           result = (err, nostack ? Any[] : crop_backtrace(catch_backtrace()))
@@ -451,59 +500,52 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
   end
 end
 
-get_store_names(s = store) = get_module_names(getfield(s, :store))
+get_store_names(s = store) = get_module_names(getfield(s, :store), m -> names(m, all = true))
 
-function get_module_names(m::Module)
-  ns = names(m, all = true)
+function get_module_names(m::Module, get_names = all_names)
+  ns = get_names(m)
   out = Dict()
   for n in ns
-    if isdefined(m, n) && n !== :eval && n !== :include && n !== :anonymous
+    if isdefined(m, n) && !Base.isdeprecated(m, n) && n !== :eval && n !== :include && n !== :anonymous
       out[n] = getfield(m, n)
     end
   end
   out
 end
 
+function all_names(m)
+  symbols = Set(Symbol[])
+  seen = Set(Module[])
+
+  for mod in values(Base.loaded_modules)
+    all_names(mod, (x, v) -> isdefined(m, x) && !Base.isdeprecated(m, x) && getfield(m, x) === v, symbols, seen)
+  end
+
+  return symbols
+end
+function all_names(m, pred, symbols = Set(Symbol[]), seen = Set(Module[]))
+    push!(seen, m)
+    ns = names(m; all = true, imported = true)
+
+    for n in ns
+        isdefined(m, n) || continue
+        Base.isdeprecated(m, n) && continue
+        val = getfield(m, n)
+        val isa Core.IntrinsicFunction && continue
+        if val isa Module && !(val in seen)
+            all_names(val, pred, symbols, seen)
+        end
+        if pred(n, val)
+            push!(symbols, n)
+        end
+    end
+    return symbols
+end
+
 maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
 
-function interpret(io, expr, mod, locals)
-  modns = get_module_names(mod)
-
-  newmod = Module()
-  # assign source code module name
-  Core.eval(newmod, Expr(:(=), Symbol(mod), mod))
-  # spoof @__MODULE__
-  Core.eval(newmod, Expr(:macro,
-    Expr(:call, Symbol("__MODULE__")),
-    Expr(:block, mod))
-  )
-  # insert local variables into current scope
-  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...))
-  # checkpoint defined bindings (all new bindings that aren't in mod's global scope will be exfiltrated later)
-  ns = names(newmod, all=true)
-  # insert variables in safehouse
-  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in get_store_names()])...))
-  # insert all bindings from the source module that aren't already defined in the eval module
-  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in modns if !isdefined(newmod, k)])...))
-
-  # eval user code into temporary module
-  out = Core.eval(newmod, :(ans = $(expr)))
-
-  # exfiltrate all new assignments into the safehouse
-  @debug "exfiltration start"
-  for n in names(newmod, all = true)
-    if !(n in ns || haskey(modns, n))
-      @debug "exfiltrating $n"
-      Core.eval(getfield(safehouse, :store), Expr(:(=), n, getfield(newmod, n)))
-    else
-      # need to take care not to nix references to the module itself
-      if !(string(n) in ("@__MODULE__", "#@__MODULE__", "anonymous",))
-        @debug "nixing $n"
-        Core.eval(newmod, Expr(:(=), n, nothing))
-      end
-    end
-  end
-  @debug "exfiltration end"
+function interpret(expr, evalmod)
+  out = Core.eval(evalmod, :(ans = $(expr)))
 
   return out
 end
@@ -555,14 +597,6 @@ end
 mutable struct InfiltratorCompletionProvider <: REPL.CompletionProvider
   mod::Module
   localmod::Module
-end
-
-function InfiltratorCompletionProvider(mod, locals::Dict{Symbol, Any})
-  localmod = Module()
-  for (key, val) in locals
-    Core.eval(localmod, Expr(:(=), key, QuoteNode(val)))
-  end
-  InfiltratorCompletionProvider(mod, localmod)
 end
 
 function LineEdit.complete_line(c::InfiltratorCompletionProvider, s)

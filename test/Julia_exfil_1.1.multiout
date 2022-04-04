@@ -180,3 +180,53 @@
 |C
 |
 |BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> @locals
+|- x::Int64 = 24
+|
+|infil> xxxxx = 12
+|12
+|
+|infil> aa, bb = ('a', 'b')
+|('a', 'b')
+|
+|infil> foo(x) = x
+|foo (generic function with 1 method)
+|
+|infil> function bar(x); 2x; end
+|bar (generic function with 1 method)
+|
+|infil> x = 2
+|2
+|
+|infil> @exfiltrate xxxxx aa bb foo bar
+|Exfiltrating 5 local variables into the safehouse.
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCC
+|C
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
