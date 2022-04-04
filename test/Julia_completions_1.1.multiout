@@ -350,3 +350,79 @@
 |
 |
 |
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> struct Foo
+|         xxx
+|           yyy
+|           end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl   foldr    foo      for      foreach
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> aa
+|aa   aaaa
+|infil> aa^C
+|
+|infil> aaaa.xxx
+|333
+|
+|infil> @exfiltrate foo nope
+|Exfiltrating 2 local variables into the safehouse.
+|
+|Warning: Binding `nope` not defined in this context. Refusing to exfiltrate.
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCCCC
+|AAAAAAACCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAACCCCCAAAACCCAAAAAACCCAAAAAACCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBBCC
+|CCAAACCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCCC
+|CCC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|DDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|BBBBBBB
+|
+|
+|
+|
+|
+|

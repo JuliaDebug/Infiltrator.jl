@@ -39,6 +39,12 @@ function k()
     aaaa
 end
 
+module Jmod
+using Random
+using ..Infiltrator
+jfunc() = @infiltrate
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -93,7 +99,7 @@ end
 
         # scratch pad test
         run_terminal_test(() -> g(2), 24,
-                        ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n","foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "\x4"],
+                        ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n","foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "@exfiltrate xxxxx aa bb foo bar\n", "\x4"],
                         "Julia_exfil_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test Infiltrator.store.xxxxx == 12
@@ -122,9 +128,14 @@ end
 
         # completions test
         run_terminal_test(k, Bar(333, 333),
-                        ["struct Foo\n  xxx\n  yyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exit\n"],
+                        ["struct Foo\n  xxx\n  yyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
                         "Julia_completions_$(VERSION.major).$(VERSION.minor).multiout")
         @test Infiltrator.store.foo.xxx == 1
+
+        # imported globals
+        run_terminal_test(Jmod.jfunc, nothing,
+                          ["x\n", "randstring\n", "@exit\n"],
+                          "Julia_imported_globals_$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end

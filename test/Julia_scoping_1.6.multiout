@@ -30,7 +30,7 @@
 |- xxxxx::Int64 = 4
 |
 |infil> @exfiltrate
-|Exfiltrating 2 local variables into the store.
+|Exfiltrating 2 local variables into the safehouse.
 |
 |infil> 
 --------------------------------------------------
@@ -41,6 +41,6 @@
 |CCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
