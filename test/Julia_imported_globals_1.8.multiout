@@ -1,0 +1,42 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> x
+|2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> x
+|2
+|
+|infil> randstring
+|randstring (generic function with 8 methods)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB

@@ -465,7 +465,11 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
             result = map(r -> Any[first(r), []], result)
           else
             result = map(result) do (err, bt)
-              return err, crop_backtrace(bt)
+              if isdefined(Base, :current_exceptions)
+                return (exception=err, backtrace=crop_backtrace(bt))
+              else
+                return err, crop_backtrace(bt)
+              end
             end
           end
           if isdefined(Base, :ExceptionStack)
