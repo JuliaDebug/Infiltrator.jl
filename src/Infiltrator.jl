@@ -462,10 +462,20 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
             Base.catch_stack()
           end
           if nostack
-            result = map(r -> Any[first(r), []], result)
+            result = map(result) do (err, bt)
+              if VERSION >= v"1.8-"
+                return (exception=err, backtrace=crop_backtrace(bt))
+              else
+                return err, []
+              end
+            end
           else
             result = map(result) do (err, bt)
-              return err, crop_backtrace(bt)
+              if VERSION >= v"1.8-"
+                return (exception=err, backtrace=crop_backtrace(bt))
+              else
+                return err, crop_backtrace(bt)
+              end
             end
           end
           if isdefined(Base, :ExceptionStack)
