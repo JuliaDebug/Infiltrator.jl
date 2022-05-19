@@ -81,7 +81,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> 
 --------------------------------------------------
@@ -109,7 +108,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -137,7 +135,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -169,7 +166,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -201,7 +197,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -239,7 +234,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -277,7 +271,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -320,7 +313,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -363,7 +355,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -409,7 +400,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -455,7 +445,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -504,7 +493,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -553,7 +541,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -605,7 +592,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -657,7 +643,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -712,7 +697,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -767,7 +751,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -825,7 +808,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -883,7 +865,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] f(::Int64) at runtests.jl:7
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -944,7 +925,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
