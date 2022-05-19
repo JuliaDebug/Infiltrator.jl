@@ -59,7 +59,8 @@ julia> function f(x)
 f (generic function with 1 method)
 
 julia> f([1,2,3])
-Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
+Infiltrating f(x::Vector{Int64})
+  at REPL[10]:5
 
 infil> ?
   Code entered is evaluated in the current functions module. Note that you cannot change local
@@ -86,19 +87,15 @@ infil> 0//0
 ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
 Stacktrace:
  [1] __throw_rational_argerror_zero(T::Type)
-   @ Base ./rational.jl:31
+   @ Base ./rational.jl:32
  [2] Rational{Int64}(num::Int64, den::Int64)
-   @ Base ./rational.jl:33
+   @ Base ./rational.jl:34
  [3] Rational
-   @ ./rational.jl:38 [inlined]
+   @ ./rational.jl:39 [inlined]
  [4] //(n::Int64, d::Int64)
-   @ Base ./rational.jl:61
+   @ Base ./rational.jl:62
  [5] top-level scope
    @ none:1
-
-infil> intermediate = copy(out) # assigned (or `@exfiltrate`d) variables can be accessed from the safehouse
-1-element Vector{Any}:
- 2
 
 infil> @toggle
 Disabled infiltration at this infiltration point.
@@ -108,12 +105,13 @@ Enabled infiltration at this infiltration point.
 
 infil> @continue
 
-Infiltrating f(x::Vector{Int64}) at REPL[7]:5:
+Infiltrating f(x::Vector{Int64})
+  at REPL[10]:5
 
-infil> @locals
-- out::Vector{Any} = Any[2, 4]
-- i::Int64 = 2
-- x::Vector{Int64} = [1, 2, 3]
+infil> intermediate = copy(out)
+2-element Vector{Any}:
+ 2
+ 4
 
 infil> @exfiltrate intermediate x
 Exfiltrating 2 local variables into the safehouse.
@@ -126,15 +124,17 @@ infil> @exit
  6
 
 julia> safehouse.intermediate
-1-element Vector{Any}:
+2-element Vector{Any}:
  2
+ 4
 
 julia> @withstore begin
          x = 23
          x .* intermediate
        end
-1-element Vector{Int64}:
+2-element Vector{Int64}:
  46
+ 92
 ```
 
 # Related projects
