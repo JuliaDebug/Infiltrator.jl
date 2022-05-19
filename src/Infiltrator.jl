@@ -1,7 +1,7 @@
 module Infiltrator
 
+using REPL, UUIDs, InteractiveUtils
 using REPL.LineEdit: getproperty
-using REPL
 using REPL.LineEdit
 
 export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated
@@ -210,7 +210,7 @@ function start_prompt(mod, locals, file, fileline;
 
   trace = stacktrace()
   start = something(findlast(x -> x.func === Symbol("start_prompt"), trace), 0) + 2
-  last = something(findfirst(x -> x.func === Symbol("top-level scope"), trace),
+  last = something(findfirst(x -> x.func === StackTraces.top_level_scope_sym, trace),
                    length(trace))
   trace = trace[start:last]
 
@@ -228,7 +228,8 @@ function start_prompt(mod, locals, file, fileline;
     if nostack
       println(io, "Infiltrating <unknown>:")
     else
-      println(io, "Infiltrating $(trace[1]):")
+      print(io, "Infiltrating ")
+      print_verbose_stackframe(io, trace[1])
     end
   else
     println(io, "Infiltrating top-level frame:")
@@ -255,14 +256,6 @@ function show_help(io)
       - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
         1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
   """)
-end
-
-function show_trace(io, trace, nostack)
-  for (i, frame) in enumerate(trace)
-    nostack && i > 1 && break
-    println(io, "[", i, "] ", frame)
-  end
-  println(io)
 end
 
 function strlimit(str, limit = 30)
@@ -399,7 +392,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         LineEdit.reset_state(s)
         return true
       elseif sline == "@trace"
-        show_trace(io, trace, nostack)
+        print_verbose_stacktrace(io, trace, nostack ? 0 : 100)
         LineEdit.reset_state(s)
         return true
       elseif startswith(sline, "@locals")
@@ -425,7 +418,12 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
       elseif sline == "@exit"
         setfield!(store, :exiting, true)
         if !REPL_HOOKED[]
-          println(io, "Revert the effect of this with `Infiltrator.end_session!()` or you will not be able to enter a new session!")
+          printstyled(
+            io,
+            ">> Restore infiltration capabilities with `Infiltrator.end_session!()` or you will not be able to enter a new session!\n";
+            color=:red,
+            bold=true
+          )
         end
         LineEdit.transition(s, :abort)
         LineEdit.reset_state(s)
@@ -523,6 +521,57 @@ function get_module_names(m::Module, get_names = all_names)
   out
 end
 
+function print_verbose_stacktrace(io, st, limit = 100)
+  len = length(st)
+  for (i, sf) in enumerate(st)
+    if i > limit
+      limit > 0 && println(io, "\n<< omitted $(len - limit) stack frames >>")
+      break
+    end
+
+    print_verbose_stackframe(io, sf, i, len)
+  end
+  println(io)
+end
+
+function print_verbose_stackframe(io, sf::StackTraces.StackFrame, i, len)
+  num_padding = ceil(Int, log10(len))
+  padding = num_padding + 3
+  print(io, "[", lpad(i, num_padding), "] ")
+  print_verbose_stackframe(io, sf, padding)
+end
+
+function print_verbose_stackframe(io, sf::StackTraces.StackFrame, padding = 2)
+  Base.StackTraces.show_spec_linfo(IOContext(io, :backtrace=>true), sf)
+  println(io)
+
+  sf.func == StackTraces.top_level_scope_sym && return
+
+  print(io, ' '^padding)
+  printstyled(io, "at ", color=:light_black)
+
+  file, line = string(sf.file), sf.line
+  file = fixup_stdlib_path(file)
+  file = something(Base.find_source_file(file), file)
+  printstyled(io, normpath(file), ":", line, '\n', color=:light_black)
+end
+
+# https://github.com/JuliaLang/julia/blob/1fb28ad8768cfdc077e968df7adf5716ae8eb9ab/base/methodshow.jl#L134-L148
+function fixup_stdlib_path(path::String)
+  BUILD_STDLIB_PATH = isdefined(Sys, :BUILD_STDLIB_PATH) ?
+    Sys.BUILD_STDLIB_PATH :
+    dirname(abspath(joinpath(String((@which uuid1()).file), "..", "..", "..")))
+
+  STDLIB = Sys.STDLIB::String
+  if BUILD_STDLIB_PATH != STDLIB
+      # BUILD_STDLIB_PATH gets defined in sysinfo.jl
+      npath = normpath(path)
+      npath′ = replace(npath, normpath(BUILD_STDLIB_PATH) => normpath(STDLIB))
+      return npath == npath′ ? path : npath′
+  end
+  return path
+end
+
 function all_names(m)
   symbols = Set(Symbol[])
   seen = Set(Module[])
@@ -584,12 +633,12 @@ function find_first_topelevel_scope(bt::Vector{<:Union{Base.InterpreterIP,Ptr{Cv
               linetable = linfo.linetable
               if isa(linetable, Vector) && length(linetable) ≥ 1
                   lin = first(linetable)
-                  if isa(lin, Core.LineInfoNode) && lin.method === Symbol("top-level scope")
+                  if isa(lin, Core.LineInfoNode) && lin.method === StackTraces.top_level_scope_sym
                       return true
                   end
               end
           else
-              return frame.func === Symbol("top-level scope")
+              return frame.func === StackTraces.top_level_scope_sym
           end
       end
       ind === nothing || return i

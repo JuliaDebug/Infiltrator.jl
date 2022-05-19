@@ -81,7 +81,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] g at runtests.jl:13 [inlined]
 |
 |infil> 
 --------------------------------------------------
@@ -109,7 +108,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -137,7 +135,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] g at runtests.jl:13 [inlined]
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -168,7 +165,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
@@ -199,7 +195,6 @@
 |      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 |
 |infil> @trace
-|[1] g at runtests.jl:13 [inlined]
 |
 |infil> @locals
 |- x::Int64 = 24
@@ -233,7 +228,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCC
