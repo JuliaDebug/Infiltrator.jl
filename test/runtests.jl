@@ -45,6 +45,12 @@ using ..Infiltrator
 jfunc() = @infiltrate
 end
 
+function multiexfiltrate()
+    for i in 1:10
+        @infiltrate
+    end
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -136,6 +142,12 @@ end
         run_terminal_test(Jmod.jfunc, nothing,
                           ["x\n", "randstring\n", "@exit\n"],
                           "Julia_imported_globals_$(VERSION.major).$(VERSION.minor).multiout")
+
+        # safehouse should not shadow local variables
+        run_terminal_test(multiexfiltrate, nothing,
+                          ["i\n", "@continue\n", "i\n", "@exfiltrate\n", "@continue\n", "i\n", "safehouse.i\n", "@continue\n", "@exit\n"],
+                          "Julia_multi_exfiltrate_$(VERSION.major).$(VERSION.minor).multiout")
+        @test Infiltrator.store.i == 2
     else
         @warn "Skipping UI tests on non unix systems"
     end
