@@ -1,0 +1,312 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|2
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|2
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|2
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|3
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|2
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|3
+|
+|infil> safehouse.i
+|2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|2
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> i
+|3
+|
+|infil> safehouse.i
+|2
+|
+|infil> @continue
+|
+|Infiltrating <unknown>:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
