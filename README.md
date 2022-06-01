@@ -137,5 +137,5 @@ julia> @withstore begin
  92
 ```
 
-# Related projects
+## Related projects
 - [`@exfiltrate` for Python](https://github.com/NightMachinary/PyExfiltrator)
