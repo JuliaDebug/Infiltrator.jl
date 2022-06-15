@@ -84,7 +84,6 @@ const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
 const CHECK_TASK = Ref{Bool}(true)
-const CURRENT_EVAL_TASK = Ref{Any}(nothing)
 
 mutable struct Session
   store::Module
@@ -197,7 +196,7 @@ function start_prompt(mod, locals, file, fileline;
   (file, fileline) in getfield(store, :disabled) && return
 
   if terminal === nothing || repl === nothing
-    if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t)
+    if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t) && isdefined(Base, :active_repl_backend)
       repl = Base.active_repl
       terminal = Base.active_repl.t
     else
@@ -214,11 +213,12 @@ function start_prompt(mod, locals, file, fileline;
                    length(trace))
   trace = trace[start:last]
 
-  if CHECK_TASK[] && CURRENT_EVAL_TASK[] !== nothing && current_task() != CURRENT_EVAL_TASK[]
+  if CHECK_TASK[] && !Base.active_repl_backend.in_eval
+    println(io, "Cannot infiltrate while the REPL is idle. This typically happens when an async task is running in the background.")
     if length(trace) > 0
-      println(io, "Cannot infiltrate foreign tasks. Disabling infiltration point at $(trace[1]).")
+      println(io, "Disabling infiltration point at $(trace[1]).")
     else
-      println(io, "Cannot infiltrate foreign tasks. Disabling this infiltration point.")
+      println(io, "Cannot infiltrate while the REPL is idle. Disabling this infiltration point.")
     end
     push!(getfield(store, :disabled), ((file, fileline)))
     return
@@ -612,9 +612,7 @@ end
 function ast_transformer(sym)
   return function (ex)
     return quote
-      $(@__MODULE__).CURRENT_EVAL_TASK[] = current_task()
       let $(sym) = $(ex)
-        $(@__MODULE__).CURRENT_EVAL_TASK[] = nothing
         $(@__MODULE__).end_session!()
         $(sym)
       end
