@@ -51,6 +51,12 @@ function multiexfiltrate()
     end
 end
 
+function function_form_infiltration(x)
+    if isdefined(Main, :Infiltrator)
+        Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
+    end
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -148,6 +154,11 @@ end
                           ["i\n", "@continue\n", "i\n", "@exfiltrate\n", "@continue\n", "i\n", "safehouse.i\n", "@continue\n", "@exit\n"],
                           "Julia_multi_exfiltrate_$(VERSION.major).$(VERSION.minor).multiout")
         @test Infiltrator.store.i == 2
+
+        # function-form infiltration
+        run_terminal_test(() -> function_form_infiltration(2), nothing,
+                          ["x\n", "@exit\n"],
+                          "Julia_function_inf_$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end
