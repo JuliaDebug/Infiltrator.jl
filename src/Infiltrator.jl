@@ -4,7 +4,7 @@ using REPL, UUIDs, InteractiveUtils
 using REPL.LineEdit: getproperty
 using REPL.LineEdit
 
-export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated
+export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
 REPL_HOOKED = Ref{Bool}(false)
 function __init__()
@@ -52,6 +52,23 @@ macro infiltrate(cond = true)
       $(start_prompt)(@__MODULE__, Base.@locals, $(String(__source__.file)), $(__source__.line))
     end
   end
+end
+
+"""
+    infiltrate(mod, locals, file, line)
+
+Functional form of `@infiltrate`. Use this to conditionally infiltrate package code without
+using e.g. Revise (because this version is valid during precompilation).
+
+Typically used as
+```julia
+if isdefined(Main, :Infiltrator)
+  Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
+end
+```
+"""
+function infiltrate(mod, locals, file, line)
+  start_prompt(mod, locals, string(file), line)
 end
 
 """

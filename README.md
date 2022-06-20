@@ -23,6 +23,15 @@ This macro also accepts an optional argument `cond` that must evaluate to a bool
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
 when its condition is `true`.
 
+You can also use
+```julia
+if isdefined(Main, :Infiltrator)
+  Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
+end
+```
+to infiltrate package code without any post-hoc evaluation into the module (because the
+functional form does not require Infiltrator to be loaded at compiletime).
+
 ## `@exfiltrate`
     @exfiltrate
 
