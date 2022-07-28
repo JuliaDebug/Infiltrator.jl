@@ -10,7 +10,7 @@ performance overhead.
 Note that you cannot access other function scopes or step into further calls. Use an actual debugger
 if you need that level of flexibility.
 
-Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode
+Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VS Code
 or Juno can cause issues, so it's recommended to always use the REPL directly.
 
 ## `@infiltrate`
