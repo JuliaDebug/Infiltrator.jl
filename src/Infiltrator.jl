@@ -3,6 +3,7 @@ module Infiltrator
 using REPL, UUIDs, InteractiveUtils
 using REPL.LineEdit: getproperty
 using REPL.LineEdit
+using Markdown
 
 export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
@@ -44,7 +45,6 @@ in the context of the current functions module.
 This macro also accepts an optional argument `cond` that must evaluate to a boolean,
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
 when its condition is `true`.
-```
 """
 macro infiltrate(cond = true)
   quote
@@ -57,10 +57,10 @@ end
 """
     infiltrate(mod, locals, file, line)
 
-Functional form of `@infiltrate`. Use this to conditionally infiltrate package code without
+Function form of `@infiltrate`. Use this to conditionally infiltrate package code without
 using e.g. Revise (because this version is valid during precompilation).
 
-Typically used as
+This would typically be used as
 ```julia
 if isdefined(Main, :Infiltrator)
   Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
@@ -100,6 +100,12 @@ const TEST_TERMINAL_REF = Ref{Any}(nothing)
 const TEST_REPL_REF = Ref{Any}(nothing)
 const TEST_NOSTACK = Ref{Any}(false)
 
+"""
+    toggle_async_check(enabled)
+
+Enable or disable the check for safe REPL mode switching. May result in a non-functional REPL.
+"""
+toggle_async_check(enabled) = CHECK_TASK[] = enabled
 const CHECK_TASK = Ref{Bool}(true)
 
 mutable struct Session
@@ -133,15 +139,21 @@ function Base.getproperty(sp::Session, s::Symbol)
 end
 Base.propertynames(s::Session) = keys(get_store_names(s))
 
-"""
-    store
+const store_docstring = """
     safehouse
     exfiltrated
+    Infiltrator.store
 
 Global storage for storing values while `@infiltrate`ing or `@exfiltrate`ing.
+
+Also see [`clear_store!`](@ref), [`set_store!`](@ref), and [`@withstore`](@ref) for
+safehouse-related functionality.
 """
+@doc store_docstring
 const store = Session(Module(), false, Set())
+@doc store_docstring
 const safehouse = store
+@doc store_docstring
 const exfiltrated = store
 
 """
@@ -231,12 +243,44 @@ function start_prompt(mod, locals, file, fileline;
   trace = trace[start:last]
 
   if CHECK_TASK[] && !Base.active_repl_backend.in_eval
-    println(io, "Cannot infiltrate while the REPL is idle. This typically happens when an async task is running in the background.")
+    b = IOBuffer()
+    c = IOContext(b, :color=>get(io, :color, false))
+    printstyled(c, "ERROR: "; color=Base.error_color())
     if length(trace) > 0
-      println(io, "Disabling infiltration point at $(trace[1]).")
+      sf = trace[1]
+      print(c, "Disabling the infiltration point in ")
+      printstyled(c, sprint(Base.StackTraces.show_spec_linfo, sf); color=:cyan)
+      print(c, " at ")
+      if sf.file !== Symbol("")
+        print(c, basename(string(sf.file)), ":")
+        if sf.line >= 0
+          print(c, sf.line)
+        else
+            print(c, "?")
+        end
+      else
+        print(c, "unknown")
+      end
+      println(c, ".")
     else
-      println(io, "Cannot infiltrate while the REPL is idle. Disabling this infiltration point.")
+      println(c, "Disabling this infiltration point.")
     end
+    printstyled(c, """
+      Infiltrating fully asynchronous code is currently not possible. You may be trying
+      to infiltrate an """; color=:light_black)
+    printstyled(c, "@async "; color=:cyan)
+    printstyled(c, """
+      task or are using inline evaluation in VS Code or Juno.
+
+      Infiltration points can be re-enabled with """; color=:light_black)
+    printstyled(c, "Infiltrator.clear_disabled!() "; color=:cyan)
+    printstyled(c, """
+      and
+      this check is toggled with """, color=:light_black)
+    printstyled(c, "Infiltrator.toggle_async_check(false)", color=:cyan)
+    printstyled(c, ".\n", color=:light_black)
+
+    print(io, String(take!(b)))
     push!(getfield(store, :disabled), ((file, fileline)))
     return
   end
@@ -256,23 +300,27 @@ function start_prompt(mod, locals, file, fileline;
   println(io)
 end
 
-function show_help(io)
-  println(io, """
-    Code entered is evaluated in the current functions module. Note that you cannot change local
-    variables, but can assign to globals in a permanent store module.
+const HELP_TEXT = md"""
+Code entered here is evaluated in the current function's scope. Changes to local variables are not
+possible; global variables can only be changed with `eval`/`@eval`.
 
-    The following commands are special cased:
-      - `?`: Print this help text.
-      - `@trace`: Print the current stack trace.
-      - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
-      - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
-        this variant can also exfiltrate variables defined in the `infil>` REPL.
-      - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
-      - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
-      - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
-      - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-        1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
-  """)
+All assignments will end up in the `safehouse`.
+
+The following commands are special cased:
+  - `?`: Print this help text.
+  - `@trace`: Print the current stack trace.
+  - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
+  - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
+    this variant can also exfiltrate variables defined in the `infil>` REPL.
+  - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
+  - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+  - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
+  - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
+    1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
+"""
+
+function show_help(io)
+  show(io, MIME("text/plain"), HELP_TEXT)
 end
 
 function strlimit(str, limit = 30)
