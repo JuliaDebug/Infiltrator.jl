@@ -1,27 +1,26 @@
-# Infiltrator.jl [![CI](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml) [![version](https://juliahub.com/docs/Infiltrator/version.svg)](https://juliahub.com/ui/Packages/Infiltrator/ge3PS)
+# Infiltrator.jl
 
-This packages provides a macro called `@infiltrate`, which sets a "breakpoint" in a local context
-(similar to Matlab's `keyboard` function and IPython's `embed`). The advantage of this macro over e.g. Debugger.jl is that
-all code is completely compiled, so the performance overhead should be negligible.
+[![CI](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml) [![version](https://juliahub.com/docs/Infiltrator/version.svg)](https://juliahub.com/ui/Packages/Infiltrator/ge3PS)
 
-Note that you cannot access other functions in the callstack, or step into functions. If you need that
-functionality, use Debugger.jl, VSCode's or Juno's debugger.
+This packages provides the `@infiltrate` macro, which acts as a breakpoint with neglible runtime
+performance overhead.
 
-Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode or Juno can cause issues,
-so it's recommended to always use the REPL directly.
+Note that you cannot access other function scopes or step into further calls. Use an actual debugger
+if you need that level of flexibility.
+
+Running code that ends up triggering the `@infiltrate` REPL mode via inline evaluation in VSCode
+or Juno can cause issues, so it's recommended to always use the REPL directly.
 
 ## `@infiltrate`
     @infiltrate cond = true
 
-`@infiltrate` sets an infiltration point (or breakpoint).
+`@infiltrate` sets an infiltration point.
 
 When the infiltration point is hit, it will drop you into an interactive REPL session that
 lets you inspect local variables and the call stack as well as execute aribtrary statements
-in the context of the current functions module.
+in the context of the current local and global scope.
 
-This macro also accepts an optional argument `cond` that must evaluate to a boolean,
-and then this macro will serve as a "conditinal breakpoint", which starts inspections only
-when its condition is `true`.
+The optional argument `cond` only enables this infiltration point if it evaluates to `true`.
 
 You can also use
 ```julia
@@ -38,7 +37,7 @@ functional form does not require Infiltrator to be loaded at compiletime).
 Assigns all local variables into global storage.
 
 ## The safehouse
-Exfiltrating variables (with `@exfiltrate` or by assignment in a `@infiltrate` session) happens by
+Exfiltrating variables (with `@exfiltrate` or by assignment in an `@infiltrate` session) happens by
 assigning the variable to a global storage space (backed by a module); any exfiltrated objects
 can be directly accessed, via `Infiltrator.store` or its exported aliases `safehouse` or `exfiltrated`:
 ```
@@ -53,9 +52,11 @@ julia> safehouse.x # or exfiltrated.x
 
 You can reset the safehouse with `Infiltrator.clear_store!()`.
 
-You can also assign a specific module with `Infiltrator.set_store!(mod)`. This allows you to e.g. set the backing module to `Main` and therefore export the contents of the safehouse to the global namespace (although doing so is not recommended).
+You can also assign a specific module with `Infiltrator.set_store!(mod)`. This allows you to e.g. set the
+backing module to `Main` and therefore export the contents of the safehouse to the global namespace
+(although doing so is not recommended).
 
-## Example usage:
+## Example usage
 ```julia
 julia> function f(x)
          out = []
@@ -72,20 +73,27 @@ Infiltrating f(x::Vector{Int64})
   at REPL[10]:5
 
 infil> ?
-  Code entered is evaluated in the current functions module. Note that you cannot change local
-  variables, but can assign to globals in a permanent store module.
+  Code entered here is evaluated in the current scope. Changes to local variables are not possible; global variables can only be changed with eval/@eval.
+
+  All assignments will end up in the safehouse.
 
   The following commands are special cased:
-    - `?`: Print this help text.
-    - `@trace`: Print the current stack trace.
-    - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
-    - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
-      this variant can also exfiltrate variables defined in the `infil>` REPL.
-    - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
-    - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
-    - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
-    - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-      1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
+
+    •  ?: Print this help text.
+
+    •  @trace: Print the current stack trace.
+
+    •  @locals: Print local variables. @locals x y only prints x and y.
+
+    •  @exfiltrate: Save all local variables into the store. @exfiltrate x y saves x and y; this variant can also exfiltrate variables defined in the infil> REPL.
+
+    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all with Infiltrator.clear_disabled!()).
+
+    •  @continue: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+
+    •  @doc symbol: Get help for symbol (same as in the normal Julia REPL).
+
+    •  @exit: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to 1.5 this needs to be manually cleared with Infiltrator.end_session!()).
 
 infil> @locals
 - out::Vector{Any} = Any[2]
