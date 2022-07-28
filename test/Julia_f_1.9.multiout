@@ -699,6 +699,17 @@
 |
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:32
+| [2] Rational
+|   @ ./rational.jl:34 [inlined]
+| [3] Rational
+|   @ ./rational.jl:39 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:62
+| [5] top-level scope
+|   @ none:1
 |
 |infil> 
 |
@@ -759,6 +770,17 @@
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
 |
 |BBBBBBB
 |
@@ -819,6 +841,17 @@
 |
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:32
+| [2] Rational
+|   @ ./rational.jl:34 [inlined]
+| [3] Rational
+|   @ ./rational.jl:39 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:62
+| [5] top-level scope
+|   @ none:1
 |
 |infil> @toggle
 |Disabled infiltration at this infiltration point.
@@ -882,6 +915,17 @@
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -945,6 +989,17 @@
 |
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:32
+| [2] Rational
+|   @ ./rational.jl:34 [inlined]
+| [3] Rational
+|   @ ./rational.jl:39 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:62
+| [5] top-level scope
+|   @ none:1
 |
 |infil> @toggle
 |Disabled infiltration at this infiltration point.
@@ -1011,6 +1066,17 @@
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -1077,6 +1143,17 @@
 |
 |infil> 0//0
 |ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:32
+| [2] Rational
+|   @ ./rational.jl:34 [inlined]
+| [3] Rational
+|   @ ./rational.jl:39 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:62
+| [5] top-level scope
+|   @ none:1
 |
 |infil> @toggle
 |Disabled infiltration at this infiltration point.
@@ -1146,6 +1223,17 @@
 |
 |BBBBBBBCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

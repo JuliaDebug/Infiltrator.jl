@@ -319,8 +319,8 @@ The following commands are special cased:
     1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
 """
 
-function show_help(_)
-  display(HELP_TEXT)
+function show_help(io)
+  show(io, MIME("text/plain"), HELP_TEXT)
 end
 
 function strlimit(str, limit = 30)
