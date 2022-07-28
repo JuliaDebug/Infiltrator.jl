@@ -7,7 +7,7 @@ using Markdown
 
 export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
-REPL_HOOKED = Ref{Bool}(false)
+const REPL_HOOKED = Ref{Bool}(false)
 function __init__()
   clear_store!(store)
   if VERSION >= v"1.5.0-DEV.282"
