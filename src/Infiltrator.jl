@@ -1,5 +1,10 @@
 module Infiltrator
 
+let README = normpath(dirname(@__DIR__), "README.md")
+    include_dependency(README)
+    @doc read(README, String) Infiltrator
+end
+
 using REPL, UUIDs, InteractiveUtils
 using REPL.LineEdit: getproperty
 using REPL.LineEdit
@@ -47,9 +52,13 @@ and then this macro will serve as a "conditinal breakpoint", which starts inspec
 when its condition is `true`.
 """
 macro infiltrate(cond = true)
+  if __module__ === Core.Compiler && !isdefined(Core.Compiler, :Dict)
+    # XXX Dict isn't available in Core.Compiler, so make it available now
+    Core.eval(Core.Compiler, :(using .Main: Dict))
+  end
   quote
     if $(esc(cond))
-      $(start_prompt)(@__MODULE__, Base.@locals, $(String(__source__.file)), $(__source__.line))
+      $(start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line))
     end
   end
 end
@@ -519,14 +528,14 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
           result = interpret(expr, evalmod)
         catch err
           ok = false
-          result = if VERSION >= v"1.7"
+          result = @static if VERSION >= v"1.7"
             Base.current_exceptions(current_task(); backtrace = true)
           else
             Base.catch_stack()
           end
           if nostack
             result = map(result) do (err, bt)
-              if VERSION >= v"1.8-"
+              @static if VERSION >= v"1.8-"
                 return (exception=err, backtrace=crop_backtrace(bt))
               else
                 return err, []
@@ -534,7 +543,7 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
             end
           else
             result = map(result) do (err, bt)
-              if VERSION >= v"1.8-"
+              @static if VERSION >= v"1.8-"
                 return (exception=err, backtrace=crop_backtrace(bt))
               else
                 return err, crop_backtrace(bt)
@@ -666,7 +675,20 @@ function all_names(m, pred, symbols = Set(Symbol[]), seen = Set(Module[]))
     return symbols
 end
 
-maybe_quote(x) = (isa(x, Expr) || isa(x, Symbol)) ? QuoteNode(x) : x
+function maybe_quote(@nospecialize x)
+  is_ir_construct(x) && return QuoteNode(x)
+  isa(x, Expr) && return QuoteNode(x)
+  isa(x, Symbol) && return QuoteNode(x)
+  return x
+end
+
+let ir_constructs = collect(DataType,
+      filter(map(n->getfield(Core.IR,n), names(Core.IR))) do x
+        @nospecialize x
+        return isa(x, DataType)
+      end)
+  @eval is_ir_construct(@nospecialize x) = typeof(x) in $ir_constructs
+end
 
 function interpret(expr, evalmod)
   out = Core.eval(evalmod, :(ans = $(expr)))
