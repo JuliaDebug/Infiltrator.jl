@@ -55,6 +55,7 @@ macro infiltrate(cond = true)
   if __module__ === Core.Compiler && !isdefined(Core.Compiler, :Dict)
     # XXX Dict isn't available in Core.Compiler, so make it available now
     Core.eval(Core.Compiler, :(using .Main: Dict))
+    Core.eval(Core.Compiler, :(setindex!(x::Dict, args...) = Main.setindex!(x, args...)))
   end
   quote
     if $(esc(cond))

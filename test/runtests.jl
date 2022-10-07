@@ -159,6 +159,15 @@ end
         run_terminal_test(() -> function_form_infiltration(2), nothing,
                           ["x\n", "@exit\n"],
                           "Julia_function_inf_$(VERSION.major).$(VERSION.minor).multiout")
+
+        # test Core.Compiler
+        @static if VERSION >= v"1.8"
+            @eval Core.Compiler __foo(x) = Main.Infiltrator.@infiltrate
+            run_terminal_test(() -> Core.Compiler.__foo(Core.SSAValue(3)), nothing,
+                            ["x\n", "@exfiltrate\n", "@exit\n"],
+                            "Julia_compiler_$(VERSION.major).$(VERSION.minor).multiout")
+            @test Infiltrator.store.x == Core.SSAValue(3)
+        end
     else
         @warn "Skipping UI tests on non unix systems"
     end
