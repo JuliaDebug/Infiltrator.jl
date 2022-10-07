@@ -1,6 +1,6 @@
 # Infiltrator.jl
 
-[![CI](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml) [![version](https://juliahub.com/docs/Infiltrator/version.svg)](https://juliahub.com/ui/Packages/Infiltrator/ge3PS)
+[![CI](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml) [![Codecov](https://codecov.io/gh/JuliaDebug/Infiltrator.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/JuliaDebug/Infiltrator.jl) [![version](https://juliahub.com/docs/Infiltrator/version.svg)](https://juliahub.com/ui/Packages/Infiltrator/ge3PS)
 
 [![docs stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliadebug.github.io/Infiltrator.jl/stable) [![docs dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://juliadebug.github.io/Infiltrator.jl/dev)
 
