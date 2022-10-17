@@ -72,8 +72,8 @@ end
         using TerminalRegressionTests
 
         function run_terminal_test(func, result, commands, validation)
-            # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-            TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            TerminalRegressionTests.automated_test(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
+            # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
                 Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
@@ -144,7 +144,7 @@ end
                         "Julia_hist_$(VERSION.major).$(VERSION.minor).multiout")
 
         # top-level test
-        run_terminal_test(() -> include(joinpath(@__DIR__, "toplevel-fixture.jl")), "success",
+        run_terminal_test(() -> include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl")), "success",
                         ["@exit\n"],
                         "Julia_toplevel_$(VERSION.major).$(VERSION.minor).multiout")
 
