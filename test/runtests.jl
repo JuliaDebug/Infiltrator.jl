@@ -72,8 +72,11 @@ end
         using TerminalRegressionTests
 
         function run_terminal_test(func, result, commands, validation)
-            TerminalRegressionTests.automated_test(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
-            # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
+            test_func = TerminalRegressionTests.automated_test
+            if haskey(ENV, "INFILTRATOR_CREATE_TEST") && !haskey(ENV, "CI")
+                func = TerminalRegressionTests.create_automated_test
+            end
+            test_func(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
                 Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
