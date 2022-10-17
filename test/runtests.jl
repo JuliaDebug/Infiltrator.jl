@@ -57,13 +57,23 @@ function function_form_infiltration(x)
     end
 end
 
+function anon()
+    let
+        m = Module()
+        Core.eval(m, :(using Infiltrator))
+        Core.eval(m, :(aasdf = 3))
+        Core.eval(m, :(f() = @infiltrate))
+        Core.eval(m, :(f()))
+    end
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
 
         function run_terminal_test(func, result, commands, validation)
-            TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
-            # TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            # TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
                 Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
@@ -168,6 +178,12 @@ end
                             "Julia_compiler_$(VERSION.major).$(VERSION.minor).multiout")
             @test Infiltrator.store.x == Core.SSAValue(3)
         end
+
+        # anonymous modules
+        run_terminal_test(() -> anon(), nothing,
+                          ["aas\t\t\n", "@exfiltrate aasdf\n", "@exit\n"],
+                          "Julia_anon_$(VERSION.major).$(VERSION.minor).multiout")
+        @test Infiltrator.store.aasdf == 3
     else
         @warn "Skipping UI tests on non unix systems"
     end

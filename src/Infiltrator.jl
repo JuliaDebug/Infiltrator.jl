@@ -407,7 +407,10 @@ function init_transient_eval_module(mod, locals)
 
   newmod = Module()
   # assign source code module name
-  Core.eval(newmod, Expr(:(=), Symbol(mod), mod))
+  modname = nameof(mod)
+  if modname != :anonymous
+    Core.eval(newmod, Expr(:(=), modname, mod))
+  end
   # spoof @__MODULE__
   Core.eval(newmod, Expr(:macro,
     Expr(:call, Symbol("__MODULE__")),
@@ -651,8 +654,12 @@ function all_names(m)
   symbols = Set(Symbol[])
   seen = Set(Module[])
 
+  pred = (x, v) -> isdefined(m, x) && !Base.isdeprecated(m, x) && getfield(m, x) === v
+
+  # anonymous modules may not be rooted in any other modules
+  all_names(m, pred, symbols, seen)
   for mod in values(Base.loaded_modules)
-    all_names(mod, (x, v) -> isdefined(m, x) && !Base.isdeprecated(m, x) && getfield(m, x) === v, symbols, seen)
+    all_names(mod, pred, symbols, seen)
   end
 
   return symbols
