@@ -1,0 +1,42 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> aasdf
+|3
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>:
+|
+|infil> aasdf
+|3
+|
+|infil> @exfiltrate aasdf
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCC
+|C
+|
+|BBBBBBBCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
