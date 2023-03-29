@@ -1,3 +1,11 @@
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/src/assets/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/src/assets/logo.svg">
+  <img alt="Infiltrator Logo" src="docs/src/assets/logo.svg" width="150px">
+</picture>
+</div>
+
 # Infiltrator.jl
 
 [![CI](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml) [![Codecov](https://codecov.io/gh/JuliaDebug/Infiltrator.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/JuliaDebug/Infiltrator.jl) [![version](https://juliahub.com/docs/Infiltrator/version.svg)](https://juliahub.com/ui/Packages/Infiltrator/ge3PS)
