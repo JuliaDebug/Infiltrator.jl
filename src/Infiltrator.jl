@@ -39,7 +39,8 @@ function __init__()
 end
 
 """
-    @infiltrate cond = true
+    @infiltrate
+    @infiltrate condition::Bool
 
 `@infiltrate` sets an infiltration point (or breakpoint).
 
@@ -49,7 +50,9 @@ in the context of the current functions module.
 
 This macro also accepts an optional argument `cond` that must evaluate to a boolean,
 and then this macro will serve as a "conditinal breakpoint", which starts inspections only
-when its condition is `true`.
+when its condition is `true`. For example:
+
+    @infiltrate false # does not infiltrate
 """
 macro infiltrate(cond = true)
   if __module__ === Core.Compiler && !isdefined(Core.Compiler, :Dict)
