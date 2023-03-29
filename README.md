@@ -22,7 +22,11 @@ Running code that ends up triggering the `@infiltrate` REPL mode via inline eval
 or Juno can cause issues, so it's recommended to always use the REPL directly.
 
 ## `@infiltrate`
-    @infiltrate cond = true
+
+```julia
+@infiltrate
+@infiltrate condition::Bool
+```
 
 `@infiltrate` sets an infiltration point.
 
@@ -30,27 +34,38 @@ When the infiltration point is hit, it will drop you into an interactive REPL se
 lets you inspect local variables and the call stack as well as execute aribtrary statements
 in the context of the current local and global scope.
 
-The optional argument `cond` only enables this infiltration point if it evaluates to `true`.
+The optional argument `cond` only enables this infiltration point if it evaluates to `true`, e.g.
+
+```julia
+@infiltrate false # does not infiltrate
+```
 
 You can also use
+
 ```julia
 if isdefined(Main, :Infiltrator)
   Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
 end
 ```
+
 to infiltrate package code without any post-hoc evaluation into the module (because the
 functional form does not require Infiltrator to be loaded at compiletime).
 
 ## `@exfiltrate`
-    @exfiltrate
+
+```julia
+@exfiltrate
+```
 
 Assigns all local variables into global storage.
 
 ## The safehouse
+
 Exfiltrating variables (with `@exfiltrate` or by assignment in an `@infiltrate` session) happens by
 assigning the variable to a global storage space (backed by a module); any exfiltrated objects
 can be directly accessed, via `Infiltrator.store` or its exported aliases `safehouse` or `exfiltrated`:
-```
+
+```julia
 julia> foo(x) = @exfiltrate
 foo (generic function with 1 method)
 
@@ -67,6 +82,7 @@ backing module to `Main` and therefore export the contents of the safehouse to t
 (although doing so is not recommended).
 
 ## Example usage
+
 ```julia
 julia> function f(x)
          out = []
@@ -165,4 +181,5 @@ julia> @withstore begin
 ```
 
 ## Related projects
+
 - [`@exfiltrate` for Python](https://github.com/NightMachinary/PyExfiltrator)
