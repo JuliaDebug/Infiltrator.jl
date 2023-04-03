@@ -12,7 +12,7 @@
 
 [![docs stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliadebug.github.io/Infiltrator.jl/stable) [![docs dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://juliadebug.github.io/Infiltrator.jl/dev)
 
-This packages provides the `@infiltrate` macro, which acts as a breakpoint with neglible runtime
+This packages provides the `@infiltrate` macro, which acts as a breakpoint with negligible runtime
 performance overhead.
 
 Note that you cannot access other function scopes or step into further calls. Use an actual debugger
@@ -31,7 +31,7 @@ or Juno can cause issues, so it's recommended to always use the REPL directly.
 `@infiltrate` sets an infiltration point.
 
 When the infiltration point is hit, it will drop you into an interactive REPL session that
-lets you inspect local variables and the call stack as well as execute aribtrary statements
+lets you inspect local variables and the call stack as well as execute arbitrary statements
 in the context of the current local and global scope.
 
 The optional argument `cond` only enables this infiltration point if it evaluates to `true`, e.g.
