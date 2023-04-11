@@ -16,5 +16,6 @@ makedocs(;
 if get(ENV, "CI", nothing) == "true"
     deploydocs(;
         repo="github.com/JuliaDebug/Infiltrator.jl",
+        push_preview = true
     )
 end
