@@ -81,7 +81,7 @@ macro autoinfiltrate(cond=true)
         :macrocall,
         Expr(:., i, QuoteNode(Symbol("@infiltrate"))),
         lnn,
-        cond
+        esc(cond)
     )
 end
 ```
