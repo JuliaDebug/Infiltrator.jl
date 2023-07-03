@@ -13,8 +13,11 @@ using Markdown
 export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
 const REPL_HOOKED = Ref{Bool}(false)
+const INFILTRATION_LOCK = Ref{ReentrantLock}()
+
 function __init__()
   clear_store!(store)
+  INFILTRATION_LOCK[] = ReentrantLock()
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
         pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
@@ -234,83 +237,93 @@ function start_prompt(mod, locals, file, fileline;
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
                       )
-  getfield(store, :exiting) && return
-  (file, fileline) in getfield(store, :disabled) && return
+  lock(INFILTRATION_LOCK[])
+  try
+    getfield(store, :exiting) && return
+    (file, fileline) in getfield(store, :disabled) && return
 
-  if terminal === nothing || repl === nothing
-    if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t) && isdefined(Base, :active_repl_backend)
-      repl = Base.active_repl
-      terminal = Base.active_repl.t
-    else
-      println("Infiltrator.jl needs a fully-functional Julia REPL.")
+    if terminal === nothing || repl === nothing
+      active_repl_backend = nothing
+      if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t) && isdefined(Base, :active_repl_backend)
+        repl = Base.active_repl
+        terminal = Base.active_repl.t
+        active_repl_backend = Base.active_repl_backend
+      else
+        println("Infiltrator.jl needs a fully-functional Julia REPL.")
+        return
+      end
+    end
+
+    io = Base.pipe_writer(terminal)
+
+    trace = stacktrace()
+    start = something(findlast(x -> x.func === Symbol("start_prompt"), trace), 0) + 2
+    last = something(findfirst(x -> x.func === StackTraces.top_level_scope_sym, trace),
+                    length(trace))
+    trace = trace[start:last]
+
+    if CHECK_TASK[] && !active_repl_backend.in_eval
+      b = IOBuffer()
+      c = IOContext(b, :color=>get(io, :color, false))
+      printstyled(c, "ERROR: "; color=Base.error_color())
+      if length(trace) > 0
+        sf = trace[1]
+        print(c, "Disabling the infiltration point in ")
+        printstyled(c, sprint(Base.StackTraces.show_spec_linfo, sf); color=:cyan)
+        print(c, " at ")
+        if sf.file !== Symbol("")
+          print(c, basename(string(sf.file)), ":")
+          if sf.line >= 0
+            print(c, sf.line)
+          else
+              print(c, "?")
+          end
+        else
+          print(c, "unknown")
+        end
+        println(c, ".")
+      else
+        println(c, "Disabling this infiltration point.")
+      end
+      printstyled(c, """
+        Infiltrating fully asynchronous code is currently not possible. You may be trying
+        to infiltrate an """; color=:light_black)
+      printstyled(c, "@async "; color=:cyan)
+      printstyled(c, """
+        task or are using inline evaluation in VS Code or Juno.
+
+        Infiltration points can be re-enabled with """; color=:light_black)
+      printstyled(c, "Infiltrator.clear_disabled!() "; color=:cyan)
+      printstyled(c, """
+        and
+        this check is toggled with """, color=:light_black)
+      printstyled(c, "Infiltrator.toggle_async_check(false)", color=:cyan)
+      printstyled(c, ".\n", color=:light_black)
+
+      print(io, String(take!(b)))
+      push!(getfield(store, :disabled), ((file, fileline)))
       return
     end
-  end
 
-  io = Base.pipe_writer(terminal)
-
-  trace = stacktrace()
-  start = something(findlast(x -> x.func === Symbol("start_prompt"), trace), 0) + 2
-  last = something(findfirst(x -> x.func === StackTraces.top_level_scope_sym, trace),
-                   length(trace))
-  trace = trace[start:last]
-
-  if CHECK_TASK[] && !Base.active_repl_backend.in_eval
-    b = IOBuffer()
-    c = IOContext(b, :color=>get(io, :color, false))
-    printstyled(c, "ERROR: "; color=Base.error_color())
+    print(io, "Infiltrating ")
+    if Threads.nthreads() > 1
+      print(io, "(on thread $(Threads.threadid())) ")
+    end
     if length(trace) > 0
-      sf = trace[1]
-      print(c, "Disabling the infiltration point in ")
-      printstyled(c, sprint(Base.StackTraces.show_spec_linfo, sf); color=:cyan)
-      print(c, " at ")
-      if sf.file !== Symbol("")
-        print(c, basename(string(sf.file)), ":")
-        if sf.line >= 0
-          print(c, sf.line)
-        else
-            print(c, "?")
-        end
+      if nostack
+        println(io, "<unknown>")
       else
-        print(c, "unknown")
+        print_verbose_stackframe(io, trace[1])
       end
-      println(c, ".")
     else
-      println(c, "Disabling this infiltration point.")
+      println(io, "top-level frame")
     end
-    printstyled(c, """
-      Infiltrating fully asynchronous code is currently not possible. You may be trying
-      to infiltrate an """; color=:light_black)
-    printstyled(c, "@async "; color=:cyan)
-    printstyled(c, """
-      task or are using inline evaluation in VS Code or Juno.
-
-      Infiltration points can be re-enabled with """; color=:light_black)
-    printstyled(c, "Infiltrator.clear_disabled!() "; color=:cyan)
-    printstyled(c, """
-      and
-      this check is toggled with """, color=:light_black)
-    printstyled(c, "Infiltrator.toggle_async_check(false)", color=:cyan)
-    printstyled(c, ".\n", color=:light_black)
-
-    print(io, String(take!(b)))
-    push!(getfield(store, :disabled), ((file, fileline)))
-    return
+    println(io)
+    debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
+    println(io)
+  finally
+    unlock(INFILTRATION_LOCK[])
   end
-
-  if length(trace) > 0
-    if nostack
-      println(io, "Infiltrating <unknown>:")
-    else
-      print(io, "Infiltrating ")
-      print_verbose_stackframe(io, trace[1])
-    end
-  else
-    println(io, "Infiltrating top-level frame:")
-  end
-  println(io)
-  debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
-  println(io)
 end
 
 const HELP_TEXT = md"""

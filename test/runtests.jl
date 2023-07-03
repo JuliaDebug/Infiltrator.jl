@@ -74,24 +74,30 @@ end
         function run_terminal_test(func, result, commands, validation)
             test_func = TerminalRegressionTests.automated_test
             if haskey(ENV, "INFILTRATOR_CREATE_TEST") && !haskey(ENV, "CI")
-                func = TerminalRegressionTests.create_automated_test
+                test_func = TerminalRegressionTests.create_automated_test
             end
             test_func(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
                 Infiltrator.end_session!()
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
+                repl.mistate = REPL.LineEdit.init_state(REPL.terminal(repl), repl.interface)
                 repl.specialdisplay = REPL.REPLDisplay(repl)
 
                 Infiltrator.TEST_TERMINAL_REF[] = repl.t
                 Infiltrator.TEST_NOSTACK[] = true
-                Infiltrator.TEST_REPL_REF[] = repl; Infiltrator.CHECK_TASK[] = false
+                Infiltrator.TEST_REPL_REF[] = repl;
+                Infiltrator.CHECK_TASK[] = false
+
                 @test func() == result
+
                 Infiltrator.TEST_TERMINAL_REF[] = nothing
                 Infiltrator.TEST_NOSTACK[] = false
                 Infiltrator.TEST_REPL_REF[] = nothing
+                if VERSION > v"1.9-"
+                    finalize(emuterm.pty)
+                end
             end
         end
-
         run_terminal_test(() -> f(3), [3, 4, 5],
                         ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
                         "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")

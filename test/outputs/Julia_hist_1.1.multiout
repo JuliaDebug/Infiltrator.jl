@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> y
 |3-element Array{Int64,1}:
@@ -17,39 +17,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
-|
-|infil> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
-|
-|infil> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
-|
-|infil> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -59,7 +27,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> y
 |3-element Array{Int64,1}:
@@ -72,14 +40,10 @@
 | 1
 | 2
 | 3
-|
-|infil> 
-|
-|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -92,14 +56,10 @@
 |CC
 |CC
 |CC
-|
-|BBBBBBB
-|
-|CCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> y
 |3-element Array{Int64,1}:
@@ -115,17 +75,11 @@
 |
 |infil> 
 |
-|Infiltrating <unknown>:
-|
-|infil> y
-|3-element Array{Int64,1}:
-| 1
-| 2
-| 3
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
@@ -141,7 +95,53 @@
 |
 |BBBBBBB
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> 
+|
+|Infiltrating <unknown>
+|
+|infil> y
+|3-element Array{Int64,1}:
+| 1
+| 2
+| 3
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCCC
