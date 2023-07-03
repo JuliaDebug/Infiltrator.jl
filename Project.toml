@@ -1,6 +1,6 @@
 name = "Infiltrator"
 uuid = "5903a43b-9cc3-4c30-8d17-598619ec4e9b"
-version = "1.6.3"
+version = "1.6.4"
 
 [deps]
 InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
