@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-    tags: '*'
+    tags: ["*"]
 jobs:
   test:
     name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ github.event_name }}
@@ -13,10 +13,10 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.1'
           - '1.6'
           - '1.7'
           - '1.8'
+          - '1.9'
         os:
           - ubuntu-latest
         arch:

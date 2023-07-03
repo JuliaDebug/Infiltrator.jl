@@ -1,84 +1,84 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |2
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |2
@@ -88,14 +88,14 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
@@ -105,14 +105,14 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |2
@@ -122,18 +122,18 @@
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
@@ -143,18 +143,18 @@
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |2
@@ -164,21 +164,21 @@
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |3
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
@@ -188,21 +188,21 @@
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |1
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |2
@@ -212,61 +212,7 @@
 |
 |infil> @continue
 |
-|Infiltrating <unknown>:
-|
-|infil> i
-|3
-|
-|infil> safehouse.i
-|2
-|
-|infil> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|C
-|
-|BBBBBBBCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCC
-|
-|BBBBBBBC
-|C
-|
-|BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|
-|BBBBBBBCCCCCCCCC
-|
-|CCCCCCCCCCCCCCCCCCCCCCC
-|
-|BBBBBBBC
-|C
-|
-|BBBBBBBCCCCCCCCCCC
-|C
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
-|
-|infil> i
-|1
-|
-|infil> @continue
-|
-|Infiltrating <unknown>:
-|
-|infil> i
-|2
-|
-|infil> @exfiltrate
-|Exfiltrating 1 local variable into the safehouse.
-|
-|infil> @continue
-|
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> i
 |3
@@ -274,20 +220,16 @@
 |infil> safehouse.i
 |2
 |
-|infil> @continue
-|
-|Infiltrating <unknown>:
-|
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
@@ -297,7 +239,65 @@
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|1
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|2
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|3
+|
+|infil> safehouse.i
+|2
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |C
@@ -307,6 +307,6 @@
 |
 |BBBBBBBCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB

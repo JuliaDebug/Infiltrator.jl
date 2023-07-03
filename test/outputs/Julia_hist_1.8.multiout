@@ -1,13 +1,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> y
 |3-element Vector{Int64}:
@@ -17,39 +17,7 @@
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
-|
-|BBBBBBB
-++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
-|
-|infil> y
-|3-element Vector{Int64}:
-| 1
-| 2
-| 3
-|
-|infil> y
-|3-element Vector{Int64}:
-| 1
-| 2
-| 3
-|
-|infil> 
---------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
-|
-|BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCC
-|CC
-|CC
-|CC
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -59,7 +27,7 @@
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> y
 |3-element Vector{Int64}:
@@ -72,14 +40,10 @@
 | 1
 | 2
 | 3
-|
-|infil> 
-|
-|Infiltrating <unknown>:
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -92,14 +56,10 @@
 |CC
 |CC
 |CC
-|
-|BBBBBBB
-|
-|CCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> y
 |3-element Vector{Int64}:
@@ -115,17 +75,11 @@
 |
 |infil> 
 |
-|Infiltrating <unknown>:
-|
-|infil> y
-|3-element Vector{Int64}:
-| 1
-| 2
-| 3
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -141,7 +95,53 @@
 |
 |BBBBBBB
 |
-|CCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> y
+|3-element Vector{Int64}:
+| 1
+| 2
+| 3
+|
+|infil> y
+|3-element Vector{Int64}:
+| 1
+| 2
+| 3
+|
+|infil> 
+|
+|Infiltrating <unknown>
+|
+|infil> y
+|3-element Vector{Int64}:
+| 1
+| 2
+| 3
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+|
+|CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
 |CCCCCCCCCCCCCCCCCCCCCCCC

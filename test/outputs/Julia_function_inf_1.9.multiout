@@ -1,20 +1,20 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-|Infiltrating <unknown>:
+|Infiltrating <unknown>
 |
 |infil> x
 |2
 |
 |infil> 
 --------------------------------------------------
-|AAAAAAAAAAAAAAAAAAAAAAA
+|AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
 |C
