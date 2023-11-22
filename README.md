@@ -131,7 +131,7 @@ julia> function f(x)
        end
 f (generic function with 1 method)
 
-julia> f([1,2,3])
+julia> f([1,2,3,4,5,6,7,8,9,10])
 Infiltrating f(x::Vector{Int64})
   at REPL[10]:5
 
@@ -164,7 +164,7 @@ infil> ?
 infil> @locals
 - out::Vector{Any} = Any[2]
 - i::Int64 = 1
-- x::Vector{Int64} = [1, 2, 3]
+- x::Vector{Int64} = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 infil> 0//0
 ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
@@ -186,7 +186,7 @@ Disabled infiltration at this infiltration point.
 infil> @toggle
 Enabled infiltration at this infiltration point.
 
-infil> @cond i == 3
+infil> @cond i > 5
 Conditionally enabled infiltration at this infiltration point.
 
 infil> @continue
@@ -195,38 +195,55 @@ Infiltrating f(x::Vector{Int64})
   at REPL[10]:5
 
 infil> i
-3
+6
 
 infil> intermediate = copy(out)
-3-element Vector{Any}:
- 2
- 4
- 6
+6-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
 
 infil> @exfiltrate intermediate x
 Exfiltrating 2 local variables into the safehouse.
 
 infil> @exit
 
-3-element Vector{Any}:
- 2
- 4
- 6
+10-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
+ 14
+ 16
+ 18
+ 20
+
 
 julia> safehouse.intermediate
-3-element Vector{Any}:
- 2
- 4
- 6
+6-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
 
 julia> @withstore begin
          x = 23
          x .* intermediate
        end
-2-element Vector{Int64}:
+6-element Vector{Int64}:
   46
   92
  138
+ 184
+ 230
+ 276
 ```
 
 ## Related projects
