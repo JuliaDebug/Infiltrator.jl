@@ -255,7 +255,8 @@ function start_prompt(mod, locals, file, fileline;
     spot in getfield(store, :disabled) && return
     cs = getfield(store, :conditions)
     f = get(cs, spot, nothing)
-    isnothing(f) || f(locals) || return
+    # Use invokelatest because we may have added f before returning to the REPL.
+    isnothing(f) || Base.invokelatest(f, locals) || return
 
     if terminal === nothing || repl === nothing
       active_repl_backend = nothing

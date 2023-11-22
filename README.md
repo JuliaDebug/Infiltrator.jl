@@ -152,6 +152,9 @@ infil> ?
 
     •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all with Infiltrator.clear_disabled!()).
 
+    •  @cond expr: Infiltrate at this @infiltrate spot only if <expr> evaluates to true (clear all with
+       Infiltrator.clear_conditions!()).
+
     •  @continue: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
 
     •  @doc symbol: Get help for symbol (same as in the normal Julia REPL).
@@ -183,15 +186,22 @@ Disabled infiltration at this infiltration point.
 infil> @toggle
 Enabled infiltration at this infiltration point.
 
+infil> @cond i == 3
+Conditionally enabled infiltration at this infiltration point.
+
 infil> @continue
 
 Infiltrating f(x::Vector{Int64})
   at REPL[10]:5
 
+infil> i
+3
+
 infil> intermediate = copy(out)
-2-element Vector{Any}:
+3-element Vector{Any}:
  2
  4
+ 6
 
 infil> @exfiltrate intermediate x
 Exfiltrating 2 local variables into the safehouse.
@@ -204,17 +214,19 @@ infil> @exit
  6
 
 julia> safehouse.intermediate
-2-element Vector{Any}:
+3-element Vector{Any}:
  2
  4
+ 6
 
 julia> @withstore begin
          x = 23
          x .* intermediate
        end
 2-element Vector{Int64}:
- 46
- 92
+  46
+  92
+ 138
 ```
 
 ## Related projects
