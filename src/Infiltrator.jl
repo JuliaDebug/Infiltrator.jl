@@ -541,20 +541,20 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
           @assert expr.head == :toplevel
           # Unwrap the :toplevel node and replace with a :block
           expr = Expr(:block, expr.args...)
-          # Rename all variables to use the locals dict.
-          # Otherwise, we'll capture the values of the locals here rather than at the next
-          # infiltration point.
-          locals_name = gensym(:locals)
-          subst(x) = x
-          subst(x::Symbol) = haskey(locals, x) ? Expr(:ref, locals_name, Expr(:call, Symbol, string(x))) : x
-          subst(e::Expr) = Expr(e.head, map(subst, e.args)...)
-          expr = subst(expr)
           # Wrap the expr in a closure.
           # We need to gensym a new name to avoid this error:
           #    cannot declare #1#2 constant; it already has a value
+          # Pass a locals dict into the function so we access the locals at the
+          # next infiltration point rather than capturing the locals here.
           fname = gensym(:cond)
+          locals_dict = gensym(:locals)
           expr = quote
-            function $(fname)($locals_name)
+            function $(fname)($locals_dict)
+              $(
+                ( Expr(:(=), x, Expr(:ref, locals_dict, Expr(:call, Symbol, string(x))))
+                  for x in keys(locals)
+                )...
+              )
               $(expr)
             end
             $fname
