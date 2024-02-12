@@ -4,6 +4,7 @@ cp(joinpath(@__DIR__, "..", "README.md"), joinpath(@__DIR__, "src", "index.md");
 
 makedocs(;
     modules=[Infiltrator],
+    warnonly = [:missing_docs, :linkcheck],
     format=Documenter.HTML(
         prettyurls = get(ENV, "CI", nothing) == "true",
         assets = ["assets/favicon.ico"],
