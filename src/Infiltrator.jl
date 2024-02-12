@@ -128,6 +128,7 @@ mutable struct Session
   store::Module
   exiting::Bool
   disabled::Set
+  conditions::Dict
 end
 function Base.show(io::IO, s::Session)
   n = length(get_store_names(s))
@@ -166,7 +167,7 @@ Also see [`clear_store!`](@ref), [`set_store!`](@ref), and [`@withstore`](@ref) 
 safehouse-related functionality.
 """
 @doc store_docstring
-const store = Session(Module(), false, Set())
+const store = Session(Module(), false, Set(), Dict())
 @doc store_docstring
 const safehouse = store
 @doc store_docstring
@@ -199,6 +200,16 @@ Clear all disabled infiltration points.
 """
 function clear_disabled!(s = store)
   empty!(getfield(s, :disabled))
+  return nothing
+end
+
+"""
+    clear_conditions!(s = safehouse)
+
+Clear all conditional infiltration points.
+"""
+function clear_conditions!(s = store)
+  empty!(getfield(s, :conditions))
   return nothing
 end
 
@@ -240,7 +251,12 @@ function start_prompt(mod, locals, file, fileline;
   lock(INFILTRATION_LOCK[])
   try
     getfield(store, :exiting) && return
-    (file, fileline) in getfield(store, :disabled) && return
+    spot = (file, fileline)
+    spot in getfield(store, :disabled) && return
+    cs = getfield(store, :conditions)
+    f = get(cs, spot, nothing)
+    # Use invokelatest because we may have added f before returning to the REPL.
+    isnothing(f) || Base.invokelatest(f, locals) || return
 
     if terminal === nothing || repl === nothing
       active_repl_backend = nothing
@@ -339,6 +355,7 @@ The following commands are special cased:
   - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
     this variant can also exfiltrate variables defined in the `infil>` REPL.
   - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
+  - `@cond expr`: Infiltrate at this `@infiltrate` spot only if `expr` evaluates to true (clear all with `Infiltrator.clear_conditions!()`). Only local variables can be accessed here.
   - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
   - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
   - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
@@ -505,15 +522,61 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
       elseif sline == "@toggle"
         spot = (file, fileline)
         ds = getfield(store, :disabled)
+        cs = getfield(store, :conditions)
         if spot in ds
           delete!(ds, spot)
-          println(io, "Enabled infiltration at this infiltration point.\n")
+          if haskey(cs, spot)
+            println(io, "Conditionally enabled infiltration at this infiltration point.\n")
+          else
+            println(io, "Enabled infiltration at this infiltration point.\n")
+          end
         else
           push!(ds, spot)
           println(io, "Disabled infiltration at this infiltration point.\n")
         end
         LineEdit.reset_state(s)
         return true
+      elseif startswith(sline, "@cond")
+        spot = (file, fileline)
+        ds = getfield(store, :disabled)
+        cs = getfield(store, :conditions)
+        rest = lstrip(sline[6:end])
+
+        try
+          expr = Base.parse_input_line(rest)
+          @assert expr.head == :toplevel
+          # Unwrap the :toplevel node and replace with a :block
+          expr = Expr(:block, expr.args...)
+          # Wrap the expr in a closure.
+          # We need to gensym a new name to avoid this error:
+          #    cannot declare #1#2 constant; it already has a value
+          # Pass a locals dict into the function so we access the locals at the
+          # next infiltration point rather than capturing the locals here.
+          fname = gensym(:cond)
+          locals_dict = gensym(:locals)
+          expr = quote
+            function $(fname)($locals_dict)
+              $(
+                ( Expr(:(=), x, Expr(:ref, locals_dict, Expr(:call, Symbol, string(x))))
+                  for x in keys(locals)
+                )...
+              )
+              $(expr)
+            end
+            $fname
+          end
+          # Eval and save in the dict.
+          result = Core.eval(evalmod, expr)
+          cs[spot] = result
+          # Remove the spot from the disabled set.
+          delete!(ds, spot)
+          println(io, "Conditionally enabled infiltration at this infiltration point.\n")
+          LineEdit.reset_state(s)
+          return true
+        catch err
+          # If we get an error, just punt to the eval code to handle the error.
+          line = rest
+        end
       elseif sline == "@exit"
         setfield!(store, :exiting, true)
         if !REPL_HOOKED[]
@@ -726,7 +789,6 @@ end
 
 function interpret(expr, evalmod)
   out = Core.eval(evalmod, :(ans = $(expr)))
-
   return out
 end
 

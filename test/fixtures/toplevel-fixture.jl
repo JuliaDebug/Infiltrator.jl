@@ -1,5 +1,7 @@
 using Infiltrator
-println(2+2)
+if VERSION > v"1.7"
+    println(2+2)
+end
 @infiltrate
 
 "success"
