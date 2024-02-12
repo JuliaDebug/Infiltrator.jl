@@ -1,0 +1,458 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl       foldr
+|foo         for
+|foreach     fourthroot
+|infil> fo^C
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAAAAAACCCCC
+|CCCAAAAAAAAACCC
+|CCCCCCCAAAAACCCCCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl       foldr
+|foo         for
+|foreach     fourthroot
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAAAAAACCCCC
+|CCCAAAAAAAAACCC
+|CCCCCCCAAAAACCCCCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl       foldr
+|foo         for
+|foreach     fourthroot
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAAAAAACCCCC
+|CCCAAAAAAAAACCC
+|CCCCCCCAAAAACCCCCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl       foldr
+|foo         for
+|foreach     fourthroot
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> aa
+|aa
+|aaaa
+|infil> aa^C
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAAAAAACCCCC
+|CCCAAAAAAAAACCC
+|CCCCCCCAAAAACCCCCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBBCC
+|CC
+|CCCC
+|BBBBBBBCCCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl       foldr
+|foo         for
+|foreach     fourthroot
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> aa
+|aa
+|aaaa
+|infil> aa^C
+|
+|infil> aaaa.xxx
+|333
+|
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAAAAAACCCCC
+|CCCAAAAAAAAACCC
+|CCCCCCCAAAAACCCCCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBBCC
+|CC
+|CCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCCC
+|CCC
+|
+|BBBBBBB
+|
+|
+|
+|
+|
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> struct Foo
+|         xxx
+|         yyy
+|       end
+|
+|infil> foo = Foo(1, 2)
+|Main.anonymous.Foo(1, 2)
+|
+|infil> fo
+|foldl       foldr
+|foo         for
+|foreach     fourthroot
+|infil> fo^C
+|
+|infil> foo.xxx
+|1
+|
+|infil> zzzzz^C
+|
+|infil> aa
+|aa
+|aaaa
+|infil> aa^C
+|
+|infil> aaaa.xxx
+|333
+|
+|infil> @exfiltrate foo nope
+|Exfiltrating 2 local variables into the safehouse.
+|
+|Warning: Binding `nope` not defined in this context. Refusing to exfiltrate.
+|infil> 
+|
+|
+|
+|
+|
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|AAAAAAACCCCC
+|AAAAAAACCCCC
+|AAAAAAACCC
+|
+|BBBBBBBCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCC
+|CCCCCAAAAAAACCCCC
+|CCCAAAAAAAAACCC
+|CCCCCCCAAAAACCCCCCCCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCC
+|
+|BBBBBBBCC
+|CC
+|CCCC
+|BBBBBBBCCCC
+|
+|BBBBBBBCCCCCCCC
+|CCC
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|DDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|BBBBBBB
+|
+|
+|
+|
+|
+|

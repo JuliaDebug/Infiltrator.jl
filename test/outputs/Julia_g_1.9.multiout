@@ -39,6 +39,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
@@ -73,6 +75,8 @@
 |
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -107,6 +111,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
 |infil> @trace
 |
 |infil> 
@@ -143,6 +149,8 @@
 |
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
 |BBBBBBBCCCCCC
 |
 |BBBBBBB
@@ -179,6 +187,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
 |infil> @trace
 |
 |infil> @locals
@@ -218,6 +228,8 @@
 |
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
 |BBBBBBBCCCCCC
 |
 |BBBBBBBCCCCCCC
@@ -257,6 +269,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
 |infil> @trace
 |
 |infil> @locals
@@ -299,6 +313,8 @@
 |
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
 |BBBBBBBCCCCCC
 |
 |BBBBBBBCCCCCCC

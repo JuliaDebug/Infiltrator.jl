@@ -347,6 +347,7 @@ The following commands are special cased:
 
 function show_help(io)
   show(io, MIME("text/plain"), HELP_TEXT)
+  println(io, '\n')
 end
 
 function strlimit(str, limit = 30)
@@ -359,6 +360,10 @@ function strlimit(str, limit = 30)
 end
 
 function show_locals(io, locals, selected::AbstractSet = Set())
+  if isempty(locals)
+    println(io, "No local variables in this scope.\n")
+    return
+  end
   for (var, val) in locals
     if isempty(selected) || var in selected
       one_line_show(io, var, val)
@@ -616,6 +621,11 @@ function get_module_names(m::Module, get_names = all_names)
 end
 
 function print_verbose_stacktrace(io, st, limit = 100)
+  if isempty(st)
+    println(io, "Toplevel scope\n")
+    return
+  end
+
   len = length(st)
   for (i, sf) in enumerate(st)
     if i > limit
