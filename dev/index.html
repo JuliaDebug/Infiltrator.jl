@@ -44,7 +44,7 @@ julia&gt; safehouse.x # or exfiltrated.x
        end
 f (generic function with 1 method)
 
-julia&gt; f([1,2,3])
+julia&gt; f([1,2,3,4,5,6,7,8,9,10])
 Infiltrating f(x::Vector{Int64})
   at REPL[10]:5
 
@@ -65,6 +65,9 @@ infil&gt; ?
 
     •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all with Infiltrator.clear_disabled!()).
 
+    •  @cond expr: Infiltrate at this @infiltrate spot only if &lt;expr&gt; evaluates to true (clear all with
+       Infiltrator.clear_conditions!()).
+
     •  @continue: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
 
     •  @doc symbol: Get help for symbol (same as in the normal Julia REPL).
@@ -74,7 +77,7 @@ infil&gt; ?
 infil&gt; @locals
 - out::Vector{Any} = Any[2]
 - i::Int64 = 1
-- x::Vector{Int64} = [1, 2, 3]
+- x::Vector{Int64} = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 infil&gt; 0//0
 ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
@@ -96,35 +99,61 @@ Disabled infiltration at this infiltration point.
 infil&gt; @toggle
 Enabled infiltration at this infiltration point.
 
+infil&gt; @cond i &gt; 5
+Conditionally enabled infiltration at this infiltration point.
+
 infil&gt; @continue
 
 Infiltrating f(x::Vector{Int64})
   at REPL[10]:5
 
+infil&gt; i
+6
+
 infil&gt; intermediate = copy(out)
-2-element Vector{Any}:
- 2
- 4
+6-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
 
 infil&gt; @exfiltrate intermediate x
 Exfiltrating 2 local variables into the safehouse.
 
 infil&gt; @exit
 
-3-element Vector{Any}:
- 2
- 4
- 6
+10-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
+ 14
+ 16
+ 18
+ 20
+
 
 julia&gt; safehouse.intermediate
-2-element Vector{Any}:
- 2
- 4
+6-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
 
 julia&gt; @withstore begin
          x = 23
          x .* intermediate
        end
-2-element Vector{Int64}:
- 46
- 92</code></pre><h2 id="Related-projects"><a class="docs-heading-anchor" href="#Related-projects">Related projects</a><a id="Related-projects-1"></a><a class="docs-heading-anchor-permalink" href="#Related-projects" title="Permalink"></a></h2><ul><li><a href="https://github.com/NightMachinary/PyExfiltrator"><code>@exfiltrate</code> for Python</a></li></ul></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="API/">API »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Monday 12 February 2024 16:30">Monday 12 February 2024</span>. Using Julia version 1.6.7.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+6-element Vector{Int64}:
+  46
+  92
+ 138
+ 184
+ 230
+ 276</code></pre><h2 id="Related-projects"><a class="docs-heading-anchor" href="#Related-projects">Related projects</a><a id="Related-projects-1"></a><a class="docs-heading-anchor-permalink" href="#Related-projects" title="Permalink"></a></h2><ul><li><a href="https://github.com/NightMachinary/PyExfiltrator"><code>@exfiltrate</code> for Python</a></li></ul></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="API/">API »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Monday 12 February 2024 17:55">Monday 12 February 2024</span>. Using Julia version 1.6.7.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
