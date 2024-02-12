@@ -31,6 +31,11 @@
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
 |
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
 |
@@ -67,6 +72,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -102,6 +112,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -141,6 +156,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -178,6 +198,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -221,6 +246,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -262,6 +292,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -311,6 +346,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -358,6 +398,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -412,6 +457,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -464,6 +514,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -521,6 +576,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -576,6 +636,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -636,6 +701,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -694,6 +764,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -757,6 +832,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -818,6 +898,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -884,6 +969,11 @@
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -948,6 +1038,11 @@
 |
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
@@ -1016,6 +1111,11 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -1085,6 +1185,11 @@
 |    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
 |       with Infiltrator.clear_disabled!()).
 |
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
 |
@@ -1155,6 +1260,11 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC

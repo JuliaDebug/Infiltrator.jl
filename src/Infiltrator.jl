@@ -355,7 +355,7 @@ The following commands are special cased:
   - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
     this variant can also exfiltrate variables defined in the `infil>` REPL.
   - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
-  - `@cond expr`: Infiltrate at this `@infiltrate` spot only if <expr> evaluates to true (clear all with `Infiltrator.clear_conditions!()`).
+  - `@cond expr`: Infiltrate at this `@infiltrate` spot only if `expr` evaluates to true (clear all with `Infiltrator.clear_conditions!()`). Only local variables can be accessed here.
   - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
   - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
   - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to

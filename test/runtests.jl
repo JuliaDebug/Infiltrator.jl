@@ -67,6 +67,13 @@ function anon()
     end
 end
 
+function cond(t)
+    for i in 1:10
+        println(t, i)
+        @infiltrate
+    end
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -88,7 +95,7 @@ end
                 Infiltrator.TEST_REPL_REF[] = repl;
                 Infiltrator.CHECK_TASK[] = false
 
-                @test func() == result
+                @test func(repl.t) == result
 
                 Infiltrator.TEST_TERMINAL_REF[] = nothing
                 Infiltrator.TEST_NOSTACK[] = false
@@ -98,7 +105,7 @@ end
                 end
             end
         end
-        run_terminal_test(() -> f(3), [3, 4, 5],
+        run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
                         "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
 
@@ -106,30 +113,30 @@ end
 
         Infiltrator.clear_disabled!()
 
-        run_terminal_test(() -> f(3), [3, 4, 5],
+        run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["@locals\n", "\x4"],
                         "Julia_f2_$(VERSION.major).$(VERSION.minor).multiout")
 
-        run_terminal_test(() -> f(3), [3, 4, 5],
+        run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["@locals x\n", "\x4"],
                         "Julia_f2_filter_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test g(1) == 12 # conditional @infiltrate should not open a prompt
 
-        run_terminal_test(() -> g(2), 24,
+        run_terminal_test((t) -> g(2), 24,
                         ["?\n", "@trace\n", "@locals\n", "x\n", "\x4"],
                         "Julia_g_$(VERSION.major).$(VERSION.minor).multiout")
 
-        run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
+        run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["\x4", "@locals\n", "@exit\n"],
                         "Julia_h_$(VERSION.major).$(VERSION.minor).multiout")
 
-        run_terminal_test(() -> i(1000), i(1000),
+        run_terminal_test((t) -> i(1000), i(1000),
                         ["2+2\n", "@locals\n", "\x4"],
                         "Julia_i_$(VERSION.major).$(VERSION.minor).multiout")
 
         # scratch pad test
-        run_terminal_test(() -> g(2), 24,
+        run_terminal_test((t) -> g(2), 24,
                         ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n","foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "@exfiltrate xxxxx aa bb foo bar\n", "\x4"],
                         "Julia_exfil_$(VERSION.major).$(VERSION.minor).multiout")
 
@@ -141,58 +148,71 @@ end
         @test !isdefined(getfield(Infiltrator.store, :store), :x)
 
         # proper scoping of scratch pad
-        run_terminal_test(() -> j(2), 8,
+        run_terminal_test((t) -> j(2), 8,
                         ["@locals\n", "@exfiltrate\n", "\x4"],
                         "Julia_scoping_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test Infiltrator.store.xxxxx == 4
 
         # persistent history
-        run_terminal_test(() -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
+        run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["y\n", "\e[A\n", "\x4", "\e[A\n", "@exit\n"],
                         "Julia_hist_$(VERSION.major).$(VERSION.minor).multiout")
 
         # top-level test
-        run_terminal_test(() -> include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl")), "success",
+        run_terminal_test((t) -> begin
+                            if VERSION > v"1.7"
+                                redirect_stdout(t) do
+                                    include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl"))
+                                end
+                            else
+                                include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl"))
+                            end
+                        end, "success",
                         ["@exit\n"],
                         "Julia_toplevel_$(VERSION.major).$(VERSION.minor).multiout")
 
-        # completions test
-        run_terminal_test(k, Bar(333, 333),
+                        # completions test
+        run_terminal_test((t) -> k(), Bar(333, 333),
                         ["struct Foo\n  xxx\n  yyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
                         "Julia_completions_$(VERSION.major).$(VERSION.minor).multiout")
         @test Infiltrator.store.foo.xxx == 1
 
         # imported globals
-        run_terminal_test(Jmod.jfunc, nothing,
+        run_terminal_test((t) -> Jmod.jfunc(), nothing,
                           ["x\n", "randstring\n", "@exit\n"],
                           "Julia_imported_globals_$(VERSION.major).$(VERSION.minor).multiout")
 
         # safehouse should not shadow local variables
-        run_terminal_test(multiexfiltrate, nothing,
+        run_terminal_test((t) -> multiexfiltrate(), nothing,
                           ["i\n", "@continue\n", "i\n", "@exfiltrate\n", "@continue\n", "i\n", "safehouse.i\n", "@continue\n", "@exit\n"],
                           "Julia_multi_exfiltrate_$(VERSION.major).$(VERSION.minor).multiout")
         @test Infiltrator.store.i == 2
 
         # function-form infiltration
-        run_terminal_test(() -> function_form_infiltration(2), nothing,
+        run_terminal_test((t) -> function_form_infiltration(2), nothing,
                           ["x\n", "@exit\n"],
                           "Julia_function_inf_$(VERSION.major).$(VERSION.minor).multiout")
 
         # test Core.Compiler
         @static if VERSION >= v"1.8"
             @eval Core.Compiler __foo(x) = Main.Infiltrator.@infiltrate
-            run_terminal_test(() -> Core.Compiler.__foo(Core.SSAValue(3)), nothing,
+            run_terminal_test((t) -> Core.Compiler.__foo(Core.SSAValue(3)), nothing,
                             ["x\n", "@exfiltrate\n", "@exit\n"],
                             "Julia_compiler_$(VERSION.major).$(VERSION.minor).multiout")
             @test Infiltrator.store.x == Core.SSAValue(3)
         end
 
         # anonymous modules
-        run_terminal_test(() -> anon(), nothing,
+        run_terminal_test((t) -> anon(), nothing,
                           ["aas\t\t\n", "@exfiltrate aasdf\n", "@exit\n"],
                           "Julia_anon_$(VERSION.major).$(VERSION.minor).multiout")
         @test Infiltrator.store.aasdf == 3
+
+        # anonymous modules
+        run_terminal_test((t) -> cond(t), nothing,
+                          ["@continue\n", "@continue\n", "@cond i > 6\n", "@continue\n", "i\n", "@exit\n"],
+                          "Julia_cond_$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end
