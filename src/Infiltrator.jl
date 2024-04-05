@@ -105,6 +105,28 @@ macro exfiltrate()
   end
 end
 
+"""
+  @infiltry expr
+
+Wraps expression in a try block, infiltrate if an exception is raised.
+Equivalent to:
+
+    try
+        expr
+    catch
+        @infiltrate
+    end
+"""
+macro infiltry(ex)
+    return quote
+        try
+            $(esc(ex))
+        catch
+            $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line))
+        end
+    end
+end
+
 const prompt_color = if Sys.iswindows()
   "\e[33m"
 else
