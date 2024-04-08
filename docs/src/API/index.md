@@ -12,6 +12,7 @@ This means that you'll need to use [Revise.jl](https://github.com/timholy/Revise
 in VS Code, or just plain old `@eval` to apply `@infiltrate` statements in your package code.
 ```@docs
 @infiltrate
+@infiltry
 infiltrate
 @exfiltrate
 ```

@@ -1,0 +1,42 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|EXCEPTION while infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|EXCEPTION while infiltrating <unknown>
+|
+|infil> @exception
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|EXCEPTION while infiltrating <unknown>
+|
+|infil> @exception
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|
+|infil> @locals
+|- x::Int64 = 0
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBB
