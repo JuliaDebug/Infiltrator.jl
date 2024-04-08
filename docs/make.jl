@@ -1,6 +1,6 @@
 using Documenter, Infiltrator
 
-open(docsindex, "w") do io
+open(joinpath(@__DIR__, "src", "index.md"), "w") do io
     println(io, "![logo](assets/logo.svg)")
     for line in readlines(joinpath(@__DIR__, "..", "README.md"))
         startswith(line, r"\s*<") && continue
