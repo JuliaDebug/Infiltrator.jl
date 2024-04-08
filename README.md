@@ -51,51 +51,6 @@ end
 to infiltrate package code without any post-hoc evaluation into the module (because the
 functional form does not require Infiltrator to be loaded at compiletime).
 
-## Auto-loading Infiltrator.jl
-
-The following convenience macro can be defined in e.g. `startup.jl` or your package code.
-It will automatically load Infiltrator.jl (if it is in your environment stack) and
-subsequently call `@infiltrate`:
-```julia
-macro autoinfiltrate(cond=true)
-    pkgid = Base.PkgId(Base.UUID("5903a43b-9cc3-4c30-8d17-598619ec4e9b"), "Infiltrator")
-    if !haskey(Base.loaded_modules, pkgid)
-        try
-            Base.eval(Main, :(using Infiltrator))
-        catch err
-            @error "Cannot load Infiltrator.jl. Make sure it is included in your environment stack."
-        end
-    end
-    i = get(Base.loaded_modules, pkgid, nothing)
-    lnn = LineNumberNode(__source__.line, __source__.file)
-
-    if i === nothing
-        return Expr(
-            :macrocall,
-            Symbol("@warn"),
-            lnn,
-            "Could not load Infiltrator.")
-    end
-
-    return Expr(
-        :macrocall,
-        Expr(:., i, QuoteNode(Symbol("@infiltrate"))),
-        lnn,
-        esc(cond)
-    )
-end
-```
-Note that this probably won't work as expected in module-level statements in package code due
-to precompilation.
-
-## `@exfiltrate`
-
-```julia
-@exfiltrate
-```
-
-Assigns all local variables into global storage.
-
 ## The safehouse
 
 Exfiltrating variables (with `@exfiltrate` or by assignment in an `@infiltrate` session) happens by
@@ -118,8 +73,26 @@ You can also assign a specific module with `Infiltrator.set_store!(mod)`. This a
 backing module to `Main` and therefore export the contents of the safehouse to the global namespace
 (although doing so is not recommended).
 
-## Example usage
+## Usage
+### Scripts and package development
+Using Infiltrator for debugging packages or scripts requires a little bit of setup.
 
+1. Either your current environment or an environment futher down the [environment stack](https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks)
+must contain Infiltrator.jl. I would recommend putting Infiltrator.jl into your global `@v1.xx` environment so that it is always loaded.
+2. Load [Revise.jl](https://github.com/timholy/Revise.jl) or use [VS Code's inline evaluation](https://www.julia-vscode.org/docs/stable/userguide/runningcode/)
+to seamlessly update your package code.
+3. Load your package.
+4. Add `Main.@infiltrate` statements as breakpoints wherever desired.
+5. Run a function that ends up executing the method containing the breakpoint.
+
+The ordering of steps 3 and 4 is important: loading your package after adding `Main.@infiltrate` statements will
+prevent if from loading, because that macro does not exist during precompilation.
+
+If you absolutely cannot modfiy your code after loading it initially, then the `infiltrate` function *can* be used
+instead. An advantage of the macro form is that it will fail tests, so you don't end up committing or merging code
+containing infiltration points.
+
+### REPL session
 ```julia
 julia> function f(x)
          out = []
@@ -246,6 +219,43 @@ julia> @withstore begin
  184
  230
  276
+```
+
+## Advanced
+### Auto-loading Infiltrator.jl
+Infiltrator loads very fast (~3ms on my machine) and is generally safe to load in `startup.jl`.
+
+If, for whatever reason, you do not want to unconditionally load Infiltrator in your `startup.jl`,
+you can use the following convenience macro instead. It will automatically load
+Infiltrator.jl (if it is in your environment stack) and subsequently call `@infiltrate`:
+```julia
+macro autoinfiltrate(cond=true)
+    pkgid = Base.PkgId(Base.UUID("5903a43b-9cc3-4c30-8d17-598619ec4e9b"), "Infiltrator")
+    if !haskey(Base.loaded_modules, pkgid)
+        try
+            Base.eval(Main, :(using Infiltrator))
+        catch err
+            @error "Cannot load Infiltrator.jl. Make sure it is included in your environment stack."
+        end
+    end
+    i = get(Base.loaded_modules, pkgid, nothing)
+    lnn = LineNumberNode(__source__.line, __source__.file)
+
+    if i === nothing
+        return Expr(
+            :macrocall,
+            Symbol("@warn"),
+            lnn,
+            "Could not load Infiltrator.")
+    end
+
+    return Expr(
+        :macrocall,
+        Expr(:., i, QuoteNode(Symbol("@infiltrate"))),
+        lnn,
+        esc(cond)
+    )
+end
 ```
 
 ## Related projects
