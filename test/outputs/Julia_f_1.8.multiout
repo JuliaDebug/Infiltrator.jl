@@ -24,6 +24,9 @@
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
 |
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
 |       defined in the infil> REPL.
@@ -65,6 +68,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -105,6 +111,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -149,6 +158,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -191,6 +203,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -239,6 +254,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -285,6 +303,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -339,6 +360,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -391,6 +415,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -450,6 +477,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -507,6 +537,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -569,6 +602,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -629,6 +665,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -694,6 +733,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -757,6 +799,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -836,6 +881,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -913,6 +961,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -995,6 +1046,9 @@
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
@@ -1075,6 +1129,9 @@
 |    •  @trace: Print the current stack trace.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
 |
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
@@ -1159,6 +1216,9 @@
 |CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -1244,6 +1304,9 @@
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
 |
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
 |    •  @exfiltrate: Save all local variables into the store. @exfiltrate
 |       x y saves x and y; this variant can also exfiltrate variables
 |       defined in the infil> REPL.
@@ -1330,6 +1393,9 @@
 |CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
 |DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC

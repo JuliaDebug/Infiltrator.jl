@@ -1,0 +1,54 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|EXCEPTION while infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|EXCEPTION while infiltrating <unknown>
+|
+|infil> @exception
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:32
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCDDDDDDDDDD
+|EEEEEEEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+|DDDDDDDDDDD
+|DDDDDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFGDDDDDDF
+|GGGGGGGGGDGGHHHHHHHHHHHHHH
+|
+|CCCCCCC
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|EXCEPTION while infiltrating <unknown>
+|
+|infil> @exception
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:32
+|
+|infil> @locals
+|- x::Int64 = 0
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+|
+|CCCCCCCDDDDDDDDDD
+|EEEEEEEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+|DDDDDDDDDDD
+|DDDDDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFGDDDDDDF
+|GGGGGGGGGDGGHHHHHHHHHHHHHH
+|
+|CCCCCCCDDDDDDD
+|DDDDDDDDDDDDDD
+|
+|CCCCCCC

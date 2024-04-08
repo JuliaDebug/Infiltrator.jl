@@ -10,7 +10,7 @@ using REPL.LineEdit: getproperty
 using REPL.LineEdit
 using Markdown
 
-export @infiltrate, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
+export @infiltrate, @infiltry, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
 const REPL_HOOKED = Ref{Bool}(false)
 const INFILTRATION_LOCK = Ref{ReentrantLock}()
@@ -117,12 +117,12 @@ Equivalent to:
         @infiltrate
     end
 """
-macro infiltry(ex)
+macro infiltry(expr)
     return quote
         try
-            $(esc(ex))
-        catch
-            $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line))
+            $(esc(expr))
+        catch ex
+            $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line), ex, catch_backtrace())
         end
     end
 end
@@ -265,7 +265,7 @@ function set_store!(s::Session, m::Module)
   nothing
 end
 
-function start_prompt(mod, locals, file, fileline;
+function start_prompt(mod, locals, file, fileline, ex = nothing, bt = nothing;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
                         nostack = TEST_NOSTACK[]
@@ -299,6 +299,7 @@ function start_prompt(mod, locals, file, fileline;
     last = something(findfirst(x -> x.func === StackTraces.top_level_scope_sym, trace),
                     length(trace))
     trace = trace[start:last]
+    bt = bt === nothing ? nothing : crop_backtrace(bt)
 
     if CHECK_TASK[] && !active_repl_backend.in_eval
       b = IOBuffer()
@@ -343,21 +344,28 @@ function start_prompt(mod, locals, file, fileline;
       return
     end
 
-    print(io, "Infiltrating ")
+    if ex !== nothing
+      printstyled(io, "EXCEPTION"; color=:red, bold=true)
+      print(io, " while infiltrating ")
+    else
+      print(io, "Infiltrating ")
+    end
+
     if Threads.nthreads() > 1
       print(io, "(on thread $(Threads.threadid())) ")
     end
     if length(trace) > 0
       if nostack
-        println(io, "<unknown>")
+        print(io, "<unknown>")
       else
         print_verbose_stackframe(io, trace[1])
       end
     else
-      println(io, "top-level frame")
+      print(io, "top-level frame")
     end
     println(io)
-    debugprompt(mod, locals, trace, terminal, repl, nostack, file=file, fileline=fileline)
+    println(io)
+    debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack=nostack, file=file, fileline=fileline)
     println(io)
   finally
     unlock(INFILTRATION_LOCK[])
@@ -374,6 +382,7 @@ The following commands are special cased:
   - `?`: Print this help text.
   - `@trace`: Print the current stack trace.
   - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
+  - `@exception`: Print the exception that triggered the current `@infiltry` session, if any.
   - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
     this variant can also exfiltrate variables defined in the `infil>` REPL.
   - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
@@ -488,7 +497,7 @@ end
 
 const PROMPT = Ref{Any}()
 
-function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, fileline)
+function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false, file, fileline)
   io = Base.pipe_writer(terminal)
 
   evalmod = init_transient_eval_module(mod, locals)
@@ -539,6 +548,15 @@ function debugprompt(mod, locals, trace, terminal, repl, nostack = false; file, 
         return true
       elseif startswith(sline, "@exfiltrate")
         exfiltrate_locals(io, evalmod, locals, sline)
+        LineEdit.reset_state(s)
+        return true
+      elseif sline == "@exception"
+        if ex !== nothing && bt !== nothing
+          Base.display_error(io, ex, nostack ? bt[1:1] : bt)
+        else
+          println(io, "No exception available")
+        end
+        println(io)
         LineEdit.reset_state(s)
         return true
       elseif sline == "@toggle"
@@ -883,7 +901,7 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
 
   # Infiltrator commands completions
-  commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate"]
+  commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate", "@exception"]
   prepend!(ret, filter!(c -> startswith(c, partial), commands))
 
   unique!(ret), range, should_complete

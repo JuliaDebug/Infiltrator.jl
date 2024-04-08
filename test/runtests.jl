@@ -74,6 +74,10 @@ function cond(t)
     end
 end
 
+function infiltry(x)
+    @infiltry x//x
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -213,6 +217,12 @@ end
         run_terminal_test((t) -> cond(t), nothing,
                           ["@continue\n", "@continue\n", "@cond i > 6\n", "@continue\n", "i\n", "@exit\n"],
                           "Julia_cond_$(VERSION.major).$(VERSION.minor).multiout")
+
+        # @infiltry
+        println("inflitry")
+        run_terminal_test((t) -> try; infiltry(0); catch; nothing; end, nothing,
+                            ["@exception\n", "@locals\n", "@exit\n"],
+                            "Julia_infiltry_$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end
