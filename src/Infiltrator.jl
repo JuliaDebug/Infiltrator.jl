@@ -106,7 +106,7 @@ macro exfiltrate()
 end
 
 """
-  @infiltry expr
+    @infiltry expr
 
 Wraps expression in a try block, infiltrate if an exception is raised.
 Equivalent to:
