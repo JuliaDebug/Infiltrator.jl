@@ -1,7 +1,17 @@
 using Documenter, Infiltrator
 
 open(joinpath(@__DIR__, "src", "index.md"), "w") do io
-    println(io, "![logo](assets/logo.svg)")
+    println(io, """
+    ```@raw html
+    <div align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="assets/logo.svg">
+      <img alt="Infiltrator Logo" src="assets/logo.svg" width="150px">
+    </picture>
+    </div>
+    ```
+    """)
     for line in readlines(joinpath(@__DIR__, "..", "README.md"))
         startswith(line, r"\s*<") && continue
         println(io, line)
