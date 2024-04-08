@@ -120,7 +120,7 @@ Equivalent to:
 macro infiltry(expr)
     return quote
         try
-            $(esc(expr))
+            Core.eval($(__module__), $(QuoteNode(esc(expr))))
         catch ex
             $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line), ex, catch_backtrace())
         end
