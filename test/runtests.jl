@@ -78,6 +78,11 @@ function infiltry(x)
     @infiltry x//x
 end
 
+function infiltry_assign(y)
+    @infiltry x = 3
+    x * y
+end
+
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
@@ -223,6 +228,10 @@ end
         run_terminal_test((t) -> try; infiltry(0); catch; nothing; end, nothing,
                             ["@exception\n", "@locals\n", "@exit\n"],
                             "Julia_infiltry_$(VERSION.major).$(VERSION.minor).multiout")
+        # @infiltry with assign
+        run_terminal_test((t) -> infiltry_assign(2), 6,
+                            String[],
+                            "Julia_infiltry_assign$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end
