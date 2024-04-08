@@ -78,7 +78,7 @@ backing module to `Main` and therefore export the contents of the safehouse to t
 Using Infiltrator for debugging packages or scripts requires a little bit of setup.
 
 1. Either your current environment or an environment futher down the [environment stack](https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks)
-must contain Infiltrator.jl. I would recommend putting Infiltrator.jl into your global `@v1.xx` environment so that it is always loaded.
+must contain Infiltrator.jl. I would recommend putting Infiltrator.jl into your global `@v1.xx` environment so that it is always available.
 2. Load [Revise.jl](https://github.com/timholy/Revise.jl) or use [VS Code's inline evaluation](https://www.julia-vscode.org/docs/stable/userguide/runningcode/)
 to seamlessly update your package code.
 3. Load your package.
