@@ -111,19 +111,49 @@ end
 Wraps expression in a try block, infiltrate if an exception is raised.
 Equivalent to:
 
+```julia
     try
         expr
     catch
         @infiltrate
     end
+```
+
+If `expr` is of the form `x = f(...)`, we take `x` out of the scope 
+
+```julia
+    x = try
+        f(...)
+    catch
+        @infiltrate
+    end  
+```
+
 """
 macro infiltry(expr)
-    return quote
-        try
-            Core.eval($(__module__), $(QuoteNode(esc(expr))))
+    infiltrator_catch_and_rethrow = quote
+        $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line), ex, catch_backtrace())
+        rethrow(ex)
+    end
+
+    return if Meta.isexpr(expr, :(=))
+      var = first(expr.args)
+      func = last(expr.args)
+      quote
+        $(esc(var)) = try
+           $(esc(func))
         catch ex
-            $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line), ex, catch_backtrace())
-        end
+          $(infiltrator_catch_and_rethrow)
+        end       
+      end
+    else
+      quote
+          try
+              esc(expr)
+          catch ex
+            $(infiltrator_catch_and_rethrow)
+          end
+      end
     end
 end
 
