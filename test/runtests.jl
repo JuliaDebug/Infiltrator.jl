@@ -82,6 +82,12 @@ function infiltry_assign(y)
     @infiltry x = 3
     x * y
 end
+  
+function globalref(m, s)
+    gr = GlobalRef(m, s)
+    @infiltrate
+    return gr
+end
 
 @testset "infiltration tests" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
@@ -191,6 +197,10 @@ end
         run_terminal_test((t) -> Jmod.jfunc(), nothing,
                           ["x\n", "randstring\n", "@exit\n"],
                           "Julia_imported_globals_$(VERSION.major).$(VERSION.minor).multiout")
+
+        run_terminal_test((t) -> globalref(Main, :undefvar), GlobalRef(Main, :undefvar),
+                           ["gr\n", "@exit\n"],
+                           "Julia_globalref_$(VERSION.major).$(VERSION.minor).multiout")
 
         # safehouse should not shadow local variables
         run_terminal_test((t) -> multiexfiltrate(), nothing,

@@ -846,6 +846,7 @@ function maybe_quote(@nospecialize x)
   is_ir_construct(x) && return QuoteNode(x)
   isa(x, Expr) && return QuoteNode(x)
   isa(x, Symbol) && return QuoteNode(x)
+  isa(x, GlobalRef) && return QuoteNode(x)
   return x
 end
 
