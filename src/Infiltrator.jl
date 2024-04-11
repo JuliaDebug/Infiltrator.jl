@@ -149,7 +149,7 @@ macro infiltry(expr)
     else
       quote
           try
-              esc(expr)
+            $(esc(expr))
           catch ex
             $(infiltrator_catch_and_rethrow)
           end

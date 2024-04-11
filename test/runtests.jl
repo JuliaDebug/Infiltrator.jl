@@ -77,11 +77,6 @@ end
 function infiltry(x)
     @infiltry x//x
 end
-
-function infiltry_assign(y)
-    @infiltry x = 3
-    x * y
-end
   
 function globalref(m, s)
     gr = GlobalRef(m, s)
@@ -238,10 +233,6 @@ end
         run_terminal_test((t) -> try; infiltry(0); catch; nothing; end, nothing,
                             ["@exception\n", "@locals\n", "@exit\n"],
                             "Julia_infiltry_$(VERSION.major).$(VERSION.minor).multiout")
-        # @infiltry with assign
-        run_terminal_test((t) -> infiltry_assign(2), 6,
-                            String[],
-                            "Julia_infiltry_assign$(VERSION.major).$(VERSION.minor).multiout")
     else
         @warn "Skipping UI tests on non unix systems"
     end
@@ -267,4 +258,17 @@ end
     # `@with` is basically for dynamic usage only
     @test 6 == Core.eval(@__MODULE__, :(Infiltrator.@withstore(2y)))
     @test "asd" == Core.eval(@__MODULE__, :(Infiltrator.@withstore(string(foo))))
+end
+
+@testset "infiltry allows assignments" begin
+    function foo(x)
+        @infiltry z = 2x
+        z
+    end
+    @test foo(2) == 4
+    function bar(x)
+        @infiltry y, z = 2x, 3x
+        y + z
+    end
+    @test bar(1) == 5
 end
