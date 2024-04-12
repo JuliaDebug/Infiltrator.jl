@@ -20,7 +20,7 @@ function __init__()
   INFILTRATION_LOCK[] = ReentrantLock()
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
+        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
         REPL_HOOKED[] = true
     else
       atreplinit() do repl
@@ -32,7 +32,7 @@ function __init__()
             iter += 1
           end
           if isdefined(Base, :active_repl_backend)
-            pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer(gensym()))
+            pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
             REPL_HOOKED[] = true
           end
         end
@@ -116,24 +116,26 @@ try
     expr
 catch
     @infiltrate
+    rethrow()
 end
 ```
 
-If `expr` is of the form `x = f(...)`, we take `x` out of the scope 
+If `expr` is of the form `x = f(...)`, we take `x` out of the scope
 
 ```julia
 x = try
     f(...)
 catch
     @infiltrate
-end  
+    rethrow()
+end
 ```
 
 """
 macro infiltry(expr)
     infiltrator_catch_and_rethrow = quote
         $(Infiltrator.start_prompt)($(__module__), Base.@locals, $(String(__source__.file)), $(__source__.line), ex, catch_backtrace())
-        rethrow(ex)
+        rethrow()
     end
 
     return if Meta.isexpr(expr, :(=))
@@ -144,7 +146,7 @@ macro infiltry(expr)
            $(esc(func))
         catch ex
           $(infiltrator_catch_and_rethrow)
-        end       
+        end
       end
     else
       quote
@@ -863,14 +865,12 @@ function interpret(expr, evalmod)
   return out
 end
 
-function ast_transformer(sym)
-  return function (ex)
-    return quote
-      let $(sym) = $(ex)
-        $(@__MODULE__).end_session!()
-        $(sym)
-      end
+function ast_transformer()
+  return function (@nospecialize ex)
+    if ex isa Expr
+      return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
     end
+    return ex
   end
 end
 

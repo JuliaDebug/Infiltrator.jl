@@ -77,7 +77,7 @@ end
 function infiltry(x)
     @infiltry x//x
 end
-  
+
 function globalref(m, s)
     gr = GlobalRef(m, s)
     @infiltrate
@@ -266,6 +266,7 @@ end
         z
     end
     @test foo(2) == 4
+
     function bar(x)
         @infiltry y, z = 2x, 3x
         y + z
