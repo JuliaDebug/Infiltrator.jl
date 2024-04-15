@@ -866,7 +866,7 @@ function interpret(expr, evalmod)
 end
 
 function ast_transformer()
-  return function (@nospecialize ex)
+  return function (@nospecialize(ex),)
     if ex isa Expr
       return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
     end
