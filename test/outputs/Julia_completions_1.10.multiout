@@ -10,8 +10,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> 
@@ -25,8 +25,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBB
@@ -40,8 +40,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -58,8 +58,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
@@ -76,8 +76,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -100,8 +100,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
@@ -124,8 +124,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -151,8 +151,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
@@ -178,8 +178,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -207,8 +207,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
@@ -236,8 +236,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -270,8 +270,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
@@ -304,8 +304,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -341,8 +341,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
@@ -378,8 +378,8 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|         yyy
+|       xxx
+|       yyy
 |       end
 |
 |infil> foo = Foo(1, 2)
@@ -419,8 +419,8 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCC
+|AAAAAAACCC
+|AAAAAAACCC
 |AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC

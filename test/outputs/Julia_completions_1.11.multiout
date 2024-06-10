@@ -10,9 +10,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> 
 |
@@ -27,9 +27,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBB
 |
@@ -44,9 +44,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -64,9 +64,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -84,9 +84,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -110,9 +110,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -136,9 +136,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -165,9 +165,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -194,9 +194,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -225,9 +225,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -256,9 +256,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -292,9 +292,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -328,9 +328,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -367,9 +367,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
@@ -406,9 +406,9 @@
 |Infiltrating <unknown>
 |
 |infil> struct Foo
-|         xxx
-|           yyy
-|           end
+|       xxx
+|       yyy
+|       end
 |
 |infil> foo = Foo(1, 2)
 |Main.anonymous.Foo(1, 2)
@@ -449,9 +449,9 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCC
-|AAAAAAACCCCC
-|AAAAAAACCCCCCC
-|AAAAAAACCCCCCC
+|AAAAAAACCC
+|AAAAAAACCC
+|AAAAAAACCC
 |
 |BBBBBBBCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCC
