@@ -10,13 +10,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        julia-version: ['1.6', '1.7', '1.8', '1.9', '1.10', '1.11']
+        channel: ['1.6', '1.7', '1.8', '1.9', '1.10', '1.11']
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: julia-actions/install-juliaup@v1
+      - uses: julia-actions/install-juliaup@v2
         with:
-           julia-version: ${{matrix.julia-version}}
+           channel: ${{matrix.channel}}
       - uses: actions/cache@v4
         env:
           cache-name: cache-artifacts
