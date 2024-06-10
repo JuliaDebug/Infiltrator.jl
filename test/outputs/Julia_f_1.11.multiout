@@ -1,0 +1,1468 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> baz
+|3
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> baz
+|3
+|
+|infil> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:30
+| [2] Rational
+|   @ ./rational.jl:32 [inlined]
+| [3] Rational
+|   @ ./rational.jl:48 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:84
+| [5] top-level scope
+|   @ none:1
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> baz
+|3
+|
+|infil> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:30
+| [2] Rational
+|   @ ./rational.jl:32 [inlined]
+| [3] Rational
+|   @ ./rational.jl:48 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:84
+| [5] top-level scope
+|   @ none:1
+|
+|infil> @toggle
+|Disabled infiltration at this infiltration point.
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> baz
+|3
+|
+|infil> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:30
+| [2] Rational
+|   @ ./rational.jl:32 [inlined]
+| [3] Rational
+|   @ ./rational.jl:48 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:84
+| [5] top-level scope
+|   @ none:1
+|
+|infil> @toggle
+|Disabled infiltration at this infiltration point.
+|
+|infil> @toggle
+|Enabled infiltration at this infiltration point.
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •  ?: Print this help text.
+|
+|    •  @trace: Print the current stack trace.
+|
+|    •  @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •  @exception: Print the exception that triggered the current
+|       @infiltry session, if any.
+|
+|    •  @exfiltrate: Save all local variables into the store. @exfiltrate
+|       x y saves x and y; this variant can also exfiltrate variables
+|       defined in the infil> REPL.
+|
+|    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|       with Infiltrator.clear_disabled!()).
+|
+|    •  @cond expr: Infiltrate at this @infiltrate spot only if expr
+|       evaluates to true (clear all with
+|       Infiltrator.clear_conditions!()). Only local variables can be
+|       accessed here.
+|
+|    •  @continue: Continue to the next infiltration point or exit
+|       (shortcut: Ctrl-D).
+|
+|    •  @doc symbol: Get help for symbol (same as in the normal Julia
+|       REPL).
+|
+|    •  @exit: Stop infiltrating for the remainder of this session and
+|       exit (on Julia versions prior to 1.5 this needs to be manually
+|       cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> x.*y
+|3-element Vector{Int64}:
+| 2
+| 4
+| 6
+|
+|infil> 3+
+|       4
+|7
+|
+|infil> ans
+|7
+|
+|infil> baz
+|3
+|
+|infil> 0//0
+|ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+|Stacktrace:
+| [1] __throw_rational_argerror_zero(T::Type)
+|   @ Base ./rational.jl:30
+| [2] Rational
+|   @ ./rational.jl:32 [inlined]
+| [3] Rational
+|   @ ./rational.jl:48 [inlined]
+| [4] //(n::Int64, d::Int64)
+|   @ Base ./rational.jl:84
+| [5] top-level scope
+|   @ none:1
+|
+|infil> @toggle
+|Disabled infiltration at this infiltration point.
+|
+|infil> @toggle
+|Enabled infiltration at this infiltration point.
+|
+|infil> @toggle
+|Disabled infiltration at this infiltration point.
+|
+|infil> 
+|
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCDDDDCDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDD
+|DDDDDDDDDDCCCCCCCDCCCCCDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCDDDDDDCCCCCC
+|
+|CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCDDDD
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCC
+|CC
+|CC
+|CC
+|
+|BBBBBBBCC
+|AAAAAAAC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCC
+|C
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+|
