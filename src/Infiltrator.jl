@@ -910,7 +910,7 @@ mutable struct InfiltratorCompletionProvider <: REPL.CompletionProvider
   localmod::Module
 end
 
-function LineEdit.complete_line(c::InfiltratorCompletionProvider, s)
+function LineEdit.complete_line(c::InfiltratorCompletionProvider, s; hint::Bool = false)
   partial = REPL.beforecursor(s.input_buffer)
   full = LineEdit.input_string(s)
 
