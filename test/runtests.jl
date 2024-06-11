@@ -184,7 +184,7 @@ end
 
                         # completions test
         run_terminal_test((t) -> k(), Bar(333, 333),
-                        ["struct Foo\n  xxx\n  yyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
+                        ["struct Foo\nxxx\nyyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
                         "Julia_completions_$(VERSION.major).$(VERSION.minor).multiout")
         @test Infiltrator.store.foo.xxx == 1
 
