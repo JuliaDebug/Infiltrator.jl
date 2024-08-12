@@ -19,7 +19,7 @@ function __init__()
   clear_store!(store)
   INFILTRATION_LOCK[] = ReentrantLock()
   if VERSION >= v"1.5.0-DEV.282"
-    if isdefined(Base, :active_repl_backend)
+    if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
         pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
         REPL_HOOKED[] = true
     else
