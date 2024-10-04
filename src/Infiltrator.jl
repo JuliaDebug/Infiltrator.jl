@@ -62,6 +62,14 @@ macro infiltrate(cond = true)
     # XXX Dict isn't available in Core.Compiler, so make it available now
     Core.eval(Core.Compiler, :(using .Main: Dict))
     Core.eval(Core.Compiler, :(setindex!(x::Dict, args...) = Main.setindex!(x, args...)))
+  elseif @static isdefined(Core.Compiler, :EscapeAnalysis) &&
+     __module__ === Core.Compiler.EscapeAnalysis && !isdefined(Core.Compiler.EscapeAnalysis, :Dict)
+    if !isdefined(Core.Compiler, :Dict)
+      Core.eval(Core.Compiler, :(using .Main: Dict))
+      Core.eval(Core.Compiler, :(setindex!(x::Dict, args...) = Main.setindex!(x, args...)))
+    end
+    Core.eval(Core.Compiler.EscapeAnalysis, :(using .Main: Dict))
+    Core.eval(Core.Compiler.EscapeAnalysis, :(setindex!(x::Dict, args...) = Main.setindex!(x, args...)))
   end
   quote
     if $(esc(cond))
