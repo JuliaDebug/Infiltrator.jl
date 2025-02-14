@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Infiltrator.jl · Infiltrator.jl</title><meta name="title" content="Infiltrator.jl · Infiltrator.jl"/><meta property="og:title" content="Infiltrator.jl · Infiltrator.jl"/><meta property="twitter:title" content="Infiltrator.jl · Infiltrator.jl"/><meta name="description" content="Documentation for Infiltrator.jl."/><meta property="og:description" content="Documentation for Infiltrator.jl."/><meta property="twitter:description" content="Documentation for Infiltrator.jl."/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script><link href="assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href><img class="docs-light-only" src="assets/logo.svg" alt="Infiltrator.jl logo"/><img class="docs-dark-only" src="assets/logo-dark.svg" alt="Infiltrator.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href>Infiltrator.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li class="is-active"><a class="tocitem" href>Infiltrator.jl</a><ul class="internal"><li><a class="tocitem" href="#@infiltrate"><span><code>@infiltrate</code></span></a></li><li><a class="tocitem" href="#The-safehouse"><span>The safehouse</span></a></li><li><a class="tocitem" href="#Usage"><span>Usage</span></a></li><li><a class="tocitem" href="#Advanced"><span>Advanced</span></a></li><li><a class="tocitem" href="#Related-projects"><span>Related projects</span></a></li></ul></li><li><a class="tocitem" href="API/">API</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Infiltrator.jl</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Infiltrator.jl</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaDebug/Infiltrator.jl/blob/master/docs/src/index.md#L" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/logo.svg">
+  <img alt="Infiltrator Logo" src="assets/logo.svg" width="150px">
+</picture>
+</div><h1 id="Infiltrator.jl"><a class="docs-heading-anchor" href="#Infiltrator.jl">Infiltrator.jl</a><a id="Infiltrator.jl-1"></a><a class="docs-heading-anchor-permalink" href="#Infiltrator.jl" title="Permalink"></a></h1><p><a href="https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml"><img src="https://github.com/JuliaDebug/Infiltrator.jl/actions/workflows/CI.yml/badge.svg" alt="CI"/></a> <a href="https://codecov.io/gh/JuliaDebug/Infiltrator.jl"><img src="https://codecov.io/gh/JuliaDebug/Infiltrator.jl/branch/master/graph/badge.svg" alt="Codecov"/></a> <a href="https://juliahub.com/ui/Packages/Infiltrator/ge3PS"><img src="https://juliahub.com/docs/Infiltrator/version.svg" alt="version"/></a></p><p><a href="https://juliadebug.github.io/Infiltrator.jl/stable"><img src="https://img.shields.io/badge/docs-stable-blue.svg" alt="docs stable"/></a> <a href="https://juliadebug.github.io/Infiltrator.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" alt="docs dev"/></a></p><p>This packages provides the <code>@infiltrate</code> macro, which acts as a breakpoint with negligible runtime performance overhead.</p><p>Note that you cannot access other function scopes or step into further calls. Use an actual debugger if you need that level of flexibility.</p><p>Running code that ends up triggering the <code>@infiltrate</code> REPL mode via inline evaluation in VS Code or Juno can cause issues, so it&#39;s recommended to always use the REPL directly.</p><h2 id="@infiltrate"><a class="docs-heading-anchor" href="#@infiltrate"><code>@infiltrate</code></a><a id="@infiltrate-1"></a><a class="docs-heading-anchor-permalink" href="#@infiltrate" title="Permalink"></a></h2><pre><code class="language-julia hljs">@infiltrate
+@infiltrate condition::Bool</code></pre><p><code>@infiltrate</code> sets an infiltration point.</p><p>When the infiltration point is hit, it will drop you into an interactive REPL session that lets you inspect local variables and the call stack as well as execute arbitrary statements in the context of the current local and global scope.</p><p>The optional argument <code>cond</code> only enables this infiltration point if it evaluates to <code>true</code>, e.g.</p><pre><code class="language-julia hljs">@infiltrate false # does not infiltrate</code></pre><p>You can also use</p><pre><code class="language-julia hljs">if isdefined(Main, :Infiltrator)
+  Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
+end</code></pre><p>to infiltrate package code without any post-hoc evaluation into the module (because the functional form does not require Infiltrator to be loaded at compiletime).</p><h2 id="The-safehouse"><a class="docs-heading-anchor" href="#The-safehouse">The safehouse</a><a id="The-safehouse-1"></a><a class="docs-heading-anchor-permalink" href="#The-safehouse" title="Permalink"></a></h2><p>Exfiltrating variables (with <code>@exfiltrate</code> or by assignment in an <code>@infiltrate</code> session) happens by assigning the variable to a global storage space (backed by a module); any exfiltrated objects can be directly accessed, via <code>Infiltrator.store</code> or its exported aliases <code>safehouse</code> or <code>exfiltrated</code>:</p><pre><code class="language-julia hljs">julia&gt; foo(x) = @exfiltrate
+foo (generic function with 1 method)
+
+julia&gt; foo(3)
+
+julia&gt; safehouse.x # or exfiltrated.x
+3</code></pre><p>You can reset the safehouse with <code>Infiltrator.clear_store!()</code>.</p><p>You can also assign a specific module with <code>Infiltrator.set_store!(mod)</code>. This allows you to e.g. set the backing module to <code>Main</code> and therefore export the contents of the safehouse to the global namespace (although doing so is not recommended).</p><h2 id="Usage"><a class="docs-heading-anchor" href="#Usage">Usage</a><a id="Usage-1"></a><a class="docs-heading-anchor-permalink" href="#Usage" title="Permalink"></a></h2><h3 id="Scripts-and-package-development"><a class="docs-heading-anchor" href="#Scripts-and-package-development">Scripts and package development</a><a id="Scripts-and-package-development-1"></a><a class="docs-heading-anchor-permalink" href="#Scripts-and-package-development" title="Permalink"></a></h3><p>Using Infiltrator for debugging packages or scripts requires a little bit of setup.</p><ol><li>Either your current environment or an environment futher down the <a href="https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks">environment stack</a> must contain Infiltrator.jl. I would recommend putting Infiltrator.jl into your global <code>@v1.xx</code> environment so that it is always available.</li><li>Load <a href="https://github.com/timholy/Revise.jl">Revise.jl</a> or use <a href="https://www.julia-vscode.org/docs/stable/userguide/runningcode/">VS Code&#39;s inline evaluation</a> to seamlessly update your package code.</li><li>Load your package.</li><li>Add <code>Main.@infiltrate</code> statements as breakpoints wherever desired.</li><li>Run a function that ends up executing the method containing the breakpoint.</li></ol><p>The ordering of steps 3 and 4 is important: loading your package after adding <code>Main.@infiltrate</code> statements will prevent if from loading, because that macro does not exist during precompilation.</p><p>If you absolutely cannot modfiy your code after loading it initially, then the <code>infiltrate</code> function <em>can</em> be used instead. An advantage of the macro form is that it will fail tests, so you don&#39;t end up committing or merging code containing infiltration points.</p><h3 id="REPL-session"><a class="docs-heading-anchor" href="#REPL-session">REPL session</a><a id="REPL-session-1"></a><a class="docs-heading-anchor-permalink" href="#REPL-session" title="Permalink"></a></h3><pre><code class="language-julia hljs">julia&gt; function f(x)
+         out = []
+         for i in x
+           push!(out, 2i)
+           @infiltrate
+         end
+         out
+       end
+f (generic function with 1 method)
+
+julia&gt; f([1,2,3,4,5,6,7,8,9,10])
+Infiltrating f(x::Vector{Int64})
+  at REPL[10]:5
+
+infil&gt; ?
+  Code entered here is evaluated in the current scope. Changes to local variables are not possible; global variables can only be changed with eval/@eval.
+
+  All assignments will end up in the safehouse.
+
+  The following commands are special cased:
+
+    •  ?: Print this help text.
+
+    •  @trace: Print the current stack trace.
+
+    •  @locals: Print local variables. @locals x y only prints x and y.
+
+    •  @exception: Print the exception that triggered the current @infiltry session, if any.
+
+    •  @exfiltrate: Save all local variables into the store. @exfiltrate x y saves x and y; this variant can also exfiltrate variables defined in the infil&gt; REPL.
+
+    •  @toggle: Toggle infiltrating at this @infiltrate spot (clear all with Infiltrator.clear_disabled!()).
+
+    •  @cond expr: Infiltrate at this @infiltrate spot only if &lt;expr&gt; evaluates to true (clear all with
+       Infiltrator.clear_conditions!()).
+
+    •  @continue: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+
+    •  @doc symbol: Get help for symbol (same as in the normal Julia REPL).
+
+    •  @exit: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to 1.5 this needs to be manually cleared with Infiltrator.end_session!()).
+
+infil&gt; @locals
+- out::Vector{Any} = Any[2]
+- i::Int64 = 1
+- x::Vector{Int64} = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+infil&gt; 0//0
+ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+Stacktrace:
+ [1] __throw_rational_argerror_zero(T::Type)
+   @ Base ./rational.jl:32
+ [2] Rational{Int64}(num::Int64, den::Int64)
+   @ Base ./rational.jl:34
+ [3] Rational
+   @ ./rational.jl:39 [inlined]
+ [4] //(n::Int64, d::Int64)
+   @ Base ./rational.jl:62
+ [5] top-level scope
+   @ none:1
+
+infil&gt; @toggle
+Disabled infiltration at this infiltration point.
+
+infil&gt; @toggle
+Enabled infiltration at this infiltration point.
+
+infil&gt; @cond i &gt; 5
+Conditionally enabled infiltration at this infiltration point.
+
+infil&gt; @continue
+
+Infiltrating f(x::Vector{Int64})
+  at REPL[10]:5
+
+infil&gt; i
+6
+
+infil&gt; intermediate = copy(out)
+6-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
+
+infil&gt; @exfiltrate intermediate x
+Exfiltrating 2 local variables into the safehouse.
+
+infil&gt; @exit
+
+10-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
+ 14
+ 16
+ 18
+ 20
+
+
+julia&gt; safehouse.intermediate
+6-element Vector{Any}:
+  2
+  4
+  6
+  8
+ 10
+ 12
+
+julia&gt; @withstore begin
+         x = 23
+         x .* intermediate
+       end
+6-element Vector{Int64}:
+  46
+  92
+ 138
+ 184
+ 230
+ 276</code></pre><h2 id="Advanced"><a class="docs-heading-anchor" href="#Advanced">Advanced</a><a id="Advanced-1"></a><a class="docs-heading-anchor-permalink" href="#Advanced" title="Permalink"></a></h2><h3 id="Auto-loading-Infiltrator.jl"><a class="docs-heading-anchor" href="#Auto-loading-Infiltrator.jl">Auto-loading Infiltrator.jl</a><a id="Auto-loading-Infiltrator.jl-1"></a><a class="docs-heading-anchor-permalink" href="#Auto-loading-Infiltrator.jl" title="Permalink"></a></h3><p>Infiltrator loads very fast (~3ms on my machine) and is generally safe to load in <code>startup.jl</code>.</p><p>If, for whatever reason, you do not want to unconditionally load Infiltrator in your <code>startup.jl</code>, you can use the following convenience macro instead. It will automatically load Infiltrator.jl (if it is in your environment stack) and subsequently call <code>@infiltrate</code>:</p><pre><code class="language-julia hljs">macro autoinfiltrate(cond=true)
+    pkgid = Base.PkgId(Base.UUID(&quot;5903a43b-9cc3-4c30-8d17-598619ec4e9b&quot;), &quot;Infiltrator&quot;)
+    if !haskey(Base.loaded_modules, pkgid)
+        try
+            Base.eval(Main, :(using Infiltrator))
+        catch err
+            @error &quot;Cannot load Infiltrator.jl. Make sure it is included in your environment stack.&quot;
+        end
+    end
+    i = get(Base.loaded_modules, pkgid, nothing)
+    lnn = LineNumberNode(__source__.line, __source__.file)
+
+    if i === nothing
+        return Expr(
+            :macrocall,
+            Symbol(&quot;@warn&quot;),
+            lnn,
+            &quot;Could not load Infiltrator.&quot;)
+    end
+
+    return Expr(
+        :macrocall,
+        Expr(:., i, QuoteNode(Symbol(&quot;@infiltrate&quot;))),
+        lnn,
+        esc(cond)
+    )
+end</code></pre><h2 id="Related-projects"><a class="docs-heading-anchor" href="#Related-projects">Related projects</a><a id="Related-projects-1"></a><a class="docs-heading-anchor-permalink" href="#Related-projects" title="Permalink"></a></h2><ul><li><a href="https://github.com/NightMachinary/PyExfiltrator"><code>@exfiltrate</code> for Python</a></li></ul></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="API/">API »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.8.1 on <span class="colophon-date" title="Friday 14 February 2025 10:47">Friday 14 February 2025</span>. Using Julia version 1.6.7.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
