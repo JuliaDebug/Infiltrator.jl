@@ -84,37 +84,45 @@ function globalref(m, s)
     return gr
 end
 
-@testset "infiltration tests" begin
-    if Sys.isunix() && VERSION >= v"1.1.0"
-        using TerminalRegressionTests
+@static if Sys.isunix() && VERSION >= v"1.1.0"
+    using TerminalRegressionTests
 
-        function run_terminal_test(func, result, commands, validation)
-            test_func = TerminalRegressionTests.automated_test
-            if haskey(ENV, "INFILTRATOR_CREATE_TEST") && !haskey(ENV, "CI")
-                test_func = TerminalRegressionTests.create_automated_test
-            end
-            test_func(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
-                Infiltrator.end_session!()
-                repl = REPL.LineEditREPL(emuterm, true)
-                repl.interface = REPL.setup_interface(repl)
-                repl.mistate = REPL.LineEdit.init_state(REPL.terminal(repl), repl.interface)
-                repl.specialdisplay = REPL.REPLDisplay(repl)
+    @static if VERSION >= v"1.11"
+        # FIXME: this is a hack to work around the test failures on 1.11.
+        # The LineEdit code now assumes that eof and peek interact correctly (i.e. that
+        # `eof(term) || peek(term)` won't error), but that's not true for EmulatedTerminals.
+        @eval Base.peek(::TerminalRegressionTests.EmulatedTerminal) = UInt8(0)
+    end
 
-                Infiltrator.TEST_TERMINAL_REF[] = repl.t
-                Infiltrator.TEST_NOSTACK[] = true
-                Infiltrator.TEST_REPL_REF[] = repl;
-                Infiltrator.CHECK_TASK[] = false
+    function run_terminal_test(func, result, commands, validation)
+        test_func = TerminalRegressionTests.automated_test
+        if haskey(ENV, "INFILTRATOR_CREATE_TEST") && !haskey(ENV, "CI")
+            test_func = TerminalRegressionTests.create_automated_test
+        end
+        test_func(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
+            Infiltrator.end_session!()
+            repl = REPL.LineEditREPL(emuterm, true)
+            repl.interface = REPL.setup_interface(repl)
+            repl.mistate = REPL.LineEdit.init_state(REPL.terminal(repl), repl.interface)
+            repl.specialdisplay = REPL.REPLDisplay(repl)
 
-                @test func(repl.t) == result
+            Infiltrator.TEST_TERMINAL_REF[] = repl.t
+            Infiltrator.TEST_NOSTACK[] = true
+            Infiltrator.TEST_REPL_REF[] = repl;
+            Infiltrator.CHECK_TASK[] = false
 
-                Infiltrator.TEST_TERMINAL_REF[] = nothing
-                Infiltrator.TEST_NOSTACK[] = false
-                Infiltrator.TEST_REPL_REF[] = nothing
-                if VERSION > v"1.9-"
-                    finalize(emuterm.pty)
-                end
+            @test func(repl.t) == result
+
+            Infiltrator.TEST_TERMINAL_REF[] = nothing
+            Infiltrator.TEST_NOSTACK[] = false
+            Infiltrator.TEST_REPL_REF[] = nothing
+            if VERSION > v"1.9-"
+                finalize(emuterm.pty)
             end
         end
+    end
+
+    @testset "infiltration tests" begin
         run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
                         "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
@@ -227,15 +235,27 @@ end
         run_terminal_test((t) -> cond(t), nothing,
                           ["@continue\n", "@continue\n", "@cond i > 6\n", "@continue\n", "i\n", "@exit\n"],
                           "Julia_cond_$(VERSION.major).$(VERSION.minor).multiout")
+    end
 
-        # @infiltry
-        println("inflitry")
+    @testset "infiltry" begin
         run_terminal_test((t) -> try; infiltry(0); catch; nothing; end, nothing,
                             ["@exception\n", "@locals\n", "@exit\n"],
                             "Julia_infiltry_$(VERSION.major).$(VERSION.minor).multiout")
-    else
-        @warn "Skipping UI tests on non unix systems"
+
+        function foo(x)
+            @infiltry z = 2x
+            z
+        end
+        @test foo(2) == 4
+
+        function bar(x)
+            @infiltry y, z = 2x, 3x
+            y + z
+        end
+        @test bar(1) == 5
     end
+else
+    @warn "Skipping UI tests on non unix systems"
 end
 
 @testset "exfiltration tests" begin
@@ -258,18 +278,4 @@ end
     # `@with` is basically for dynamic usage only
     @test 6 == Core.eval(@__MODULE__, :(Infiltrator.@withstore(2y)))
     @test "asd" == Core.eval(@__MODULE__, :(Infiltrator.@withstore(string(foo))))
-end
-
-@testset "infiltry allows assignments" begin
-    function foo(x)
-        @infiltry z = 2x
-        z
-    end
-    @test foo(2) == 4
-
-    function bar(x)
-        @infiltry y, z = 2x, 3x
-        y + z
-    end
-    @test bar(1) == 5
 end
