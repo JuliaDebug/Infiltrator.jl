@@ -191,6 +191,13 @@ mutable struct Session
   exiting::Bool
   disabled::Set
   conditions::Dict
+  function Session(exiting, disabled, conditions)
+    session = new()
+    session.exiting = exiting
+    session.disabled = disabled
+    session.conditions = conditions
+    session
+  end
 end
 function Base.show(io::IO, s::Session)
   n = length(get_store_names(s))
@@ -229,7 +236,7 @@ Also see [`clear_store!`](@ref), [`set_store!`](@ref), and [`@withstore`](@ref) 
 safehouse-related functionality.
 """
 @doc store_docstring
-const store = Session(Module(), false, Set(), Dict())
+const store = Session(false, Set(), Dict())
 @doc store_docstring
 const safehouse = store
 @doc store_docstring
