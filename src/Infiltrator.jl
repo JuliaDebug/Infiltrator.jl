@@ -525,12 +525,13 @@ function init_transient_eval_module(mod, locals)
     Expr(:call, Symbol("__MODULE__")),
     Expr(:block, mod))
   )
+  haskey(modns, Symbol("@__MODULE__")) && delete!(modns, Symbol("@__MODULE__"))
   # insert local variables into current scope
   Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in locals])...))
   # insert variables in safehouse
   Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in get_store_names() if !isdefined(newmod, k)])...))
   # insert all bindings from the source module that aren't already defined in the eval module
-  Core.eval(newmod, Expr(:block, map(x->Expr(:global, Expr(:(=), x...)), [(k, maybe_quote(v)) for (k, v) in modns if !isdefined(newmod, k)])...))
+  Core.eval(newmod, Expr(:block, map(x->Expr(:(=), x...), [(k, maybe_quote(v)) for (k, v) in modns if !isdefined(newmod, k)])...))
 
   return newmod
 end
