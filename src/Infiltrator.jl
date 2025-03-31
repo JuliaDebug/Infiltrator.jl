@@ -16,7 +16,7 @@ const REPL_HOOKED = Ref{Bool}(false)
 const INFILTRATION_LOCK = Ref{ReentrantLock}()
 
 function __init__()
-  clear_store!(store)
+  ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
   INFILTRATION_LOCK[] = ReentrantLock()
   if VERSION >= v"1.5.0-DEV.282"
     if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
@@ -104,7 +104,7 @@ macro exfiltrate()
   quote
     for (k, v) in Base.@locals
       try
-        Core.eval(getfield(getfield($(@__MODULE__), :store), :store), Expr(:(=), k, QuoteNode(v)))
+        Core.eval(get_store(getfield($(@__MODULE__), :store)), Expr(:(=), k, QuoteNode(v)))
       catch err
         println(stderr, "Assignment to store variable failed.")
         Base.display_error(stderr, err, catch_backtrace())
@@ -216,7 +216,7 @@ function Base.show(io::IO, ::MIME"text/plain", s::Session)
   end
 end
 function Base.getproperty(sp::Session, s::Symbol)
-  m = getfield(sp, :store)
+  m = get_store(sp)
   if isdefined(m, s)
     getproperty(m, s)
   else
@@ -292,6 +292,12 @@ Only needs to be manually called on Julia versions prior to 1.5.
 function end_session!(s::Session = store)
   setfield!(s, :exiting, false)
   return nothing
+end
+
+function get_store(s::Session = store)
+  isdefined(s, :store) && return getfield(s, :store)
+  ccall(:jl_generating_output, Cint, ()) == 1 && error("Functionality provided by this package should not be used during precompilation or other compilation modes")
+  error("The provided session does not have a module")
 end
 
 """
@@ -499,7 +505,7 @@ function exfiltrate_locals(io, evalmod, locals, sline::AbstractString)
       v = getfield(evalmod, k)
     end
     try
-      Core.eval(getfield(store, :store), Expr(:(=), k, QuoteNode(v)))
+      Core.eval(get_store(store), Expr(:(=), k, QuoteNode(v)))
     catch err
       println(io, "Assignment to store variable failed.")
       Base.display_error(io, err, catch_backtrace())
@@ -758,7 +764,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
   end
 end
 
-get_store_names(s = store) = get_module_names(getfield(s, :store), m -> names(m, all = true))
+get_store_names(s = store) = get_module_names(get_store(s), m -> names(m, all = true))
 
 function get_module_names(m::Module, get_names = all_names)
   ns = get_names(m)
@@ -948,7 +954,7 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
 
   # completions for safehouse variables
-  comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), getfield(store, :store))
+  comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), get_store(store))
   prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
 
   # Infiltrator commands completions
