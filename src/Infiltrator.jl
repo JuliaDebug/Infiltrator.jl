@@ -898,7 +898,7 @@ function find_first_topelevel_scope(bt::Vector{<:Union{Base.InterpreterIP,Ptr{Cv
       ind = findfirst(st) do frame
           linfo = frame.linfo
           if linfo isa Core.CodeInfo
-              @static if hasfield(Core.CodeInfo, :debuginfo)
+              @static if VERSION >= v"1.2" && hasfield(Core.CodeInfo, :debuginfo)
                   linfo.debuginfo.def === StackTraces.top_level_scope_sym && return true
               else
                   linetable = linfo.linetable
