@@ -20,7 +20,11 @@
 |
 |    •  ?: Print this help text.
 |
-|    •  @trace: Print the current stack trace.
+|    •  @trace: Print the current stack trace with reduced type
+|       information. For full types, see @trace_all.
+|
+|    •  @trace_all: Print the current stack trace with full type
+|       information.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -64,7 +68,11 @@
 |
 |CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
@@ -108,7 +116,11 @@
 |
 |    •  ?: Print this help text.
 |
-|    •  @trace: Print the current stack trace.
+|    •  @trace: Print the current stack trace with reduced type
+|       information. For full types, see @trace_all.
+|
+|    •  @trace_all: Print the current stack trace with full type
+|       information.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -154,7 +166,11 @@
 |
 |CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
@@ -200,7 +216,11 @@
 |
 |    •  ?: Print this help text.
 |
-|    •  @trace: Print the current stack trace.
+|    •  @trace: Print the current stack trace with reduced type
+|       information. For full types, see @trace_all.
+|
+|    •  @trace_all: Print the current stack trace with full type
+|       information.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -249,7 +269,11 @@
 |
 |CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |
@@ -298,7 +322,11 @@
 |
 |    •  ?: Print this help text.
 |
-|    •  @trace: Print the current stack trace.
+|    •  @trace: Print the current stack trace with reduced type
+|       information. For full types, see @trace_all.
+|
+|    •  @trace_all: Print the current stack trace with full type
+|       information.
 |
 |    •  @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -350,7 +378,11 @@
 |
 |CCCCCCCDCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDC
+|
+|CCCCCCCDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCDCCCCCDC
 |

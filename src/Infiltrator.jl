@@ -427,7 +427,8 @@ All assignments will end up in the `safehouse`.
 
 The following commands are special cased:
   - `?`: Print this help text.
-  - `@trace`: Print the current stack trace.
+  - `@trace`: Print the current stack trace with reduced type information. For full types, see `@trace_all`.
+  - `@trace_all`: Print the current stack trace with full type information.
   - `@locals`: Print local variables. `@locals x y` only prints `x` and `y`.
   - `@exception`: Print the exception that triggered the current `@infiltry` session, if any.
   - `@exfiltrate`: Save all local variables into the store. `@exfiltrate x y` saves `x` and `y`;
@@ -586,8 +587,9 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
         show_help(io)
         LineEdit.reset_state(s)
         return true
-      elseif sline == "@trace"
-        print_verbose_stacktrace(io, trace, nostack ? 0 : 100)
+      elseif sline in ("@trace", "@trace_all")
+        types_limited = VERSION >= v"1.10" && sline == "@trace"
+        print_verbose_stacktrace(io, trace, nostack ? 0 : 100, types_limited)
         LineEdit.reset_state(s)
         return true
       elseif startswith(sline, "@locals")
@@ -771,7 +773,7 @@ function get_module_names(m::Module, get_names = all_names)
   out
 end
 
-function print_verbose_stacktrace(io, st, limit = 100)
+function print_verbose_stacktrace(io, st, limit = 100, types_limited = false)
   if isempty(st)
     println(io, "Toplevel scope\n")
     return
@@ -784,20 +786,29 @@ function print_verbose_stacktrace(io, st, limit = 100)
       break
     end
 
-    print_verbose_stackframe(io, sf, i, len)
+    print_verbose_stackframe(io, sf, i, len, types_limited)
   end
   println(io)
 end
 
-function print_verbose_stackframe(io, sf::StackTraces.StackFrame, i, len)
+function print_verbose_stackframe(io, sf::StackTraces.StackFrame, i, len, types_limited)
   num_padding = ceil(Int, log10(len))
   padding = num_padding + 3
   print(io, "[", lpad(i, num_padding), "] ")
-  print_verbose_stackframe(io, sf, padding)
+  print_verbose_stackframe(io, sf, padding, types_limited)
 end
 
-function print_verbose_stackframe(io, sf::StackTraces.StackFrame, padding = 2)
-  Base.StackTraces.show_spec_linfo(IOContext(io, :backtrace=>true), sf)
+function print_verbose_stackframe(io, sf::StackTraces.StackFrame, padding = 2, types_limited = false)
+  # Base.type_limited_string_from_context checks if a Ref{Bool} is passed
+  trigger_types_limited = types_limited ? Ref(types_limited) : nothing
+
+  buf = IOContext(IOBuffer(), io)   # We wrap IOBuffer in IOContext(, io) to inherit colors
+  Base.StackTraces.show_spec_linfo(IOContext(buf, :backtrace=>true, :stacktrace_types_limited=>trigger_types_limited), sf)
+  st_str = String(take!(buf.io))
+  @static if VERSION >= v"1.10"
+      st_str = Base.type_limited_string_from_context(io, st_str)
+  end
+  write(io, st_str)
   println(io)
 
   sf.func == StackTraces.top_level_scope_sym && return
@@ -952,7 +963,7 @@ function completions(c::InfiltratorCompletionProvider, full, partial)
   prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
 
   # Infiltrator commands completions
-  commands = ["?", "@trace", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate", "@exception"]
+  commands = ["?", "@trace", "@trace_all", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate", "@exception"]
   prepend!(ret, filter!(c -> startswith(c, partial), commands))
 
   unique!(ret), range, should_complete
