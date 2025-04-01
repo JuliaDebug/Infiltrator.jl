@@ -124,7 +124,7 @@ end
 
     @testset "infiltration tests" begin
         run_terminal_test((t) -> f(3), [3, 4, 5],
-                        ["?\n", "@trace\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
+                        ["?\n", "@trace\n", "@trace_all\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
                         "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
 
         @test f(3) == [3, 4, 5] # `@toggle`d `@infiltrate` should not open a prompt

@@ -20,7 +20,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -64,7 +68,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -108,7 +116,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -154,7 +166,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -200,7 +216,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -230,6 +250,112 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> ?
+|  Code entered here is evaluated in the current function's scope. Changes to
+|  local variables are not possible; global variables can only be changed with
+|  eval/@eval.
+|
+|  All assignments will end up in the safehouse.
+|
+|  The following commands are special cased:
+|
+|    •    ?: Print this help text.
+|
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
+|
+|    •    @locals: Print local variables. @locals x y only prints x and y.
+|
+|    •    @exception: Print the exception that triggered the current
+|        @infiltry session, if any.
+|
+|    •    @exfiltrate: Save all local variables into the store. @exfiltrate
+|        x y saves x and y; this variant can also exfiltrate variables
+|        defined in the infil> REPL.
+|
+|    •    @toggle: Toggle infiltrating at this @infiltrate spot (clear all
+|        with Infiltrator.clear_disabled!()).
+|
+|    •    @cond expr: Infiltrate at this @infiltrate spot only if expr
+|        evaluates to true (clear all with
+|        Infiltrator.clear_conditions!()). Only local variables can be
+|        accessed here.
+|
+|    •    @continue: Continue to the next infiltration point or exit
+|        (shortcut: Ctrl-D).
+|
+|    •    @doc symbol: Get help for symbol (same as in the normal Julia
+|        REPL).
+|
+|    •    @exit: Stop infiltrating for the remainder of this session and
+|        exit (on Julia versions prior to 1.5 this needs to be manually
+|        cleared with Infiltrator.end_session!()).
+|
+|infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -250,7 +376,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -281,6 +411,8 @@
 |
 |BBBBBBBCCCCCC
 |
+|BBBBBBBCCCCCCCCCC
+|
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCC
@@ -300,7 +432,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -330,6 +466,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -356,7 +494,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -387,6 +529,8 @@
 |
 |BBBBBBBCCCCCC
 |
+|BBBBBBBCCCCCCCCCC
+|
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCC
@@ -412,7 +556,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -442,6 +590,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -473,7 +623,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -503,6 +657,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -534,7 +690,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -564,6 +724,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -598,7 +760,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -628,6 +794,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -662,7 +830,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -692,6 +864,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -729,7 +903,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -759,6 +937,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -796,7 +976,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -826,6 +1010,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -866,7 +1052,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -896,6 +1086,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -936,7 +1128,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -966,6 +1162,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -1009,7 +1207,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -1039,6 +1241,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -1082,7 +1286,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -1112,6 +1320,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -1158,7 +1368,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -1188,6 +1402,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -1234,7 +1450,11 @@
 |
 |    •    ?: Print this help text.
 |
-|    •    @trace: Print the current stack trace.
+|    •    @trace: Print the current stack trace with reduced type
+|        information. For full types, see @trace_all.
+|
+|    •    @trace_all: Print the current stack trace with full type
+|        information.
 |
 |    •    @locals: Print local variables. @locals x y only prints x and y.
 |
@@ -1264,6 +1484,8 @@
 |        cleared with Infiltrator.end_session!()).
 |
 |infil> @trace
+|
+|infil> @trace_all
 |
 |infil> @locals
 |- y::Array{Int64,1} = [1, 2, 3]
@@ -1313,7 +1535,11 @@
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
@@ -1343,6 +1569,8 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCC
+|
+|BBBBBBBCCCCCCCCCC
 |
 |BBBBBBBCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
