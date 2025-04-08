@@ -739,7 +739,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
           end
         end
         if !ok || !REPL.ends_with_semicolon(line)
-          REPL.print_response(repl, (result, !ok), true, true)
+          print_response(repl, (result, !ok), true, true)
         end
       else
         try
@@ -749,7 +749,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
           result = (err, nostack ? Any[] : crop_backtrace(catch_backtrace()))
         end
         if !ok || !REPL.ends_with_semicolon(line)
-          REPL.print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
+          print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
         end
       end
       println(io)
@@ -826,6 +826,31 @@ function print_verbose_stackframe(io, sf::StackTraces.StackFrame, padding = 2, t
   file = fixup_stdlib_path(file)
   file = something(Base.find_source_file(file), file)
   printstyled(io, normpath(file), ":", line, '\n', color=:light_black)
+end
+
+# with https://github.com/JuliaLang/julia/pull/57773, print_response will
+# evaluate `display` on the REPL backend. We are however running all of Infiltrator
+# on the REPL backend already, so that would cause a deadlock. Luckily we can pass
+# nothing instead of the actual REPL backend to work around that.
+@static if hasmethod(REPL.print_response, (IO, Any, Nothing, Bool, Bool, Union{AbstractDisplay,Nothing})) &&
+           isdefined(REPL, :eval_with_backend) &&
+           hasmethod(REPL.eval_with_backend, (Any, Nothing))
+
+  function print_response(repl, response, show_value, have_color)
+    repl.waserror = response[2]
+    REPL.with_repl_linfo(repl) do io
+        io = IOContext(io, :module => Base.active_module(repl)::Module)
+
+        REPL.print_response(io, response, nothing, show_value, have_color, REPL.specialdisplay(repl))
+    end
+
+    return nothing
+  end
+
+else
+
+  print_response(args...) = REPL.print_response(args...)
+
 end
 
 # https://github.com/JuliaLang/julia/blob/1fb28ad8768cfdc077e968df7adf5716ae8eb9ab/base/methodshow.jl#L134-L148
@@ -914,7 +939,7 @@ function find_first_topelevel_scope(bt::Vector{<:Union{Base.InterpreterIP,Ptr{Cv
       st = Base.StackTraces.lookup(ip)
       ind = findfirst(st) do frame
           linfo = frame.linfo
-          if linfo isa Core.CodeInfo
+          if linfo isa Core.CodeInfo && VERSION < v"1.12-"
               @static if VERSION >= v"1.2" && hasfield(Core.CodeInfo, :debuginfo)
                   linfo.debuginfo.def === StackTraces.top_level_scope_sym && return true
               else
