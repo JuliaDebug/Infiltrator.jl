@@ -1,0 +1,312 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> safehouse.i
+|2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|C
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> @exfiltrate
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> i
+|i (generic function with 1 method)
+|
+|infil> safehouse.i
+|2
+|
+|infil> @continue
+|
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|C
+|
+|BBBBBBBCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
