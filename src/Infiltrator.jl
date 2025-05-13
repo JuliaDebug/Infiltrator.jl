@@ -552,6 +552,34 @@ end
 
 const PROMPT = Ref{Any}()
 
+# Copy of `find_hist_file` for the main REPL.
+find_infil_hist_file() = get(ENV, "INFILTRATOR_HISTORY", !isempty(DEPOT_PATH) ? joinpath(DEPOT_PATH[1], "logs", "infil_history.jl") : error("DEPOT_PATH is empty and ENV[\"INFILTRATOR_HISTORY\"] is not set."))
+
+"""
+Load the history from the history file found by `find_infil_hist_file()`, i.e. under `ENV["INFILTRATOR_HISTORY"]` or next to the main REPL history (typically `.julia/logs/infil_history.jl`).
+Most of the code comes from the REPL stdlib (inlined in `setup_interface`).
+"""
+function load_history!(hp::REPL.REPLHistoryProvider, repl, cp::REPL.CompletionProvider)
+  if repl.history_file
+    try
+        hist_path = find_infil_hist_file()
+        mkpath(dirname(hist_path))
+        hp.file_path = hist_path
+        REPL.hist_open_file(hp)
+        finalizer(cp) do cp
+            close(hp.history_file)
+        end
+        REPL.hist_from_file(hp, hist_path)
+    catch
+        # use REPL.hascolor to avoid using the local variable with the same name
+        print_response(repl, Pair{Any, Bool}(current_exceptions(), true), true, REPL.hascolor(repl))
+        println(REPL.outstream(repl))
+        @info "Disabling history file for this session"
+        repl.history_file = false
+    end
+  end
+end
+
 function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false, file, fileline)
   io = Base.pipe_writer(terminal)
 
@@ -562,12 +590,14 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
       panel = PROMPT[]
       panel.complete = InfiltratorCompletionProvider(mod, evalmod)
     else
+      cp = InfiltratorCompletionProvider(mod, evalmod)
       panel = PROMPT[] = REPL.LineEdit.Prompt("infil> ";
                 prompt_prefix = prompt_color,
                 prompt_suffix = Base.text_colors[:normal],
-                complete = InfiltratorCompletionProvider(mod, evalmod),
+                complete = cp,
                 on_enter = is_complete)
       panel.hist = REPL.REPLHistoryProvider(Dict{Symbol,Any}(:Infiltrator => panel))
+      load_history!(panel.hist, repl, cp)
       REPL.history_reset_state(panel.hist)
     end
     search_prompt, skeymap = LineEdit.setup_search_keymap(panel.hist)
