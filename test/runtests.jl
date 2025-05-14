@@ -148,7 +148,12 @@ end
         run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["\x4", "@locals\n", "@exit\n"],
                         "Julia_h_$(VERSION.major).$(VERSION.minor).multiout")
-
+                        
+        # Test that history is correctly using prefixes.
+        run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
+                        ["y = 1\n", "x = 3\n", "y\e[A\n", "\x4", "y\e[A\n", "@exit\n"],
+                        "Julia_phist_$(VERSION.major).$(VERSION.minor).multiout")
+                        
         run_terminal_test((t) -> i(1000), i(1000),
                         ["2+2\n", "@locals\n", "\x4"],
                         "Julia_i_$(VERSION.major).$(VERSION.minor).multiout")
