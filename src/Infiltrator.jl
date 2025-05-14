@@ -19,7 +19,7 @@ function __init__()
   ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
   INFILTRATION_LOCK[] = ReentrantLock()
   if VERSION >= v"1.5.0-DEV.282"
-    if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
+    if isdefined(Base, :active_repl_backend) && Base.active_repl_backend !== nothing
         pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
         REPL_HOOKED[] = true
     else
@@ -318,6 +318,27 @@ function set_store!(s::Session, m::Module)
   nothing
 end
 
+function new_terminal_and_repl()
+  term_env = get(ENV, "TERM", @static Sys.iswindows() ? "" : "dumb")
+  term = REPL.Terminals.TTYTerminal(term_env, stdin, stdout, stderr)
+  term.term_type == "dumb" && return (term, REPL.BasicREPL(term))
+  repl = REPL.LineEditREPL(term, get(stdout, :color, false), true)
+  repl.history_file = true
+  return (term, repl)
+end
+
+"""
+Return whether we should emit a warning being possibly in an `@async` context.
+
+This may yield false negatives, but no false positives.
+"""
+function is_in_async_context()
+  !isdefined(Base, :active_repl_backend) && return false
+  backend = Base.active_repl_backend
+  backend === nothing && return false
+  return !backend.in_eval
+end
+
 function start_prompt(mod, locals, file, fileline, ex = nothing, bt = nothing;
                         terminal = TEST_TERMINAL_REF[],
                         repl = TEST_REPL_REF[],
@@ -334,15 +355,7 @@ function start_prompt(mod, locals, file, fileline, ex = nothing, bt = nothing;
     isnothing(f) || Base.invokelatest(f, locals) || return
 
     if terminal === nothing || repl === nothing
-      active_repl_backend = nothing
-      if isdefined(Base, :active_repl) && isdefined(Base.active_repl, :t) && isdefined(Base, :active_repl_backend)
-        repl = Base.active_repl
-        terminal = Base.active_repl.t
-        active_repl_backend = Base.active_repl_backend
-      else
-        println("Infiltrator.jl needs a fully-functional Julia REPL.")
-        return
-      end
+      terminal, repl = new_terminal_and_repl()
     end
 
     io = Base.pipe_writer(terminal)
@@ -354,7 +367,7 @@ function start_prompt(mod, locals, file, fileline, ex = nothing, bt = nothing;
     trace = trace[start:last]
     bt = bt === nothing ? nothing : crop_backtrace(bt)
 
-    if CHECK_TASK[] && !active_repl_backend.in_eval
+    if CHECK_TASK[] && is_in_async_context()
       b = IOBuffer()
       c = IOContext(b, :color=>get(io, :color, false))
       printstyled(c, "ERROR: "; color=Base.error_color())
