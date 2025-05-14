@@ -758,9 +758,11 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
       return true
     end
 
-    panel.keymap_dict = LineEdit.keymap(Dict{Any,Any}[skeymap, LineEdit.history_keymap, LineEdit.default_keymap, LineEdit.escape_defaults])
+    prefix_prompt, prefix_keymap = LineEdit.setup_prefix_keymap(panel.hist, panel)
+    
+    panel.keymap_dict = LineEdit.keymap(Dict{Any,Any}[skeymap, prefix_keymap, LineEdit.history_keymap, LineEdit.default_keymap, LineEdit.escape_defaults])
 
-    REPL.run_interface(terminal, REPL.LineEdit.ModalInterface([panel, search_prompt]))
+    REPL.run_interface(terminal, REPL.LineEdit.ModalInterface([panel, prefix_prompt, search_prompt]))
   catch e
     e isa InterruptException || rethrow(e)
   end
