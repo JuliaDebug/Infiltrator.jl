@@ -955,7 +955,17 @@ function find_first_topelevel_scope(bt::Vector{<:Union{Base.InterpreterIP,Ptr{Cv
       ind = findfirst(st) do frame
           linfo = frame.linfo
           if linfo isa Core.CodeInfo && VERSION < v"1.12-"
-              linfo.debuginfo.def === StackTraces.top_level_scope_sym && return true
+              @static if hasfield(Core.CodeInfo, :debuginfo)
+                  linfo.debuginfo.def === StackTraces.top_level_scope_sym && return true
+              else
+                  linetable = linfo.linetable
+                  if isa(linetable, Vector) && length(linetable) ≥ 1
+                      lin = first(linetable)
+                      if isa(lin, Core.LineInfoNode) && lin.method === StackTraces.top_level_scope_sym
+                          return true
+                      end
+                  end
+              end
           else
               return frame.func === StackTraces.top_level_scope_sym
           end
