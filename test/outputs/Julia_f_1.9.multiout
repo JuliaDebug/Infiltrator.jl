@@ -50,8 +50,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> 
 --------------------------------------------------
@@ -146,8 +145,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -246,8 +244,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -350,8 +347,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -462,8 +458,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -586,8 +581,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -720,8 +714,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -860,8 +853,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -1006,8 +998,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -1180,8 +1171,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -1360,8 +1350,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
@@ -1546,8 +1535,7 @@
 |       REPL).
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
-|       exit (on Julia versions prior to 1.5 this needs to be manually
-|       cleared with Infiltrator.end_session!()).
+|       exit.
 |
 |infil> @trace
 |
