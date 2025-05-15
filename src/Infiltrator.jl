@@ -18,23 +18,21 @@ const INFILTRATION_LOCK = Ref{ReentrantLock}()
 function __init__()
   ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
   INFILTRATION_LOCK[] = ReentrantLock()
-  if VERSION >= v"1.5.0-DEV.282"
-    if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
-        REPL_HOOKED[] = true
-    else
-      atreplinit() do repl
-        @async begin
-          iter = 0
-          # wait for active_repl_backend to exist
-          while !isdefined(Base, :active_repl_backend) && iter < 20
-            sleep(0.05)
-            iter += 1
-          end
-          if isdefined(Base, :active_repl_backend)
-            pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
-            REPL_HOOKED[] = true
-          end
+  if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
+      pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
+      REPL_HOOKED[] = true
+  else
+    atreplinit() do repl
+      @async begin
+        iter = 0
+        # wait for active_repl_backend to exist
+        while !isdefined(Base, :active_repl_backend) && iter < 20
+          sleep(0.05)
+          iter += 1
+        end
+        if isdefined(Base, :active_repl_backend)
+          pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
+          REPL_HOOKED[] = true
         end
       end
     end
@@ -286,8 +284,6 @@ end
     end_session!(s = safehouse)
 
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
-
-Only needs to be manually called on Julia versions prior to 1.5.
 """
 function end_session!(s::Session = store)
   setfield!(s, :exiting, false)
@@ -443,8 +439,7 @@ The following commands are special cased:
   - `@cond expr`: Infiltrate at this `@infiltrate` spot only if `expr` evaluates to true (clear all with `Infiltrator.clear_conditions!()`). Only local variables can be accessed here.
   - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
   - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
-  - `@exit`: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to
-    1.5 this needs to be manually cleared with `Infiltrator.end_session!()`).
+  - `@exit`: Stop infiltrating for the remainder of this session and exit.
 """
 
 function show_help(io)
@@ -737,50 +732,38 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
         return false
       end
 
-      @static if VERSION >= v"1.2.0-DEV.253"
-        try
-          result = interpret(expr, evalmod)
-        catch err
-          ok = false
-          result = @static if VERSION >= v"1.7"
-            Base.current_exceptions(current_task(); backtrace = true)
-          else
-            Base.catch_stack()
-          end
-          if nostack
-            result = map(result) do (err, bt)
-              @static if VERSION >= v"1.8-"
-                return (exception=err, backtrace=crop_backtrace(bt))
-              else
-                return err, []
-              end
-            end
-          else
-            result = map(result) do (err, bt)
-              @static if VERSION >= v"1.8-"
-                return (exception=err, backtrace=crop_backtrace(bt))
-              else
-                return err, crop_backtrace(bt)
-              end
+      try
+        result = interpret(expr, evalmod)
+      catch err
+        ok = false
+        result = @static if VERSION >= v"1.7"
+          Base.current_exceptions(current_task(); backtrace = true)
+        else
+          Base.catch_stack()
+        end
+        if nostack
+          result = map(result) do (err, bt)
+            @static if VERSION >= v"1.8-"
+              return (exception=err, backtrace=crop_backtrace(bt))
+            else
+              return err, []
             end
           end
-          if isdefined(Base, :ExceptionStack)
-            result = Base.ExceptionStack(result)
+        else
+          result = map(result) do (err, bt)
+            @static if VERSION >= v"1.8-"
+              return (exception=err, backtrace=crop_backtrace(bt))
+            else
+              return err, crop_backtrace(bt)
+            end
           end
         end
-        if !ok || !REPL.ends_with_semicolon(line)
-          print_response(repl, (result, !ok), true, true)
+        if isdefined(Base, :ExceptionStack)
+          result = Base.ExceptionStack(result)
         end
-      else
-        try
-          result = interpret(expr, evalmod)
-        catch err
-          ok = false
-          result = (err, nostack ? Any[] : crop_backtrace(catch_backtrace()))
-        end
-        if !ok || !REPL.ends_with_semicolon(line)
-          print_response(repl, ok ? result : result[1], ok ? nothing : result[2], true, true)
-        end
+      end
+      if !ok || !REPL.ends_with_semicolon(line)
+        print_response(repl, (result, !ok), true, true)
       end
       println(io)
       LineEdit.reset_state(s)
@@ -972,7 +955,7 @@ function find_first_topelevel_scope(bt::Vector{<:Union{Base.InterpreterIP,Ptr{Cv
       ind = findfirst(st) do frame
           linfo = frame.linfo
           if linfo isa Core.CodeInfo && VERSION < v"1.12-"
-              @static if VERSION >= v"1.2" && hasfield(Core.CodeInfo, :debuginfo)
+              @static if hasfield(Core.CodeInfo, :debuginfo)
                   linfo.debuginfo.def === StackTraces.top_level_scope_sym && return true
               else
                   linetable = linfo.linetable
