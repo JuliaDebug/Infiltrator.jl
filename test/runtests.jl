@@ -84,7 +84,7 @@ function globalref(m, s)
     return gr
 end
 
-@static if Sys.isunix() && VERSION >= v"1.1.0"
+@static if Sys.isunix()
     using TerminalRegressionTests
 
     @static if VERSION >= v"1.11"

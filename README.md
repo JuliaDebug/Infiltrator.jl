@@ -132,7 +132,7 @@ infil> ?
 
     •  @doc symbol: Get help for symbol (same as in the normal Julia REPL).
 
-    •  @exit: Stop infiltrating for the remainder of this session and exit (on Julia versions prior to 1.5 this needs to be manually cleared with Infiltrator.end_session!()).
+    •  @exit: Stop infiltrating for the remainder of this session and exit.
 
 infil> @locals
 - out::Vector{Any} = Any[2]
