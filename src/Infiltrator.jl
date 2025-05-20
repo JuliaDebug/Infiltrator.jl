@@ -861,8 +861,10 @@ end
 # on the REPL backend already, so that would cause a deadlock. Luckily we can pass
 # nothing instead of the actual REPL backend to work around that.
 @static if hasmethod(REPL.print_response, (IO, Any, Nothing, Bool, Bool, Union{AbstractDisplay,Nothing})) &&
-           isdefined(REPL, :eval_with_backend) &&
-           hasmethod(REPL.eval_with_backend, (Any, Nothing))
+           (isdefined(REPL, :eval_with_backend) &&
+            hasmethod(REPL.eval_with_backend, (Any, Nothing)) ||
+           (isdefined(REPL, :call_on_backend) &&
+            hasmethod(REPL.call_on_backend, (Any, Nothing))))
 
   function print_response(repl, response, show_value, have_color)
     repl.waserror = response[2]
