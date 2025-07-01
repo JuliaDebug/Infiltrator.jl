@@ -25,7 +25,7 @@ end
 function j(x)
     xxxxx = 4
     @infiltrate
-    return x*xxxxx
+    return x * xxxxx
 end
 
 struct Bar
@@ -36,29 +36,30 @@ function k()
     zzzzz = 333
     aaaa = Bar(zzzzz, zzzzz)
     @infiltrate
-    aaaa
+    return aaaa
 end
 
 module Jmod
-using Random
-using ..Infiltrator
-jfunc() = @infiltrate
+    using Random
+    using ..Infiltrator
+    jfunc() = @infiltrate
 end
 
 function multiexfiltrate()
     for i in 1:10
         @infiltrate
     end
+    return
 end
 
 function function_form_infiltration(x)
-    if isdefined(Main, :Infiltrator)
+    return if isdefined(Main, :Infiltrator)
         Main.infiltrate(@__MODULE__, Base.@locals, @__FILE__, @__LINE__)
     end
 end
 
 function anon()
-    let
+    return let
         m = Module()
         Core.eval(m, :(using Infiltrator))
         Core.eval(m, :(aasdf = 3))
@@ -72,10 +73,11 @@ function cond(t)
         println(t, i)
         @infiltrate
     end
+    return
 end
 
 function infiltry(x)
-    @infiltry x//x
+    return @infiltry x // x
 end
 
 function globalref(m, s)
@@ -112,7 +114,7 @@ end
 
             Infiltrator.TEST_TERMINAL_REF[] = repl.t
             Infiltrator.TEST_NOSTACK[] = true
-            Infiltrator.TEST_REPL_REF[] = repl;
+            Infiltrator.TEST_REPL_REF[] = repl
             Infiltrator.CHECK_TASK[] = false
 
             @test func(repl.t) == result
@@ -127,45 +129,61 @@ end
     end
 
     @testset "infiltration tests" begin
-        run_terminal_test((t) -> f(3), [3, 4, 5],
-                        ["?\n", "@trace\n", "@trace_all\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
-                        "f")
+        run_terminal_test(
+            (t) -> f(3), [3, 4, 5],
+            ["?\n", "@trace\n", "@trace_all\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
+            "f"
+        )
 
         @test f(3) == [3, 4, 5] # `@toggle`d `@infiltrate` should not open a prompt
 
         Infiltrator.clear_disabled!()
 
-        run_terminal_test((t) -> f(3), [3, 4, 5],
-                        ["@locals\n", "\x4"],
-                        "f2")
+        run_terminal_test(
+            (t) -> f(3), [3, 4, 5],
+            ["@locals\n", "\x4"],
+            "f2"
+        )
 
-        run_terminal_test((t) -> f(3), [3, 4, 5],
-                        ["@locals x\n", "\x4"],
-                        "f2_filter")
+        run_terminal_test(
+            (t) -> f(3), [3, 4, 5],
+            ["@locals x\n", "\x4"],
+            "f2_filter"
+        )
 
         @test g(1) == 12 # conditional @infiltrate should not open a prompt
 
-        run_terminal_test((t) -> g(2), 24,
-                        ["?\n", "@trace\n", "@locals\n", "x\n", "\x4"],
-                        "g")
+        run_terminal_test(
+            (t) -> g(2), 24,
+            ["?\n", "@trace\n", "@locals\n", "x\n", "\x4"],
+            "g"
+        )
 
-        run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
-                        ["\x4", "@locals\n", "@exit\n"],
-                        "h")
+        run_terminal_test(
+            (t) -> h([1, 2, 3]), [[3, 4, 5], [3, 4, 5], [3, 4, 5]],
+            ["\x4", "@locals\n", "@exit\n"],
+            "h"
+        )
 
         # Test that history is correctly using prefixes.
-        run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
-                        ["y = 1\n", "x = 3\n", "y\e[A\n", "\x4", "y\e[A\n", "@exit\n"],
-                        "phist")
+        run_terminal_test(
+            (t) -> h([1, 2, 3]), [[3, 4, 5], [3, 4, 5], [3, 4, 5]],
+            ["y = 1\n", "x = 3\n", "y\e[A\n", "\x4", "y\e[A\n", "@exit\n"],
+            "phist"
+        )
 
-        run_terminal_test((t) -> i(1000), i(1000),
-                        ["2+2\n", "@locals\n", "\x4"],
-                        "i")
+        run_terminal_test(
+            (t) -> i(1000), i(1000),
+            ["2+2\n", "@locals\n", "\x4"],
+            "i"
+        )
 
         # scratch pad test
-        run_terminal_test((t) -> g(2), 24,
-                        ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n","foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "@exfiltrate xxxxx aa bb foo bar\n", "\x4"],
-                        "exfil")
+        run_terminal_test(
+            (t) -> g(2), 24,
+            ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n", "foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "@exfiltrate xxxxx aa bb foo bar\n", "\x4"],
+            "exfil"
+        )
 
         @test Infiltrator.store.xxxxx == 12
         @test Infiltrator.store.aa == 'a'
@@ -175,86 +193,116 @@ end
         @test !isdefined(getfield(Infiltrator.store, :store), :x)
 
         # proper scoping of scratch pad
-        run_terminal_test((t) -> j(2), 8,
-                        ["@locals\n", "@exfiltrate\n", "\x4"],
-                        "scoping")
+        run_terminal_test(
+            (t) -> j(2), 8,
+            ["@locals\n", "@exfiltrate\n", "\x4"],
+            "scoping"
+        )
 
         @test Infiltrator.store.xxxxx == 4
 
         # persistent history
-        run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
-                        ["y\n", "\e[A\n", "\x4", "\e[A\n", "@exit\n"],
-                        "hist")
+        run_terminal_test(
+            (t) -> h([1, 2, 3]), [[3, 4, 5], [3, 4, 5], [3, 4, 5]],
+            ["y\n", "\e[A\n", "\x4", "\e[A\n", "@exit\n"],
+            "hist"
+        )
 
         # top-level test
-        run_terminal_test((t) -> begin
-                            if VERSION > v"1.7"
-                                redirect_stdout(t) do
-                                    include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl"))
-                                end
-                            else
-                                include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl"))
-                            end
-                        end, "success",
-                        ["@exit\n"],
-                        "toplevel")
+        run_terminal_test(
+            (t) -> begin
+                if VERSION > v"1.7"
+                    redirect_stdout(t) do
+                        include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl"))
+                    end
+                else
+                    include(joinpath(@__DIR__, "fixtures", "toplevel-fixture.jl"))
+                end
+            end, "success",
+            ["@exit\n"],
+            "toplevel"
+        )
 
-                        # completions test
-        run_terminal_test((t) -> k(), Bar(333, 333),
-                        ["struct Foo\nxxx\nyyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
-                        "completions")
+        # completions test
+        run_terminal_test(
+            (t) -> k(), Bar(333, 333),
+            ["struct Foo\nxxx\nyyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
+            "completions"
+        )
         @test Infiltrator.store.foo.xxx == 1
 
         # imported globals
-        run_terminal_test((t) -> Jmod.jfunc(), nothing,
-                          ["x\n", "randstring\n", "@exit\n"],
-                          "imported_globals")
+        run_terminal_test(
+            (t) -> Jmod.jfunc(), nothing,
+            ["x\n", "randstring\n", "@exit\n"],
+            "imported_globals"
+        )
 
-        run_terminal_test((t) -> globalref(Main, :undefvar), GlobalRef(Main, :undefvar),
-                           ["gr\n", "@exit\n"],
-                           "globalref")
+        run_terminal_test(
+            (t) -> globalref(Main, :undefvar), GlobalRef(Main, :undefvar),
+            ["gr\n", "@exit\n"],
+            "globalref"
+        )
 
         # safehouse should not shadow local variables
-        run_terminal_test((t) -> multiexfiltrate(), nothing,
-                          ["i\n", "@continue\n", "i\n", "@exfiltrate\n", "@continue\n", "i\n", "safehouse.i\n", "@continue\n", "@exit\n"],
-                          "multi_exfiltrate")
+        run_terminal_test(
+            (t) -> multiexfiltrate(), nothing,
+            ["i\n", "@continue\n", "i\n", "@exfiltrate\n", "@continue\n", "i\n", "safehouse.i\n", "@continue\n", "@exit\n"],
+            "multi_exfiltrate"
+        )
         @test Infiltrator.store.i == 2
 
         # function-form infiltration
-        run_terminal_test((t) -> function_form_infiltration(2), nothing,
-                          ["x\n", "@exit\n"],
-                          "function_inf")
+        run_terminal_test(
+            (t) -> function_form_infiltration(2), nothing,
+            ["x\n", "@exit\n"],
+            "function_inf"
+        )
 
         # test Core.Compiler
         @static if VERSION >= v"1.8"
             @eval Core.Compiler __foo(x) = Main.Infiltrator.@infiltrate
-            run_terminal_test((t) -> Core.Compiler.__foo(Core.SSAValue(3)), nothing,
-                            ["x\n", "@exfiltrate\n", "@exit\n"],
-                            "compiler")
+            run_terminal_test(
+                (t) -> Core.Compiler.__foo(Core.SSAValue(3)), nothing,
+                ["x\n", "@exfiltrate\n", "@exit\n"],
+                "compiler"
+            )
             @test Infiltrator.store.x == Core.SSAValue(3)
         end
 
         # anonymous modules
-        run_terminal_test((t) -> anon(), nothing,
-                          ["aas\t\t\n", "@exfiltrate aasdf\n", "@exit\n"],
-                          "anon")
+        run_terminal_test(
+            (t) -> anon(), nothing,
+            ["aas\t\t\n", "@exfiltrate aasdf\n", "@exit\n"],
+            "anon"
+        )
         @test Infiltrator.store.aasdf == 3
 
         # conditional infiltration
-        run_terminal_test((t) -> cond(t), nothing,
-                          ["@continue\n", "@continue\n", "@cond i > 6\n", "@continue\n", "i\n", "@exit\n"],
-                          "cond")
+        run_terminal_test(
+            (t) -> cond(t), nothing,
+            ["@continue\n", "@continue\n", "@cond i > 6\n", "@continue\n", "i\n", "@exit\n"],
+            "cond"
+        )
 
         # soft scoping
-        run_terminal_test((t) -> f(3), [3, 4, 5],
-                        ["x = 1; for i in 1:5; x = i; end\n", "\x4"],
-                        "soft")
+        run_terminal_test(
+            (t) -> f(3), [3, 4, 5],
+            ["x = 1; for i in 1:5; x = i; end\n", "\x4"],
+            "soft"
+        )
     end
 
     @testset "infiltry" begin
-        run_terminal_test((t) -> try; infiltry(0); catch; nothing; end, nothing,
-                            ["@exception\n", "@locals\n", "@exit\n"],
-                            "infiltry")
+        run_terminal_test(
+            (t) -> try
+                infiltry(0)
+            catch
+                nothing
+            end, nothing,
+            ["@exception\n", "@locals\n", "@exit\n"],
+            "infiltry"
+        )
 
         function foo(x)
             @infiltry z = 2x
@@ -278,7 +326,9 @@ end
         y = 3
         foo = :asd
         store = 33
-        bar = function (yy) yy end
+        bar = function (yy)
+            yy
+        end
         @exfiltrate
     end
     foo_ex(55)
