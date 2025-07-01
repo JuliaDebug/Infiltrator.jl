@@ -18,3 +18,21 @@
 |BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> x = 1; for i in 1:5; x = i; end
+|
+|infil> x
+|5
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBB

@@ -288,7 +288,7 @@ end
         # soft scoping
         run_terminal_test(
             (t) -> f(3), [3, 4, 5],
-            ["x = 1; for i in 1:5; x = i; end\n", "\x4"],
+            ["x = 1; for i in 1:5; x = i; end\n", "x\n", "\x4"],
             "soft"
         )
     end
