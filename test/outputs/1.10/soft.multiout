@@ -9,14 +9,12 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
-|infil> gr
-|:(Main.undefvar)
+|infil> x = 1; for i in 1:5; x = i; end
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
-|BBBBBBBCC
-|CCCCCCCCCCCCCCCC
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB

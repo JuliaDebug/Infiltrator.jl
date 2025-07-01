@@ -94,12 +94,16 @@ end
         @eval Base.peek(::TerminalRegressionTests.EmulatedTerminal) = UInt8(0)
     end
 
-    function run_terminal_test(func, result, commands, validation)
+    function run_terminal_test(func, result, commands, testname)
+        testpath = joinpath(@__DIR__, "outputs", "$(VERSION.major).$(VERSION.minor)", "$testname.multiout")
+        mkpath(dirname(testpath))
+
         test_func = TerminalRegressionTests.automated_test
         if haskey(ENV, "INFILTRATOR_CREATE_TEST") && !haskey(ENV, "CI")
             test_func = TerminalRegressionTests.create_automated_test
         end
-        test_func(joinpath(@__DIR__, "outputs", validation), commands) do emuterm
+
+        test_func(testpath, commands) do emuterm
             Infiltrator.end_session!()
             repl = REPL.LineEditREPL(emuterm, true)
             repl.interface = REPL.setup_interface(repl)
@@ -125,7 +129,7 @@ end
     @testset "infiltration tests" begin
         run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["?\n", "@trace\n", "@trace_all\n", "@locals\n", "x.*y\n", "3+\n4\n", "ans\n", "baz\n", "0//0\n", "@toggle\n", "@toggle\n", "@toggle\n", "\x4"],
-                        "Julia_f_$(VERSION.major).$(VERSION.minor).multiout")
+                        "f")
 
         @test f(3) == [3, 4, 5] # `@toggle`d `@infiltrate` should not open a prompt
 
@@ -133,35 +137,35 @@ end
 
         run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["@locals\n", "\x4"],
-                        "Julia_f2_$(VERSION.major).$(VERSION.minor).multiout")
+                        "f2")
 
         run_terminal_test((t) -> f(3), [3, 4, 5],
                         ["@locals x\n", "\x4"],
-                        "Julia_f2_filter_$(VERSION.major).$(VERSION.minor).multiout")
+                        "f2_filter")
 
         @test g(1) == 12 # conditional @infiltrate should not open a prompt
 
         run_terminal_test((t) -> g(2), 24,
                         ["?\n", "@trace\n", "@locals\n", "x\n", "\x4"],
-                        "Julia_g_$(VERSION.major).$(VERSION.minor).multiout")
+                        "g")
 
         run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["\x4", "@locals\n", "@exit\n"],
-                        "Julia_h_$(VERSION.major).$(VERSION.minor).multiout")
-                        
+                        "h")
+
         # Test that history is correctly using prefixes.
         run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["y = 1\n", "x = 3\n", "y\e[A\n", "\x4", "y\e[A\n", "@exit\n"],
-                        "Julia_phist_$(VERSION.major).$(VERSION.minor).multiout")
-                        
+                        "phist")
+
         run_terminal_test((t) -> i(1000), i(1000),
                         ["2+2\n", "@locals\n", "\x4"],
-                        "Julia_i_$(VERSION.major).$(VERSION.minor).multiout")
+                        "i")
 
         # scratch pad test
         run_terminal_test((t) -> g(2), 24,
                         ["@locals\n", "xxxxx = 12\n", "aa, bb = ('a', 'b')\n","foo(x) = x\n", "function bar(x); 2x; end\n", "x = 2\n", "@exfiltrate xxxxx aa bb foo bar\n", "\x4"],
-                        "Julia_exfil_$(VERSION.major).$(VERSION.minor).multiout")
+                        "exfil")
 
         @test Infiltrator.store.xxxxx == 12
         @test Infiltrator.store.aa == 'a'
@@ -173,14 +177,14 @@ end
         # proper scoping of scratch pad
         run_terminal_test((t) -> j(2), 8,
                         ["@locals\n", "@exfiltrate\n", "\x4"],
-                        "Julia_scoping_$(VERSION.major).$(VERSION.minor).multiout")
+                        "scoping")
 
         @test Infiltrator.store.xxxxx == 4
 
         # persistent history
         run_terminal_test((t) -> h([1,2,3]), [[3,4,5], [3,4,5], [3,4,5]],
                         ["y\n", "\e[A\n", "\x4", "\e[A\n", "@exit\n"],
-                        "Julia_hist_$(VERSION.major).$(VERSION.minor).multiout")
+                        "hist")
 
         # top-level test
         run_terminal_test((t) -> begin
@@ -193,59 +197,64 @@ end
                             end
                         end, "success",
                         ["@exit\n"],
-                        "Julia_toplevel_$(VERSION.major).$(VERSION.minor).multiout")
+                        "toplevel")
 
                         # completions test
         run_terminal_test((t) -> k(), Bar(333, 333),
                         ["struct Foo\nxxx\nyyy\nend\n", "foo = Foo(1, 2)\n", "fo\t\t\x3", "foo.xx\t\t\n", "zz\t\t\x3", "aa\t\t\x3", "aaaa.xx\t\t\n", "@exfiltrate foo nope\n", "@exit\n"],
-                        "Julia_completions_$(VERSION.major).$(VERSION.minor).multiout")
+                        "completions")
         @test Infiltrator.store.foo.xxx == 1
 
         # imported globals
         run_terminal_test((t) -> Jmod.jfunc(), nothing,
                           ["x\n", "randstring\n", "@exit\n"],
-                          "Julia_imported_globals_$(VERSION.major).$(VERSION.minor).multiout")
+                          "imported_globals")
 
         run_terminal_test((t) -> globalref(Main, :undefvar), GlobalRef(Main, :undefvar),
                            ["gr\n", "@exit\n"],
-                           "Julia_globalref_$(VERSION.major).$(VERSION.minor).multiout")
+                           "globalref")
 
         # safehouse should not shadow local variables
         run_terminal_test((t) -> multiexfiltrate(), nothing,
                           ["i\n", "@continue\n", "i\n", "@exfiltrate\n", "@continue\n", "i\n", "safehouse.i\n", "@continue\n", "@exit\n"],
-                          "Julia_multi_exfiltrate_$(VERSION.major).$(VERSION.minor).multiout")
+                          "multi_exfiltrate")
         @test Infiltrator.store.i == 2
 
         # function-form infiltration
         run_terminal_test((t) -> function_form_infiltration(2), nothing,
                           ["x\n", "@exit\n"],
-                          "Julia_function_inf_$(VERSION.major).$(VERSION.minor).multiout")
+                          "function_inf")
 
         # test Core.Compiler
         @static if VERSION >= v"1.8"
             @eval Core.Compiler __foo(x) = Main.Infiltrator.@infiltrate
             run_terminal_test((t) -> Core.Compiler.__foo(Core.SSAValue(3)), nothing,
                             ["x\n", "@exfiltrate\n", "@exit\n"],
-                            "Julia_compiler_$(VERSION.major).$(VERSION.minor).multiout")
+                            "compiler")
             @test Infiltrator.store.x == Core.SSAValue(3)
         end
 
         # anonymous modules
         run_terminal_test((t) -> anon(), nothing,
                           ["aas\t\t\n", "@exfiltrate aasdf\n", "@exit\n"],
-                          "Julia_anon_$(VERSION.major).$(VERSION.minor).multiout")
+                          "anon")
         @test Infiltrator.store.aasdf == 3
 
-        # anonymous modules
+        # conditional infiltration
         run_terminal_test((t) -> cond(t), nothing,
                           ["@continue\n", "@continue\n", "@cond i > 6\n", "@continue\n", "i\n", "@exit\n"],
-                          "Julia_cond_$(VERSION.major).$(VERSION.minor).multiout")
+                          "cond")
+
+        # soft scoping
+        run_terminal_test((t) -> f(3), [3, 4, 5],
+                        ["x = 1; for i in 1:5; x = i; end\n", "\x4"],
+                        "soft")
     end
 
     @testset "infiltry" begin
         run_terminal_test((t) -> try; infiltry(0); catch; nothing; end, nothing,
                             ["@exception\n", "@locals\n", "@exit\n"],
-                            "Julia_infiltry_$(VERSION.major).$(VERSION.minor).multiout")
+                            "infiltry")
 
         function foo(x)
             @infiltry z = 2x

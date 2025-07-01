@@ -9,14 +9,12 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
-|infil> x
-|2
+|infil> x = 1; for i in 1:5; x = i; end
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
-|BBBBBBBC
-|C
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB

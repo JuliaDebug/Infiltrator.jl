@@ -1,4 +1,4 @@
-for version in ["1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "1.12"]
+for version in ["1.7", "1.8", "1.9", "1.10", "1.11", "1.12"]
     println("Generating outputs with Julia v$version")
     manifest_path = joinpath(@__DIR__, "..", "Manifest.toml")
     isfile(manifest_path) && rm(manifest_path)

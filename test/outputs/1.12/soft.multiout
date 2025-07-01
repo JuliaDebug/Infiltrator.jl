@@ -9,16 +9,12 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
-|infil> @locals
-|- y::Array{Int64,1} = [1, 2, 3]
-|- x::Int64 = 2
+|infil> x = 1; for i in 1:5; x = i; end
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
-|BBBBBBBCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-|CCCCCCCCCCCCCC
+|BBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
