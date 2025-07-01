@@ -6,7 +6,6 @@ let README = normpath(dirname(@__DIR__), "README.md")
 end
 
 using REPL, UUIDs, InteractiveUtils
-using REPL.LineEdit: getproperty
 using REPL.LineEdit
 using Markdown
 
@@ -745,6 +744,8 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
         return false
       end
 
+      expr = REPL.softscope(expr)
+
       try
         result = interpret(expr, evalmod)
       catch err
@@ -785,7 +786,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
     end
 
     prefix_prompt, prefix_keymap = LineEdit.setup_prefix_keymap(panel.hist, panel)
-    
+
     panel.keymap_dict = LineEdit.keymap(Dict{Any,Any}[skeymap, prefix_keymap, LineEdit.history_keymap, LineEdit.default_keymap, LineEdit.escape_defaults])
 
     REPL.run_interface(terminal, REPL.LineEdit.ModalInterface([panel, prefix_prompt, search_prompt]))
