@@ -86,6 +86,17 @@ function globalref(m, s)
     return gr
 end
 
+module Asdf
+
+    using ..Infiltrator: Infiltrator as I, @infiltrate
+
+    function f(x)
+        @infiltrate
+        return x
+    end
+
+end
+
 @static if Sys.isunix()
     using TerminalRegressionTests
 
@@ -103,6 +114,7 @@ end
         test_func = TerminalRegressionTests.automated_test
         if haskey(ENV, "INFILTRATOR_CREATE_TEST") && !haskey(ENV, "CI")
             test_func = TerminalRegressionTests.create_automated_test
+            @info "Generating regression test outputs for $testname"
         end
 
         test_func(testpath, commands) do emuterm
@@ -291,6 +303,15 @@ end
             ["x = 1; for i in 1:5; x = i; end\n", "x\n", "\x4"],
             "soft"
         )
+
+        # import as, only works on 1.12
+        if VERSION > v"1.12-"
+            run_terminal_test(
+                (t) -> Asdf.f(1), 1,
+                ["I\n", "I.all_names\n", "\x4"],
+                "importas"
+            )
+        end
     end
 
     @testset "infiltry" begin

@@ -946,7 +946,11 @@ function all_names(m)
 end
 function all_names(m, pred, symbols = Set(Symbol[]), seen = Set(Module[]))
     push!(seen, m)
-    ns = names(m; all = true, imported = true)
+    ns = if VERSION > v"1.12-"
+        names(m; all = true, imported = true, usings = true)
+    else
+        names(m; all = true, imported = true)
+    end
 
     for n in ns
         isdefined(m, n) || continue
