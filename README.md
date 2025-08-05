@@ -134,6 +134,8 @@ infil> ?
 
     •  @exit: Stop infiltrating for the remainder of this session and exit.
 
+    •  `@abort`: Stop program execution by throwing an `AbortException`.
+
 infil> @locals
 - out::Vector{Any} = Any[2]
 - i::Int64 = 1

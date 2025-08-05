@@ -41,6 +41,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> 
 --------------------------------------------------
@@ -78,6 +79,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -115,6 +117,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -154,6 +157,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -193,6 +197,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -234,6 +239,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -275,6 +281,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -320,6 +327,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -365,6 +373,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -416,6 +425,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -467,6 +477,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -523,6 +534,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -579,6 +591,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -638,6 +651,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -697,6 +711,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -759,6 +774,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -821,6 +837,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -897,6 +914,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -973,6 +991,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -1052,6 +1071,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -1131,6 +1151,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -1213,6 +1234,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
@@ -1295,6 +1317,7 @@
 |       REPL).
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -1380,6 +1403,7 @@
 |CCCCCCCCCCCCC
 |CCCCEECDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|CCCCEECDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |

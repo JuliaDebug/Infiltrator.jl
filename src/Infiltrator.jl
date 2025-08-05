@@ -14,6 +14,15 @@ export @infiltrate, @infiltry, @exfiltrate, @withstore, safehouse, exfiltrated, 
 const REPL_HOOKED = Ref{Bool}(false)
 const INFILTRATION_LOCK = Ref{ReentrantLock}()
 
+struct AbortException <: Exception
+    trace::Vector{StackTraces.StackFrame}
+    location::String
+end
+function Base.showerror(io::IO, e::AbortException)
+    println(io, "Infiltrator.AbortException: evaluation aborted by user at $(e.location)")
+    print_verbose_stacktrace(io, e.trace)
+end
+
 function __init__()
     ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
     INFILTRATION_LOCK[] = ReentrantLock()
@@ -462,6 +471,7 @@ The following commands are special cased:
   - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
   - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
   - `@exit`: Stop infiltrating for the remainder of this session and exit.
+  - `@abort`: Stop program execution by throwing an `AbortException`.
 """
 
 function show_help(io)
@@ -646,6 +656,8 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 return true
             end
 
+            loc_str = nostack ? "this infiltration point" : "$file:$fileline"
+
             sline = strip(line)
             if sline == "?"
                 show_help(io)
@@ -680,13 +692,13 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 if spot in ds
                     delete!(ds, spot)
                     if haskey(cs, spot)
-                        println(io, "Conditionally enabled infiltration at this infiltration point.\n")
+                        println(io, "Conditionally enabled infiltration at $(loc_str).\n")
                     else
-                        println(io, "Enabled infiltration at this infiltration point.\n")
+                        println(io, "Enabled infiltration at $(loc_str).\n")
                     end
                 else
                     push!(ds, spot)
-                    println(io, "Disabled infiltration at this infiltration point.\n")
+                    println(io, "Disabled infiltration at $(loc_str).\n")
                 end
                 LineEdit.reset_state(s)
                 return true
@@ -725,7 +737,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                     cs[spot] = result
                     # Remove the spot from the disabled set.
                     delete!(ds, spot)
-                    println(io, "Conditionally enabled infiltration at this infiltration point.\n")
+                    println(io, "Conditionally enabled infiltration at $(loc_str).\n")
                     LineEdit.reset_state(s)
                     return true
                 catch err
@@ -742,6 +754,11 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                         bold = true
                     )
                 end
+                LineEdit.transition(s, :abort)
+                LineEdit.reset_state(s)
+                return true
+            elseif sline == "@abort"
+                Core.eval(evalmod, :(throw($(AbortException(trace, loc_str)))))
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true
@@ -769,7 +786,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
             expr = REPL.softscope(expr)
 
             try
-                result = interpret(expr, evalmod)
+                result = Core.eval(evalmod, :(ans = $(expr)))
             catch err
                 ok = false
                 result = @static if VERSION >= v"1.7"
@@ -983,11 +1000,6 @@ let ir_constructs = collect(
         end
     )
     @eval is_ir_construct(@nospecialize x) = typeof(x) in $ir_constructs
-end
-
-function interpret(expr, evalmod)
-    out = Core.eval(evalmod, :(ans = $(expr)))
-    return out
 end
 
 # runic: off
