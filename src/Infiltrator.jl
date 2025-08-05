@@ -21,6 +21,7 @@ end
 function Base.showerror(io::IO, e::AbortException)
     println(io, "Infiltrator.AbortException: evaluation aborted by user at $(e.location)")
     print_verbose_stacktrace(io, e.trace)
+    return
 end
 
 function __init__()
