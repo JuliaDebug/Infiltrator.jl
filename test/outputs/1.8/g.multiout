@@ -52,6 +52,8 @@
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
 |
+|    •  @abort: Stop program execution by throwing an AbortException.
+|
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
@@ -99,6 +101,8 @@
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
 |
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
+|
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -145,6 +149,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -195,6 +201,8 @@
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
 |
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
+|
 |BBBBBBBCCCCCC
 |
 |BBBBBBB
@@ -243,6 +251,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -296,6 +306,8 @@
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
 |
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
+|
 |BBBBBBBCCCCCC
 |
 |BBBBBBBCCCCCCC
@@ -347,6 +359,8 @@
 |
 |    •  @exit: Stop infiltrating for the remainder of this session and
 |       exit.
+|
+|    •  @abort: Stop program execution by throwing an AbortException.
 |
 |infil> @trace
 |
@@ -402,6 +416,8 @@
 |
 |CCCCCCCDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDC
 |
 |BBBBBBBCCCCCC
 |
