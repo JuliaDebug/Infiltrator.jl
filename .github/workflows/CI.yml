@@ -13,7 +13,7 @@ jobs:
         channel: ['1.6', '1.7', '1.8', '1.9', '1.10', '1.11', '1.12']
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: julia-actions/install-juliaup@v2
         with:
            channel: ${{matrix.channel}}
