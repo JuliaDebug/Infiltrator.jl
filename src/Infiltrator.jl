@@ -1062,18 +1062,26 @@ function LineEdit.complete_line(c::InfiltratorCompletionProvider, s; hint::Bool 
     return ret, partial[range], should_complete
 end
 
+#TODO: this is a workaround for what is likely a missing method in the REPL
+function _completion_text(comp::REPL.REPLCompletions.Completion)
+    return REPL.REPLCompletions.completion_text(comp)
+end
+function _completion_text(comp::REPL.REPLCompletions.BslashCompletion)
+    return comp.completion
+end
+
 function completions(c::InfiltratorCompletionProvider, full, partial)
     # repl backend completions
     comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.mod)
-    ret = map(REPL.REPLCompletions.completion_text, comps)
+    ret = map(_completion_text, comps)
 
     # completions for local variables
     comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.localmod)
-    prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
+    prepend!(ret, map(_completion_text, comps))
 
     # completions for safehouse variables
     comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), get_store(store))
-    prepend!(ret, map(REPL.REPLCompletions.completion_text, comps))
+    prepend!(ret, map(_completion_text, comps))
 
     # Infiltrator commands completions
     commands = ["?", "@trace", "@trace_all", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate", "@exception"]
