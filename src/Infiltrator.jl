@@ -1066,8 +1066,10 @@ end
 function _completion_text(comp::REPL.REPLCompletions.Completion)
     return REPL.REPLCompletions.completion_text(comp)
 end
-function _completion_text(comp::REPL.REPLCompletions.BslashCompletion)
-    return comp.completion
+@static if VERSION > v"1.12-"
+    function _completion_text(comp::REPL.REPLCompletions.BslashCompletion)
+        return comp.completion
+    end
 end
 
 function completions(c::InfiltratorCompletionProvider, full, partial)

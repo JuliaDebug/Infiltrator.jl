@@ -312,6 +312,12 @@ end
                 "importas"
             )
         end
+
+        run_terminal_test(
+            (t) -> f(3), [3, 4, 5],
+            ["\\sigm\t\t = 2\n", "\\sig\t\t\n", "\x4"],
+            "backslash completions"
+        )
     end
 
     @testset "infiltry" begin
