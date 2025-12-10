@@ -9,34 +9,34 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
-|infil> x
-|:(%3)
+|infil> a
+|2
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCC
+|C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
-|infil> x
-|:(%3)
+|infil> a
+|2
 |
-|infil> @exfiltrate
-|Exfiltrating 1 local variable into the safehouse.
+|infil> Shadow.a
+|1
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCC
+|C
 |
-|BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|BBBBBBBCCCCCCCC
+|C
 |
 |BBBBBBB
