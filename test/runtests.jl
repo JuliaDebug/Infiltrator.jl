@@ -87,15 +87,26 @@ function globalref(m, s)
 end
 
 module Asdf
-
     using ..Infiltrator: Infiltrator as I, @infiltrate
 
     function f(x)
         @infiltrate
         return x
     end
-
 end
+
+module Shadow
+    using ..Infiltrator: @infiltrate
+
+    a = 1
+    function shadow()
+        a = 2
+        @infiltrate
+
+        return a
+    end
+end
+
 
 @static if Sys.isunix()
     using TerminalRegressionTests
@@ -317,6 +328,12 @@ end
             (t) -> f(3), [3, 4, 5],
             ["\\sigm\t\t = 2\n", "\\sig\t\t\n", "\x4"],
             "backslash completions"
+        )
+
+        run_terminal_test(
+            (t) -> Shadow.shadow(), 2,
+            ["a\n", "Shadow.a\n", "\x4"],
+            "shadowing of global bindings"
         )
     end
 

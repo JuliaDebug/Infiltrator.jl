@@ -172,7 +172,7 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|7
 |
 |infil> 
 --------------------------------------------------
@@ -201,6 +201,6 @@
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBB

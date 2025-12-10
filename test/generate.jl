@@ -2,5 +2,6 @@ for version in ["1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "1.12"]
     println("Generating outputs with Julia v$version")
     manifest_path = joinpath(@__DIR__, "..", "Manifest.toml")
     isfile(manifest_path) && rm(manifest_path)
+    run(`juliaup add $version`)
     run(addenv(`julia +$version --startup-file=no --project=$(dirname(@__DIR__)) --threads=1 -e 'using Pkg; Pkg.instantiate(); Pkg.test()'`, "INFILTRATOR_CREATE_TEST" => 1))
 end

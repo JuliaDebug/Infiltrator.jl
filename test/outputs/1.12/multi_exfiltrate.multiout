@@ -10,21 +10,21 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
@@ -35,7 +35,7 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
@@ -46,42 +46,42 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|2
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|2
 |
 |infil> @exfiltrate
 |Exfiltrating 1 local variable into the safehouse.
@@ -91,14 +91,14 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -108,14 +108,14 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|2
 |
 |infil> @exfiltrate
 |Exfiltrating 1 local variable into the safehouse.
@@ -129,14 +129,14 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -150,14 +150,14 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|2
 |
 |infil> @exfiltrate
 |Exfiltrating 1 local variable into the safehouse.
@@ -167,21 +167,21 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|3
 |
 |infil> 
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -191,21 +191,21 @@
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBB
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|2
 |
 |infil> @exfiltrate
 |Exfiltrating 1 local variable into the safehouse.
@@ -215,7 +215,7 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|3
 |
 |infil> safehouse.i
 |2
@@ -225,14 +225,14 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -242,7 +242,7 @@
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |C
@@ -252,14 +252,14 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|1
 |
 |infil> @continue
 |
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|2
 |
 |infil> @exfiltrate
 |Exfiltrating 1 local variable into the safehouse.
@@ -269,7 +269,7 @@
 |Infiltrating <unknown>
 |
 |infil> i
-|i (generic function with 1 method)
+|3
 |
 |infil> safehouse.i
 |2
@@ -283,14 +283,14 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCC
 |
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -300,7 +300,7 @@
 |CCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|C
 |
 |BBBBBBBCCCCCCCCCCC
 |C
