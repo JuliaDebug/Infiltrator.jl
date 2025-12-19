@@ -28,7 +28,7 @@ function __init__()
     ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
     INFILTRATION_LOCK[] = ReentrantLock()
     if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
+        pushfirst!(Base.active_repl_backend.ast_transforms, infiltrator_session_ender)
         REPL_HOOKED[] = true
     else
         atreplinit() do repl
@@ -40,7 +40,7 @@ function __init__()
                     iter += 1
                 end
                 if isdefined(Base, :active_repl_backend)
-                    pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
+                    pushfirst!(Base.active_repl_backend.ast_transforms, infiltrator_session_ender)
                     REPL_HOOKED[] = true
                 end
             end
@@ -1003,16 +1003,22 @@ let ir_constructs = collect(
     @eval is_ir_construct(@nospecialize x) = typeof(x) in $ir_constructs
 end
 
-# runic: off
-function ast_transformer()
-    return function (@nospecialize(ex),)
-        if ex isa Expr
-            return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
+const special_heads = (:meta, :import, :using, :export, :module, :error, :incomplete, :thunk)
+function infiltrator_session_ender(@nospecialize ex)
+    if ex isa Expr
+        h = ex.head
+        if h === :toplevel
+            if any(x -> (x isa Expr && x.head in special_heads), ex.args)
+                return ex
+            end
+        elseif h in special_heads
+            return ex
         end
-        return ex
+
+        return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
     end
+    return ex
 end
-# runic: on
 
 # backtraces
 
