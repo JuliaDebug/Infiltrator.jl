@@ -392,7 +392,7 @@ end
         @exfiltrate x zz = yy + 2
     end
     foo_ex2(55)
-    @test Infiltrator.store.zz == 55*2+2
+    @test Infiltrator.store.zz == 55 * 2 + 2
     @test Infiltrator.store.x == 55
     @test_throws UndefVarError Infiltrator.store.yy
 end
