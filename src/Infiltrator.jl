@@ -8,6 +8,7 @@ end
 using REPL, UUIDs, InteractiveUtils
 using REPL.LineEdit
 using Markdown
+using Base: isexpr
 
 export @infiltrate, @infiltry, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
@@ -106,10 +107,28 @@ infiltrate(mod, locals, file, line) = start_prompt(mod, locals, string(file), li
     @exfiltrate
 
 Assigns all local variables into the global storage.
+
+    @exfiltrate var1 var2
+
+Assigns (only) `var1` and `var2` to the global storage.
+
+    @exfiltrate var = foo(x+2)
+
+Evaluates the RHS and stores it as `var` in the global storage.
 """
-macro exfiltrate()
+macro exfiltrate(what...)
+    if isempty(what)
+        what = :(Base.@locals)
+    else
+        function f(ex::Expr)
+            @assert isexpr(ex, :(=)) "Exfiltrate only supports variables and assignments"
+            return Expr(:tuple, QuoteNode(ex.args[1]::Symbol), esc(ex.args[2]))
+        end
+        f(x::Symbol) = Expr(:tuple, QuoteNode(x), esc(x))
+        what = Expr(:vect, map(f, what)...)
+    end
     return quote
-        for (k, v) in Base.@locals
+        for (k, v) in $what
             try
                 Core.eval(get_store(getfield($(@__MODULE__), :store)), Expr(:(=), k, QuoteNode(v)))
             catch err
