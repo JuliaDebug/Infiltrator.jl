@@ -375,6 +375,7 @@ end
         end
         @exfiltrate
     end
+    foo_ex(55)
 
     @test Infiltrator.store.y == 3
     @test Infiltrator.store.foo == :asd
