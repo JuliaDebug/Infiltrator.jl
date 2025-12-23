@@ -8,12 +8,14 @@ end
 using REPL, UUIDs, InteractiveUtils
 using REPL.LineEdit
 using Markdown
-using Base: isexpr
 
 export @infiltrate, @infiltry, @exfiltrate, @withstore, safehouse, exfiltrated, infiltrate
 
 const REPL_HOOKED = Ref{Bool}(false)
 const INFILTRATION_LOCK = Ref{ReentrantLock}()
+
+# Base version copy pasted; necessary for Julia 1.6 support
+isexpr(@nospecialize(ex), head::Symbol) = isa(ex, Expr) && ex.head === head
 
 struct AbortException <: Exception
     trace::Vector{StackTraces.StackFrame}
