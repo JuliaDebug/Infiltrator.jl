@@ -14,9 +14,6 @@ export @infiltrate, @infiltry, @exfiltrate, @withstore, safehouse, exfiltrated, 
 const REPL_HOOKED = Ref{Bool}(false)
 const INFILTRATION_LOCK = Ref{ReentrantLock}()
 
-# Base version copy pasted; necessary for Julia 1.6 support
-isexpr(@nospecialize(ex), head::Symbol) = isa(ex, Expr) && ex.head === head
-
 struct AbortException <: Exception
     trace::Vector{StackTraces.StackFrame}
     location::String
@@ -123,7 +120,7 @@ macro exfiltrate(what...)
         what = :(Base.@locals)
     else
         function f(ex::Expr)
-            @assert isexpr(ex, :(=)) "Exfiltrate only supports variables and assignments"
+            @assert Meta.isexpr(ex, :(=)) "Exfiltrate only supports variables and assignments"
             return Expr(:tuple, QuoteNode(ex.args[1]::Symbol), esc(ex.args[2]))
         end
         f(x::Symbol) = Expr(:tuple, QuoteNode(x), esc(x))
