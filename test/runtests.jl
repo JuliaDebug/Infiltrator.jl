@@ -386,4 +386,14 @@ end
     # `@with` is basically for dynamic usage only
     @test 6 == Core.eval(@__MODULE__, :(Infiltrator.@withstore(2y)))
     @test "asd" == Core.eval(@__MODULE__, :(Infiltrator.@withstore(string(foo))))
+
+    Infiltrator.clear_store!()
+    function foo_ex2(x)
+        yy = x * 2
+        @exfiltrate x zz = yy + 2
+    end
+    foo_ex2(55)
+    @test Infiltrator.store.zz == 55 * 2 + 2
+    @test Infiltrator.store.x == 55
+    @test_throws UndefVarError Infiltrator.store.yy
 end

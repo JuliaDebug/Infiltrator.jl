@@ -65,6 +65,17 @@ julia> foo(3)
 
 julia> safehouse.x # or exfiltrated.x
 3
+
+julia> bar(x, y) = @exfiltrate x y_sum = sum(y)   # selective exfiltration
+bar (generic function with 1 method)
+
+julia> bar(10, [2,5])
+
+julia> safehouse.x
+10
+
+julia> safehouse.y_sum
+7
 ```
 
 You can reset the safehouse with `Infiltrator.clear_store!()`.
