@@ -57,7 +57,7 @@ Exfiltrating variables (with `@exfiltrate` or by assignment in an `@infiltrate` 
 assigning the variable to a global storage space (backed by a module); any exfiltrated objects
 can be directly accessed, via `Infiltrator.store` or its exported aliases `safehouse` or `exfiltrated`:
 
-```julia
+```julia-repl
 julia> foo(x) = @exfiltrate
 foo (generic function with 1 method)
 
@@ -102,7 +102,7 @@ instead. An advantage of the macro form is that it will fail tests, so you don't
 containing infiltration points.
 
 ### REPL session
-```julia
+```julia-repl
 julia> function f(x)
          out = []
          for i in x
