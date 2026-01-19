@@ -95,7 +95,7 @@ Using Infiltrator for debugging packages or scripts requires a little bit of set
 5. Add `Main.@infiltrate` statements as breakpoints wherever desired.
 6. Run a function that ends up executing the method containing the breakpoint.
 
-The ordering of steps 3 and 4 is important: loading your package after adding `Main.@infiltrate` statements will
+The ordering of steps 4 and 5 is important: loading your package after adding `Main.@infiltrate` statements will
 prevent if from loading, because that macro does not exist during precompilation.
 
 If you absolutely cannot modfiy your code after loading it initially, then the `infiltrate` function *can* be used
