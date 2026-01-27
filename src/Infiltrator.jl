@@ -28,7 +28,7 @@ function __init__()
     ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
     INFILTRATION_LOCK[] = ReentrantLock()
     if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
-        pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
+        push!(Base.active_repl_backend.ast_transforms, ast_transformer())
         REPL_HOOKED[] = true
     else
         atreplinit() do repl
@@ -40,7 +40,7 @@ function __init__()
                     iter += 1
                 end
                 if isdefined(Base, :active_repl_backend)
-                    pushfirst!(Base.active_repl_backend.ast_transforms, ast_transformer())
+                    push!(Base.active_repl_backend.ast_transforms, ast_transformer())
                     REPL_HOOKED[] = true
                 end
             end
