@@ -57,7 +57,7 @@ Exfiltrating variables (with `@exfiltrate` or by assignment in an `@infiltrate` 
 assigning the variable to a global storage space (backed by a module); any exfiltrated objects
 can be directly accessed, via `Infiltrator.store` or its exported aliases `safehouse` or `exfiltrated`:
 
-```julia
+```julia-repl
 julia> foo(x) = @exfiltrate
 foo (generic function with 1 method)
 
@@ -65,6 +65,17 @@ julia> foo(3)
 
 julia> safehouse.x # or exfiltrated.x
 3
+
+julia> bar(x, y) = @exfiltrate x y_sum = sum(y)   # selective exfiltration
+bar (generic function with 1 method)
+
+julia> bar(10, [2,5])
+
+julia> safehouse.x
+10
+
+julia> safehouse.y_sum
+7
 ```
 
 You can reset the safehouse with `Infiltrator.clear_store!()`.
@@ -78,12 +89,13 @@ backing module to `Main` and therefore export the contents of the safehouse to t
 Using Infiltrator for debugging packages or scripts requires a little bit of setup.
 
 1. Either your current environment or an environment futher down the [environment stack](https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks) must contain Infiltrator.jl. I would recommend putting Infiltrator.jl into your global `@v1.xx` environment so that it is always available.
-2. Load [Revise.jl](https://github.com/timholy/Revise.jl) or use [VS Code's inline evaluation](https://www.julia-vscode.org/docs/stable/userguide/runningcode/) to seamlessly update your package code.
-3. Load your package.
-4. Add `Main.@infiltrate` statements as breakpoints wherever desired.
-5. Run a function that ends up executing the method containing the breakpoint.
+2. Load Infiltrator.jl with `using Infiltrator` in the REPL
+3. Load [Revise.jl](https://github.com/timholy/Revise.jl) or use [VS Code's inline evaluation](https://www.julia-vscode.org/docs/stable/userguide/runningcode/) to seamlessly update your package code.
+4. Load your package.
+5. Add `Main.@infiltrate` statements as breakpoints wherever desired.
+6. Run a function that ends up executing the method containing the breakpoint.
 
-The ordering of steps 3 and 4 is important: loading your package after adding `Main.@infiltrate` statements will
+The ordering of steps 4 and 5 is important: loading your package after adding `Main.@infiltrate` statements will
 prevent if from loading, because that macro does not exist during precompilation.
 
 If you absolutely cannot modfiy your code after loading it initially, then the `infiltrate` function *can* be used
@@ -91,7 +103,7 @@ instead. An advantage of the macro form is that it will fail tests, so you don't
 containing infiltration points.
 
 ### REPL session
-```julia
+```julia-repl
 julia> function f(x)
          out = []
          for i in x

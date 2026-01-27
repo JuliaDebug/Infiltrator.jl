@@ -28,7 +28,7 @@ function __init__()
     ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
     INFILTRATION_LOCK[] = ReentrantLock()
     if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
-        push!(Base.active_repl_backend.ast_transforms, ast_transformer())
+        push!(Base.active_repl_backend.ast_transforms, infiltrator_session_ender)
         REPL_HOOKED[] = true
     else
         atreplinit() do repl
@@ -40,7 +40,7 @@ function __init__()
                     iter += 1
                 end
                 if isdefined(Base, :active_repl_backend)
-                    push!(Base.active_repl_backend.ast_transforms, ast_transformer())
+                    push!(Base.active_repl_backend.ast_transforms, infiltrator_session_ender)
                     REPL_HOOKED[] = true
                 end
             end
@@ -106,10 +106,28 @@ infiltrate(mod, locals, file, line) = start_prompt(mod, locals, string(file), li
     @exfiltrate
 
 Assigns all local variables into the global storage.
+
+    @exfiltrate var1 var2
+
+Assigns (only) `var1` and `var2` to the global storage.
+
+    @exfiltrate var = foo(x+2)
+
+Evaluates the RHS and stores it as `var` in the global storage.
 """
-macro exfiltrate()
+macro exfiltrate(what...)
+    if isempty(what)
+        what = :(Base.@locals)
+    else
+        function f(ex::Expr)
+            @assert Meta.isexpr(ex, :(=)) "Exfiltrate only supports variables and assignments"
+            return Expr(:tuple, QuoteNode(ex.args[1]::Symbol), esc(ex.args[2]))
+        end
+        f(x::Symbol) = Expr(:tuple, QuoteNode(x), esc(x))
+        what = Expr(:vect, map(f, what)...)
+    end
     return quote
-        for (k, v) in Base.@locals
+        for (k, v) in $what
             try
                 Core.eval(get_store(getfield($(@__MODULE__), :store)), Expr(:(=), k, QuoteNode(v)))
             catch err
@@ -1003,16 +1021,22 @@ let ir_constructs = collect(
     @eval is_ir_construct(@nospecialize x) = typeof(x) in $ir_constructs
 end
 
-# runic: off
-function ast_transformer()
-    return function (@nospecialize(ex),)
-        if ex isa Expr
-            return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
+const special_heads = (:meta, :import, :using, :export, :module, :error, :incomplete, :thunk)
+function infiltrator_session_ender(@nospecialize ex)
+    if ex isa Expr
+        h = ex.head
+        if h === :toplevel
+            if any(x -> (x isa Expr && x.head in special_heads), ex.args)
+                return ex
+            end
+        elseif h in special_heads
+            return ex
         end
-        return ex
+
+        return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
     end
+    return ex
 end
-# runic: on
 
 # backtraces
 
