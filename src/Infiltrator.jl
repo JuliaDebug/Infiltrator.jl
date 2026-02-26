@@ -787,7 +787,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 LineEdit.reset_state(s)
                 return true
             elseif startswith(sline, "@continue ")
-                rest = strip(sline[length("@continue")+1:end])
+                rest = strip(sline[(length("@continue") + 1):end])
                 n = tryparse(Int, rest)
                 # string(n) != rest rejects inputs like "+3" or "03" that tryparse accepts
                 if isnothing(n) || n < 1 || string(n) != rest
