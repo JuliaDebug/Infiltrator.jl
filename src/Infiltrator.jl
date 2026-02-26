@@ -220,7 +220,7 @@ const SESSION_GEN = Ref{Int}(0)
 struct CountdownCond
     counter::Ref{Int}
     orig_cond::Any
-    spot::Tuple{String,Int}
+    spot::Tuple{String, Int}
     session_gen::Int
 end
 function (c::CountdownCond)(_locals)
@@ -835,7 +835,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                     LineEdit.reset_state(s)
                     return true
                 end
-                # n=1 can exit early 
+                # n=1 can exit early
                 if n == 1
                     LineEdit.transition(s, :abort)
                     LineEdit.reset_state(s)
