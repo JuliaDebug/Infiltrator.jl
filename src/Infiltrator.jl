@@ -789,9 +789,16 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
             elseif startswith(sline, "@continue ")
                 rest = strip(sline[length("@continue")+1:end])
                 n = tryparse(Int, rest)
+                # string(n) != rest rejects inputs like "+3" or "03" that tryparse accepts
                 if isnothing(n) || n < 1 || string(n) != rest
                     printstyled(io, "Invalid usage."; color = Base.error_color())
                     println(io, " Expected: @continue N (where N is a positive integer)")
+                    LineEdit.reset_state(s)
+                    return true
+                end
+                # @continue 1 is equivalent to plain @continue
+                if n == 1
+                    LineEdit.transition(s, :abort)
                     LineEdit.reset_state(s)
                     return true
                 end
