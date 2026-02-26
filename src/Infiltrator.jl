@@ -782,21 +782,17 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true
-            elseif sline == "@continue"
-                LineEdit.transition(s, :abort)
-                LineEdit.reset_state(s)
-                return true
-            elseif startswith(sline, "@continue ")
+            elseif sline == "@continue" || startswith(sline, "@continue ")
                 rest = strip(sline[(length("@continue") + 1):end])
-                n = tryparse(Int, rest)
+                n = isempty(rest) ? 1 : tryparse(Int, rest)
                 # string(n) != rest rejects inputs like "+3" or "03" that tryparse accepts
-                if isnothing(n) || n < 1 || string(n) != rest
+                if !isempty(rest) && (isnothing(n) || n < 1 || string(n) != rest)
                     printstyled(io, "Invalid usage."; color = Base.error_color())
                     println(io, " Expected: @continue N (where N is a positive integer)")
                     LineEdit.reset_state(s)
                     return true
                 end
-                # @continue 1 is equivalent to plain @continue
+                # n=1 can exit early 
                 if n == 1
                     LineEdit.transition(s, :abort)
                     LineEdit.reset_state(s)
@@ -805,13 +801,13 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 spot = (file, fileline)
                 cs = getfield(store, :conditions)
                 skip = n - 1
-                prev = get(cs, spot, nothing)
+                orig_cond = get(cs, spot, nothing)
                 # Wrap previous @cond (if any) with a countdown closure.
                 # Only count hits where @cond is true, stop at Nth such hit.
-                cs[spot] = let counter = Ref(skip), cs = cs, spot = spot, prev = prev
+                cs[spot] = let counter = Ref(skip), cs = cs, spot = spot, orig_cond = orig_cond
                     (_locals) -> begin
                         # Check existing @cond first; skip without counting if false
-                        if !isnothing(prev) && !prev(_locals)
+                        if !isnothing(orig_cond) && !orig_cond(_locals)
                             return false
                         end
                         # @cond satisfied (or absent): decrement counter
@@ -820,10 +816,10 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                             return false
                         end
                         # Counter exhausted: restore original @cond and stop
-                        if isnothing(prev)
+                        if isnothing(orig_cond)
                             delete!(cs, spot)
                         else
-                            cs[spot] = prev
+                            cs[spot] = orig_cond
                         end
                         return true
                     end
