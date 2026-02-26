@@ -211,6 +211,48 @@ Enable or disable the check for safe REPL mode switching. May result in a non-fu
 toggle_async_check(enabled) = CHECK_TASK[] = enabled
 const CHECK_TASK = Ref{Bool}(true)
 
+const SESSION_GEN = Ref{Int}(0)
+
+# Callable struct for @continue N countdown conditions.
+# Stores session generation at creation time; if the session has changed
+# (error, @abort, etc.), the countdown self-heals by restoring the original
+# condition on next evaluation.
+struct CountdownCond
+    counter::Ref{Int}
+    orig_cond::Any
+    spot::Tuple{String,Int}
+    session_gen::Int
+end
+function (c::CountdownCond)(_locals)
+    cs = getfield(store, :conditions)
+    # Stale check: session ended since this countdown was created
+    if c.session_gen != SESSION_GEN[]
+        if isnothing(c.orig_cond)
+            delete!(cs, c.spot)
+            return true
+        else
+            cs[c.spot] = c.orig_cond
+            return c.orig_cond(_locals)
+        end
+    end
+    # Check existing @cond first; skip without counting if false
+    if !isnothing(c.orig_cond) && !c.orig_cond(_locals)
+        return false
+    end
+    # @cond satisfied (or absent): decrement counter
+    if c.counter[] > 0
+        c.counter[] -= 1
+        return false
+    end
+    # Counter exhausted: restore original @cond and stop
+    if isnothing(c.orig_cond)
+        delete!(cs, c.spot)
+    else
+        cs[c.spot] = c.orig_cond
+    end
+    return true
+end
+
 mutable struct Session
     store::Module
     exiting::Bool
@@ -313,6 +355,7 @@ end
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
 """
 function end_session!(s::Session = store)
+    SESSION_GEN[] += 1
     setfield!(s, :exiting, false)
     return nothing
 end
@@ -802,28 +845,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 cs = getfield(store, :conditions)
                 skip = n - 1
                 orig_cond = get(cs, spot, nothing)
-                # Wrap previous @cond (if any) with a countdown closure.
-                # Only count hits where @cond is true, stop at Nth such hit.
-                cs[spot] = let counter = Ref(skip), cs = cs, spot = spot, orig_cond = orig_cond
-                    (_locals) -> begin
-                        # Check existing @cond first; skip without counting if false
-                        if !isnothing(orig_cond) && !orig_cond(_locals)
-                            return false
-                        end
-                        # @cond satisfied (or absent): decrement counter
-                        if counter[] > 0
-                            counter[] -= 1
-                            return false
-                        end
-                        # Counter exhausted: restore original @cond and stop
-                        if isnothing(orig_cond)
-                            delete!(cs, spot)
-                        else
-                            cs[spot] = orig_cond
-                        end
-                        return true
-                    end
-                end
+                cs[spot] = CountdownCond(Ref(skip), orig_cond, spot, SESSION_GEN[])
                 println(io, "Skipping $(loc_str) $(skip) time$(skip == 1 ? "" : "s"), will stop at hit #$(n).")
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
