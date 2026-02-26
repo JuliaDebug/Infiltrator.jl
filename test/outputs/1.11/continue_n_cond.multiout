@@ -1,0 +1,104 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @cond i % 2 == 0
+|Conditionally enabled infiltration at this infiltration point.
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @cond i % 2 == 0
+|Conditionally enabled infiltration at this infiltration point.
+|
+|infil> @continue 3
+|Skipping this infiltration point 2 times, will stop at hit #3.
+|
+|2
+|3
+|4
+|5
+|6
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|C
+|C
+|C
+|C
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @cond i % 2 == 0
+|Conditionally enabled infiltration at this infiltration point.
+|
+|infil> @continue 3
+|Skipping this infiltration point 2 times, will stop at hit #3.
+|
+|2
+|3
+|4
+|5
+|6
+|Infiltrating <unknown>
+|
+|infil> @exfiltrate i
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|C
+|C
+|C
+|C
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB

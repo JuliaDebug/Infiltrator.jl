@@ -1,0 +1,68 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue 3
+|Skipping this infiltration point 2 times, will stop at hit #3.
+|
+|2
+|3
+|4
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|C
+|C
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue 3
+|Skipping this infiltration point 2 times, will stop at hit #3.
+|
+|2
+|3
+|4
+|Infiltrating <unknown>
+|
+|infil> @exfiltrate i
+|Exfiltrating 1 local variable into the safehouse.
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|C
+|C
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB

@@ -46,6 +46,9 @@
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
 |
+|    •  @continue N: Skip this infiltration point N-1 times and stop at
+|       the Nth hit. Other @infiltrate points still stop immediately.
+|
 |    •  @doc symbol: Get help for symbol (same as in the normal Julia
 |       REPL).
 |
@@ -95,6 +98,9 @@
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCC
 |
@@ -143,6 +149,9 @@
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
+|
+|    •  @continue N: Skip this infiltration point N-1 times and stop at
+|       the Nth hit. Other @infiltrate points still stop immediately.
 |
 |    •  @doc symbol: Get help for symbol (same as in the normal Julia
 |       REPL).
@@ -195,6 +204,9 @@
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCC
 |
@@ -245,6 +257,9 @@
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
+|
+|    •  @continue N: Skip this infiltration point N-1 times and stop at
+|       the Nth hit. Other @infiltrate points still stop immediately.
 |
 |    •  @doc symbol: Get help for symbol (same as in the normal Julia
 |       REPL).
@@ -300,6 +315,9 @@
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
 |
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCC
 |
@@ -353,6 +371,9 @@
 |
 |    •  @continue: Continue to the next infiltration point or exit
 |       (shortcut: Ctrl-D).
+|
+|    •  @continue N: Skip this infiltration point N-1 times and stop at
+|       the Nth hit. Other @infiltrate points still stop immediately.
 |
 |    •  @doc symbol: Get help for symbol (same as in the normal Julia
 |       REPL).
@@ -410,6 +431,9 @@
 |
 |CCCCCCCDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |CCCCCCCDDDDDDDDDDDCCCCCCCCCCCCCCCDDDDDDCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |CCCCCCCCCCCCC
