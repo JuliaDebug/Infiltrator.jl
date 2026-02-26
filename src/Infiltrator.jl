@@ -488,6 +488,7 @@ The following commands are special cased:
   - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
   - `@cond expr`: Infiltrate at this `@infiltrate` spot only if `expr` evaluates to true (clear all with `Infiltrator.clear_conditions!()`). Only local variables can be accessed here.
   - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+  - `@continue N`: Skip this infiltration point N-1 times and stop at the Nth hit. Other `@infiltrate` points still stop immediately.
   - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
   - `@exit`: Stop infiltrating for the remainder of this session and exit.
   - `@abort`: Stop program execution by throwing an `AbortException`.
@@ -782,6 +783,44 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 LineEdit.reset_state(s)
                 return true
             elseif sline == "@continue"
+                LineEdit.transition(s, :abort)
+                LineEdit.reset_state(s)
+                return true
+            elseif startswith(sline, "@continue ")
+                rest = lstrip(sline[length("@continue")+1:end])
+                n = tryparse(Int, rest)
+                if isnothing(n) || n < 1
+                    println(io, "Usage: @continue N where N is a positive integer.")
+                    LineEdit.reset_state(s)
+                    return true
+                end
+                spot = (file, fileline)
+                cs = getfield(store, :conditions)
+                skip = n - 1
+                prev = get(cs, spot, nothing)
+                # Wrap previous @cond (if any) with a countdown closure.
+                # Only count hits where @cond is true, stop at Nth such hit.
+                cs[spot] = let counter = Ref(skip), cs = cs, spot = spot, prev = prev
+                    (_locals) -> begin
+                        # Check existing @cond first; skip without counting if false
+                        if !isnothing(prev) && !prev(_locals)
+                            return false
+                        end
+                        # @cond satisfied (or absent): decrement counter
+                        if counter[] > 0
+                            counter[] -= 1
+                            return false
+                        end
+                        # Counter exhausted: restore original @cond and stop
+                        if isnothing(prev)
+                            delete!(cs, spot)
+                        else
+                            cs[spot] = prev
+                        end
+                        return true
+                    end
+                end
+                println(io, "Skipping $(loc_str) $(skip) time$(skip == 1 ? "" : "s"), will stop at hit #$(n).")
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true
