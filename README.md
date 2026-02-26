@@ -142,6 +142,8 @@ infil> ?
 
     •  @continue: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
 
+    •  @continue N: Continue and stop at the Nth hit of this infiltration point. If a `@cond` is active, only hits where the condition evaluates to true are counted.
+
     •  @doc symbol: Get help for symbol (same as in the normal Julia REPL).
 
     •  @exit: Stop infiltrating for the remainder of this session and exit.
