@@ -787,10 +787,11 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 LineEdit.reset_state(s)
                 return true
             elseif startswith(sline, "@continue ")
-                rest = lstrip(sline[length("@continue")+1:end])
+                rest = strip(sline[length("@continue")+1:end])
                 n = tryparse(Int, rest)
-                if isnothing(n) || n < 1
-                    println(io, "Usage: @continue N where N is a positive integer.")
+                if isnothing(n) || n < 1 || string(n) != rest
+                    printstyled(io, "Invalid usage."; color = Base.error_color())
+                    println(io, " Expected: @continue N (where N is a positive integer)")
                     LineEdit.reset_state(s)
                     return true
                 end
