@@ -211,16 +211,58 @@ Enable or disable the check for safe REPL mode switching. May result in a non-fu
 toggle_async_check(enabled) = CHECK_TASK[] = enabled
 const CHECK_TASK = Ref{Bool}(true)
 
+# Callable struct for @continue N countdown conditions.
+# Stores session generation at creation time; if the session has changed
+# (error, @abort, etc.), the countdown self-heals by restoring the original
+# condition on next evaluation.
+struct CountdownCond
+    counter::Ref{Int}
+    orig_cond::Any
+    spot::Tuple{String, Int}
+    session_gen::Int
+end
+function (c::CountdownCond)(_locals)
+    cs = getfield(store, :conditions)
+    # Stale check: session ended since this countdown was created
+    if c.session_gen != getfield(store, :generation)
+        if isnothing(c.orig_cond)
+            delete!(cs, c.spot)
+            return true
+        else
+            cs[c.spot] = c.orig_cond
+            return c.orig_cond(_locals)
+        end
+    end
+    # Check existing @cond first; skip without counting if false
+    if !isnothing(c.orig_cond) && !c.orig_cond(_locals)
+        return false
+    end
+    # @cond satisfied (or absent): decrement counter
+    if c.counter[] > 0
+        c.counter[] -= 1
+        return false
+    end
+    # Counter exhausted: restore original @cond and stop
+    if isnothing(c.orig_cond)
+        delete!(cs, c.spot)
+    else
+        cs[c.spot] = c.orig_cond
+    end
+    return true
+end
+
 mutable struct Session
     store::Module
     exiting::Bool
     disabled::Set
     conditions::Dict
+    generation::Int
     function Session(exiting, disabled, conditions)
         session = new()
         session.exiting = exiting
         session.disabled = disabled
         session.conditions = conditions
+        session.generation = 0
         return session
     end
 end
@@ -313,6 +355,7 @@ end
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
 """
 function end_session!(s::Session = store)
+    setfield!(s, :generation, getfield(s, :generation) + 1)
     setfield!(s, :exiting, false)
     return nothing
 end
@@ -488,6 +531,7 @@ The following commands are special cased:
   - `@toggle`: Toggle infiltrating at this `@infiltrate` spot (clear all with `Infiltrator.clear_disabled!()`).
   - `@cond expr`: Infiltrate at this `@infiltrate` spot only if `expr` evaluates to true (clear all with `Infiltrator.clear_conditions!()`). Only local variables can be accessed here.
   - `@continue`: Continue to the next infiltration point or exit (shortcut: Ctrl-D).
+  - `@continue N`: Skip this infiltration point N-1 times and stop at the Nth hit. Other `@infiltrate` points still stop immediately.
   - `@doc symbol`: Get help for `symbol` (same as in the normal Julia REPL).
   - `@exit`: Stop infiltrating for the remainder of this session and exit.
   - `@abort`: Stop program execution by throwing an `AbortException`.
@@ -781,7 +825,26 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true
-            elseif sline == "@continue"
+            elseif startswith(sline, r"@continue\b")
+                rest = strip(sline[(length("@continue") + 1):end])
+                n = isempty(rest) ? 1 : tryparse(Int, rest)
+                if isnothing(n) || n < 1
+                    printstyled(io, "Invalid usage."; color = Base.error_color())
+                    println(io, " Expected: @continue N (where N is a positive integer)")
+                    LineEdit.reset_state(s)
+                    return true
+                end
+                # n=1 can exit early
+                if n == 1
+                    LineEdit.transition(s, :abort)
+                    LineEdit.reset_state(s)
+                    return true
+                end
+                spot = (file, fileline)
+                cs = getfield(store, :conditions)
+                skip = n - 1
+                orig_cond = get(cs, spot, nothing)
+                cs[spot] = CountdownCond(Ref(skip), orig_cond, spot, getfield(store, :generation))
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true

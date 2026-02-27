@@ -308,6 +308,27 @@ end
             "cond"
         )
 
+        Infiltrator.clear_conditions!()
+
+        # @continue N: stop at Nth hit (hits 2, 3, 4 → stops at i=4)
+        run_terminal_test(
+            (t) -> cond(t), nothing,
+            ["@continue 3\n", "@exfiltrate i\n", "@exit\n"],
+            "continue_n"
+        )
+        @test Infiltrator.store.i == 4
+
+        # @continue N with @cond: count only condition-true hits
+        # even hits: 2, 4, 6 → 3rd even is i=6
+        run_terminal_test(
+            (t) -> cond(t), nothing,
+            ["@cond i % 2 == 0\n", "@continue 3\n", "@exfiltrate i\n", "@exit\n"],
+            "continue_n_cond"
+        )
+        @test Infiltrator.store.i == 6
+
+        Infiltrator.clear_conditions!()
+
         # soft scoping
         run_terminal_test(
             (t) -> f(3), [3, 4, 5],
