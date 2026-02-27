@@ -211,8 +211,6 @@ Enable or disable the check for safe REPL mode switching. May result in a non-fu
 toggle_async_check(enabled) = CHECK_TASK[] = enabled
 const CHECK_TASK = Ref{Bool}(true)
 
-const SESSION_GEN = Ref{Int}(0)
-
 # Callable struct for @continue N countdown conditions.
 # Stores session generation at creation time; if the session has changed
 # (error, @abort, etc.), the countdown self-heals by restoring the original
@@ -226,7 +224,7 @@ end
 function (c::CountdownCond)(_locals)
     cs = getfield(store, :conditions)
     # Stale check: session ended since this countdown was created
-    if c.session_gen != SESSION_GEN[]
+    if c.session_gen != getfield(store, :generation)
         if isnothing(c.orig_cond)
             delete!(cs, c.spot)
             return true
@@ -258,11 +256,13 @@ mutable struct Session
     exiting::Bool
     disabled::Set
     conditions::Dict
+    generation::Int
     function Session(exiting, disabled, conditions)
         session = new()
         session.exiting = exiting
         session.disabled = disabled
         session.conditions = conditions
+        session.generation = 0
         return session
     end
 end
@@ -355,7 +355,7 @@ end
 End this infiltration session (reverts the effect of `@exit` in the `debug>` REPL).
 """
 function end_session!(s::Session = store)
-    SESSION_GEN[] += 1
+    setfield!(s, :generation, getfield(s, :generation) + 1)
     setfield!(s, :exiting, false)
     return nothing
 end
@@ -845,7 +845,7 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 cs = getfield(store, :conditions)
                 skip = n - 1
                 orig_cond = get(cs, spot, nothing)
-                cs[spot] = CountdownCond(Ref(skip), orig_cond, spot, SESSION_GEN[])
+                cs[spot] = CountdownCond(Ref(skip), orig_cond, spot, getfield(store, :generation))
                 println(io, "Skipping $(loc_str) $(skip) time$(skip == 1 ? "" : "s"), will stop at hit #$(n).")
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
