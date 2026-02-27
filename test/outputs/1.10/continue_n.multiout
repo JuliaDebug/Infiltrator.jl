@@ -13,7 +13,6 @@
 |Infiltrating <unknown>
 |
 |infil> @continue 3
-|Skipping this infiltration point 2 times, will stop at hit #3.
 |
 |2
 |3
@@ -26,7 +25,6 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |C
 |C
@@ -39,7 +37,6 @@
 |Infiltrating <unknown>
 |
 |infil> @continue 3
-|Skipping this infiltration point 2 times, will stop at hit #3.
 |
 |2
 |3
@@ -55,7 +52,6 @@
 |AAAAAAAAAAAAAAAAAAAAAA
 |
 |BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |C
 |C

@@ -825,11 +825,10 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true
-            elseif sline == "@continue" || startswith(sline, "@continue ")
+            elseif startswith(sline, r"@continue\b")
                 rest = strip(sline[(length("@continue") + 1):end])
                 n = isempty(rest) ? 1 : tryparse(Int, rest)
-                # string(n) != rest rejects inputs like "+3" or "03" that tryparse accepts
-                if !isempty(rest) && (isnothing(n) || n < 1 || string(n) != rest)
+                if isnothing(n) || n < 1
                     printstyled(io, "Invalid usage."; color = Base.error_color())
                     println(io, " Expected: @continue N (where N is a positive integer)")
                     LineEdit.reset_state(s)
@@ -846,7 +845,6 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 skip = n - 1
                 orig_cond = get(cs, spot, nothing)
                 cs[spot] = CountdownCond(Ref(skip), orig_cond, spot, getfield(store, :generation))
-                println(io, "Skipping $(loc_str) $(skip) time$(skip == 1 ? "" : "s"), will stop at hit #$(n).")
                 LineEdit.transition(s, :abort)
                 LineEdit.reset_state(s)
                 return true

@@ -32,7 +32,6 @@
 |Conditionally enabled infiltration at this infiltration point.
 |
 |infil> @continue 3
-|Skipping this infiltration point 2 times, will stop at hit #3.
 |
 |2
 |3
@@ -50,7 +49,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |C
 |C
@@ -68,7 +66,6 @@
 |Conditionally enabled infiltration at this infiltration point.
 |
 |infil> @continue 3
-|Skipping this infiltration point 2 times, will stop at hit #3.
 |
 |2
 |3
@@ -89,7 +86,6 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBBCCCCCCCCCCC
-|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |C
 |C
