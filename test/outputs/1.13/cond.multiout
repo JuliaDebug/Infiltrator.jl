@@ -1,0 +1,206 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|2
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|2
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|3
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|2
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|3
+|Infiltrating <unknown>
+|
+|infil> @cond i > 6
+|Conditionally enabled infiltration at this infiltration point.
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|2
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|3
+|Infiltrating <unknown>
+|
+|infil> @cond i > 6
+|Conditionally enabled infiltration at this infiltration point.
+|
+|infil> @continue
+|
+|4
+|5
+|6
+|7
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|C
+|C
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|1
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|2
+|Infiltrating <unknown>
+|
+|infil> @continue
+|
+|3
+|Infiltrating <unknown>
+|
+|infil> @cond i > 6
+|Conditionally enabled infiltration at this infiltration point.
+|
+|infil> @continue
+|
+|4
+|5
+|6
+|7
+|Infiltrating <unknown>
+|
+|infil> i
+|7
+|
+|infil> 
+--------------------------------------------------
+|A
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCC
+|
+|C
+|C
+|C
+|C
+|CCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBBC
+|C
+|
+|BBBBBBB

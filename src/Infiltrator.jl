@@ -657,26 +657,51 @@ find_infil_hist_file() = get(ENV, "INFILTRATOR_HISTORY", !isempty(DEPOT_PATH) ? 
 Load the history from the history file found by `find_infil_hist_file()`, i.e. under `ENV["INFILTRATOR_HISTORY"]` or next to the main REPL history (typically `.julia/logs/infil_history.jl`).
 Most of the code comes from the REPL stdlib (inlined in `setup_interface`).
 """
-function load_history!(hp::REPL.REPLHistoryProvider, repl, cp::REPL.CompletionProvider)
-    if repl.history_file
-        try
-            hist_path = find_infil_hist_file()
-            mkpath(dirname(hist_path))
-            hp.file_path = hist_path
-            REPL.hist_open_file(hp)
-            finalizer(cp) do cp
-                close(hp.history_file)
+function load_history! end
+
+@static if VERSION >= v"1.13-"
+    function load_history!(hp::REPL.REPLHistoryProvider, repl, cp::REPL.CompletionProvider)
+        if repl.history_file
+            try
+                path = find_infil_hist_file()
+                mkpath(dirname(path))
+                hp.history = REPL.History.HistoryFile(path)
+                errormonitor(@async REPL.history_do_initialize(hp))
+                finalizer(cp) do cp
+                    close(hp.history)
+                end
+            catch
+                # use REPL.hascolor to avoid using the local variable with the same name
+                print_response(repl, Pair{Any, Bool}(current_exceptions(), true), true, REPL.hascolor(repl))
+                println(REPL.outstream(repl))
+                @info "Disabling history file for this session"
+                repl.history_file = false
             end
-            REPL.hist_from_file(hp, hist_path)
-        catch
-            # use REPL.hascolor to avoid using the local variable with the same name
-            print_response(repl, Pair{Any, Bool}(current_exceptions(), true), true, REPL.hascolor(repl))
-            println(REPL.outstream(repl))
-            @info "Disabling history file for this session"
-            repl.history_file = false
         end
+        return
     end
-    return
+else
+    function load_history!(hp::REPL.REPLHistoryProvider, repl, cp::REPL.CompletionProvider)
+        if repl.history_file
+            try
+                hist_path = find_infil_hist_file()
+                mkpath(dirname(hist_path))
+                hp.file_path = hist_path
+                REPL.hist_open_file(hp)
+                finalizer(cp) do cp
+                    close(hp.history_file)
+                end
+                REPL.hist_from_file(hp, hist_path)
+            catch
+                # use REPL.hascolor to avoid using the local variable with the same name
+                print_response(repl, Pair{Any, Bool}(current_exceptions(), true), true, REPL.hascolor(repl))
+                println(REPL.outstream(repl))
+                @info "Disabling history file for this session"
+                repl.history_file = false
+            end
+        end
+        return
+    end
 end
 
 function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false, file, fileline)
@@ -686,25 +711,29 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
 
     try
         if isassigned(PROMPT)
-            panel = PROMPT[]
-            panel.complete = InfiltratorCompletionProvider(mod, evalmod)
+            prompt = PROMPT[]
+            prompt.complete = InfiltratorCompletionProvider(mod, evalmod)
         else
             cp = InfiltratorCompletionProvider(mod, evalmod)
-            panel = PROMPT[] = REPL.LineEdit.Prompt(
+            prompt = PROMPT[] = REPL.LineEdit.Prompt(
                 "infil> ";
                 prompt_prefix = prompt_color,
                 prompt_suffix = Base.text_colors[:normal],
                 complete = cp,
-                on_enter = is_complete
+                on_enter = is_complete,
+                repl = repl
             )
-            panel.hist = REPL.REPLHistoryProvider(Dict{Symbol, Any}(:Infiltrator => panel))
-            load_history!(panel.hist, repl, cp)
-            REPL.history_reset_state(panel.hist)
+            prompt.hist = REPL.REPLHistoryProvider(Dict{Symbol, Any}(:infil => prompt))
+            load_history!(prompt.hist, repl, cp)
+            REPL.history_reset_state(prompt.hist)
         end
-        search_prompt, skeymap = LineEdit.setup_search_keymap(panel.hist)
-        search_prompt.complete = REPL.LatexCompletions()
 
-        panel.on_done = (s, buf, ok) -> begin
+        if VERSION < v"1.13-"
+            search_prompt, skeymap = LineEdit.setup_search_keymap(prompt.hist)
+            search_prompt.complete = REPL.LatexCompletions()
+        end
+
+        prompt.on_done = (s, buf, ok) -> begin
             if !ok
                 LineEdit.transition(s, :abort)
                 REPL.LineEdit.reset_state(s)
@@ -906,11 +935,27 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
             return true
         end
 
-        prefix_prompt, prefix_keymap = LineEdit.setup_prefix_keymap(panel.hist, panel)
+        prefix_prompt, prefix_keymap = LineEdit.setup_prefix_keymap(prompt.hist, prompt)
 
-        panel.keymap_dict = LineEdit.keymap(Dict{Any, Any}[skeymap, prefix_keymap, LineEdit.history_keymap, LineEdit.default_keymap, LineEdit.escape_defaults])
+        keymaps = Dict{Any, Any}[prefix_keymap, LineEdit.history_keymap, LineEdit.default_keymap, LineEdit.escape_defaults]
 
-        REPL.run_interface(terminal, REPL.LineEdit.ModalInterface([panel, prefix_prompt, search_prompt]))
+        if VERSION < v"1.13-"
+            pushfirst!(keymaps, skeymap)
+        end
+
+        prompt.keymap_dict = LineEdit.keymap(keymaps)
+
+        prompts = [prompt, prefix_prompt]
+
+        if VERSION < v"1.13-"
+            push!(prompts, search_prompt)
+        end
+
+        mi = REPL.LineEdit.ModalInterface(prompts)
+        mistate = REPL.LineEdit.init_state(terminal, mi)
+        repl.mistate = mistate
+
+        REPL.run_interface(terminal, mi, mistate)
     catch e
         e isa InterruptException || rethrow(e)
     end
