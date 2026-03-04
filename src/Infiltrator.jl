@@ -723,8 +723,11 @@ function debugprompt(mod, locals, trace, terminal, repl, ex, bt; nostack = false
                 on_enter = is_complete,
                 repl = repl
             )
+
             prompt.hist = REPL.REPLHistoryProvider(Dict{Symbol, Any}(:infil => prompt))
-            load_history!(prompt.hist, repl, cp)
+            if VERSION >= v"1.10-"
+                load_history!(prompt.hist, repl, cp)
+            end
             REPL.history_reset_state(prompt.hist)
         end
 
