@@ -1,0 +1,24 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> @locals
+|- y::Vector{Int64} = [1, 2, 3]
+|- x::Int64 = 2
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|CCCCCCCCCCCCCC
+|
+|BBBBBBB

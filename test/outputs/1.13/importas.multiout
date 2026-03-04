@@ -1,0 +1,42 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> I
+|Infiltrator
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCC
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> I
+|Infiltrator
+|
+|infil> I.all_names
+|all_names (generic function with 4 methods)
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBC
+|CCCCCCCCCCC
+|
+|BBBBBBBCCCCCCCCCCC
+|CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|BBBBBBB
