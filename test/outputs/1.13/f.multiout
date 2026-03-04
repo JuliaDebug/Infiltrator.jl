@@ -521,6 +521,7 @@
 |
 |infil> 
 |
+|
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
@@ -579,6 +580,7 @@
 |C
 |
 |BBBBBBB
+|
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -642,6 +644,7 @@
 |
 |infil> 
 |
+|
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
@@ -703,6 +706,7 @@
 |C
 |
 |BBBBBBB
+|
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -769,6 +773,7 @@
 |
 |infil> 
 |
+|
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
@@ -833,6 +838,7 @@
 |C
 |
 |BBBBBBB
+|
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -913,6 +919,7 @@
 |
 |infil> 
 |
+|
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
@@ -991,6 +998,7 @@
 |CCCCCCCCCCC
 |
 |BBBBBBB
+|
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -1074,6 +1082,7 @@
 |
 |infil> 
 |
+|
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
@@ -1155,6 +1164,7 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
+|
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
@@ -1240,6 +1250,7 @@
 |Enabled infiltration at this infiltration point.
 |
 |infil> 
+|
 |
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
@@ -1326,6 +1337,7 @@
 |
 |BBBBBBB
 |
+|
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 |Infiltrating <unknown>
 |
@@ -1414,6 +1426,7 @@
 |
 |infil> 
 |
+|
 --------------------------------------------------
 |AAAAAAAAAAAAAAAAAAAAAA
 |
@@ -1501,4 +1514,5 @@
 |CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 |
 |BBBBBBB
+|
 |
