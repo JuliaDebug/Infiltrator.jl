@@ -1132,18 +1132,26 @@ let ir_constructs = collect(
     @eval is_ir_construct(@nospecialize x) = typeof(x) in $ir_constructs
 end
 
+const CHECK_BUDGET = 10_000
 const special_heads = (:meta, :import, :using, :export, :module, :error, :incomplete, :thunk)
-function infiltrator_session_ender(@nospecialize ex)
-    if ex isa Expr
-        h = ex.head
-        if h === :toplevel
-            if any(x -> (x isa Expr && x.head in special_heads), ex.args)
-                return ex
-            end
-        elseif h in special_heads
-            return ex
+function should_transform(ex::Expr)
+    to_check = []
+    budget_used = 0
+    append!(to_check, ex.args)
+    for x in to_check
+        budget_used > CHECK_BUDGET && return false
+        if x isa Expr
+            x.head in special_heads && return false
+            append!(to_check, x.args)
         end
+        budget_used += 1
+    end
 
+    return true
+end
+
+function infiltrator_session_ender(@nospecialize ex)
+    if ex isa Expr && should_transform(ex)
         return Expr(:try, ex, false, false, :($(@__MODULE__).end_session!()))
     end
     return ex
