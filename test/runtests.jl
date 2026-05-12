@@ -356,6 +356,19 @@ end
             ["a\n", "Shadow.a\n", "\x4"],
             "shadowing of global bindings"
         )
+
+        # dictionary key completion test
+        function dict_test()
+            d = Dict("a very long key" => true, "another key" => false)
+            @infiltrate
+            return d
+        end
+
+        run_terminal_test(
+            (t) -> dict_test(), Dict("a very long key" => true, "another key" => false),
+            ["d[\"a\t\t\n", "\x4"],
+            "dict_completion"
+        )
     end
 
     @testset "infiltry" begin
