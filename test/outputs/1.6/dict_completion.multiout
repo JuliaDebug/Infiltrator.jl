@@ -1,0 +1,26 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBB
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|Infiltrating <unknown>
+|
+|infil> d["a
+|"a very long key" "another key"
+|infil> d["a very long key"]
+|true
+|
+|infil> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAA
+|
+|BBBBBBBCCCC
+|CCCCCCCCCCCCCCCCCACCCCCCCCCCCCC
+|BBBBBBBCCCCCCCCCCCCCCCCCCCC
+|CCCC
+|
+|BBBBBBB

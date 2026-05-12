@@ -1216,17 +1216,11 @@ end
 end
 
 function completions(c::InfiltratorCompletionProvider, full, partial)
-    # repl backend completions
-    comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.mod)
-    ret = map(_completion_text, comps)
-
-    # completions for local variables
+    # localmod already contains locals, safehouse, and module variables merged
+    # Use it as the primary completion source to preserve context-sensitive completions
+    # (e.g., dictionary keys, which require evaluating the dict expression)
     comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), c.localmod)
-    prepend!(ret, map(_completion_text, comps))
-
-    # completions for safehouse variables
-    comps, range, should_complete = REPL.REPLCompletions.completions(full, lastindex(partial), get_store(store))
-    prepend!(ret, map(_completion_text, comps))
+    ret = map(_completion_text, comps)
 
     # Infiltrator commands completions
     commands = ["?", "@trace", "@trace_all", "@locals", "@toggle", "@exit", "@continue", "@exfiltrate", "@exception"]
