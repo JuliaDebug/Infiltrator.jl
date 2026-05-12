@@ -366,7 +366,7 @@ end
 
         run_terminal_test(
             (t) -> dict_test(), Dict("a very long key" => true, "another key" => false),
-            ["d[\"a\t\t\n", "\x4"],
+            ["d[\"a\t\t \t\n", "\x4"],
             "dict_completion"
         )
     end
