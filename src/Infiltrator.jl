@@ -28,26 +28,38 @@ function __init__()
     ccall(:jl_generating_output, Cint, ()) == 0 && clear_store!(store)
     INFILTRATION_LOCK[] = ReentrantLock()
     if isdefined(Base, :active_repl_backend) && !isnothing(Base.active_repl_backend)
-        push!(Base.active_repl_backend.ast_transforms, infiltrator_session_ender)
-        REPL_HOOKED[] = true
+        hook_repl_backend()
     else
-        atreplinit() do repl
-            @async begin
-                iter = 0
-                # wait for active_repl_backend to exist
-                while !isdefined(Base, :active_repl_backend) && iter < 20
-                    sleep(0.05)
-                    iter += 1
-                end
-                if isdefined(Base, :active_repl_backend)
-                    push!(Base.active_repl_backend.ast_transforms, infiltrator_session_ender)
-                    REPL_HOOKED[] = true
-                end
-            end
-        end
+        atreplinit(schedule_repl_hook)
     end
     return
 end
+
+function hook_repl_backend()
+    push!((Base.active_repl_backend::REPL.REPLBackend).ast_transforms, infiltrator_session_ender)
+    REPL_HOOKED[] = true
+    return
+end
+
+# Named functions instead of closures, so that the precompile directives below cover them.
+function schedule_repl_hook(@nospecialize(repl))
+    schedule(Task(await_repl_backend))
+    return
+end
+
+function await_repl_backend()
+    iter = 0
+    # wait for active_repl_backend to exist
+    while !isdefined(Base, :active_repl_backend) && iter < 20
+        sleep(0.05)
+        iter += 1
+    end
+    isdefined(Base, :active_repl_backend) && hook_repl_backend()
+    return
+end
+
+precompile(schedule_repl_hook, (Any,))
+precompile(await_repl_backend, ())
 
 """
     @infiltrate
@@ -1156,6 +1168,7 @@ function infiltrator_session_ender(@nospecialize ex)
     end
     return ex
 end
+precompile(infiltrator_session_ender, (Any,))
 
 # backtraces
 
